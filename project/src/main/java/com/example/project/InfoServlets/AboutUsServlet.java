@@ -1,11 +1,13 @@
-package com.example.project;
+package com.example.project.InfoServlets;
 
 import java.io.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
-@WebServlet(name = "helloServlet", value = "/hello-servlet")
-public class HelloServlet extends HttpServlet {
+@WebServlet(name = "aboutUsServlet", value = "/aboutUs")
+
+
+public class AboutUsServlet extends HttpServlet {
     private String message;
 
     public void init() {

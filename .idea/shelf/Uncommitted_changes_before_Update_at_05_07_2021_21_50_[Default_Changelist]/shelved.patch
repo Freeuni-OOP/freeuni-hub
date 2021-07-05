@@ -1,0 +1,238 @@
+Index: project/.idea/sqldialects.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"SqlDialectMappings\">\r\n    <file url=\"file://$PROJECT_DIR$/table.sql\" dialect=\"GenericSQL\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/project/.idea/sqldialects.xml b/project/.idea/sqldialects.xml
+--- a/project/.idea/sqldialects.xml	(revision 20910baecde883f4f5c2b91c2332ba2b5dc892f4)
++++ b/project/.idea/sqldialects.xml	(date 1625504644208)
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="SqlDialectMappings">
+-    <file url="file://$PROJECT_DIR$/table.sql" dialect="GenericSQL" />
++    <file url="file://$PROJECT_DIR$/src/main/database/table.sql" dialect="GenericSQL" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: project/.idea/artifacts/Hub_war_exploded.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/project/.idea/artifacts/Hub_war_exploded.xml b/project/.idea/artifacts/Hub_war_exploded.xml
+new file mode 100644
+--- /dev/null	(date 1625504625467)
++++ b/project/.idea/artifacts/Hub_war_exploded.xml	(date 1625504625467)
+@@ -0,0 +1,23 @@
++<component name="ArtifactManager">
++  <artifact type="exploded-war" name="Hub:war exploded">
++    <output-path>$PROJECT_DIR$/target/project-1.0-SNAPSHOT</output-path>
++    <properties id="maven-jee-properties">
++      <options>
++        <exploded>true</exploded>
++        <module>Hub</module>
++        <packaging>war</packaging>
++      </options>
++    </properties>
++    <root id="root">
++      <element id="directory" name="WEB-INF">
++        <element id="directory" name="classes">
++          <element id="module-output" name="Hub" />
++        </element>
++      </element>
++      <element id="directory" name="META-INF">
++        <element id="file-copy" path="$PROJECT_DIR$/target/project-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
++      </element>
++      <element id="javaee-facet-resources" facet="Hub/web/Web" />
++    </root>
++  </artifact>
++</component>
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"f30e710c-5c2c-457b-be40-8f3dfa2d1a39\" name=\"Default Changelist\" comment=\"\">\r\n      <change afterPath=\"$PROJECT_DIR$/project/pom.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/project/src/main/java/com/example/project/HelloApplication.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/project/src/main/java/com/example/project/HelloResource.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/project/src/main/java/com/example/project/HelloServlet.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/project/src/main/resources/META-INF/beans.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/project/src/main/resources/META-INF/persistence.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/project/src/main/webapp/WEB-INF/web.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/project/src/main/webapp/index.jsp\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/.gitignore\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/OOP-PROJECT.iml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/codeStyles/Project.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/misc.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/modules.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/vcs.xml\" beforeDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1uqf185stcv3KttaTdh0azpXlD4\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"aspect.path.notification.shown\" value=\"true\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/project\" />\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"f30e710c-5c2c-457b-be40-8f3dfa2d1a39\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1625397826244</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1625397826244</updated>\r\n      <workItem from=\"1625397830531\" duration=\"34000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 20910baecde883f4f5c2b91c2332ba2b5dc892f4)
++++ b/.idea/workspace.xml	(date 1625507219270)
+@@ -38,6 +38,19 @@
+     <property name="aspect.path.notification.shown" value="true" />
+     <property name="last_opened_file_path" value="$PROJECT_DIR$/project" />
+   </component>
++  <component name="RunManager">
++    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
++      <option name="arquillianRunConfiguration">
++        <value>
++          <option name="containerStateName" value="" />
++        </value>
++      </option>
++      <option name="TEST_OBJECT" value="class" />
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++  </component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+     <task active="true" id="Default" summary="Default task">
+Index: project/.idea/dataSources.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"DataSourceManagerImpl\" format=\"xml\" multifile-model=\"true\">\r\n    <data-source source=\"LOCAL\" name=\"@localhost\" uuid=\"e8729ffd-021c-416f-8a4f-949e7cf17c0a\">\r\n      <driver-ref>mysql.8</driver-ref>\r\n      <synchronize>true</synchronize>\r\n      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>\r\n      <jdbc-url>jdbc:mysql://localhost:3306</jdbc-url>\r\n      <working-dir>$ProjectFileDir$</working-dir>\r\n    </data-source>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/project/.idea/dataSources.xml b/project/.idea/dataSources.xml
+--- a/project/.idea/dataSources.xml	(revision 20910baecde883f4f5c2b91c2332ba2b5dc892f4)
++++ b/project/.idea/dataSources.xml	(date 1625504790118)
+@@ -8,5 +8,12 @@
+       <jdbc-url>jdbc:mysql://localhost:3306</jdbc-url>
+       <working-dir>$ProjectFileDir$</working-dir>
+     </data-source>
++    <data-source source="LOCAL" name="database" uuid="45787ef7-290b-4e90-b989-587cb4c2feca">
++      <driver-ref>mysql.8</driver-ref>
++      <synchronize>true</synchronize>
++      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
++      <jdbc-url>jdbc:mysql://localhost:3306/ado</jdbc-url>
++      <working-dir>$ProjectFileDir$</working-dir>
++    </data-source>
+   </component>
+ </project>
+\ No newline at end of file
+Index: project/.idea/artifacts/Hub_war.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/project/.idea/artifacts/Hub_war.xml b/project/.idea/artifacts/Hub_war.xml
+new file mode 100644
+--- /dev/null	(date 1625504625458)
++++ b/project/.idea/artifacts/Hub_war.xml	(date 1625504625458)
+@@ -0,0 +1,14 @@
++<component name="ArtifactManager">
++  <artifact type="war" name="Hub:war">
++    <output-path>$PROJECT_DIR$/target</output-path>
++    <properties id="maven-jee-properties">
++      <options>
++        <module>Hub</module>
++        <packaging>war</packaging>
++      </options>
++    </properties>
++    <root id="archive" name="project-1.0-SNAPSHOT.war">
++      <element id="artifact" artifact-name="Hub:war exploded" />
++    </root>
++  </artifact>
++</component>
+\ No newline at end of file
+Index: project/src/main/java/com/example/project/HelloApplication.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.project;\r\n\r\nimport javax.ws.rs.ApplicationPath;\r\nimport javax.ws.rs.core.Application;\r\n\r\n@ApplicationPath(\"/api\")\r\npublic class HelloApplication extends Application {\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/project/src/main/java/com/example/project/HelloApplication.java b/project/src/main/java/com/example/project/HelloApplication.java
+--- a/project/src/main/java/com/example/project/HelloApplication.java	(revision 20910baecde883f4f5c2b91c2332ba2b5dc892f4)
++++ b/project/src/main/java/com/example/project/HelloApplication.java	(date 1625504625353)
+@@ -3,6 +3,8 @@
+ import javax.ws.rs.ApplicationPath;
+ import javax.ws.rs.core.Application;
+ 
++
++
+ @ApplicationPath("/api")
+ public class HelloApplication extends Application {
+ 
+Index: .gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># Compiled class fileeee\r\n*.class\r\n\r\n# Log file\r\n*.log\r\n\r\n# BlueJ files\r\n*.ctxt\r\n\r\n# Mobile Tools for Java (J2ME)\r\n.mtj.tmp/\r\n\r\n# Package Files #\r\n*.jar\r\n*.war\r\n*.nar\r\n*.ear\r\n*.zip\r\n*.tar.gz\r\n*.rar\r\n\r\n# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml\r\nhs_err_pid*\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.gitignore b/.gitignore
+--- a/.gitignore	(revision 20910baecde883f4f5c2b91c2332ba2b5dc892f4)
++++ b/.gitignore	(date 1625507218852)
+@@ -1,4 +1,4 @@
+-# Compiled class fileeee
++# Compiled class file
+ *.class
+ 
+ # Log file
+Index: project/src/main/java/com/example/project/HelloServlet.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/project/src/main/java/com/example/project/HelloServlet.java b/project/src/main/java/com/example/project/AboutUsServlet.java
+rename from project/src/main/java/com/example/project/HelloServlet.java
+rename to project/src/main/java/com/example/project/AboutUsServlet.java
+--- a/project/src/main/java/com/example/project/HelloServlet.java	(revision 20910baecde883f4f5c2b91c2332ba2b5dc892f4)
++++ b/project/src/main/java/com/example/project/AboutUsServlet.java	(date 1625505137415)
+@@ -4,8 +4,10 @@
+ import javax.servlet.http.*;
+ import javax.servlet.annotation.*;
+ 
+-@WebServlet(name = "helloServlet", value = "/hello-servlet")
+-public class HelloServlet extends HttpServlet {
++@WebServlet(name = "aboutUsServlet", value = "/aboutUs")
++
++
++public class AboutUsServlet extends HttpServlet {
+     private String message;
+ 
+     public void init() {
+Index: project/Hub.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule=\"true\" type=\"JAVA_MODULE\" version=\"4\">\r\n  <component name=\"FacetManager\">\r\n    <facet type=\"web\" name=\"Web\">\r\n      <configuration>\r\n        <descriptors>\r\n          <deploymentDescriptor name=\"web.xml\" url=\"file://$MODULE_DIR$/src/main/webapp/WEB-INF/web.xml\" />\r\n        </descriptors>\r\n        <webroots>\r\n          <root url=\"file://$MODULE_DIR$/src/main/webapp\" relative=\"/\" />\r\n        </webroots>\r\n        <sourceRoots>\r\n          <root url=\"file://$MODULE_DIR$/src/main/java\" />\r\n          <root url=\"file://$MODULE_DIR$/src/main/resources\" />\r\n        </sourceRoots>\r\n      </configuration>\r\n    </facet>\r\n    <facet type=\"jpa\" name=\"JPA\">\r\n      <configuration>\r\n        <setting name=\"validation-enabled\" value=\"true\" />\r\n        <datasource-mapping />\r\n        <naming-strategy-map />\r\n        <deploymentDescriptor name=\"persistence.xml\" url=\"file://$MODULE_DIR$/src/main/resources/META-INF/persistence.xml\" />\r\n      </configuration>\r\n    </facet>\r\n  </component>\r\n  <component name=\"NewModuleRootManager\" LANGUAGE_LEVEL=\"JDK_1_8\">\r\n    <output url=\"file://$MODULE_DIR$/target/classes\" />\r\n    <output-test url=\"file://$MODULE_DIR$/target/test-classes\" />\r\n    <content url=\"file://$MODULE_DIR$\">\r\n      <sourceFolder url=\"file://$MODULE_DIR$/src/main/java\" isTestSource=\"false\" />\r\n      <sourceFolder url=\"file://$MODULE_DIR$/src/main/resources\" type=\"java-resource\" />\r\n      <sourceFolder url=\"file://$MODULE_DIR$/src/test/java\" isTestSource=\"true\" />\r\n      <sourceFolder url=\"file://$MODULE_DIR$/src/test/resources\" type=\"java-test-resource\" />\r\n      <excludeFolder url=\"file://$MODULE_DIR$/target\" />\r\n    </content>\r\n    <orderEntry type=\"inheritedJdk\" />\r\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\r\n    <orderEntry type=\"library\" scope=\"PROVIDED\" name=\"Maven: javax:javaee-api:8.0.1\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"PROVIDED\" name=\"Maven: com.sun.mail:javax.mail:1.6.2\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"PROVIDED\" name=\"Maven: javax.activation:activation:1.1\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: org.junit.jupiter:junit-jupiter-api:5.7.1\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: org.apiguardian:apiguardian-api:1.1.0\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: org.opentest4j:opentest4j:1.2.0\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: org.junit.platform:junit-platform-commons:1.7.1\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: org.junit.jupiter:junit-jupiter-engine:5.7.1\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: org.junit.platform:junit-platform-engine:1.7.1\" level=\"project\" />\r\n  </component>\r\n</module>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/project/Hub.iml b/project/Hub.iml
+--- a/project/Hub.iml	(revision 20910baecde883f4f5c2b91c2332ba2b5dc892f4)
++++ b/project/Hub.iml	(date 1625504625433)
+@@ -18,7 +18,9 @@
+     <facet type="jpa" name="JPA">
+       <configuration>
+         <setting name="validation-enabled" value="true" />
+-        <datasource-mapping />
++        <datasource-mapping>
++          <factory-entry name="default" />
++        </datasource-mapping>
+         <naming-strategy-map />
+         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/resources/META-INF/persistence.xml" />
+       </configuration>
+Index: project/src/main/database/table.sql
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\r\n\r\ncreate table userTable\r\n(\r\n    user_name varchar(64) unique key,\r\n    password  varchar(64) not null\r\n);
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/project/src/main/database/table.sql b/project/src/main/database/table.sql
+--- a/project/src/main/database/table.sql	(revision 20910baecde883f4f5c2b91c2332ba2b5dc892f4)
++++ b/project/src/main/database/table.sql	(date 1625505137422)
+@@ -1,7 +1,13 @@
++
++
+ 
+ 
+ create table userTable
+ (
+     user_name varchar(64) unique key,
+-    password  varchar(64) not null
+-);
+\ No newline at end of file
++    password varchar(64) not null
++);
++
++
++
++
