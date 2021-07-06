@@ -14,7 +14,7 @@ import java.sql.SQLException;
 
 
 @WebServlet(name = "Register_Servlet", value = "/register")
-public class RegisterServlet extends HttpServlet {
+public class RegistrationServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         doGet(request, response);
@@ -25,17 +25,20 @@ public class RegisterServlet extends HttpServlet {
         response.setContentType("text/html");
 
         UserManager um = (UserManager) getServletContext().getAttribute(Attributes.USER_MANAGER_ATTRIBUTE);
+        assert um != null;
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+
         if (um.isValidInput(username, password)) {
-            request.getRequestDispatcher("/InvalidRegistration.jsp").forward(request, response);
+            request.setAttribute(Attributes.USER_NAME_ATTRIBUTE, username);
+            try {
+                um.addUser(username, password);
+            } catch (SQLException e) { e.printStackTrace(); }
+            request.getRequestDispatcher("/Welcome.jsp").forward(request, response);
             return;
         }
 
-        request.setAttribute(Attributes.USER_NAME_ATTRIBUTE, username);
-        try {
-            um.addUser(username, password);
-        } catch (SQLException e) { e.printStackTrace(); }
+        request.getRequestDispatcher("/InvalidRegistration.jsp").forward(request, response);
     }
 
 }
