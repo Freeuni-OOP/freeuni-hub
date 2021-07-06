@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f30e710c-5c2c-457b-be40-8f3dfa2d1a39" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/project/.idea/artifacts/Hub_war.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/.idea/artifacts/Hub_war_exploded.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project/.idea/sqldialects.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/Hub.iml" beforeDir="false" afterPath="$PROJECT_DIR$/project/Hub.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/src/main/database/table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/database/table.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/src/main/java/com/example/project/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/java/com/example/project/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/src/main/java/com/example/project/HelloServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/java/com/example/project/AboutUsServlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,19 +31,6 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/project" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -63,6 +41,7 @@
       <updated>1625397826244</updated>
       <workItem from="1625397830531" duration="34000" />
       <workItem from="1625507187711" duration="302000" />
+      <workItem from="1625520302085" duration="15000" />
     </task>
     <servers />
   </component>
@@ -79,5 +58,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

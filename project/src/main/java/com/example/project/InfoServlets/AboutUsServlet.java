@@ -4,9 +4,11 @@ import java.io.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
+
+
+
+
 @WebServlet(name = "aboutUsServlet", value = "/aboutUs")
-
-
 public class AboutUsServlet extends HttpServlet {
     private String message;
 
@@ -24,10 +26,7 @@ public class AboutUsServlet extends HttpServlet {
         out.println("</body></html>");
     }
 
-    public void destroy() {
-
-
-        // commented
-        //
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        doGet(request, response);
     }
 }
