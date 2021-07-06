@@ -7,7 +7,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 
-public class UserManager implements Configuration{
+public class UserManager implements Configuration {
     private static Connection con;
 
     public UserManager(BaseConnector bc) throws SQLException, ClassNotFoundException {
@@ -17,7 +17,7 @@ public class UserManager implements Configuration{
     // method adds new user into the table
     public void addUser(String username, String password) throws SQLException {
         Statement stmt = con.createStatement();
-        stmt.execute("insert into userTable values ('" + username + "' , '" + password + "');");
+        stmt.execute("insert into " + USERS_TABLE + " values ('" + username + "' , '" + password + "');");
     }
 
     // at least 1 big letter, 1 digit and length should be in interval: 4-16.
@@ -41,7 +41,7 @@ public class UserManager implements Configuration{
     public ArrayList<String> allUsers() throws SQLException {
         ArrayList<String> userList = new ArrayList<>();
         Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery("select * from userTable;");
+        ResultSet rs = stmt.executeQuery("select * from " + USERS_TABLE + ";");
         while (rs.next()) {
             userList.add(rs.getString("user_name"));
         }
