@@ -12,6 +12,9 @@ import java.io.IOException;
 
 
 
+
+
+
 @WebServlet(name = "LogIn_Servlet", value = "/login")
 public class LogInServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -23,7 +26,5 @@ public class LogInServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html");
 
-        // to do
     }
-
 }

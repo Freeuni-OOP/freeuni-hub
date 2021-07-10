@@ -11,12 +11,12 @@
 
 <body>
   <h1> Invalid inputs </h1>
-  <p> Invalid username or password. Please try again. </p>
+  <p> არასწორი რეგისტრაცია! გთხოვთ სცადოთ თავიდან. </p>
 
   <form action = "register" method = "get">
-      Username:
+      იუზერნეიმი:
       <label> <input type = "text" name = "username"> </label> <br/> <br/>
-      Password:
+      პაროლი:
       <label> <input type = "text" name = "password"> </label> <br/> <br/> <%-- good hash needed --%>
       <label> <input type = "submit" value = "register"> </label> <br/> <br/>
   </form>
