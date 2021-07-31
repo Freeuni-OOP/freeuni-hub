@@ -1,7 +1,7 @@
-package com.example.project.Listeners;
+package com.freeunihub.freeunihub.Listeners;
 
 import DataBaseConnection.BaseConnector;
-import com.example.project.Manage.UserManager;
+import com.freeunihub.freeunihub.Manage.UserManager;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
@@ -17,7 +17,7 @@ public class ServletListener implements ServletContextListener, Attributes {
     public void contextInitialized(ServletContextEvent sce) {
         ServletContext sc = sce.getServletContext();
 
-        BaseConnector bc = null; // initialization of base connection
+        BaseConnector bc = null;
         try {
             bc = new BaseConnector();
         } catch (SQLException | ClassNotFoundException ex) {
@@ -28,7 +28,9 @@ public class ServletListener implements ServletContextListener, Attributes {
         try {
             assert bc != null;
             userManager = new UserManager(bc);
-        } catch (SQLException | ClassNotFoundException e) { e.printStackTrace(); }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
 
 
         sc.setAttribute(BASE_CONNECTOR_ATTRIBUTE, bc);
@@ -37,8 +39,10 @@ public class ServletListener implements ServletContextListener, Attributes {
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
-        try { // just for closing connection
+        try {
             BaseConnector.closeConnection();
-        } catch (SQLException e) { e.printStackTrace(); }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
