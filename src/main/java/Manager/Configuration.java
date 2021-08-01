@@ -1,5 +1,7 @@
 package Manager;
 
+
+
 public interface Configuration {
     String USERS_TABLE = "userTable";
     String GOOD = "ALL GOOD";

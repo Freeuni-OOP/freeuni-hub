@@ -18,7 +18,7 @@
     <label> <input type = "submit" value = "შესვლა"> </label> <br/> <br/>
 </form>
 
-<a href="RegistrationPage.jsp"> ახალი მომხმარებლის რეგისტრაცია </a>
+<a href = "RegistrationPage.jsp"> ახალი მომხმარებლის რეგისტრაცია </a>
 
 </body>
 </html>
