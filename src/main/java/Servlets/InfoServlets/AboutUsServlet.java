@@ -1,4 +1,4 @@
-package com.freeunihub.freeunihub.InfoServlets;
+package Servlets.InfoServlets;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

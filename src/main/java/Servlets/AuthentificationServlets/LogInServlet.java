@@ -1,4 +1,4 @@
-package com.freeunihub.freeunihub.AuthentificationServlets;
+package Servlets.AuthentificationServlets;
 
 
 import javax.servlet.ServletException;

@@ -1,8 +1,8 @@
-package com.freeunihub.freeunihub.AuthentificationServlets;
+package Servlets.AuthentificationServlets;
 
 
-import com.freeunihub.freeunihub.Listeners.Attributes;
-import com.freeunihub.freeunihub.Manage.UserManager;
+import Manager.UserManager;
+import StarterManager.Attributes;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

@@ -1,7 +1,8 @@
-package com.freeunihub.freeunihub.Listeners;
+package StarterManager;
+
 
 import DataBaseConnection.BaseConnector;
-import com.freeunihub.freeunihub.Manage.UserManager;
+import Manager.UserManager;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
@@ -11,7 +12,7 @@ import java.sql.SQLException;
 
 
 @WebListener
-public class ServletListener implements ServletContextListener, Attributes {
+public class StartingListener implements ServletContextListener, Attributes {
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
