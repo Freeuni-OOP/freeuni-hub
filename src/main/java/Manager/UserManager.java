@@ -24,6 +24,17 @@ public class UserManager implements Configuration {
         stmt.execute("insert into " + USERS_TABLE + " values ('" + username + "' , '" + password + "');");
     }
 
+    // checks whether user login is correct or not
+    public String isValidUser(String username, String password) throws SQLException {
+        if (username.isEmpty() || password.isEmpty()) return EMPTY;
+        Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery("select * from " + USERS_TABLE + ";");
+        while (rs.next())
+            if (rs.getString("user_name").equals(username)
+                && rs.getString("password").equals(password)) return FOUND;
+        return NOT_FOUND;
+    }
+
     // at least 1 big letter, 1 digit and length should be in interval: 4-16.
     private boolean isValidPassword(String password) {
         int len = password.length();
@@ -46,9 +57,8 @@ public class UserManager implements Configuration {
         ArrayList<String> userList = new ArrayList<>();
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery("select * from " + USERS_TABLE + ";");
-        while (rs.next()) {
+        while (rs.next())
             userList.add(rs.getString("user_name"));
-        }
         return userList;
     }
 
@@ -56,4 +66,6 @@ public class UserManager implements Configuration {
         for (String user : users)
             System.out.println(user);
     }
+
+
 }
