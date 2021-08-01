@@ -1,4 +1,4 @@
-package com.freeunihub.freeunihub;
+package com.freeunihub.freeunihub.InfoServlets;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -7,8 +7,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name = "helloServlet", value = "/hello-servlet")
-public class HelloServlet extends HttpServlet {
+
+@WebServlet(name = "aboutUsServlet", value = "/aboutUs")
+public class AboutUsServlet extends HttpServlet {
     private String message;
 
     public void init() {
@@ -25,6 +26,7 @@ public class HelloServlet extends HttpServlet {
         out.println("</body></html>");
     }
 
-    public void destroy() {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        doGet(request, response);
     }
 }
