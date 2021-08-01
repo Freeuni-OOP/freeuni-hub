@@ -1,6 +1,6 @@
 /*drop table  if exists usersTable;*/;
 
-create table usersTable(
+create table users(
 	id int primary key auto_increment,
     first_name varchar(64) not null,
     last_name varchar(64) not null,
