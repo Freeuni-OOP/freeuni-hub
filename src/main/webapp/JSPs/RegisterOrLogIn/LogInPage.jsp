@@ -4,6 +4,8 @@
 <html>
 <head>
     <title> Welcome </title>
+    <link rel="icon" type="image/png" href="../../Images/freeUni.jpg">
+    <link rel="stylesheet" href="../../PageStyles/BodyStyle.css">
 </head>
 <body>
 <h1> მოგესალმებით ფრიუნიჰაბზე! </h1>
