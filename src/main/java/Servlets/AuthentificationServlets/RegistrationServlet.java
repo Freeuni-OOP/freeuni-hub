@@ -1,8 +1,8 @@
 package Servlets.AuthentificationServlets;
 
 
-import StarterManager.Listeners.Attributes;
-import StarterManager.Manage.UserManager;
+import Manager.UserManager;
+import StarterManager.Attributes;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
