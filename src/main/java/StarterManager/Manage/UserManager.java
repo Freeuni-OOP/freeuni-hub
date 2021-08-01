@@ -1,4 +1,4 @@
-package com.freeunihub.freeunihub.Manage;
+package StarterManager.Manage;
 
 
 import DataBaseConnection.BaseConnector;

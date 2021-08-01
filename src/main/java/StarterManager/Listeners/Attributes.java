@@ -1,4 +1,4 @@
-package com.freeunihub.freeunihub.Listeners;
+package StarterManager.Listeners;
 
 
 public interface Attributes {

@@ -1,4 +1,4 @@
-package com.freeunihub.freeunihub;
+package StarterManager;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

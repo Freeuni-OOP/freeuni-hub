@@ -1,7 +1,7 @@
-package com.freeunihub.freeunihub.Listeners;
+package StarterManager.Listeners;
 
 import DataBaseConnection.BaseConnector;
-import com.freeunihub.freeunihub.Manage.UserManager;
+import StarterManager.Manage.UserManager;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;

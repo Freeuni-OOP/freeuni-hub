@@ -1,4 +1,4 @@
-package com.freeunihub.freeunihub.Manage;
+package StarterManager.Manage;
 
 public interface Configuration {
     String USERS_TABLE = "userTable";
