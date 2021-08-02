@@ -34,11 +34,13 @@ public class ManageUser implements Configuration {
 
     //------------------------------------------------------------------------------------------------registration part
 
+
     // check whether first name input is correct or not
     protected String isValidFirstName(String firstName) {
         if (firstName.isEmpty()) return EMPTY;
         int len = firstName.length();
         for (int i = 0; i < len; i++) // all letters should be lowercase latin
+
             if (!Character.isLetter(firstName.charAt(i)) || Character.isUpperCase(firstName.charAt(i)))
                 return INCORRECT_FIRST_NAME;
         return CORRECT_FIRST_NAME;

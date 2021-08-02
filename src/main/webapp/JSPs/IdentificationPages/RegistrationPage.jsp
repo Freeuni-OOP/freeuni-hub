@@ -1,29 +1,47 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language = "java" %>
 
 
 <html>
 
 <head>
-    <title> Registration </title>
-    <link rel = "stylesheet" href = "../../PageStyles/BodyStyle.css">
+    <title> რეგისტრაცია </title>
+    <link rel = "stylesheet" href = "../../PageStyles/RegistrationStyle.css">
 </head>
 
 <body>
-<p> გთხოვთ გაიაროთ რეგისტრაცია </p>
 
-<form action = "/register" method = "post">
+
+<form action = "/register" method = "post" id = "form_register">
+    <p> გთხოვთ გაიაროთ რეგისტრაცია </p>
     <label for = "firstName"> სახელი: </label>
-    <input type = "text" name = "firstName" id = "firstName"> <br/> <br/>
+    <input type = "text" name = "firstName" id = "firstName"
+           size = "38"> <br/> <br/>
     <label for = "lastName"> გვარი: </label>
-    <input type = "text" name = "lastName" id = "lastName"> <br/> <br/>
+    <input type = "text" name = "lastName" id = "lastName"
+           size = "40"> <br/> <br/>
     <label for = "username"> იუზერნეიმი: </label>
-    <input type = "text" name = "username" id = "username"> <br/> <br/>
+    <input type = "text" name = "username" id = "username"
+           size = "33"> <br/> <br/>
     <label for = "password"> პაროლი: </label>
-    <input type = "text" name = "password" id = "password"> <br/> <br/>
+    <input type = "password" name = "password" id = "password" size = "37"> <br/> <br/>
+        <input type = "checkbox" onclick = change() id = "show">
+        <label for = "show"> პაროლის ჩვენება </label> <br> <Br>
     <label for = "mail"> ელ-ფოსტა: </label>
-    <input type = "text" name = "mail" id = "mail"> <br/> <br/>
+    <input type = "text" name = "mail" id = "mail"
+          size = "35"> <br/> <br/>
     <input type = "submit" value = "რეგისტრაცია"> <br/> <br/>
 </form>
+
+
+
+<!-- ---------------------------------------------------------- java script -->
+<script>
+    function change() {
+        let field = document.getElementById("password");
+        if (field.type === "password") field.type = "text";
+        else field.type = "password";
+    }
+</script>
 
 
 </body>

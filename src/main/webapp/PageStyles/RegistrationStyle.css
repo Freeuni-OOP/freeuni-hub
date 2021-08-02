@@ -1,0 +1,22 @@
+
+body {
+    width: 100%;
+    background-image: url("../Images/freeUni.jpg");
+}
+
+
+#form_register{
+    display: table-cell;
+    text-align: left;
+    vertical-align: middle;
+    width: 100%;
+    padding-left: 1500px;
+    padding-top: 100px;
+}
+
+p {
+    color: royalblue;
+    size: A4;
+}
+
+
