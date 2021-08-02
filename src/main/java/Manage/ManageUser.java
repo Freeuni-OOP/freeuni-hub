@@ -151,9 +151,11 @@ public class ManageUser implements Configuration {
     }
 
     // method adds new user into the table
-    public void addUser(String username, String password) throws SQLException {
+    public void addUser(String firstName, String lastName, String username, String password, String mail) throws SQLException {
         Statement stmt = con.createStatement();
-        stmt.execute("insert into " + USERS_TABLE + " values ('" + username + "' , '" + password + "');");
+        stmt.execute("insert into " + USERS_TABLE + "(first_name, last_name, user_name, password, email)" +
+                " values ('" + firstName + "' , '" + lastName
+                + "' , '" + username + "' , '" + password + "' , '" + mail + "');");
     }
 
 

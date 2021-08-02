@@ -20,7 +20,6 @@ public class RegistrationServlet extends HttpServlet implements Configuration {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         doPost(request, response);
-        System.out.println("fds");
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -39,13 +38,13 @@ public class RegistrationServlet extends HttpServlet implements Configuration {
             HttpSession session = request.getSession();
             session.setAttribute(username, username);
             try {
-                um.addUser(username, password);
+                um.addUser(firstName, lastName, username, password, mail);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            request.getRequestDispatcher("/JSPs/Identification/Welcome.jsp").forward(request, response);
+            request.getRequestDispatcher("/JSPs/IdentificationPages/Welcome.jsp").forward(request, response);
         }else
-            request.getRequestDispatcher("/JSPs/Identification/InvalidRegistration.jsp").forward(request, response);
+            request.getRequestDispatcher("/JSPs/IdentificationPages/InvalidRegistration.jsp").forward(request, response);
     }
 
 }

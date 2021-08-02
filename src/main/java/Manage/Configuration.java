@@ -3,7 +3,7 @@ package Manage;
 
 
 public interface Configuration {
-    String USERS_TABLE = "Users";
+    String USERS_TABLE = "users";
     String EMPTY = "Empty fields";  // for both feature
 
     //-----------------------------------------------login
