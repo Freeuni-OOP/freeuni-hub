@@ -1,3 +1,5 @@
+drop table if exists comments;
+drop table if exists posts;
 drop table if exists messages;
 drop table if exists usersInfo;
 drop table if exists groupMembers;
