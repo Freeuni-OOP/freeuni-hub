@@ -115,6 +115,14 @@ public class ManageUserTests implements Configuration {
 
     }
 
+    @Test
+    public void testAddingUser() throws SQLException{
+        // you should try this for other user
+        assertEquals(NOT_FOUND, manageUser.isValidUser("blasdasd12", "kaiKacoVax"));
+        manageUser.addUser("miua", "mianshvili", "blasdasd12", "kaiKacoVax",
+                "mmian19@freeuni.edu.ge");
+        assertEquals(FOUND, manageUser.isValidUser("blasdasd12", "kaiKacoVax"));
+    }
 
 
 

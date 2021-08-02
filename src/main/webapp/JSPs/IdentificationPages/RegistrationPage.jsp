@@ -5,14 +5,13 @@
 
 <head>
     <title> Registration </title>
-    <link rel = "icon" type = "image/png" href = "../../Images/freeUni.jpg">
     <link rel = "stylesheet" href = "../../PageStyles/BodyStyle.css">
 </head>
 
 <body>
 <p> გთხოვთ გაიაროთ რეგისტრაცია </p>
 
-<form action = "/register" method="post">
+<form action = "/register" method = "post">
     <label for = "firstName"> სახელი: </label>
     <input type = "text" name = "firstName" id = "firstName"> <br/> <br/>
     <label for = "lastName"> გვარი: </label>

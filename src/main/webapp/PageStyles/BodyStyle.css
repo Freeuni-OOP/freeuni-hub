@@ -3,7 +3,17 @@ body {
     background-image: url("../Images/freeUni.jpg");
 }
 
+
+#form_login {
+    display: table-cell;
+    text-align: left;
+    vertical-align: middle;
+    width: 100%;
+    padding-left: 1500px;
+    padding-top: 100px;
+}
+
 p {
-    color: GREEN;
+    color: royalblue;
     size: A5;
 }
