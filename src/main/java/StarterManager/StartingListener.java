@@ -2,7 +2,7 @@ package StarterManager;
 
 
 import DataBaseConnection.BaseConnector;
-import Manager.UserManager;
+import Manage.ManageUser;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
@@ -25,10 +25,10 @@ public class StartingListener implements ServletContextListener, Attributes {
             ex.printStackTrace();
         }
 
-        UserManager userManager = null;
+        ManageUser userManager = null;
         try {
             assert bc != null;
-            userManager = new UserManager(bc);
+            userManager = new ManageUser(bc);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }

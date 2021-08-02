@@ -1,4 +1,4 @@
-package Manager;
+package Manage;
 
 
 
@@ -11,10 +11,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 
-public class UserManager implements Configuration {
+public class ManageUser implements Configuration {
     private static Connection con;
 
-    public UserManager(BaseConnector bc) throws SQLException, ClassNotFoundException {
+    public ManageUser(BaseConnector bc) throws SQLException, ClassNotFoundException {
         con = bc.accessConnection();
     }
 

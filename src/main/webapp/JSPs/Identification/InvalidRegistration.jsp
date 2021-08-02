@@ -9,14 +9,18 @@
 
 <body>
 <h1> არასწორი ინფუთი </h1>
-<p> არასწორი რეგისტრაცია! გთხოვთ სცადოთ თავიდან. </p>
+<p> არალეგალური რეგისტრაცია! გთხოვთ სცადოთ თავიდან. </p>
 
-<form action="register" method="get">
-    იუზერნეიმი:
-    <label> <input type = "text" name = "username"> </label> <br/> <br/>
-    პაროლი:
-    <label> <input type = "text" name = "password"> </label> <br/> <br/>
-    <label> <input type = "submit" value = "რეგისტრაცია"> </label> <br/> <br/>
+<form action="register" method="post">
+    <label for = "username"> იუზერნეიმი: </label>
+    <input type = "text" name = "username" id = "username"> <br/> <br/>
+    <label for = "password"> პაროლი: </label>
+    <input type = "text" name = "password" id = "password"> <br/> <br/>
+    <label for = "firstName"> სახელი: </label>
+    <input type = "text" name = "firstName" id = "firstName"> <br/> <br/>
+    <label for = "lastName"> გვარი: </label>
+    <input type = "text" name = "lastName" id = "lastName"> <br/> <br/>
+    <input type = "submit" value = "რეგისტრაცია"> <br/> <br/>
 </form>
 
 </body>
