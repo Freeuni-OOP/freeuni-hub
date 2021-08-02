@@ -34,7 +34,8 @@ public class RegistrationServlet extends HttpServlet implements Configuration {
         String password = request.getParameter("password");
         String mail = request.getParameter("mail");
 
-        if (um.isValidInput(firstName, lastName, username, password, mail).equals(ALL_GOOD)) {
+        String result = um.isValidInput(firstName, lastName, username, password, mail);
+        if (result.equals(ALL_GOOD)) {
             HttpSession session = request.getSession();
             session.setAttribute(username, username);
             try {
@@ -42,9 +43,11 @@ public class RegistrationServlet extends HttpServlet implements Configuration {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            request.getRequestDispatcher("/JSPs/IdentificationPages/Welcome.jsp").forward(request, response);
-        }else
+            request.getRequestDispatcher("/JSPs/IdentificationPages/HomePage.jsp").forward(request, response);
+        }else {
+            request.setAttribute("problem", result); // what was the problem
             request.getRequestDispatcher("/JSPs/IdentificationPages/InvalidRegistration.jsp").forward(request, response);
+        }
     }
 
 }

@@ -4,19 +4,31 @@
 <html>
 <head>
     <title> სალამი! </title>
+
+    <link rel = "stylesheet" href = "../../PageStyles/BodyStyle.css">
 </head>
 <body>
-<h1> მოგესალმებით ფრიუნიჰაბზე! </h1>
 
+    <form action = "/login" method = "post" id = "form_login">
+        <h1> მოგესალმებით ფრიუნიჰაბზე! </h1>
+        <p> გთხოვთ შეიყვანოთ თქვენი ინფორმაცია </p>
+        <label for = "username"> იუზერნეიმი: </label>
+        <input type = "text" name = "username" id = "username"> <br/> <br/>
+        <label for = "password"> პაროლი: </label>
+        <input type = "password" name = "password" id = "password"> <br/> <br/>
+        <input type = "checkbox" onclick = myFunction() id = "show">
+        <label for = "show"> პაროლის ჩვენება </label> <br> <Br>
+        <label> <input type = "submit" value = "შესვლა"> </label> <br/> <br/>
+        <a href = "RegistrationPage.jsp"> ახალი მომხმარებლის რეგისტრაცია </a>
+    </form>
 
-<p> გთხოვთ შეიყვანოთ თქვენი ინფორმაცია </p>
-<form action = "/login" method = "post">
-    იუზერნეიმი: <label> <input type = "text" name = "username"> </label> <br/> <br/>
-    პაროლი: <label> <input type = "text" name = "password"> </label> <br/> <br/>
-    <label> <input type = "submit" value = "შესვლა"> </label> <br/> <br/>
-</form>
-
-<a href = "RegistrationPage.jsp"> ახალი მომხმარებლის რეგისტრაცია </a>
-
+    <!-- ---------------------------------------------------------- java script -->
+    <script>
+        function myFunction() {
+            let field = document.getElementById("password");
+            if (field.type === "password") field.type = "text";
+            else field.type = "password";
+        }
+    </script>
 </body>
 </html>

@@ -4,9 +4,12 @@
 
 <html>
 <head>
-    <title></title>
+    <title> ჩვენ </title>
 </head>
 <body>
+    <h1> ჩვენ შესახებ </h1>
+
+
 
 </body>
 </html>

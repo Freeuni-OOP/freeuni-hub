@@ -4,25 +4,25 @@ package Manage;
 
 public interface Configuration {
     String USERS_TABLE = "users";
-    String EMPTY = "Empty fields";  // for both feature
+    String EMPTY = "ცარიელი ველები";  // for both feature
 
     //-----------------------------------------------login
-    String FOUND = "User found";
-    String NOT_FOUND = "User not found";
+    String FOUND = "მომხმარებელი მოიძებნა";
+    String NOT_FOUND = "მომხმარებელი ვერ მოიძებნა";
 
     //----------------------------------------------registration
-    String INCORRECT_FIRST_NAME = "Please input only latin symbols";
-    String CORRECT_FIRST_NAME = "First name is acceptable";
-    String INCORRECT_LAST_NAME = "Please input only latin symbols";
-    String CORRECT_LAST_NAME = "Last name is acceptable";
-    String CORRECT_USERNAME = "Username is acceptable";
-    String ILLEGAL_SYMBOL = "Illegal symbol found";
-    String INCORRECT_PASSWORD_LENGTH = "Password length should be 4-16";
-    String WRONG_FORMAT = "Password should contain at least 1 capital letter and 1 digit";
-    String CORRECT_PASSWORD = "Password is acceptable";
-    String CORRECT_MAIL = "Mail is correct";
-    String INCORRECT_MAIL = "Such mail with such person doesn't belong to Free University";
+    String INCORRECT_FIRST_NAME = "გთხოვთ შემოიყვანოთ მხოლოდ ლათინური ასოები";
+    String CORRECT_FIRST_NAME = "სახელი მისაღებია";
+    String INCORRECT_LAST_NAME = "გთხოვთ მხოლოდ ლათინური ასოები შემოიყვანოთ";
+    String CORRECT_LAST_NAME = "გვარი მისაღებია";
+    String CORRECT_USERNAME = "იუზერნეიმი მისაღებია";
+    String ILLEGAL_SYMBOL = "ინფუთში არალეგალური ასოები ურევია! გთხოვთ შეასწოროთ";
+    String INCORRECT_PASSWORD_LENGTH = "პაროლის სიგრძე უნდა იყოს 4-16 დიაპაზონში";
+    String WRONG_FORMAT = "პაროლი უნდა შედგებოდეს მინიმუმ 1 დიდი ასოსგან და მინიმუმ 1 ციფრისგან";
+    String CORRECT_PASSWORD = "პაროლი მისაღებია";
+    String CORRECT_MAIL = "მეილი ნამდვილად არსებობს";
+    String INCORRECT_MAIL = "ასეთი მეილი, აღნიშნული ადამიანის სახელით, თავისუფალ უნივერსიტეტს არ ეკუთვნის";
 
     //----------------------------------------if everything is ok
-    String ALL_GOOD = "Ok, ok, every field is acceptable";
+    String ALL_GOOD = "ყველაფერი რიგზეა";
 }

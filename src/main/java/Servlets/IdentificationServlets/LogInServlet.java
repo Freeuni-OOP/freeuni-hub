@@ -34,13 +34,12 @@ public class LogInServlet extends HttpServlet implements Attributes, Configurati
 
         try {
             String result = um.isValidUser(username, password);
-            if (!result.equals(FOUND)) {
+            if (result.equals(FOUND)) {
                 HttpSession session = request.getSession();
                 session.setAttribute(username, username);
-                request.getRequestDispatcher("/JSPs/IdentificationPages/Welcome.jsp").forward(request, response);
+                request.getRequestDispatcher("/JSPs/IdentificationPages/HomePage.jsp").forward(request, response);
             }else {
-                PrintWriter pw = response.getWriter();
-                pw.println(result);
+                request.getRequestDispatcher("/JSPs/IdentificationPages/InvalidLogIn.jsp").forward(request, response);
             }
         } catch (SQLException ignored) {}
     }
