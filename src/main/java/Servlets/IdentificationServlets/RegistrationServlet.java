@@ -1,6 +1,7 @@
 package Servlets.IdentificationServlets;
 
 
+import Manage.Configuration;
 import Manage.ManageUser;
 import StarterManager.Attributes;
 
@@ -15,7 +16,7 @@ import java.sql.SQLException;
 
 
 @WebServlet(name = "Register_Servlet", value = "/register")
-public class RegistrationServlet extends HttpServlet {
+public class RegistrationServlet extends HttpServlet implements Configuration {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         doPost(request, response);
@@ -24,15 +25,17 @@ public class RegistrationServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("fds");
         response.setContentType("text/html");
 
         ManageUser um = (ManageUser) getServletContext().getAttribute(Attributes.USER_MANAGER_ATTRIBUTE);
         assert um != null;
+        String firstName = request.getParameter("firstName");
+        String lastName = request.getParameter("lastName");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        String mail = request.getParameter("mail");
 
-        if (um.isValidInput(username, password)) {
+        if (um.isValidInput(firstName, lastName, username, password, mail).equals(ALL_GOOD)) {
             HttpSession session = request.getSession();
             session.setAttribute(username, username);
             try {
