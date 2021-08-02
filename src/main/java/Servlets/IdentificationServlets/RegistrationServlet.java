@@ -19,10 +19,12 @@ public class RegistrationServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         doPost(request, response);
+        System.out.println("fds");
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        System.out.println("fds");
         response.setContentType("text/html");
 
         ManageUser um = (ManageUser) getServletContext().getAttribute(Attributes.USER_MANAGER_ATTRIBUTE);
@@ -38,9 +40,9 @@ public class RegistrationServlet extends HttpServlet {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            request.getRequestDispatcher("/Welcome.jsp").forward(request, response);
+            request.getRequestDispatcher("/JSPs/Identification/Welcome.jsp").forward(request, response);
         }else
-            request.getRequestDispatcher("/InvalidRegistration.jsp").forward(request, response);
+            request.getRequestDispatcher("/JSPs/Identification/InvalidRegistration.jsp").forward(request, response);
     }
 
 }
