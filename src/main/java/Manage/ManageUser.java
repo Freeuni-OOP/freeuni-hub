@@ -161,6 +161,12 @@ public class ManageUser implements Configuration {
     }
 
 
+    // method removes user from users table (remember mail is unique)
+    public void removeUser(String mail) throws SQLException {
+        Statement stmt = con.createStatement();
+        stmt.execute("delete from " + USERS_TABLE + " where email = '" + mail + "';");
+    }
+
 
 
     //-----------------------------------------------------------------------------------------------other features
