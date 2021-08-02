@@ -10,7 +10,7 @@
 
 
 <p> გთხოვთ შეიყვანოთ თქვენი ინფორმაცია </p>
-<form action = "login" method = "post">
+<form action = "/login" method = "post">
     იუზერნეიმი: <label> <input type = "text" name = "username"> </label> <br/> <br/>
     პაროლი: <label> <input type = "text" name = "password"> </label> <br/> <br/>
     <label> <input type = "submit" value = "შესვლა"> </label> <br/> <br/>
