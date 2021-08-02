@@ -12,7 +12,7 @@
 <body>
 <p> გთხოვთ გაიაროთ რეგისტრაცია </p>
 
-<form action = "register" method="post">
+<form action = "/register" method="post">
     <label for = "username"> იუზერნეიმი: </label>
     <input type = "text" name = "username" id = "username"> <br/> <br/>
     <label for = "password"> პაროლი: </label>
