@@ -10,15 +10,22 @@
 
 <body>
 
-
-<h1> გამარჯობა ${username} ! </h1>
-
 <ul>
-    <li> <a class = "active" href = "HomePage.jsp"> მთავარი გვერდი </a> </li>
-    <li> <a href = "../ContactPages/ContactPage.jsp"> კონტაქტი </a> </li>
-    <li> <a href = "../AboutUsPages/AboutUsPage.jsp"> ჩვენ შესახებ </a> </li>
-    <input type = "image" alt = "Submit" width = "30" height = "30">
+    <li> <a href = "${pageContext.request.contextPath}/JSPs/IdentificationPages/LogInPage.jsp"> გასვლა </a> </li>
+    <li> <a href = "${pageContext.request.contextPath}/JSPs/AboutUsPages/AboutUsPage.jsp"> ჩვენ შესახებ </a> </li>
+    <li> <a href = "${pageContext.request.contextPath}/JSPs/ContactPages/ContactPage.jsp"> კონტაქტი </a> </li>
+    <li> <a href = "${pageContext.request.contextPath}/JSPs/IdentificationPages/HomePage.jsp"> მთავარი გვერდი </a> </li>
+    <a href = "${pageContext.request.contextPath}/JSPs/IdentificationPages/PersonalPage.jsp" id = "personal_photo_home">
+        <img src="../../Images/UserImages/default.png" alt = "Avatar" height = "50" width = "50" />
+    </a>
 </ul>
+
+
+<h1 id = "welcome_text"> გამარჯობა ${username} ! </h1>
+
+
+
+
 
 </body>
 

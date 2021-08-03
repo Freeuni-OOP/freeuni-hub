@@ -1,7 +1,7 @@
 
 body {
     width: 100%;
-    background-image: url("../Images/freeUni.jpg");
+    background-image: url("../Images/UsefulImages/freeUni.jpg");
 }
 
 
@@ -10,7 +10,7 @@ body {
     text-align: left;
     vertical-align: middle;
     width: 100%;
-    padding-left: 1200px;
+    padding-left: 1500px;
     padding-top: 100px;
 }
 
