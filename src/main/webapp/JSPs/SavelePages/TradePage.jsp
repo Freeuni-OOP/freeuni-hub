@@ -6,15 +6,20 @@
 
 <head>
     <title> გაცვალე ლოკაცია </title>
+    <style>
+
+    </style>
 </head>
 
 
 <body>
-    <h1> აირჩიე შენთვის სასურველი ლოკაცია </h1>
+    <h1> აირჩიეთ თქვენთვის სასურველი ლოკაცია </h1>
 
-    <form>
-        <!-- to finish.. -->
-    </form>
+    <label for = "have"> მაქვს </label>
+    <input type = "text" name = "have" id = "have">
+
+    <label for = "want"> მინდა </label>
+    <input type = "text" name = "want" id = "want">
 </body>
 
 </html>

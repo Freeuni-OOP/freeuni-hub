@@ -35,7 +35,7 @@ public class LogInServlet extends HttpServlet implements Attributes, Configurati
             String result = um.isValidUser(username, password);
             if (result.equals(FOUND)) {
                 HttpSession session = request.getSession();
-                session.setAttribute(username, username);
+                session.setAttribute("username", username);
                 request.getRequestDispatcher("/JSPs/IdentificationPages/HomePage.jsp").forward(request, response);
             }else {
                 request.getRequestDispatcher("/JSPs/IdentificationPages/InvalidLogIn.jsp").forward(request, response);

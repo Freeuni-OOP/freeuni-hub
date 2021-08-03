@@ -7,6 +7,6 @@ public class ManageTradeTests {
 
     @Test
     public void test1() {
-
+        
     }
 }
