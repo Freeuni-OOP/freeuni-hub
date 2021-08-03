@@ -1,4 +1,9 @@
 
+
+h1 {
+    color: GREEN;
+}
+
 ul {
     list-style-type: none;
     padding: 0;
@@ -10,17 +15,26 @@ ul {
 
 
 li {
-    float: left;
+    float: right;
 }
 
+#personal_photo_home {
+    border-color: aqua;
+    border-style: groove;
+    border-radius: 50%;
+    float: right;
+}
 
+#welcome_text {
+    text-align: center;
+}
 
 li a {
     display: block;
     color: black;
     text-align: center;
     text-decoration: none;
-    padding: 14px 16px;
+    padding: 15px 17px;
 }
 
 li a:hover {
