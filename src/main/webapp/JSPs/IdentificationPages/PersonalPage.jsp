@@ -13,26 +13,41 @@
 
 <body>
 
-<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-
 <div class = "container">
-        <!-- ------------------------------------------------------------------------ -->
+
+    <!---------------------------------------------------->
+    <div class = "searching_div">
+        <label for = "profile_search" style="float: right;"> </label>
+            <input type = "text" onkeyup = searchHelper() placeholder = "მოძებნე.." id = "profile_search"/>
+
+        <a href = "../../JSPs/IdentificationPages/HomePage.jsp" style="float: right;">
+            <img src="../../Images/UsefulIcons/home.png" alt = "goHome" width="50" height="50"> </a>
+
+        <a href="../../JSPs/IdentificationPages/LogInPage.jsp" style="float: right">
+            <img src="../../Images/UsefulIcons/logout.png" alt = "logout" width="50" height="50"> </a>
+
+    </div>
+
+
+    <!-- ------------------------------------------------------------------------ -->
         <div class = "profile_div">
             <img class = "back_picture"
-                    src = "../../Images/UsefulImages/freeUni.jpg" alt = "back_image" width="2047" height="700"/>
-            <img class = "profile_picture"
-                    src = "../../Images/UserImages/default.png" alt = "profile_image"/>
-            <div class = "profile_text">
+                    src = "../../Images/UsefulImages/freeUni.jpg" alt = "back_image" width="2047" height="500"/>
+            <div id = "profile_section">
+                <img class = "profile_picture"
+                        src = "../../Images/UserImages/default.png" alt = "profile_image"/>
                 <h1> ${username} </h1>
             </div>
         </div>
 
+
+
+
+
+
         <!-- ------------------------------------------------------------------------ -->
 
-        <div class = "searching_div">
-            <label for = "profile_search">
-            </label><input type = "text" onkeyup = searchHelper() placeholder = "search.." id = "profile_search"/>
-
+        <div class = "menu_div">
             <ul id = "menu">
                 <li> <a href = "#"> HTML </a> </li>
                 <li> <a href = "#"> CSS </a> </li>
