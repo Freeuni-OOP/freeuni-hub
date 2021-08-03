@@ -28,7 +28,7 @@
     <input type = "checkbox" onclick = change() id = "show">
     <label for = "show"> პაროლის ჩვენება </label> <br> <Br>
     <label> <input type = "submit" value = "შესვლა"> </label> <br/> <br/>
-    <a href = "RegistrationPage.jsp"> ახალი მომხმარებლის რეგისტრაცია </a>
+    <a href = "/JSPs/IdentificationPages/RegistrationPage.jsp"> ახალი მომხმარებლის რეგისტრაცია </a>
 </form>
 
 
