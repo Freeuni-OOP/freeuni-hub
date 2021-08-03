@@ -116,12 +116,13 @@ public class ManageUserTests implements Configuration {
     }
 
     @Test
-    public void testAddingUser() throws SQLException{
+    public void testAddRemoveUser() throws SQLException{
         // you should try this for other user
-        assertEquals(NOT_FOUND, manageUser.isValidUser("blasdasd12", "kaiKacoVax"));
-        manageUser.addUser("miua", "mianshvili", "blasdasd12", "kaiKacoVax",
-                "mmian19@freeuni.edu.ge");
-        assertEquals(FOUND, manageUser.isValidUser("blasdasd12", "kaiKacoVax"));
+        assertEquals(NOT_FOUND, manageUser.isValidUser("kaci", "Kacuri123"));
+        manageUser.addUser("vigac", "vigacashvili", "kaci", "Kacuri123",
+                "vviga17@freeuni.edu.ge");
+        assertEquals(FOUND, manageUser.isValidUser("kaci", "Kacuri123"));
+        manageUser.removeUser("vviga17@freeuni.edu.ge");
     }
 
 

@@ -34,11 +34,13 @@ public class ManageUser implements Configuration {
 
     //------------------------------------------------------------------------------------------------registration part
 
+
     // check whether first name input is correct or not
     protected String isValidFirstName(String firstName) {
         if (firstName.isEmpty()) return EMPTY;
         int len = firstName.length();
         for (int i = 0; i < len; i++) // all letters should be lowercase latin
+
             if (!Character.isLetter(firstName.charAt(i)) || Character.isUpperCase(firstName.charAt(i)))
                 return INCORRECT_FIRST_NAME;
         return CORRECT_FIRST_NAME;
@@ -158,6 +160,12 @@ public class ManageUser implements Configuration {
                 + "' , '" + username + "' , '" + password + "' , '" + mail + "');");
     }
 
+
+    // method removes user from users table (remember mail is unique)
+    public void removeUser(String mail) throws SQLException {
+        Statement stmt = con.createStatement();
+        stmt.execute("delete from " + USERS_TABLE + " where email = '" + mail + "';");
+    }
 
 
 
