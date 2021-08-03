@@ -4,7 +4,7 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}../PageStyles/HomePageStyle.css"/>
+    <link rel="stylesheet" href = "../../PageStyles/HomePageStyle.css"/>
     <title> სალამი ${username} </title>
 </head>
 
