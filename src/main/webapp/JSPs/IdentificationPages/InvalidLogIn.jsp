@@ -9,6 +9,10 @@
         h4 {
             color: red;
         }
+
+        a {
+            color: darkgreen;
+        }
     </style>
     <link rel = "stylesheet" href = "../../PageStyles/LogInStyle.css">
 </head>

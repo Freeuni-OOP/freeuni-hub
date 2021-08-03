@@ -7,7 +7,11 @@
     <link rel = "stylesheet" href = "../../PageStyles/LogInStyle.css">
     <style>
         h1 {
-            color: GREEN;
+            color: green;
+        }
+
+        a {
+            color: darkgreen;
         }
     </style>
 </head>
