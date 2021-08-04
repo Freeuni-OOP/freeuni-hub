@@ -1,7 +1,7 @@
 package Servlets.IdentificationServlets;
 
 
-import Manage.Configuration;
+import Manage.Configurations.UserConfiguration;
 import Manage.ManageUser;
 import StarterManager.Attributes;
 
@@ -17,7 +17,7 @@ import java.sql.SQLException;
 
 
 @WebServlet(name = "LogIn_Servlet", value = "/login")
-public class LogInServlet extends HttpServlet implements Attributes, Configuration {
+public class LogInServlet extends HttpServlet implements Attributes, UserConfiguration {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         doPost(request, response);

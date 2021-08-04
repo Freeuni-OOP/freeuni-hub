@@ -1,7 +1,7 @@
 package Servlets.IdentificationServlets;
 
 
-import Manage.Configuration;
+import Manage.Configurations.UserConfiguration;
 import Manage.ManageUser;
 import StarterManager.Attributes;
 
@@ -16,7 +16,7 @@ import java.sql.SQLException;
 
 
 @WebServlet(name = "Register_Servlet", value = "/register")
-public class RegistrationServlet extends HttpServlet implements Configuration {
+public class RegistrationServlet extends HttpServlet implements UserConfiguration {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         doPost(request, response);

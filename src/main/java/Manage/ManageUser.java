@@ -3,6 +3,7 @@ package Manage;
 
 
 import DataBaseConnection.BaseConnector;
+import Manage.Configurations.UserConfiguration;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -11,7 +12,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 
-public class ManageUser implements Configuration {
+public class ManageUser implements UserConfiguration {
     private static Connection con;
 
     public ManageUser(BaseConnector bc) throws SQLException, ClassNotFoundException {
