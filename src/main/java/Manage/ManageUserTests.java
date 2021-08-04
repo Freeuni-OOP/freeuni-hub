@@ -2,6 +2,7 @@ package Manage;
 
 
 import DataBaseConnection.BaseConnector;
+import Manage.Configurations.UserConfiguration;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -9,7 +10,7 @@ import java.sql.SQLException;
 
 import static org.junit.Assert.assertEquals;
 
-public class ManageUserTests implements Configuration {
+public class ManageUserTests implements UserConfiguration {
     BaseConnector bc;
     ManageUser manageUser;
 

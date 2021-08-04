@@ -1,8 +1,8 @@
-package Manage;
+package Manage.Configurations;
 
 
 
-public interface Configuration {
+public interface UserConfiguration {
     String USERS_TABLE = "users";
     String EMPTY = "არცერთი ველი არ უნდა იყოს ცარიელი";  // for both feature
 
