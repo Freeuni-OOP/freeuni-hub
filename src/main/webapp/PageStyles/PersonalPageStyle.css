@@ -1,27 +1,55 @@
 
 body {
-    color: antiquewhite;
+    background-color: gray;
     font-family: 'Open Sans', sans-serif;
 }
 
+/* ---------------------------------------------searching below */
 
+input {
+    background: url("https://kodyrabatowe.wp.pl/img/ico/search_gr.png") top left no-repeat;
+    height:30px;
+    padding-left:25px;
+}
 
 .searching_div {
-    float: right;
-    display: flex;
+    width: 100%;
+    padding-top: 0;
+    background-color: #555;
+    overflow: auto;
 }
+
+.searching_div a {
+    padding: 12px;
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.searching_div a:hover {
+    background-color: #000;
+}
+
+#profile_search {
+    background-color: antiquewhite;
+    width: 25%;
+    font-size: 15px;
+}
+
+@media screen and (max-width: 500px) {
+    .searching_div a {
+        float: none;
+        display: block;
+    }
+}
+
+
+/* ---------------------------------------------------------------------menu */
 
 #menu {
     list-style-type: none;
     padding: 0;
     margin: 0;
-}
-
-#profile_search {
-    width: 100%;
-    font-size: 18px;
-    padding: 11px;
-    border: 1px solid #ddd;
 }
 
 
@@ -36,7 +64,8 @@ body {
     background-color: snow;
 }
 
-/* ---------------------------------------------------- */
+
+/* ---------------------------------------------------- profile section below */
 
 .profile_picture {
     box-sizing: border-box;
@@ -61,11 +90,6 @@ body {
 }
 
 @media (max-width:700px) {
-    .profile_text>h1 {
-        font-weight: 700;
-        font-size:16px;
-    }
-
     .profile_picture {
         margin: -45px 10px 0 25px;
         z-index: 9;
