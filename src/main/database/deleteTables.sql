@@ -1,3 +1,8 @@
+drop table if exists locations;
+drop table if exists locationMembers;
+drop table if exists changeLocationRequest;
+drop table if exists blockedUsers;
+drop table if exists usersInfo;
 drop table if exists comments;
 drop table if exists posts;
 drop table if exists messages;

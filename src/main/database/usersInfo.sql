@@ -4,5 +4,6 @@ create table usersInfo(
     user_name varchar(100) ,
     user_last_name varchar(100),
     sqesi varchar(100),
-    course varchar(100)
+    course varchar(100),
+    image longBlob not null
 );
