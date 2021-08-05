@@ -71,7 +71,7 @@ public class ManageUserTests implements UserConfiguration {
     }
 
     @Test
-    public void testMail() {
+    public void testMail() throws SQLException {
         assertEquals(EMPTY, manageUser.isValidMail("", "tariel", "mklavadze"));
         assertEquals(INCORRECT_MAIL, manageUser.isValidMail("ack19@freeuni.edu.ge", "akaki",
                 "chukhua"));
@@ -92,7 +92,7 @@ public class ManageUserTests implements UserConfiguration {
 
 
     @Test
-    public void testInputValidity() {
+    public void testInputValidity() throws SQLException {
         assertEquals(ALL_GOOD, manageUser.isValidInput("giorgi", "adikashvili",
                 "gioado7", "Gioadika7", "gadik19@freeuni.edu.ge"));
         assertEquals(ALL_GOOD, manageUser.isValidInput("nika", "glunchadze",
