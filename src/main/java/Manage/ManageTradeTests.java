@@ -43,27 +43,34 @@ public class ManageTradeTests {
     public void testAddStudentToLocation() throws SQLException {
      //  manageTrade.addLocation("ბუნიკეთი");
        manageTrade.addStudentToLocation("gadik19@freeuni.edu.ge", "ბუნიკეთი");
-       manageTrade.addStudentToLocation("gadik19@freeuni.edu.ge", "ბუნიკეთი");
+       manageTrade.addStudentToLocation("nsali19@freeuni.edu.ge", "ბუნიკეთი");
        assertTrue(manageTrade.isLocation("ბუნიკეთი"));
        assertEquals(2, manageTrade.getNumStudents("ბუნიკეთი"));
        manageTrade.removeStudentFromLocation("gadik19@freeuni.edu.ge", "ბუნიკეთი");
-       manageTrade.removeStudentFromLocation("gadik19@freeuni.edu.ge", "ბუნიკეთი");
-       assertFalse(manageTrade.isLocation("ბუნიკეთი"));
+       manageTrade.addStudentToLocation("nsali19@freeuni.edu.ge", "ბუნიკეთი");
+       assertFalse(manageTrade.isLocation("ბუნიკეთი")); // no ბუნიკეთი more
     }
 
     @Test
     public void testRemoveStudentFromLocation() throws SQLException {
-        manageTrade.addLocation("ბახმარო");
-        assertTrue(manageTrade.isLocation("ბახმარო"));
-        manageTrade.removeLocation("ბახმარო");
-        assertFalse(manageTrade.isLocation("ბახმარო"));
+        manageTrade.addLocation("ბუნიკეთი");
+        manageTrade.addStudentToLocation("gadik19@freeuni.edu.ge", "ბუნიკეთი");
+        assertTrue(manageTrade.isLocation("ბუნიკეთი"));
+        assertEquals(1, manageTrade.getNumStudents("ბუნიკეთი"));
+        manageTrade.removeStudentFromLocation("gadik19@freeuni.edu.ge", "ბუნიკეთი");
+        assertFalse(manageTrade.isLocation("ბუნიკეთი"));
     }
 
     @Test
     public void testNumStudents() throws SQLException {
-        manageTrade.addLocation("ბახმარო");
-        assertTrue(manageTrade.isLocation("ბახმარო"));
-        manageTrade.removeLocation("ბახმარო");
-        assertFalse(manageTrade.isLocation("ბახმარო"));
+        manageTrade.addLocation("ბუნიკეთი");
+        manageTrade.addStudentToLocation("gadik19@freeuni.edu.ge", "ბუნიკეთი");
+        manageTrade.addStudentToLocation("nsali19@freeuni.edu.ge", "ბუნიკეთი");
+        assertTrue(manageTrade.isLocation("ბუნიკეთი"));
+        assertEquals(2, manageTrade.getNumStudents("ბუნიკეთი"));
+        manageTrade.removeStudentFromLocation("gadik19@freeuni.edu.ge", "ბუნიკეთი");
+        assertEquals(1, manageTrade.getNumStudents("ბუნიკეთი"));
+        manageTrade.addStudentToLocation("nsali19@freeuni.edu.ge", "ბუნიკეთი");
+        assertFalse(manageTrade.isLocation("ბუნიკეთი"));
     }
 }

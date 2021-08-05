@@ -2,6 +2,7 @@ package Manage;
 
 import DataBaseConnection.BaseConnector;
 import Manage.Configurations.SaveleConfiguration;
+import Manage.HelperClasses.LocationID;
 import Manage.HelperClasses.UserById;
 
 import java.sql.Connection;
@@ -99,10 +100,15 @@ public class ManageTrade implements SaveleConfiguration {
 
     public void addStudentToLocation(String mail, String location) throws SQLException {
         Statement stmt = con.createStatement();
+        // helper classes
         UserById ubi = new UserById(bc);
+        LocationID locationID = new LocationID(bc);
+
         int user_id = ubi.getIdByMail(mail);
+        int location_id = locationID.getIdByLocation(location);
+
         stmt.execute("insert into " + MEMBERS_TABLE + " (location_id, user_id) values ('" +
-               location + "' , '" + user_id + "');");
+               location_id + "' , '" + user_id + "');");
         increaseNumStudents(location);
     }
 
@@ -121,7 +127,12 @@ public class ManageTrade implements SaveleConfiguration {
 
     public int getNumStudents(String location) throws SQLException { // gets number of students for current location
         Statement stmt = con.createStatement();
-        return Integer.parseInt(stmt.executeQuery("select count(*) as COUNT from " + LOCATIONS_TABLE + " where name = '" +
-                location + "';").getString("COUNT"));
+
+        ResultSet rs = stmt.executeQuery("select count(*) as COUNT from " + LOCATIONS_TABLE + " where name = '" +
+                location + "';");
+
+        while (rs.next())
+            return rs.getInt("COUNT");
+        return -1;
     }
 }
