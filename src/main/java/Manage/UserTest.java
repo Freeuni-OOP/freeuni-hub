@@ -9,63 +9,73 @@ public class UserTest {
 
     @Test
     public void testFirstName(){
-        User user = new User("Luka",null,null,null);
+        User user = new User(1,"Luka",null,null,null);
         assertEquals("Luka",user.getUserName());
-        user = new User("Giorgi",null,null,null);
+        user = new User(1,"Giorgi",null,null,null);
         assertEquals("Giorgi",user.getUserName());
-        user = new User("Davit","Khvedo",null,null);
+        user = new User(1,"Davit","Khvedo",null,null);
         assertEquals("Davit",user.getUserName());
-        user = new User("Luke","Samkharadze","Mamrobiti",null);
+        user = new User(1,"Luke","Samkharadze","Mamrobiti",null);
         assertEquals("Luke",user.getUserName());
-        user= new User("Luka","Macho","Mamrobiti","MACSE");
+        user= new User(1,"Luka","Macho","Mamrobiti","MACSE");
         assertEquals("Luka",user.getUserName());
-        user = new User(null,null,null,null);
+        user = new User(1,null,null,null,null);
         assertEquals(null,user.getUserName());
     }
     @Test
     public void testLastName(){
-        User user = new User(null,"Macho",null,null);
+        User user = new User(1,null,"Macho",null,null);
         assertEquals("Macho",user.getUserLastName());
-        user = new User("Giorgi","Adika",null,null);
+        user = new User(1,"Giorgi","Adika",null,null);
         assertEquals("Adika",user.getUserLastName());
-        user = new User("Davit","Khvedo",null,null);
+        user = new User(1,"Davit","Khvedo",null,null);
         assertEquals("Khvedo",user.getUserLastName());
-        user = new User("Luke","Samkharadze","Mamrobiti",null);
+        user = new User(1,"Luke","Samkharadze","Mamrobiti",null);
         assertEquals("Samkharadze",user.getUserLastName());
-        user= new User("Luka","Macharashvili","Mamrobiti","MACSE");
+        user= new User(1,"Luka","Macharashvili","Mamrobiti","MACSE");
         assertEquals("Macharashvili",user.getUserLastName());
-        user = new User(null,null,null,null);
+        user = new User(1,null,null,null,null);
         assertEquals(null,user.getUserLastName());
     }
     @Test
     public void testGetSex(){
-        User user = new User(null,"Macho","Mamrobiti","Martva");
+        User user = new User(1,null,"Macho","Mamrobiti","Martva");
         assertEquals("Mamrobiti",user.getSex());
-        user = new User("Giorgi","Adika","Mamrobiti","Engineering");
+        user = new User(1,"Giorgi","Adika","Mamrobiti","Engineering");
         assertEquals("Mamrobiti",user.getSex());
-        user = new User("Davit","Khvedo",null,null);
+        user = new User(1,"Davit","Khvedo",null,null);
         assertEquals(null,user.getSex());
-        user = new User("Elene","Samkharadze","Mdedrobiti",null);
+        user = new User(1,"Elene","Samkharadze","Mdedrobiti",null);
         assertEquals("Mdedrobiti",user.getSex());
-        user= new User(null,"Macharashvili","Other","MACSE");
+        user= new User(1,null,"Macharashvili","Other","MACSE");
         assertEquals("Other",user.getSex());
-        user = new User(null,null,null,null);
+        user = new User(1,null,null,null,null);
         assertEquals(null,user.getSex());
     }
 
     @Test
     public void getCourseTest(){
-        User user = new User(null,"Macho",null,"Martva");
+        User user = new User(1,null,"Macho",null,"Martva");
         assertEquals("Martva",user.getCourse());
-        user = new User("Giorgi","Adika",null,"Engineering");
+        user = new User(1,"Giorgi","Adika",null,"Engineering");
         assertEquals("Engineering",user.getCourse());
-        user = new User("Davit","Khvedo",null,"ESM");
+        user = new User(1,"Davit","Khvedo",null,"ESM");
         assertEquals("ESM",user.getCourse());
-        user = new User("Luke","Samkharadze","Mamrobiti","VAADS");
+        user = new User(1,"Luke","Samkharadze","Mamrobiti","VAADS");
         assertEquals("VAADS",user.getCourse());
-        user= new User("Luka","Macharashvili","Mamrobiti","MACSE");
+        user= new User(1,"Luka","Macharashvili","Mamrobiti","MACSE");
         assertEquals("MACSE",user.getCourse());
-        user = new User(null,null,null,null);
+        user = new User(1,null,null,null,null);
         assertEquals(null,user.getCourse());
+    }
+
+    @Test
+    public void getId(){
+        User user = new User(1,null,"Macho",null,"Martva");
+        assertEquals(1,user.getId());
+        user = new User(100,"Giorgi","Adika",null,"Engineering");
+        assertEquals(100,user.getId());
+        user = new User(-1,"Davit","Khvedo",null,"ESM");
+        assertEquals(-1,user.getId());
     }
 }

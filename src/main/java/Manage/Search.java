@@ -18,7 +18,6 @@ public class Search {
     public ArrayList<User> searchUsers(String userName) throws SQLException {
         ArrayList<User> answer = new ArrayList<>();
         Statement statement = connection.createStatement();
-        System.out.println("Select * from " + USERS_INFO_TABLE +" where user_name = '" + userName + "';");
         ResultSet resultSet = statement.executeQuery("Select * from " + USERS_INFO_TABLE + " where user_name = '" + userName + "';");
         while (resultSet.next()) {
             User curUser = new User(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3),

@@ -5,17 +5,21 @@ public class User {
     String userLastName;
     String sex;
     String course;
-    public User(String userName,String userLastName, String sqesi, String course){
+    int id;
+    public User(int id,String userName,String userLastName, String sex, String course){
         this.userName = userName;
         this.userLastName = userLastName;
         this.sex = sex;
         this.course = course;
+        this.id = id;
     }
 
     public String getUserName(){
         return userName;
     }
-
+    public int getId(){
+        return  id;
+    }
     public String getUserLastName(){
         return userLastName;
     }
