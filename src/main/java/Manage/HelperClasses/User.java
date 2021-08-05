@@ -1,4 +1,4 @@
-package Manage;
+package Manage.HelperClasses;
 
 public class User {
     String userName;

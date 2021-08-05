@@ -126,7 +126,7 @@ public class ManageUser implements UserConfiguration {
 
     // 7 or 8 letter + @ + freeuni.edu.ge (totally: 14 + 1 + 7/8 = 22/23)
     // e.g. gadik19@freeuni.edu.ge = 22
-    protected String isValidMail(String mail, String firstName, String lastName) {
+    protected String isValidMail(String mail, String firstName, String lastName) throws SQLException {
         if (mail.isEmpty()) return EMPTY;
         int len = mail.length();
         if (len != 22 && len != 23) return INCORRECT_MAIL;
@@ -135,11 +135,19 @@ public class ManageUser implements UserConfiguration {
 
         if (len == 22 && !check22.equals(CORRECT_MAIL)) return check22;
         if (len == 23 && !check23.equals(CORRECT_MAIL)) return check23;
+
+        Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery("select * from " + USERS_TABLE + ";");
+
+        while (rs.next()) {
+            if (rs.getString("email").equals(mail)) return MAIL_EXISTS;
+        }
+
         return CORRECT_MAIL; // everything is ok
     }
 
     // check whether input is valid or not
-    public String isValidInput(String firstName, String lastName, String username, String password, String mail) {
+    public String isValidInput(String firstName, String lastName, String username, String password, String mail) throws SQLException {
         String firstNameMessage = isValidFirstName(firstName);
         if (!firstNameMessage.equals(CORRECT_FIRST_NAME)) return firstNameMessage; // first check first name
         String lastNameMessage = isValidLastName(lastName);

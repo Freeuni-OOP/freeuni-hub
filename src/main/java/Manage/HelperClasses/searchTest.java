@@ -1,7 +1,8 @@
-package Manage;
+package Manage.HelperClasses;
 
 
 import DataBaseConnection.BaseConnector;
+import Manage.HelperClasses.Search;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -34,11 +34,15 @@ public class RegistrationServlet extends HttpServlet implements UserConfiguratio
         String password = request.getParameter("password");
         String repeatPassword = request.getParameter("repeatPassword");
         String mail = request.getParameter("mail");
-        String notEqualPassword = "პაროლები არ ემთხვევა";
-        String result = um.isValidInput(firstName, lastName, username, password, mail);
-        if (result.equals(ALL_GOOD)&& repeatPassword.equals(password)) {
+
+        String result = null;
+        try {
+            result = um.isValidInput(firstName, lastName, username, password, mail);
+        } catch (SQLException ignored) { }
+        assert result != null;
+        if (result.equals(ALL_GOOD) && repeatPassword.equals(password)) {
             HttpSession session = request.getSession();
-            session.setAttribute(username, username);
+            session.setAttribute("username", username);
             try {
                 um.addUser(firstName, lastName, username, password, mail);
             } catch (SQLException e) {
@@ -49,7 +53,7 @@ public class RegistrationServlet extends HttpServlet implements UserConfiguratio
             request.setAttribute("problem", result); // what was the problem
             request.getRequestDispatcher("/JSPs/IdentificationPages/InvalidRegistration.jsp").forward(request, response);
         }else{
-             request.setAttribute("problem",notEqualPassword);
+             request.setAttribute("problem", NOT_EQUAL_PASSWORD);
             request.getRequestDispatcher("/JSPs/IdentificationPages/InvalidRegistration.jsp").forward(request, response);
         }
     }
