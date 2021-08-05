@@ -19,7 +19,7 @@ public class User {
     public String getUserLastName(){
         return userLastName;
     }
-    public String getSqesi(){
+    public String getSex(){
         return sex;
     }
     public String getCourse(){
