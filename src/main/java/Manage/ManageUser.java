@@ -98,7 +98,6 @@ public class ManageUser implements Configuration {
         if (!Character.isDigit(mail.charAt(6))) return INCORRECT_MAIL;
         if (mail.charAt(7) != '@') return INCORRECT_MAIL; // next @
         if (!mail.substring(8).equals("freeuni.edu.ge")) return INCORRECT_MAIL; // next should be freeuni.edu.ge
-
         // now check coincidence (final check)
         if (!((firstName.charAt(0) + lastName.substring(0, 4)).equals(mail.substring(0, 5))))
             return INCORRECT_MAIL;
@@ -132,6 +131,7 @@ public class ManageUser implements Configuration {
         if (len != 22 && len != 23) return INCORRECT_MAIL;
         String check22 = case22Helper(mail, firstName, lastName);
         String check23 = case23Helper(mail, firstName, lastName);
+
         if (len == 22 && !check22.equals(CORRECT_MAIL)) return check22;
         if (len == 23 && !check23.equals(CORRECT_MAIL)) return check23;
         return CORRECT_MAIL; // everything is ok

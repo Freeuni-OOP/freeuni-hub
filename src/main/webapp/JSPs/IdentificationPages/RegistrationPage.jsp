@@ -27,6 +27,9 @@
            size = "37" placeholder = "ლათინური ასოები, ციფრები, _"> <br/> <br/>
         <input type = "checkbox" onclick = change() id = "show">
         <label for = "show"> პაროლის ჩვენება </label> <br> <Br>
+    <label for = "repeatPassword"> პაროლის გამეორება: </label>
+        <input type = "repeatPassword" name = "repeatPassword" id = "repeatPassword"
+          size = "37" placeholder = "გაიმეორეთ პაროლი"> <br/> <br/>
     <label for = "mail"> ელ-ფოსტა: </label>
     <input type = "text" name = "mail" id = "mail"
           size = "35" placeholder = "მაგ: gadik19@freeuni.edu.ge"> <br/> <br/>

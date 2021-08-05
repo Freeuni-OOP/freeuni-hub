@@ -32,10 +32,11 @@ public class RegistrationServlet extends HttpServlet implements Configuration {
         String lastName = request.getParameter("lastName");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        String repeatPassword = request.getParameter("repeatPassword");
         String mail = request.getParameter("mail");
-
+        String notEqualPassword = "პაროლები არ ემთხვევა";
         String result = um.isValidInput(firstName, lastName, username, password, mail);
-        if (result.equals(ALL_GOOD)) {
+        if (result.equals(ALL_GOOD)&& repeatPassword.equals(password)) {
             HttpSession session = request.getSession();
             session.setAttribute(username, username);
             try {
@@ -44,8 +45,11 @@ public class RegistrationServlet extends HttpServlet implements Configuration {
                 e.printStackTrace();
             }
             request.getRequestDispatcher("/JSPs/IdentificationPages/HomePage.jsp").forward(request, response);
-        }else {
+        }else if (!result.equals(ALL_GOOD)){
             request.setAttribute("problem", result); // what was the problem
+            request.getRequestDispatcher("/JSPs/IdentificationPages/InvalidRegistration.jsp").forward(request, response);
+        }else{
+             request.setAttribute("problem",notEqualPassword);
             request.getRequestDispatcher("/JSPs/IdentificationPages/InvalidRegistration.jsp").forward(request, response);
         }
     }
