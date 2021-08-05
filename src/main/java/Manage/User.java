@@ -3,12 +3,12 @@ package Manage;
 public class User {
     String userName;
     String userLastName;
-    String sqesi;
+    String sex;
     String course;
     public User(String userName,String userLastName, String sqesi, String course){
         this.userName = userName;
         this.userLastName = userLastName;
-        this.sqesi = sqesi;
+        this.sex = sex;
         this.course = course;
     }
 
@@ -20,7 +20,7 @@ public class User {
         return userLastName;
     }
     public String getSqesi(){
-        return sqesi;
+        return sex;
     }
     public String getCourse(){
         return course;
