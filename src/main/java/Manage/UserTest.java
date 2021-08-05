@@ -38,19 +38,19 @@ public class UserTest {
         assertEquals(null,user.getUserLastName());
     }
     @Test
-    public void testGetSqesi(){
+    public void testGetSex(){
         User user = new User(null,"Macho","Mamrobiti","Martva");
-        assertEquals("Mamrobiti",user.getSqesi());
+        assertEquals("Mamrobiti",user.getSex());
         user = new User("Giorgi","Adika","Mamrobiti","Engineering");
-        assertEquals("Mamrobiti",user.getSqesi());
+        assertEquals("Mamrobiti",user.getSex());
         user = new User("Davit","Khvedo",null,null);
-        assertEquals(null,user.getSqesi());
+        assertEquals(null,user.getSex());
         user = new User("Elene","Samkharadze","Mdedrobiti",null);
-        assertEquals("Mdedrobiti",user.getSqesi());
+        assertEquals("Mdedrobiti",user.getSex());
         user= new User(null,"Macharashvili","Other","MACSE");
-        assertEquals("Other",user.getSqesi());
+        assertEquals("Other",user.getSex());
         user = new User(null,null,null,null);
-        assertEquals(null,user.getCourse());
+        assertEquals(null,user.getSex());
     }
 
     @Test
