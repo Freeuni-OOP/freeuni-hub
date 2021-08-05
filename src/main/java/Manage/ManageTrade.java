@@ -2,6 +2,7 @@ package Manage;
 
 import DataBaseConnection.BaseConnector;
 import Manage.Configurations.SaveleConfiguration;
+import Manage.HelperClasses.User;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -51,17 +52,18 @@ public class ManageTrade implements SaveleConfiguration {
         else throw new Error("location with given name isn't found");
     }
 
-    // to fix
+
     public void addStudentToLocation(String student, String location) throws SQLException {
         Statement stmt = con.createStatement();
+        int user_id = 0;
         stmt.execute("insert into " + MEMBERS_TABLE + " (location_id, user_id) values ('" +
-               location + "' , ''" + student + "');'");
+               location + "' , ''" + user_id + "');'");
     }
 
-    // to fix
+
     public void removeStudentFromLocation(String student, String location) throws SQLException {
         Statement stmt = con.createStatement();
-        stmt.execute("insert into " + MEMBERS_TABLE + " (location_id, user_id) values ('" +
-                location + "' , ''" + student + "');'");
+        int user_id = 0;
+        stmt.execute("delete from " + MEMBERS_TABLE + " where user_id = '" + user_id + "';");
     }
 }

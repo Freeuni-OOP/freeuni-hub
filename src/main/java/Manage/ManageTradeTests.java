@@ -38,4 +38,20 @@ public class ManageTradeTests {
         manageTrade.removeLocation("ბახმარო");
         assertFalse(manageTrade.isLocation("ბახმარო"));
     }
+
+    @Test
+    public void testAddStudentToLocation() throws SQLException {
+        manageTrade.addLocation("ბახმარო");
+        assertTrue(manageTrade.isLocation("ბახმარო"));
+        manageTrade.removeLocation("ბახმარო");
+        assertFalse(manageTrade.isLocation("ბახმარო"));
+    }
+
+    @Test
+    public void testRemoveStudentFromLocation() throws SQLException {
+        manageTrade.addLocation("ბახმარო");
+        assertTrue(manageTrade.isLocation("ბახმარო"));
+        manageTrade.removeLocation("ბახმარო");
+        assertFalse(manageTrade.isLocation("ბახმარო"));
+    }
 }

@@ -6,7 +6,7 @@ public class User {
     String sex;
     String course;
     int id;
-    public User(int id,String userName,String userLastName, String sex, String course){
+    public User(int id, String userName, String userLastName, String sex, String course){
         this.userName = userName;
         this.userLastName = userLastName;
         this.sex = sex;
