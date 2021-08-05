@@ -28,7 +28,7 @@
         <input type = "checkbox" onclick = change() id = "show">
         <label for = "show"> პაროლის ჩვენება </label> <br> <Br>
     <label for = "repeatPassword"> პაროლის გამეორება: </label>
-        <input type = "repeatPassword" name = "repeatPassword" id = "repeatPassword"
+        <input type = "password" name = "repeatPassword" id = "repeatPassword"
           size = "37" placeholder = "გაიმეორეთ პაროლი"> <br/> <br/>
     <label for = "mail"> ელ-ფოსტა: </label>
     <input type = "text" name = "mail" id = "mail"
