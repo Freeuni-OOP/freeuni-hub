@@ -41,8 +41,9 @@ public class FriendRequestsServlet extends HttpServlet {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        request.setAttribute("requesters",requesters);
-        request.setAttribute("username",userame);
+        session.setAttribute("requesters",requesters);
+        session.setAttribute("username",userame);
+
         request.getRequestDispatcher("/JSPs/IdentificationPages/FriendRequests.jsp").forward(request,response);
     }
 }

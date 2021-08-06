@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@ page import="java.math.*, java.util.*,Manage.HelperClasses.User" %>
 <html>
 
 <head>
@@ -10,6 +10,13 @@
 
 <body>
 
+     <%
+     ArrayList<User> all = (ArrayList<User>)request.getSession().getAttribute("requesters");
+     System.out.println(all.size());
+     for(int ;i<
+       System.out.println(all.size());
+     }
+        %>
 
 
 </body>
