@@ -1,6 +1,7 @@
 package Manage.HelperClasses;
 
 import DataBaseConnection.BaseConnector;
+import jdk.nashorn.internal.runtime.UnwarrantedOptimismException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -50,6 +51,26 @@ public class UserByIdTest {
     public void testIdByMail() throws SQLException {
         UserById userById = new UserById(bc);
         assertEquals(4, userById.getIdByMail("gadik19@freeuni.edu.ge"));
+    }
+
+    @Test
+    public void testUserByUsername() throws SQLException {
+        Statement statement= connection.createStatement();
+        statement.execute("Insert into users (id,first_name,last_name,user_name,password,email)" +
+                " values "+ "(1000,'luka','macho','luka','123','MAE')");
+        statement.execute("Insert into users (id,first_name,last_name,user_name,password,email)" +
+                " values "+ "(2000,'blukab','macho','luku','123','MARTVA')");
+        statement.execute("Insert into usersInfo (user_id,user_name,user_last_name)" +
+                " values "+ "(2000,'blukab','macho')");
+        statement.execute("Insert into usersInfo (user_id,user_name,user_last_name)" +
+                " values "+ "(1000,'luka','macho')");
+        UserById user = new UserById(bc);
+        assertEquals(1000,user.getIdByUsername("luka"));
+        assertEquals(2000,user.getIdByUsername("luku"));
+        statement.execute("delete from usersInfo where user_id = 1000;");
+        statement.execute("delete from users where first_name = 'luka';");
+        statement.execute("delete from usersInfo where user_id = 2000;");
+        statement.execute("delete from users where first_name = 'blukab'");
     }
 }
 

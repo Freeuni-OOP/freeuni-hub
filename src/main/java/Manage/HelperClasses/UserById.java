@@ -41,4 +41,14 @@ public class UserById {
         }
         return -1;
     }
+
+    public int getIdByUsername(String userName) throws SQLException {
+        Statement statement = connection.createStatement();
+        ResultSet resultSet =statement.executeQuery("select * from " + USERS_TABLE +
+                " where user_name = '" + userName + "';");
+        while(resultSet.next()){
+            return resultSet.getInt("id");
+        }
+        return -1;
+    }
 }
