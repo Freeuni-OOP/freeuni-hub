@@ -15,6 +15,9 @@
     <li> <a href = "${pageContext.request.contextPath}/JSPs/AboutUsPages/AboutUsPage.jsp"> ჩვენ შესახებ </a> </li>
     <li> <a href = "${pageContext.request.contextPath}/JSPs/ContactPages/ContactPage.jsp"> კონტაქტი </a> </li>
     <li> <a href = "${pageContext.request.contextPath}/JSPs/IdentificationPages/HomePage.jsp"> მთავარი გვერდი </a> </li>
+   <form action = "/FriendRequests" method = "post" id = "Friend_Request">
+   <button> მეგორების თხოვნები </button>
+   </form>
     <a href = "${pageContext.request.contextPath}/JSPs/IdentificationPages/PersonalPage.jsp" id = "personal_photo_home">
         <img src="../../Images/UserImages/default.png" alt = "Avatar" height = "50" width = "50" />
     </a>
