@@ -12,7 +12,7 @@ import java.sql.Statement;
 
 import static org.junit.Assert.assertEquals;
 
-public  class searchTest {
+public  class SearchTest {
     BaseConnector bc;
     Connection connection;
     @Before
