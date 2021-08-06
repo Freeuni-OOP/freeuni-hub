@@ -44,5 +44,12 @@ public class UserByIdTest {
         statement.execute("delete from usersInfo where user_id = 2000;");
         statement.execute("delete from users where first_name = 'blukab'");
     }
+
+
+    @Test
+    public void testIdByMail() throws SQLException {
+        UserById userById = new UserById(bc);
+        assertEquals(4, userById.getIdByMail("gadik19@freeuni.edu.ge"));
+    }
 }
 

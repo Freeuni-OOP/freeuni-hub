@@ -41,6 +41,18 @@ public class ManageTradeTests {
 
     @Test
     public void testAddStudentToLocation() throws SQLException {
+     //  manageTrade.addLocation("ბუნიკეთი");
+       manageTrade.addStudentToLocation("gadik19@freeuni.edu.ge", "ბუნიკეთი");
+       manageTrade.addStudentToLocation("gadik19@freeuni.edu.ge", "ბუნიკეთი");
+       assertTrue(manageTrade.isLocation("ბუნიკეთი"));
+       assertEquals(2, manageTrade.getNumStudents("ბუნიკეთი"));
+       manageTrade.removeStudentFromLocation("gadik19@freeuni.edu.ge", "ბუნიკეთი");
+       manageTrade.removeStudentFromLocation("gadik19@freeuni.edu.ge", "ბუნიკეთი");
+       assertFalse(manageTrade.isLocation("ბუნიკეთი"));
+    }
+
+    @Test
+    public void testRemoveStudentFromLocation() throws SQLException {
         manageTrade.addLocation("ბახმარო");
         assertTrue(manageTrade.isLocation("ბახმარო"));
         manageTrade.removeLocation("ბახმარო");
@@ -48,7 +60,7 @@ public class ManageTradeTests {
     }
 
     @Test
-    public void testRemoveStudentFromLocation() throws SQLException {
+    public void testNumStudents() throws SQLException {
         manageTrade.addLocation("ბახმარო");
         assertTrue(manageTrade.isLocation("ბახმარო"));
         manageTrade.removeLocation("ბახმარო");
