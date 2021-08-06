@@ -4,6 +4,7 @@ package Manage;
 
 import DataBaseConnection.BaseConnector;
 import Manage.Configurations.UserConfiguration;
+import Manage.HelperClasses.UserById;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -14,8 +15,10 @@ import java.util.ArrayList;
 
 public class ManageUser implements UserConfiguration {
     private static Connection con;
+    private final BaseConnector bc;
 
     public ManageUser(BaseConnector bc) throws SQLException, ClassNotFoundException {
+        this.bc = bc;
         con = bc.accessConnection();
     }
 
@@ -169,10 +172,22 @@ public class ManageUser implements UserConfiguration {
                 + "' , '" + username + "' , '" + password + "' , '" + mail + "');");
     }
 
+    // method adds new user into the table
+    public void addUserWithId(int id, String firstName, String lastName,
+                              String username, String password, String mail) throws SQLException {
+        Statement stmt = con.createStatement();
+        stmt.execute("insert into " + USERS_TABLE + "(id, first_name, last_name, user_name, password, email)" +
+                " values ('" + id + "' , '" + firstName + "' , '" + lastName
+                + "' , '" + username + "' , '" + password + "' , '" + mail + "');");
+    }
+
 
     // method removes user from users table (remember mail is unique)
     public void removeUser(String mail) throws SQLException {
         Statement stmt = con.createStatement();
+        UserById ubi = new UserById(bc);
+        int user_id = ubi.getIdByMail(mail);
+        stmt.execute("delete from " + USERS_INFO_TABLE + " where user_id = '" + user_id + "';");
         stmt.execute("delete from " + USERS_TABLE + " where email = '" + mail + "';");
     }
 

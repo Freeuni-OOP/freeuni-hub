@@ -35,11 +35,6 @@ public class ManageTrade implements SaveleConfiguration {
         ResultSet rs = stmt.executeQuery("select * from " + LOCATIONS_TABLE + ";");
 
         int count = 0; // initially no students
-        while (rs.next()) {
-            if (rs.getString("name").equals(location)) {
-                count = Integer.parseInt(rs.getString("numStudents"));
-            }
-        }
 
         stmt.execute("insert into " + LOCATIONS_TABLE + "(name, numStudents) values ('"
                 + location + "', '" + count + "');");
@@ -61,38 +56,37 @@ public class ManageTrade implements SaveleConfiguration {
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery("select * from " + LOCATIONS_TABLE + ";");
 
-        int count = 0, id = -1;
+
         while (rs.next()) {
             if (rs.getString("name").equals(location)) {
-                count = Integer.parseInt(rs.getString("numStudents"));
-                id = Integer.parseInt(rs.getString("id"));
-                count++; // 1 more
+                int id = rs.getInt("id");
+                int num = rs.getInt("numStudents") + 1;
+                stmt.executeUpdate("update " + LOCATIONS_TABLE +
+                        " set numStudents = '" + num + "' " +
+                        " where id = " + id + ";");
                 break;
             }
         }
 
-        stmt.execute("delete from " + LOCATIONS_TABLE + " where id = " + id + ";");
-        stmt.execute("insert into " + LOCATIONS_TABLE + " values ('" + id + "' , '" +
-              location + "' , '" + count + "');");
     }
+
 
     private void decreaseNumStudents(String location) throws SQLException { // increases number of students in 'locations' table
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery("select * from " + LOCATIONS_TABLE + ";");
 
-        int count = 0, id = -1;
+
         while (rs.next()) {
             if (rs.getString("name").equals(location)) {
-                count = Integer.parseInt(rs.getString("numStudents"));
-                id = Integer.parseInt(rs.getString("id"));
-                count--; // 1 less
+                int id = rs.getInt("id");
+                int num = rs.getInt("numStudents") - 1;
+                stmt.executeUpdate("update " + LOCATIONS_TABLE +
+                        " set numStudents = '" + num + "' " +
+                        " where id = " + id + ";");
                 break;
             }
         }
 
-        stmt.execute("delete from " + LOCATIONS_TABLE + " where id = " + id + ";");
-        stmt.execute("insert into " + LOCATIONS_TABLE + " values ('" + id + "' , '" +
-                location + "' , '" + count + "');");
     }
 
 
@@ -121,18 +115,16 @@ public class ManageTrade implements SaveleConfiguration {
         stmt.execute("delete from " + MEMBERS_TABLE + " where user_id = '" +
                user_id + "';");
         decreaseNumStudents(location);
-
-        if (getNumStudents(location) == 0) removeLocation(location); // if no locations remaining, remove it
     }
 
     public int getNumStudents(String location) throws SQLException { // gets number of students for current location
         Statement stmt = con.createStatement();
 
-        ResultSet rs = stmt.executeQuery("select count(*) as COUNT from " + LOCATIONS_TABLE + " where name = '" +
+        ResultSet rs = stmt.executeQuery("select * from " + LOCATIONS_TABLE + " where name = '" +
                 location + "';");
 
         while (rs.next())
-            return rs.getInt("COUNT");
+            return rs.getInt("numStudents");
         return -1;
     }
 }
