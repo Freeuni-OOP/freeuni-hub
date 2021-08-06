@@ -1,7 +1,6 @@
 package Manage.HelperClasses;
 
 import DataBaseConnection.BaseConnector;
-import jdk.nashorn.internal.runtime.UnwarrantedOptimismException;
 import org.junit.Before;
 import org.junit.Test;
 

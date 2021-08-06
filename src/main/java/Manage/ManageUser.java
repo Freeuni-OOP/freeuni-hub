@@ -66,7 +66,7 @@ public class ManageUser implements UserConfiguration {
             char curChar = username.charAt(i);
             if (Character.isLetter(curChar) || Character.isDigit(curChar)
                     || curChar == '_') continue; // those are ok
-            return ILLEGAL_SYMBOL;
+            return ILLEGAL_USERNAME;
         }
         return CORRECT_USERNAME;
     }
@@ -82,7 +82,7 @@ public class ManageUser implements UserConfiguration {
             if (curChar == '_') continue; // underscore ok
             if (curChar <= 'Z' && curChar >= 'A') hasBigLetter = true;
             else if (curChar <= '9' && curChar >= '0') hasDigit = true;
-            else if (curChar < 'a' || curChar > 'z') return ILLEGAL_SYMBOL;
+            else if (curChar < 'a' || curChar > 'z') return ILLEGAL_PASSWORD;
         }
         if (!hasDigit || !hasBigLetter) return WRONG_FORMAT;
         return CORRECT_PASSWORD;
