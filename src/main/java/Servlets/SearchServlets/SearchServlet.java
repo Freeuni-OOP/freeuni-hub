@@ -1,4 +1,4 @@
-package Servlets.IdentificationServlets;
+package Servlets.SearchServlets;
 
 import DataBaseConnection.BaseConnector;
 import Manage.HelperClasses.Search;
@@ -33,7 +33,10 @@ public class SearchServlet extends HttpServlet {
             e.printStackTrace();
         }
         session.setAttribute("searchList",all);
+        for(int i=0;i<all.size();i++){
+            System.out.println(all.get(i).getUserName());
+        }
 
-        request.getRequestDispatcher("/JSPs/IdentificationPages/Search.jsp").forward(request,response);
+        request.getRequestDispatcher("/JSPs/SearchPages/Search.jsp").forward(request,response);
     }
 }
