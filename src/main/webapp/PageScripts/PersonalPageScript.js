@@ -3,7 +3,6 @@
 
 
 
-
 function searchHelper() {
     let input, filter, menu, l;
 

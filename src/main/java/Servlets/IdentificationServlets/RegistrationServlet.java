@@ -48,7 +48,7 @@ public class RegistrationServlet extends HttpServlet implements UserConfiguratio
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            request.getRequestDispatcher("/JSPs/IdentificationPages/HomePage.jsp").forward(request, response);
+            request.getRequestDispatcher("/JSPs/PersonalHomePages/HomePage.jsp").forward(request, response);
         }else if (!result.equals(ALL_GOOD)){
             request.setAttribute("problem", result); // what was the problem
             request.getRequestDispatcher("/JSPs/IdentificationPages/InvalidRegistration.jsp").forward(request, response);
