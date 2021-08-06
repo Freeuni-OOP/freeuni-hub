@@ -51,9 +51,9 @@ public class ManageUserTests implements UserConfiguration {
     @Test
     public void testUserName() {
         assertEquals(EMPTY, manageUser.isValidUsername(""));
-        assertEquals(ILLEGAL_SYMBOL, manageUser.isValidUsername("G%daF"));
-        assertEquals(ILLEGAL_SYMBOL, manageUser.isValidUsername("adik!"));
-        assertEquals(ILLEGAL_SYMBOL, manageUser.isValidUsername("adika?$"));
+        assertEquals(ILLEGAL_USERNAME, manageUser.isValidUsername("G%daF"));
+        assertEquals(ILLEGAL_USERNAME, manageUser.isValidUsername("adik!"));
+        assertEquals(ILLEGAL_USERNAME, manageUser.isValidUsername("adika?$"));
         assertEquals(CORRECT_USERNAME, manageUser.isValidUsername("GsdaF"));
         assertEquals(CORRECT_USERNAME, manageUser.isValidUsername("gio_adika2001"));
         assertEquals(CORRECT_USERNAME, manageUser.isValidUsername("Adika3"));
@@ -65,7 +65,7 @@ public class ManageUserTests implements UserConfiguration {
         assertEquals(INCORRECT_PASSWORD_LENGTH, manageUser.isValidPassword("ad"));
         assertEquals(INCORRECT_PASSWORD_LENGTH, manageUser.isValidPassword("addasdafasdafafadssad13"));
         assertEquals(WRONG_FORMAT, manageUser.isValidPassword("adika"));
-        assertEquals(ILLEGAL_SYMBOL, manageUser.isValidPassword("adika%!"));
+        assertEquals(ILLEGAL_PASSWORD, manageUser.isValidPassword("adika%!"));
         assertEquals(CORRECT_PASSWORD, manageUser.isValidPassword("Gio_ado1"));
         assertEquals(CORRECT_PASSWORD, manageUser.isValidPassword("GioAdika17"));
     }
