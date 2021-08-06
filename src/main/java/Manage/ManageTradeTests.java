@@ -6,6 +6,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 import static org.junit.Assert.*;
 
@@ -42,6 +45,7 @@ public class ManageTradeTests {
     @Test
     public void testAddStudentToLocation() throws SQLException, ClassNotFoundException {
         ManageUser mu = new ManageUser(bc);
+        // there can be 2 badri shubladze, it's not problem
         mu.addUserWithId(150, "badri", "shubladze", "badri123", "Badri123",
                 "bshub16@freeuni.edu.ge");
         mu.addUserWithId(151, "badri", "shubladze", "bbadri123", "Badri123",
@@ -64,29 +68,68 @@ public class ManageTradeTests {
     }
 
     @Test
-    public void testRemoveStudentFromLocation() throws SQLException {
+    public void testRemoveStudentFromLocation() throws SQLException, ClassNotFoundException {
+        ManageUser mu = new ManageUser(bc);
+        mu.addUserWithId(150, "badri", "shubladze", "badri123", "Badri123",
+                "bshub16@freeuni.edu.ge");
+
         manageTrade.addLocation("ბუნიკეთი");
-        manageTrade.addStudentToLocation("gadik19@freeuni.edu.ge", "ბუნიკეთი");
-        assertTrue(manageTrade.isLocation("ბუნიკეთი"));
-        assertEquals(1, manageTrade.getNumStudents("ბუნიკეთი"));
-        manageTrade.removeStudentFromLocation("gadik19@freeuni.edu.ge", "ბუნიკეთი");
+        manageTrade.addStudentToLocation("bshub16@freeuni.edu.ge", "ბუნიკეთი");
+
+        manageTrade.removeStudentFromLocation("bshub16@freeuni.edu.ge", "ბუნიკეთი");
+        assertEquals(0, manageTrade.getNumStudents("ბუნიკეთი"));
+
+        mu.removeUser("bshub16@freeuni.edu.ge");
+
         manageTrade.removeLocation("ბუნიკეთი");
-        assertFalse(manageTrade.isLocation("ბუნიკეთი"));
     }
 
     @Test
-    public void testNumStudents() throws SQLException {
+    public void testNumStudents() throws SQLException, ClassNotFoundException {
+        ManageUser mu = new ManageUser(bc);
+        mu.addUserWithId(151, "badri", "shubladze", "badri123", "Badri123",
+                "bshub16@freeuni.edu.ge");
+        mu.addUserWithId(152, "badri", "shubladze", "bbadri123", "Badri123",
+                "bashub16@freeuni.edu.ge");
+
         manageTrade.addLocation("ბუნიკეთი");
-        manageTrade.addStudentToLocation("gadik19@freeuni.edu.ge", "ბუნიკეთი");
-        manageTrade.addStudentToLocation("nsali19@freeuni.edu.ge", "ბუნიკეთი");
+        manageTrade.addStudentToLocation("bshub16@freeuni.edu.ge", "ბუნიკეთი");
+        manageTrade.addStudentToLocation("bashub16@freeuni.edu.ge", "ბუნიკეთი");
         assertTrue(manageTrade.isLocation("ბუნიკეთი"));
         assertEquals(2, manageTrade.getNumStudents("ბუნიკეთი"));
-        manageTrade.removeStudentFromLocation("gadik19@freeuni.edu.ge", "ბუნიკეთი");
+
+        manageTrade.removeStudentFromLocation("bshub16@freeuni.edu.ge", "ბუნიკეთი");
         assertEquals(1, manageTrade.getNumStudents("ბუნიკეთი"));
-        manageTrade.removeStudentFromLocation("nsali19@freeuni.edu.ge", "ბუნიკეთი");
+        manageTrade.removeStudentFromLocation("bashub16@freeuni.edu.ge", "ბუნიკეთი");
         assertEquals(0, manageTrade.getNumStudents("ბუნიკეთი"));
-        assertTrue(manageTrade.isLocation("ბუნიკეთი"));
+
+        mu.removeUser("bshub16@freeuni.edu.ge");
+        mu.removeUser("bashub16@freeuni.edu.ge");
+
         manageTrade.removeLocation("ბუნიკეთი");
-        assertFalse(manageTrade.isLocation("ბუნიკეთი"));
+    }
+
+
+    @Test
+    public void testGetUserNames() throws SQLException, ClassNotFoundException {
+        ManageUser mu = new ManageUser(bc);
+        mu.addUserWithId(151, "badri", "shubladze", "badri123", "Badri123",
+                "bshub16@freeuni.edu.ge");
+        mu.addUserWithId(155, "badri", "shubladze", "bbadri123", "Badri123",
+                "bashub16@freeuni.edu.ge");
+
+        manageTrade.addLocation("ბუნიკეთი");
+        manageTrade.addStudentToLocation("bshub16@freeuni.edu.ge", "ბუნიკეთი");
+        manageTrade.addStudentToLocation("bashub16@freeuni.edu.ge", "ბუნიკეთი");
+
+        ArrayList<String> users = manageTrade.getLocationUserNames("ბუნიკეთი");
+        assertEquals(Arrays.asList("badri123", "bbadri123"), users);
+
+        manageTrade.removeStudentFromLocation("bshub16@freeuni.edu.ge", "ბუნიკეთი");
+        manageTrade.removeStudentFromLocation("bashub16@freeuni.edu.ge", "ბუნიკეთი");
+
+        mu.removeUser("bshub16@freeuni.edu.ge");
+        mu.removeUser("bashub16@freeuni.edu.ge");
+        manageTrade.removeLocation("ბუნიკეთი");
     }
 }

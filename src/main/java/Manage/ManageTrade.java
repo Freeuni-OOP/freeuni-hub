@@ -2,6 +2,7 @@ package Manage;
 
 import DataBaseConnection.BaseConnector;
 import Manage.Configurations.SaveleConfiguration;
+import Manage.Configurations.UserConfiguration;
 import Manage.HelperClasses.LocationID;
 import Manage.HelperClasses.UserById;
 
@@ -9,8 +10,13 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
-public class ManageTrade implements SaveleConfiguration {
+
+
+public class ManageTrade implements SaveleConfiguration, UserConfiguration {
     private static Connection con;
     private final BaseConnector bc;
 
@@ -126,5 +132,27 @@ public class ManageTrade implements SaveleConfiguration {
         while (rs.next())
             return rs.getInt("numStudents");
         return -1;
+    }
+
+
+    // returns all users in given location
+    public ArrayList<String> getLocationUserNames(String location) throws SQLException{
+        ArrayList<String> res = new ArrayList<>(); // final result
+        Statement stmt = con.createStatement();
+        LocationID locationID = new LocationID(bc);
+        int loc_id = locationID.getIdByLocation(location);
+
+        Set<Integer> users = new HashSet<>();
+        ResultSet rs = stmt.executeQuery("select * from " + MEMBERS_TABLE +
+                            " where location_id = " + loc_id + ";");
+        while (rs.next()) users.add(rs.getInt("user_id"));
+
+        ResultSet resultSet = stmt.executeQuery("select * from " + USERS_TABLE + ";");
+        while (resultSet.next()) {
+            if (users.contains(resultSet.getInt("id")))
+                res.add(resultSet.getString("user_name"));
+        }
+
+        return res;
     }
 }
