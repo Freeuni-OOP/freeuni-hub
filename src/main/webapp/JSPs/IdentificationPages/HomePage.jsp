@@ -18,9 +18,13 @@
    <form action = "/FriendRequests" method = "post" id = "Friend_Request">
    <button> მეგორების თხოვნები </button>
    </form>
-    <a href = "${pageContext.request.contextPath}/JSPs/IdentificationPages/PersonalPage.jsp" id = "personal_photo_home">
+   <form action = "/Search" method = "post" id = "Search_Request">
+   <button = "username"> მოძებნე იუზერი: </button>
+       <input type = "text" name = "username" id = "username" size = "25"> <br/> <br/>
+   </form>
+   <a href = "${pageContext.request.contextPath}/JSPs/IdentificationPages/PersonalPage.jsp" id = "personal_photo_home">
         <img src="../../Images/UserImages/default.png" alt = "Avatar" height = "50" width = "50" />
-    </a>
+   </a>
 </ul>
 
 
