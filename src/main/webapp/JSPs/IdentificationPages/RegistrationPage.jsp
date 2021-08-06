@@ -41,7 +41,10 @@
 <!-- ---------------------------------------------------------- java script -->
 <script>
     function change() {
-        let field = document.getElementById("password");
+        changeField(document.getElementById("password"));
+        changeField(document.getElementById("repeatPassword"));
+    }
+    function changeField(field) {
         if (field.type === "password") field.type = "text";
         else field.type = "password";
     }
