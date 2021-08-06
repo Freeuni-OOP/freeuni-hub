@@ -1,6 +1,7 @@
 package Manage.HelperClasses;
 
 import DataBaseConnection.BaseConnector;
+import Manage.ManageUser;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -47,9 +48,13 @@ public class UserByIdTest {
 
 
     @Test
-    public void testIdByMail() throws SQLException {
+    public void testIdByMail() throws SQLException, ClassNotFoundException {
         UserById userById = new UserById(bc);
-        assertEquals(4, userById.getIdByMail("gadik19@freeuni.edu.ge"));
+        ManageUser manageUser = new ManageUser(bc);
+        manageUser.addUserWithId(159, "bartome", "diashi", "Barto555",
+                "Barto123", "bdias12@freeuni.edu.ge");
+        assertEquals(159, userById.getIdByMail("bdias12@freeuni.edu.ge"));
+        manageUser.removeUser("bdias12@freeuni.edu.ge");
     }
 
     @Test

@@ -126,6 +126,12 @@ public class ManageUserTests implements UserConfiguration {
                 "vviga17@freeuni.edu.ge");
         assertEquals(FOUND, manageUser.isValidUser("kaci", "Kacuri123"));
         manageUser.removeUser("vviga17@freeuni.edu.ge");
+        // now add with id
+        assertEquals(NOT_FOUND, manageUser.isValidUser("kaci", "Kacuri123"));
+        manageUser.addUserWithId(50, "vigac", "vigacashvili", "kaci", "Kacuri123",
+                "vviga17@freeuni.edu.ge");
+        assertEquals(FOUND, manageUser.isValidUser("kaci", "Kacuri123"));
+        manageUser.removeUser("vviga17@freeuni.edu.ge");
     }
 
 
