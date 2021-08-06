@@ -13,7 +13,7 @@
      <%
      ArrayList<User> all = (ArrayList<User>)request.getSession().getAttribute("requesters");
      System.out.println(all.size());
-     for(int ;i<
+     for(int i=0;i<all.size();i++){
        System.out.println(all.size());
      }
         %>

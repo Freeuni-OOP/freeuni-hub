@@ -1,4 +1,4 @@
-package Servlets.IdentificationServlets;
+package Servlets.SearchServlets;
 
 import DataBaseConnection.BaseConnector;
 import Manage.HelperClasses.FriendRequesters;
@@ -44,6 +44,6 @@ public class FriendRequestsServlet extends HttpServlet {
         session.setAttribute("requesters",requesters);
         session.setAttribute("username",userame);
 
-        request.getRequestDispatcher("/JSPs/IdentificationPages/FriendRequests.jsp").forward(request,response);
+        request.getRequestDispatcher("/JSPs/SearchPages/FriendRequests.jsp").forward(request,response);
     }
 }
