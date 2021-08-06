@@ -62,7 +62,7 @@ public class ManageUser implements UserConfiguration {
     }
 
     // only letters, digits and underscore
-    protected String isValidUsername(String username) {
+    protected String isValidUsername (String username) throws SQLException {
         if (username.isEmpty()) return EMPTY;
         int len = username.length();
         for (int i = 0; i < len; i++) {
@@ -71,6 +71,11 @@ public class ManageUser implements UserConfiguration {
                     || curChar == '_') continue; // those are ok
             return ILLEGAL_USERNAME;
         }
+        Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery("select * from " + USERS_TABLE + ";");
+        while (rs.next())
+            if (rs.getString("user_name").equals(username))
+                return USERNAME_EXISTS;
         return CORRECT_USERNAME;
     }
 
