@@ -20,11 +20,11 @@
         <label for = "profile_search" style="float: right;"> </label>
             <input type = "text" onkeyup = searchHelper() placeholder = "მოძებნე.." id = "profile_search"/>
 
-        <a href = "../../JSPs/IdentificationPages/HomePage.jsp" style="float: right;">
-            <img src="../../Images/UsefulIcons/home.png" alt = "goHome" width="50" height="50"> </a>
-
         <a href="../../JSPs/IdentificationPages/LogInPage.jsp" style="float: right">
             <img src="../../Images/UsefulIcons/logout.png" alt = "logout" width="50" height="50"> </a>
+
+        <a href = "../../JSPs/IdentificationPages/HomePage.jsp" style="float: right;">
+            <img src="../../Images/UsefulIcons/home.png" alt = "goHome" width="50" height="50"> </a>
 
     </div>
 

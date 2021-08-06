@@ -14,6 +14,7 @@
     <li> <a href = "${pageContext.request.contextPath}/JSPs/IdentificationPages/LogInPage.jsp"> გასვლა </a> </li>
     <li> <a href = "${pageContext.request.contextPath}/JSPs/AboutUsPages/AboutUsPage.jsp"> ჩვენ შესახებ </a> </li>
     <li> <a href = "${pageContext.request.contextPath}/JSPs/ContactPages/ContactPage.jsp"> კონტაქტი </a> </li>
+    <li> <a href = "${pageContext.request.contextPath}/JSPs/SavelePages/TradePage.jsp"> საველე გაცვლები </a> </li>
     <li> <a href = "${pageContext.request.contextPath}/JSPs/IdentificationPages/HomePage.jsp"> მთავარი გვერდი </a> </li>
    <form action = "/FriendRequests" method = "post" id = "Friend_Request">
    <button> მეგორების თხოვნები </button>
