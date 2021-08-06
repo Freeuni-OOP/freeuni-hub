@@ -49,7 +49,7 @@ public class ManageUserTests implements UserConfiguration {
     }
 
     @Test
-    public void testUserName() {
+    public void testUserName() throws SQLException {
         assertEquals(EMPTY, manageUser.isValidUsername(""));
         assertEquals(ILLEGAL_USERNAME, manageUser.isValidUsername("G%daF"));
         assertEquals(ILLEGAL_USERNAME, manageUser.isValidUsername("adik!"));
@@ -132,6 +132,18 @@ public class ManageUserTests implements UserConfiguration {
                 "vviga17@freeuni.edu.ge");
         assertEquals(FOUND, manageUser.isValidUser("kaci", "Kacuri123"));
         manageUser.removeUser("vviga17@freeuni.edu.ge");
+    }
+
+    @Test
+    public void testUniqueUsername() throws SQLException {
+        assertEquals(ALL_GOOD, manageUser.isValidInput("keith", "markovic", "naf_fly",
+                "vaL1d", "kmark15@freeuni.edu.ge"));
+        manageUser.addUser("keith", "markovic", "naf_fly", "vaL1d", "kmark15@freeuni.edu.ge");
+        assertEquals(USERNAME_EXISTS, manageUser.isValidInput("keith", "markovic", "naf_fly",
+                "vaL1d", "kmark15@freeuni.edu.ge"));
+        manageUser.removeUser("kmark15@freeuni.edu.ge");
+        assertEquals(ALL_GOOD, manageUser.isValidInput("keith", "markovic", "naf_fly",
+                "vaL1d", "kmark15@freeuni.edu.ge"));
     }
 
 

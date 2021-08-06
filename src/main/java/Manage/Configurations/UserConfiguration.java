@@ -29,6 +29,7 @@ public interface UserConfiguration {
     String CORRECT_MAIL = "მეილი ნამდვილად არსებობს";
     String INCORRECT_MAIL = "ასეთი მეილი, აღნიშნული ადამიანის სახელით, თავისუფალ უნივერსიტეტს არ ეკუთვნის";
     String MAIL_EXISTS = "ასეთი მეილით მომხმარებელი უკვე არსებობს";
+    String USERNAME_EXISTS = "ასეთი იუზერნეიმით მომხმარებელი უკვე არსებობს";
 
     //----------------------------------------if everything is ok
     String ALL_GOOD = "ყველაფერი რიგზეა";
