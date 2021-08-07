@@ -171,10 +171,17 @@ public class ManageUser implements UserConfiguration {
 
     // method adds new user into the table
     public void addUser(String firstName, String lastName, String username, String password, String mail) throws SQLException {
+        //adds into USERS_TABLE
         Statement stmt = con.createStatement();
         stmt.execute("insert into " + USERS_TABLE + "(first_name, last_name, user_name, password, email)" +
                 " values ('" + firstName + "' , '" + lastName
                 + "' , '" + username + "' , '" + password + "' , '" + mail + "');");
+
+        //adds into USERS_INFO_TABLE
+        UserById ubi = new UserById(bc);
+        int id = ubi.getIdByUsername(username);
+        stmt.execute("insert into " + USERS_INFO_TABLE + "(user_id, user_name, user_last_name)" +
+                " values ('" + id + "' , '" + firstName + "' , '" + lastName + "');");
     }
 
     // method adds new user into the table
