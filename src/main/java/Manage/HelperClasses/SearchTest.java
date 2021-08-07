@@ -28,6 +28,10 @@ public  class SearchTest {
                 " values "+ "(1000,'luka','macho','bigenti','123','fsjsffdsdfadsse')");
         statement.execute("Insert into users (id,first_name,last_name,user_name,password,email)" +
                 " values "+ "(2000,'blukab','macho','bigentia','123','fsjdfadsse')");
+        statement.execute("Insert into usersInfo (user_id,user_name,user_last_name)" +
+                " values "+ "(1000,'luka','macho')");
+        statement.execute("Insert into usersInfo (user_id,user_name,user_last_name)" +
+                " values "+ "(2000,'blukab','macho')");
         Search search = new Search(bc);
         assertEquals(1,search.searchUsers("bigenti").size());
         assertEquals(1,search.searchUsers("bigentia").size());
@@ -43,6 +47,10 @@ public  class SearchTest {
                 " values "+ "(1000,'luka','macho','bigenti','123','fsjsffdsdfadsse')");
         statement.execute("Insert into users (id,first_name,last_name,user_name,password,email)" +
                 " values "+ "(2000,'blukab','macho','bigentia','123','fsjdfadsse')");
+        statement.execute("Insert into usersInfo (user_id,user_name,user_last_name)" +
+                " values "+ "(1000,'luka','macho')");
+        statement.execute("Insert into usersInfo (user_id,user_name,user_last_name)" +
+                " values "+ "(2000,'blukab','macho')");
         Search search = new Search(bc);
         assertEquals(2,search.searchSimilarUsers("bigenti").size());
         statement.execute("delete from usersInfo where user_id = 1000;");
