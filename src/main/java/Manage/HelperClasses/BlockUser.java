@@ -30,7 +30,7 @@ public class BlockUser {
                 +" and blocked_id=" + blocked_id +";");
     }
 
-
+    // returns blocked list of ID-s
     public List<Integer> getBlockedList(int blocker_id) throws SQLException {
         List<Integer> idList = new ArrayList<>();
         Statement statement = con.createStatement();
