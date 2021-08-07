@@ -83,8 +83,12 @@
                         <div class="form-group col-md-4">
                             <label for="inputState5"> კურსი </label>
                             <select id="inputState5" class="form-control" name = "course">
-                                <option selected="">Choose...</option>
-                                <option>...</option>
+                                <option selected = ""> აირჩიე...</option>
+                                <option> I </option>
+                                <option> II </option>
+                                <option> III </option>
+                                <option> IV </option>
+                                <option> IV+ </option>
                             </select>
                         </div>
 
@@ -117,6 +121,7 @@
                             <ul class="small text-muted pl-4 mb-0">
                                 <li> 4-16 სიგრძის</li>
                                 <li> მინიმუმ 1 დიდი ასო და მინიმუმ 1 ციფრი უნდა ერიოს </li>
+                                <li> შეგიძლიათ მხოლოდ ლათინური ასოების, ციფრებისა და ქვედა ტირეს("_") გამოყენება </li>
                                 <li> არ შეიძლება იყოს იგივე რაც წინა </li>
                             </ul>
                         </div>
