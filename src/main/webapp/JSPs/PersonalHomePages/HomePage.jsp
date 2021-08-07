@@ -17,7 +17,7 @@
     <li> <a href = "${pageContext.request.contextPath}/JSPs/SavelePages/TradePage.jsp"> საველე გაცვლები </a> </li>
     <li> <a href = "${pageContext.request.contextPath}/JSPs/PersonalHomePages/HomePage.jsp"> მთავარი გვერდი </a> </li>
    <form action = "${pageContext.request.contextPath}/FriendRequests" method = "post" id = "Friend_Request">
-   <button> მეგორების თხოვნები </button>
+   <button> მეგობრების თხოვნები </button>
    </form>
    <form action = "${pageContext.request.contextPath}/Search" method = "post" id = "Search_Request">
    <button = "username"> მოძებნე იუზერი: </button>

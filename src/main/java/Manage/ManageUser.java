@@ -216,8 +216,8 @@ public class ManageUser implements UserConfiguration {
         return userList;
     }
 
-    public void printUsernames(ArrayList<String> users) {
-        for (String user : users)
+    public void printUsernames() throws SQLException {
+        for (String user : this.allUsers())
             System.out.println(user);
     }
 
