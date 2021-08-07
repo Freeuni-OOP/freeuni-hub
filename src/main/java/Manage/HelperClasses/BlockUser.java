@@ -3,25 +3,44 @@ package Manage.HelperClasses;
 import DataBaseConnection.BaseConnector;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class BlockUser {
-    BaseConnector bc;
+    private BaseConnector bc;
+    private Connection con;
+
     public BlockUser(BaseConnector bc){
-        this.bc=bc;
+        this.bc = bc;
+        con = bc.accessConnection();
     }
+
     public void blockById(int blocker_id, int blocked_id) throws SQLException {
-        Connection connection = bc.accessConnection();
-        Statement statement = connection.createStatement();
+        Statement statement = con.createStatement();
         statement.execute("Insert into blockedUsers(blocker_id,blocked_id) values ("
                 +blocker_id+","+blocked_id+");");
     }
     public void unblockById(int blocker_id,int blocked_id) throws SQLException {
-        Connection connection = bc.accessConnection();
-        Statement statement = connection.createStatement();
+        Statement statement = con.createStatement();
         statement.execute("Delete from blockedUsers where blocker_id = "+blocker_id
                 +" and blocked_id=" + blocked_id +";");
     }
+
+
+    public List<Integer> getBlockedList(int blocker_id) throws SQLException {
+        List<Integer> idList = new ArrayList<>();
+        Statement statement = con.createStatement();
+        ResultSet resultSet = statement.executeQuery("Select blocked_id from blockedUsers " +
+                "where blocker_id = " + blocker_id + " ;");
+        while (resultSet.next()) {
+            int blocked_id = resultSet.getInt(1);
+            idList.add(blocked_id);
+        }
+        return idList;
+    }
+
 }
