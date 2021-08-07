@@ -44,8 +44,9 @@
                 <li class="nav-item"><a href="#profile-post" class="nav-link" > პოსტები </a></li>
                 <li class="nav-item"><a href="#profile-about" class="nav-link" > ჩემ შესახებ </a></li>
                 <li class="nav-item"><a href="#profile-photos" class="nav-link" > ფოტოები </a></li>
-                <li class="nav-item"><a href="#profile-videos" class="nav-link" > ვიდეოები </a></li>
                 <li class="nav-item"><a href="#profile-friends" class="nav-link" > მეგობრები </a></li>
+                <li class="nav-item"><a href="${pageContext.request.contextPath}/JSPs/PersonalHomePages/ProfileInfoUpdate.jsp"
+                                        > ინფორმაციის განახლება </a></li>
                 <li class="nav-item"><a href="${pageContext.request.contextPath}/JSPs/PersonalHomePages/HomePage.jsp"
                                         > მთავარი გვერდი </a></li>
                 <li class="nav-item"><a href = "${pageContext.request.contextPath}/JSPs/IdentificationPages/LogInPage.jsp"
