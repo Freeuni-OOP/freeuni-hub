@@ -61,7 +61,7 @@
                 </div>
 
 
-                <div class="col-md-4 hidden-xs hidden-sm">
+                <div id = "personal-info" class = "col-md-4 hidden-xs hidden-sm">
                     <ul class="profile-info-list">
                         <li class="title"> პერსონალური ინფორმაცია </li>
                         <li>

@@ -1,5 +1,7 @@
 
 
+/*----------------------body---------- */
+
 body {
     margin-top: 10px;
     font-family: 'Open Sans', sans-serif;
@@ -21,9 +23,9 @@ body {
     list-style-type: none;
 }
 .profile-info-list > li.title {
-    font-size: 0.625rem;
-    font-weight: 700;
-    color: #8a8a8f;
+    font-size: 0.700rem;
+    font-weight: 1000;
+    color: darkgray;
     padding: 0 0 0.3125rem;
 }
 .profile-info-list > li + li.title {
@@ -36,7 +38,7 @@ body {
     font-weight: 700;
 }
 .profile-info-list > li .value {
-    color: #666;
+    color: darkgray;
 }
 .profile-info-list > li.img-list a {
     display: inline-block;
@@ -262,6 +264,10 @@ body .fc-widget-header a {
     color: #666;
 }
 
+#personal-info {
+    border: 3px solid #ccc;
+    background-color: goldenrod;
+}
 
 .profile-info-list > li.img-list a {
     display: inline-block;
@@ -282,6 +288,7 @@ body .fc-widget-header a {
 .profile-header-img img {
     max-width: 100%;
 }
+
 .table.table-profile th {
     border: none;
     color: #000;
