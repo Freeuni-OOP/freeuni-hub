@@ -21,7 +21,8 @@ public class UserById {
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery("Select * from usersInfo where user_id = '" + id +"';");
         while (resultSet.next()) {
-            User user = new User(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3),
+            ResultSet rs = statement.executeQuery("Select user_name from users where id = " + resultSet.getInt(1)+";");
+            User user = new User(resultSet.getInt(1), rs.getString(1),resultSet.getString(2), resultSet.getString(3),
                     resultSet.getString(4), resultSet.getString(5));
             return user;
         }

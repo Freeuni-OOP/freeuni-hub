@@ -20,9 +20,14 @@ public class Search {
     public ArrayList<User> searchUsers(String userName) throws SQLException {
         ArrayList<User> answer = new ArrayList<>();
         Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery("Select * from " + USERS_TABLE + " where user_name = '" + userName + "';");
+        ResultSet rs = statement.executeQuery("Select * from " + USERS_TABLE + " where user_name = '" + userName + "';");
+        int id=0;
+        while(rs.next()){
+            id=rs.getInt(1);
+        }
+        ResultSet resultSet = statement.executeQuery("Select * from "+USERS_INFO_TABLE+ " where user_id = "+ id+";" );
         while (resultSet.next()) {
-            User curUser = new User(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3),
+            User curUser = new User(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3),userName,
                     resultSet.getString(4), resultSet.getString(5));
             answer.add(curUser);
         }
@@ -32,11 +37,19 @@ public class Search {
     public ArrayList<User> searchSimilarUsers(String userName) throws SQLException {
         ArrayList<User> answer = new ArrayList<>();
         Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery("Select * from " + USERS_TABLE + " where user_name like '%" + userName + "%';");
-        while (resultSet.next()) {
-            User curUser = new User(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3),
-                    resultSet.getString(4), resultSet.getString(5));
-            answer.add(curUser);
+        ArrayList<Integer> user_ids = new ArrayList<>();
+        ResultSet rs = statement.executeQuery("Select * from " + USERS_TABLE + " where user_name like  '%" + userName + "%';");
+        while(rs.next()) {
+            int id = rs.getInt(1);
+           user_ids.add(id);
+        }
+        for(int id : user_ids){
+            ResultSet resultSet = statement.executeQuery("Select * from " + USERS_INFO_TABLE + " where user_id = " + id + ";");
+            while (resultSet.next()) {
+                User curUser = new User(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), userName,
+                        resultSet.getString(4), resultSet.getString(5));
+                answer.add(curUser);
+            }
         }
         return answer;
     }

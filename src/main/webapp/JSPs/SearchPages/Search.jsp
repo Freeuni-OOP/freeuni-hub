@@ -3,12 +3,26 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href = "../../PageStyles/HomePageStyle.css"/>
+
     <title> სალამი ${username} </title>
     <h1> მსგავსი იუზერნაიმები: </h1>
 </head>
 
-
+     <%
+         ArrayList<User> all = (ArrayList<User>)request.getSession().getAttribute("searchList");
+         System.out.println(all.size());
+         for(int i=0;i<all.size();i++){
+         int id=all.get(i).getId();
+         String username =all.get(i).getUserName();
+           System.out.println(username);
+           out.println(
+           "<li>"+
+                                   "<p>"+
+                                       username+
+                                   "</p>"+
+                            "</li>");
+         }
+         %>
 <body>
 
 

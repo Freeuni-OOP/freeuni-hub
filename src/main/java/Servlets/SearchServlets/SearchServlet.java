@@ -26,12 +26,13 @@ public class SearchServlet extends HttpServlet {
         HttpSession session = request.getSession();
         ArrayList<User> all = new ArrayList<>();
         try {
-             all = new Search(new BaseConnector()).searchUsers(username);
+             all = new Search(new BaseConnector()).searchSimilarUsers(username);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+        System.out.println(username);
         session.setAttribute("searchList",all);
         for(int i=0;i<all.size();i++){
             System.out.println(all.get(i).getUserName());
