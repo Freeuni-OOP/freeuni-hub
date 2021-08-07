@@ -36,7 +36,7 @@ public class LogInServlet extends HttpServlet implements Attributes, UserConfigu
             if (result.equals(FOUND)) {
                 HttpSession session = request.getSession();
                 session.setAttribute("username", username);
-                request.getRequestDispatcher("/JSPs/IdentificationPages/HomePage.jsp").forward(request, response);
+                request.getRequestDispatcher("/JSPs/PersonalHomePages/HomePage.jsp").forward(request, response);
             }else {
                 request.getRequestDispatcher("/JSPs/IdentificationPages/InvalidLogIn.jsp").forward(request, response);
             }

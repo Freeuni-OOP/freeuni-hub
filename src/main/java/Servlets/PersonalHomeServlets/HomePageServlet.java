@@ -1,4 +1,4 @@
-package Servlets.IdentificationServlets;
+package Servlets.PersonalHomeServlets;
 
 
 import javax.servlet.ServletException;

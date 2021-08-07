@@ -7,7 +7,7 @@
 
 <head>
     <title> სალამი ${username} </title>
-    <link rel = "stylesheet" href="../../PageStyles/PersonalPageStyle.css"/>
+    <link rel = "stylesheet" href = "../../PageStyles/PersonalPageStyle.css"/>
     <link rel = "script" href = "../../PageScripts/PersonalPageScript.js"/>
 </head>
 
@@ -15,15 +15,15 @@
 
 <div class = "container">
 
-    <!---------------------------------------------------->
+    <!-------------------------------------------------up panel--->
     <div class = "searching_div">
         <label for = "profile_search" style="float: right;"> </label>
             <input type = "text" onkeyup = searchHelper() placeholder = "მოძებნე.." id = "profile_search"/>
 
-        <a href="../../JSPs/IdentificationPages/LogInPage.jsp" style="float: right">
+        <a href="../IdentificationPages/LogInPage.jsp" style="float: right">
             <img src="../../Images/UsefulIcons/logout.png" alt = "logout" width="50" height="50"> </a>
 
-        <a href = "../../JSPs/IdentificationPages/HomePage.jsp" style="float: right;">
+        <a href = "HomePage.jsp" style="float: right;">
             <img src="../../Images/UsefulIcons/home.png" alt = "goHome" width="50" height="50"> </a>
 
     </div>
@@ -32,20 +32,21 @@
     <!-- ------------------------------------------------------------------------ -->
         <div class = "profile_div">
             <img class = "back_picture"
-                    src = "../../Images/UsefulImages/freeUni.jpg" alt = "back_image" width="2047" height="500"/>
+                 src = "../../Images/UsefulImages/freeUni.jpg" alt = "back_image" width="2047" height="500"/>
             <div id = "profile_section">
-                <img class = "profile_picture"
-                        src = "../../Images/UserImages/default.png" alt = "profile_image"/>
-                <h1> ${username} </h1>
+                <form action="${pageContext.request.contextPath}/photo_upload">
+                    <img id = "profile" class = "profile_picture"
+                         src = "../../Images/UserImages/default.png" alt = "profile_image"/>
+                    <h2> ${username} </h2>
+
+                    <label for = "picture_upload"> შეცვალე ფოტო: </label>
+                    <input type = "file" id = "picture_upload" name = "picture_upload" value = "null" accept = "image/*">
+                    <input type = "submit">
+                </form>
             </div>
         </div>
 
-
-
-
-
-
-        <!-- ------------------------------------------------------------------------ -->
+        <!-- ------------------------------------------------------------------------ will be fixed later -->
 
         <div class = "menu_div">
             <ul id = "menu">

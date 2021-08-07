@@ -15,15 +15,15 @@
     <li> <a href = "${pageContext.request.contextPath}/JSPs/AboutUsPages/AboutUsPage.jsp"> ჩვენ შესახებ </a> </li>
     <li> <a href = "${pageContext.request.contextPath}/JSPs/ContactPages/ContactPage.jsp"> კონტაქტი </a> </li>
     <li> <a href = "${pageContext.request.contextPath}/JSPs/SavelePages/TradePage.jsp"> საველე გაცვლები </a> </li>
-    <li> <a href = "${pageContext.request.contextPath}/JSPs/IdentificationPages/HomePage.jsp"> მთავარი გვერდი </a> </li>
-   <form action = "/FriendRequests" method = "post" id = "Friend_Request">
+    <li> <a href = "${pageContext.request.contextPath}/JSPs/PersonalHomePages/HomePage.jsp"> მთავარი გვერდი </a> </li>
+   <form action = "${pageContext.request.contextPath}/FriendRequests" method = "post" id = "Friend_Request">
    <button> მეგორების თხოვნები </button>
    </form>
-   <form action = "/Search" method = "post" id = "Search_Request">
+   <form action = "${pageContext.request.contextPath}/Search" method = "post" id = "Search_Request">
    <button = "username"> მოძებნე იუზერი: </button>
        <input type = "text" name = "username" id = "username" size = "25"> <br/> <br/>
    </form>
-   <a href = "${pageContext.request.contextPath}/JSPs/IdentificationPages/PersonalPage.jsp" id = "personal_photo_home">
+   <a href = "${pageContext.request.contextPath}/JSPs/PersonalHomePages/PersonalPage.jsp" id = "personal_photo_home">
         <img src="../../Images/UserImages/default.png" alt = "Avatar" height = "50" width = "50" />
    </a>
 </ul>
