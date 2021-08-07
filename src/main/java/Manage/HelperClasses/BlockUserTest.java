@@ -18,7 +18,7 @@ public class BlockUserTest {
     }
 
     @Test
-    public void tesBlockUser() throws SQLException {
+    public void testBlockUser() throws SQLException, ClassNotFoundException {
         BlockUser blockUser = new BlockUser(bc);
         Connection connection = bc.accessConnection();
         Statement statement = connection.createStatement();
@@ -37,5 +37,50 @@ public class BlockUserTest {
         statement.execute("delete from users where user_name = 'bigenti';");
         statement.execute("delete from usersInfo where user_id = 2000;");
         statement.execute("delete from users where user_name = 'bigentia'");
+    }
+
+    @Test
+    public void testGetBlockedList() throws SQLException {
+
+        BlockUser blockUser = new BlockUser(bc);
+        Connection connection = bc.accessConnection();
+        Statement statement = connection.createStatement();
+
+        statement.execute("Insert into users (id, first_name, last_name, user_name, password, email)" +
+                " values "+ "(100, 'keith', 'markovic', 'naf_fly', 'val1D', 'kmark15@freeuni.edu.ge')");
+        statement.execute("Insert into users (id, first_name, last_name, user_name, password, email)" +
+                " values "+ "(101, 'adam', 'friberg', 'friberg', 'val1D', 'afrib15@freeuni.edu.ge')");
+        statement.execute("Insert into users (id, first_name, last_name, user_name, password, email)" +
+                " values "+ "(102, 'patrick', 'lindberg', 'forest', 'val1D', 'plind15@freeuni.edu.ge')");
+        statement.execute("Insert into users (id, first_name, last_name, user_name, password, email)" +
+                " values "+ "(103, 'niko', 'kovac', 'nikokovac', 'val1D', 'nkova15@freeuni.edu.ge')");
+
+        assertEquals(0, blockUser.getBlockedList(100).size());
+        blockUser.blockById(100, 101);
+        blockUser.blockById(100, 102);
+        blockUser.blockById(100, 103);
+
+        assertEquals(3, blockUser.getBlockedList(100).size());
+        assertEquals(0, blockUser.getBlockedList(101).size());
+        assertEquals(0, blockUser.getBlockedList(102).size());
+        assertEquals(0, blockUser.getBlockedList(103).size());
+
+        blockUser.blockById(101, 102);
+        blockUser.blockById(102, 103);
+        assertEquals(3, blockUser.getBlockedList(100).size());
+        assertEquals(1, blockUser.getBlockedList(101).size());
+        assertEquals(1, blockUser.getBlockedList(102).size());
+        assertEquals(0, blockUser.getBlockedList(103).size());
+
+        blockUser.unblockById(100, 101);
+        blockUser.unblockById(100, 102);
+        blockUser.unblockById(100, 103);
+        blockUser.unblockById(101, 102);
+        blockUser.unblockById(102, 103);
+
+        statement.execute("delete from users where id = 100;");
+        statement.execute("delete from users where id = 101;");
+        statement.execute("delete from users where id = 102;");
+        statement.execute("delete from users where id = 103;");
     }
 }
