@@ -36,7 +36,20 @@
                 <div class="profile-header-info">
                     <h4 class="m-t-sm"> ${username} </h4>
                     <p class="m-b-sm"> თავისუფალი უნივერსიტეტის სტუდენტი </p>
-                    <a href="#" class="btn btn-xs btn-info mb-4"> შეცვალე ფოტო </a>
+                    <input id="fileupload" type="file" name="fileupload" />
+                    <button id="upload-button" onclick="uploadFile()"> Upload </button>
+                    <!-- Ajax JavaScript File Upload Logic -->
+                      <script>
+                      async function uploadFile() {
+                      let formData = new FormData();
+                      formData.append("file", fileupload.files[0]);
+                      await fetch('/fileuploadservlet', {
+                        method: "POST",
+                        body: formData
+                      });
+                      alert('The file has been uploaded successfully.');
+                      }
+                      </script>
                 </div>
             </div>
 
