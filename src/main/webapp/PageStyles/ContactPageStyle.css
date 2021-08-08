@@ -48,7 +48,7 @@ body{
 
 
 
-#fb_image { /* fb image style */
+#fb_image1, #fb_image2, #fb_image3, #fb_image4 { /* fb image style */
     background-color: #6F8BA4;
     border-radius: 25px;
     border-style: dotted;
