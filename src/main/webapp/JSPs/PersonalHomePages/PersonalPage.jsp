@@ -41,11 +41,16 @@
             </div>
 
             <ul class="profile-header-tab nav nav-tabs">
-                <li class="nav-item"><a href="#profile-post" class="nav-link" data-toggle="tab"> პოსტები </a></li>
-                <li class="nav-item"><a href="#profile-about" class="nav-link" data-toggle="tab"> ჩემ შესახებ </a></li>
-                <li class="nav-item"><a href="#profile-photos" class="nav-link" data-toggle="tab"> ფოტოები </a></li>
-                <li class="nav-item"><a href="#profile-videos" class="nav-link active show" data-toggle="tab"> ვიდეოები </a></li>
-                <li class="nav-item"><a href="#profile-friends" class="nav-link" data-toggle="tab"> მეგობრები </a></li>
+                <li class="nav-item"><a href="#profile-post" class="nav-link" > პოსტები </a></li>
+                <li class="nav-item"><a href="#profile-about" class="nav-link" > ჩემ შესახებ </a></li>
+                <li class="nav-item"><a href="#profile-photos" class="nav-link" > ფოტოები </a></li>
+                <li class="nav-item"><a href="#profile-friends" class="nav-link" > მეგობრები </a></li>
+                <li class="nav-item"><a href="${pageContext.request.contextPath}/JSPs/PersonalHomePages/ProfileInfoUpdate.jsp"
+                                        > ინფორმაციის განახლება </a></li>
+                <li class="nav-item"><a href="${pageContext.request.contextPath}/JSPs/PersonalHomePages/HomePage.jsp"
+                                        > მთავარი გვერდი </a></li>
+                <li class="nav-item"><a href = "${pageContext.request.contextPath}/JSPs/IdentificationPages/LogInPage.jsp"
+                                        > გასვლა </a></li>
             </ul>
         </div>
 
