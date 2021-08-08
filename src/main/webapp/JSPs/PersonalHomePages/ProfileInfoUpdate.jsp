@@ -58,16 +58,23 @@
                     </div>
                     <hr class="my-4" />
                     <div class="form-row">
+
                         <div class="form-group col-md-6">
-                            <label for="firstname"> სახელი </label>
-                            <input type="text" id="firstname" name = "firstname"
-                                    class="form-control" placeholder="მხოლოდ პატარა ლათინური ასოები" />
+                            <label for="firstname"> ახალი იუზერნეიმი </label>
+                            <input type="text" id="firstname" name = "username"
+                                    class="form-control" placeholder="მხოლოდ ლათინური ასოები, ციფრები, _" />
                         </div>
+
+
                         <div class="form-group col-md-6">
-                            <label for="lastname"> გვარი </label>
-                            <input type="text" id="lastname" name = "lastname"
-                                    class="form-control" placeholder="მხოლოდ პატარა ლათინური ასოები" />
+                            <label for="sex"> სქესი </label>
+                            <select id="sex" class="form-control" name = "sex">
+                                <option selected = ""> თავს შევიკავებ </option>
+                                <option> მამრობითი </option>
+                                <option> მდედრობითი </option>
+                            </select>
                         </div>
+
                     </div>
 
                     <br> <%-- skip line for more beauty-------------------------------------------------%>
@@ -76,7 +83,7 @@
                     <div class="form-row">
 
                         <div class="form-group col-md-6">
-                            <label for="inputCompany5"> ფაკულტეტი </label>
+                            <label for="inputCompany5"> ახალი ფაკულტეტი </label>
                             <input type="text" class="form-control" id="inputCompany5" name = "faculty" placeholder="მაგ: macs" />
                         </div>
 
