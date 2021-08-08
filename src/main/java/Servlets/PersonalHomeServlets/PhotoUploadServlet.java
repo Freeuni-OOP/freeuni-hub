@@ -21,6 +21,7 @@ public class PhotoUploadServlet extends HttpServlet {
         response.setContentType("text/html");
         Enumeration<String> enumeration= request.getParameterNames();
         System.out.println(enumeration.toString());
+
         while(enumeration.hasMoreElements()){
             System.out.println(enumeration.nextElement());
         }
