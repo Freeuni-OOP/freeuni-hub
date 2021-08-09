@@ -6,7 +6,10 @@ import Manage.Configurations.UserConfiguration;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import static org.junit.Assert.assertEquals;
 
@@ -144,7 +147,19 @@ public class ManageUserTests implements UserConfiguration {
 
         manageUser.updateUser(50, "kaci1", "male", "macs", 1);
 
-        // to check updates
+        Connection con = bc.accessConnection();
+        Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery("select * from " + USERS_INFO_TABLE + ";");
+
+        while (rs.next()) {
+            if (rs.getInt("user_id") == 50) {
+                assertEquals("kaci1", rs.getString("user_name"));
+                assertEquals("male", rs.getString("sqesi"));
+                assertEquals("macs", rs.getString("course"));
+                assertEquals(1, rs.getInt("courseNum"));
+                break;
+            }
+        }
 
 
         manageUser.removeUser("vviga17@freeuni.edu.ge");

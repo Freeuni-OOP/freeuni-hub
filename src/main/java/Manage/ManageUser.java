@@ -211,6 +211,9 @@ public class ManageUser implements UserConfiguration {
     // to update user by id
     public void updateUser(int id, String newUsername, String sex, String course, int courseNum) throws SQLException {
         Statement stmt = con.createStatement();
+        stmt.executeUpdate("update " + USERS_INFO_TABLE + " " +
+                "set user_name = '" + newUsername + "', sqesi = '" + sex +
+                "', course = '" + course + "', courseNum = " + courseNum + " where user_id = '" + id + "';");
 
     }
 
