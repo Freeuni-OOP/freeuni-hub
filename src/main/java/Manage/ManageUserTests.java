@@ -134,6 +134,24 @@ public class ManageUserTests implements UserConfiguration {
         manageUser.removeUser("vviga17@freeuni.edu.ge");
     }
 
+
+    @Test
+    public void testUpdateUser() throws SQLException {
+        assertEquals(NOT_FOUND, manageUser.isValidUser("kaci", "Kacuri123"));
+        manageUser.addUserWithId(50, "vigac", "vigacashvili", "kaci", "Kacuri123",
+                "vviga17@freeuni.edu.ge");
+        assertEquals(FOUND, manageUser.isValidUser("kaci", "Kacuri123"));
+
+        manageUser.updateUser(50, "kaci1", "male", "macs", 1);
+
+        // to check updates
+
+
+        manageUser.removeUser("vviga17@freeuni.edu.ge");
+    }
+
+
+
     @Test
     public void testUniqueUsername() throws SQLException {
         assertEquals(ALL_GOOD, manageUser.isValidInput("keith", "markovic", "naf_fly",
@@ -145,6 +163,8 @@ public class ManageUserTests implements UserConfiguration {
         assertEquals(ALL_GOOD, manageUser.isValidInput("keith", "markovic", "naf_fly",
                 "vaL1d", "kmark15@freeuni.edu.ge"));
     }
+
+
 
 
 
