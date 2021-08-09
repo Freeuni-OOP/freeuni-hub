@@ -19,6 +19,9 @@
    <form action = "${pageContext.request.contextPath}/FriendRequests" method = "post" id = "Friend_Request">
    <button> მეგობრების თხოვნები </button>
    </form>
+   <form action = "${pageContext.request.contextPath}/DeleteAccount" method = "post" id = "Delete_Request">
+      <button = "abortAccount"> გააუქმე ექაუნთი </button>
+   </form>
    <form action = "${pageContext.request.contextPath}/Search" method = "post" id = "Search_Request">
    <button = "username"> მოძებნე იუზერი: </button>
        <input type = "text" name = "username" id = "username" size = "25"> <br/> <br/>
