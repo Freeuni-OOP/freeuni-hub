@@ -10,7 +10,7 @@
 <body>
 
 
-     <form action="/visitProfile" , method="post">
+
      <%
          ArrayList<User> all = (ArrayList<User>)request.getSession().getAttribute("searchList");
          System.out.println(all.size());
@@ -21,10 +21,13 @@
          String userLastName = all.get(i).getUserLastName();
            System.out.println(user);
           %>
+         <form action="/visitProfile" , method="post">
+         <input type="hidden" name="username" value = ${username}>
+         <input type="hidden" name="profileName" value = <%=user%>>
          <%=user%>
          <p class="info">სახელი: <%=userFirstName%> </p>
          <p class="info">გვარი:<%=userLastName%></p>
-         <input type="submit" value ="Visit Profile">
+         <input type="submit" value ="ნახე პროფილი">
          <p>  </p>
          <%}
          %>
