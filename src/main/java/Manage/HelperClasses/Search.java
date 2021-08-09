@@ -38,15 +38,19 @@ public class Search {
         ArrayList<User> answer = new ArrayList<>();
         Statement statement = connection.createStatement();
         ArrayList<Integer> user_ids = new ArrayList<>();
+        ArrayList<String> users = new ArrayList<>();
         ResultSet rs = statement.executeQuery("Select * from " + USERS_TABLE + " where user_name like  '%" + userName + "%';");
         while(rs.next()) {
             int id = rs.getInt(1);
-           user_ids.add(id);
+            user_ids.add(id);
+            users.add(rs.getString("user_name"));
         }
-        for(int id : user_ids){
+        for(int i=0;i<user_ids.size();i++){
+            int id=user_ids.get(i);
+            String curUserName = users.get(i);
             ResultSet resultSet = statement.executeQuery("Select * from " + USERS_INFO_TABLE + " where user_id = " + id + ";");
             while (resultSet.next()) {
-                User curUser = new User(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), userName,
+                User curUser = new User(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), curUserName,
                         resultSet.getString(4), resultSet.getString(5));
                 answer.add(curUser);
             }

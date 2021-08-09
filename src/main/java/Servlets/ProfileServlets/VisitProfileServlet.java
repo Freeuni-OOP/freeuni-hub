@@ -18,7 +18,11 @@ public class VisitProfileServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html");
-
+        String username = request.getParameter("username");
+        String profileName = request.getParameter("profileName");
+        System.out.println(username);
+        System.out.println("fdnlsdf");
+        System.out.println(profileName);
 
     }
 }

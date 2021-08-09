@@ -32,11 +32,9 @@ public class SearchServlet extends HttpServlet {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        System.out.println(username);
+
         session.setAttribute("searchList",all);
-        for(int i=0;i<all.size();i++){
-            System.out.println(all.get(i).getUserName());
-        }
+
 
         request.getRequestDispatcher("/JSPs/SearchPages/Search.jsp").forward(request,response);
     }
