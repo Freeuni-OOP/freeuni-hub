@@ -27,4 +27,22 @@ public class FriendRequesters {
         }
         return result;
     }
+
+    // returns false if request is already sent, true otherwise
+    public boolean sendFriendRequest(int requester_id, int receiver_id) throws SQLException {
+        if (hasSentFriendRequest(requester_id, receiver_id))
+            return false;
+        Statement statement = connection.createStatement();
+        statement.execute("Insert into friendRequests (requester_id, receiver_id, accepted) " +
+                "values (" + requester_id + "," + receiver_id + ", false);");
+        return true;
+    }
+
+    public boolean hasSentFriendRequest(int requester_id, int receiver_id) throws SQLException {
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("Select * from friendRequests where requester_id = " +
+                requester_id + " and receiver_id = " + receiver_id + ";");
+        return rs.next();
+    }
+
 }
