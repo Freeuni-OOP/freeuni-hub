@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 
 public  class SearchTest {
     BaseConnector bc;
@@ -53,6 +54,7 @@ public  class SearchTest {
                 " values "+ "(2000,'blukab','macho')");
         Search search = new Search(bc);
         assertEquals(2,search.searchSimilarUsers("bigenti").size());
+        assertEquals(1,search.searchSimilarUsers("bigentia").size());
         statement.execute("delete from usersInfo where user_id = 1000;");
         statement.execute("delete from users where user_name = 'bigenti';");
         statement.execute("delete from usersInfo where user_id = 2000;");

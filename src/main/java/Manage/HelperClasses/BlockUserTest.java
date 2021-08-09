@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -30,9 +31,21 @@ public class BlockUserTest {
                 " values "+ "(1000,'luka','macho')");
         statement.execute("Insert into usersInfo (user_id,user_name,user_last_name)" +
                 " values "+ "(2000,'blukab','macho')");
-        blockUser.blockById(1000,2000);
-        blockUser.unblockById(1000,2000);
 
+        blockUser.blockById(1000,2000);
+        ResultSet resultSet = statement.executeQuery("Select * from blockedUsers");
+        int num=0;
+        while(resultSet.next()){
+            num++;
+        }
+        assertEquals(1,num);
+        blockUser.unblockById(1000,2000);
+        ResultSet second =statement.executeQuery("Select * from blockedUsers");
+        num=0;
+        while(second.next()){
+            num++;
+        }
+        assertEquals(0,num);
         statement.execute("delete from usersInfo where user_id = 1000;");
         statement.execute("delete from users where user_name = 'bigenti';");
         statement.execute("delete from usersInfo where user_id = 2000;");

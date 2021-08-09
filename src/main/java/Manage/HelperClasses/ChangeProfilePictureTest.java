@@ -5,8 +5,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import static org.junit.Assert.assertEquals;
 
 public class ChangeProfilePictureTest {
 
@@ -31,6 +34,13 @@ public class ChangeProfilePictureTest {
                 " values "+ "(2000,'blukab','macho')");
 
         changeProfilePicture.changePicture(1000,"/home/picture");
+        ResultSet resultSet = statement.executeQuery("Select * from usersInfo where" +
+                " image != null");
+        int num=0;
+        while(resultSet.next()){
+            num++;
+        }
+        assertEquals(0,num);
         statement.execute("delete from usersInfo where user_id = 1000;");
         statement.execute("delete from users where user_name = 'bigenti';");
         statement.execute("delete from usersInfo where user_id = 2000;");

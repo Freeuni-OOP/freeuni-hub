@@ -19,14 +19,23 @@ public class UserById {
 
     public User getUser(int id) throws SQLException {
         Statement statement = connection.createStatement();
+        String userFirstName="",userLastName="",userName="",sex="",course="";
+
         ResultSet resultSet = statement.executeQuery("Select * from usersInfo where user_id = '" + id +"';");
-        while (resultSet.next()) {
-            ResultSet rs = statement.executeQuery("Select user_name from users where id = " + resultSet.getInt(1)+";");
-            User user = new User(resultSet.getInt(1), rs.getString(1),resultSet.getString(2), resultSet.getString(3),
-                    resultSet.getString(4), resultSet.getString(5));
-            return user;
+        while(resultSet.next()){
+            userFirstName = resultSet.getString(2);
+            userLastName = resultSet.getString(3);
+            sex = resultSet.getString(4);
+            course = resultSet.getString(5);
         }
-        return null;
+        ResultSet rs = statement.executeQuery("Select user_name from users where id = " + id+";");
+        while(rs.next()){
+            userName = rs.getString(1);
+        }
+        User user = new User(id, userFirstName,userLastName, userName,
+                sex, course);
+        return user;
+
     }
 
 
