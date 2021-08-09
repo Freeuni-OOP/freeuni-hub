@@ -177,7 +177,7 @@ public class ManageUser implements UserConfiguration {
                 " values ('" + firstName + "' , '" + lastName
                 + "' , '" + username + "' , '" + password + "' , '" + mail + "');");
 
-        //adds into USERS_INFO_TABLE
+        // adds into USERS_INFO_TABLE
         UserById ubi = new UserById(bc);
         int id = ubi.getIdByUsername(username);
         stmt.execute("insert into " + USERS_INFO_TABLE + "(user_id, user_name, user_last_name)" +
@@ -191,6 +191,10 @@ public class ManageUser implements UserConfiguration {
         stmt.execute("insert into " + USERS_TABLE + "(id, first_name, last_name, user_name, password, email)" +
                 " values ('" + id + "' , '" + firstName + "' , '" + lastName
                 + "' , '" + username + "' , '" + password + "' , '" + mail + "');");
+
+        // adds into USERS_INFO_TABLE
+        stmt.execute("insert into " + USERS_INFO_TABLE + "(user_id, user_name, user_last_name)" +
+                " values ('" + id + "' , '" + firstName + "' , '" + lastName + "');");
     }
 
 
@@ -199,8 +203,15 @@ public class ManageUser implements UserConfiguration {
         Statement stmt = con.createStatement();
         UserById ubi = new UserById(bc);
         int user_id = ubi.getIdByMail(mail);
-        stmt.execute("delete from " + USERS_INFO_TABLE + " where user_id = '" + user_id + "';");
+        stmt.execute("delete from " + USERS_INFO_TABLE + " where user_id = '" + user_id + "';"); // at first from info table
         stmt.execute("delete from " + USERS_TABLE + " where email = '" + mail + "';");
+    }
+
+
+    // to update user by id
+    public void updateUser(int id, String newUsername, String sex, String course, int courseNum) throws SQLException {
+        Statement stmt = con.createStatement();
+
     }
 
 

@@ -60,8 +60,8 @@
                     <div class="form-row">
 
                         <div class="form-group col-md-6">
-                            <label for="firstname"> ახალი იუზერნეიმი </label>
-                            <input type="text" id="firstname" name = "username"
+                            <label for="user_name"> ახალი იუზერნეიმი </label>
+                            <input type="text" id="user_name" name = "user_name"
                                     class="form-control" placeholder="მხოლოდ ლათინური ასოები, ციფრები, _" />
                         </div>
 

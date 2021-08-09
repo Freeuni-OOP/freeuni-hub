@@ -1,7 +1,9 @@
 package Servlets.PersonalHomeServlets;
 
 
+import DataBaseConnection.BaseConnector;
 import Manage.Configurations.UserConfiguration;
+import Manage.HelperClasses.UserById;
 import Manage.ManageUser;
 import StarterManager.Attributes;
 
@@ -12,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.SQLException;
 
 
 @WebServlet(name = "Profile_Update", value = "/update")
@@ -31,13 +34,25 @@ public class ProfileUpdateServlet extends HttpServlet implements Attributes, Use
         String username = (String)session.getAttribute("username"); // get username
         String curPassword = "";
 
+        BaseConnector bc = (BaseConnector) request.getServletContext().getAttribute(BASE_CONNECTOR_ATTRIBUTE);
+        UserById ubi = new UserById(bc);
+
+        try {
+            int user_id = ubi.getIdByUsername(username); // get user id
+        } catch (SQLException ignored) {}
+
+        
+
         // get info
+        String newUsername = request.getParameter("user_name");
+        String sex = request.getParameter("sex");
+
         String faculty = request.getParameter("faculty");
         String course = request.getParameter("course");
 
         String oldPassword = request.getParameter("oldPassword");
-        String newPassword = request.getParameter("oldPassword");
-        String repeatedPassword = request.getParameter("oldPassword");
+        String newPassword = request.getParameter("newPassword");
+        String repeatedPassword = request.getParameter("repeatedPassword");
 
         ManageUser um = (ManageUser) getServletContext().getAttribute(USER_MANAGER_ATTRIBUTE); // get manager
 
