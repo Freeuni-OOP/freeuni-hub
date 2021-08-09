@@ -20,6 +20,7 @@
    <button> მეგობრების თხოვნები </button>
    </form>
    <form action = "${pageContext.request.contextPath}/DeleteAccount" method = "post" id = "Delete_Request">
+      <input type="hidden" name="username" value=${username}>
       <button = "abortAccount"> გააუქმე ექაუნთი </button>
    </form>
    <form action = "${pageContext.request.contextPath}/Search" method = "post" id = "Search_Request">
