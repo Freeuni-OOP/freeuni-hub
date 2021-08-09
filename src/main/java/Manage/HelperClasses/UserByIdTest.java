@@ -34,11 +34,11 @@ public class UserByIdTest {
         UserById user = new UserById(bc);
         User luka = user.getUser(1000);
         User blukab = user.getUser(2000);
-        assertEquals(luka.id,1000);
-        assertEquals(luka.getUserName(),"luka");
+        assertEquals(luka.getId(),1000);
+        assertEquals(luka.getUserName(),"mlfakfflsalme");
         assertEquals(luka.getUserLastName(),"macho");
-        assertEquals(blukab.id,2000);
-        assertEquals(blukab.getUserName(),"blukab");
+        assertEquals(blukab.getId(),2000);
+        assertEquals(blukab.getUserName(),"mlfakflme");
         assertEquals(blukab.getUserLastName(),"macho");
         statement.execute("delete from usersInfo where user_id = 1000;");
         statement.execute("delete from users where first_name = 'luka';");
