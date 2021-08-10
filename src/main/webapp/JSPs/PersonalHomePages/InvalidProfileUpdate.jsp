@@ -9,6 +9,7 @@
 
 <head>
     <title> განაახლე ინფორმაცია </title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <link rel = "stylesheet" href = "../../PageStyles/ProfileUpdateStyle.css">
@@ -21,15 +22,17 @@
 <body>
 
 
+
 <div class="container">
     <div class="row justify-content-center">
-        ${problems}
         <div class="col-12 col-lg-10 col-xl-8 mx-auto">
             <div class="my-4">
                 <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home"
                            role="tab" aria-controls="home" aria-selected="false"> ინფორმაციის განახლება </a>
+
+                        <h3> ${problems} <!-- message problems --> </h3>
                     </li>
                 </ul>
 

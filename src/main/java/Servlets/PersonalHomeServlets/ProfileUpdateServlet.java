@@ -71,8 +71,6 @@ public class ProfileUpdateServlet extends HttpServlet implements Attributes, Use
         String newPassword = request.getParameter("newPassword");
         String repeatedPassword = request.getParameter("repeatedPassword");
 
-        PrintWriter pw = response.getWriter(); // need printWriter for message
-
 
         //-----------------------------------------------------------------------different cases
         if (!oldPassword.equals(curPassword)) { // old password field must be correct
@@ -98,11 +96,13 @@ public class ProfileUpdateServlet extends HttpServlet implements Attributes, Use
 
 
 
+        String message = "";
         try {
-            if (um.isValidInput(info.get(0), info.get(1), newUsername, newPassword, info.get(4)).equals(ALL_GOOD)) {
+            message = um.isValidInput(info.get(0), info.get(1), newUsername, newPassword, info.get(4));
+            if (message.equals(ALL_GOOD)) {
                 um.updateUser(user_id, newUsername, sex, faculty, course, newPassword);
             }else {
-                session.setAttribute("problems", "არალეგალური ინფუთი. სცადეთ ხელახლა");
+                session.setAttribute("problems", message);
                 request.getRequestDispatcher("/JSPs/PersonalHomePages/InvalidProfileUpdate.jsp").forward(request, response);
             }
             request.getRequestDispatcher("/JSPs/PersonalHomePages/PersonalPage.jsp").forward(request, response);
