@@ -52,7 +52,8 @@ public class ProfileUpdateServlet extends HttpServlet implements Attributes, Use
 
         String curPassword = info.get(3); // get current password to check later
 
-        // get info
+
+        // get information
         String newUsername = request.getParameter("user_name");
         String sex = request.getParameter("sex");
 

@@ -34,6 +34,7 @@ public class LogInServlet extends HttpServlet implements Attributes, UserConfigu
         BaseConnector bc = (BaseConnector) getServletContext().getAttribute(BASE_CONNECTOR_ATTRIBUTE);
         ManageUser um = (ManageUser) getServletContext().getAttribute(USER_MANAGER_ATTRIBUTE);
 
+
         try {
             String result = um.isValidUser(username, password);
             if (result.equals(FOUND)) {
