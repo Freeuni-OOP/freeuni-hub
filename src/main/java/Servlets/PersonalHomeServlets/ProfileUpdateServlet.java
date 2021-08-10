@@ -103,10 +103,24 @@ public class ProfileUpdateServlet extends HttpServlet implements Attributes, Use
                 um.updateUser(user_id, newUsername, sex, faculty, course, newPassword);
                 request.getRequestDispatcher("/JSPs/PersonalHomePages/PersonalPage.jsp").forward(request, response);
             }else {
-                if ((message.equals(USERNAME_EXISTS) && (newUsername.equals(username)))  // if username isn't changed
+                if ((message.equals(USERNAME_EXISTS) && (newUsername.equals(username)))
+                            // if username isn't changed, that's ok
                             || (message.equals(MAIL_EXISTS))) { // mail isn't problem here
                     // ok this isn't problem
                     um.updateUser(user_id, newUsername, sex, faculty, course, newPassword);
+                    // set attributes
+                    session.setAttribute("username", newUsername);
+                    session.setAttribute("faculty", faculty);
+                    switch (course) { // int -> string for course number
+                        case 1: session.setAttribute("course", "I"); break;
+                        case 2: session.setAttribute("course", "II"); break;
+                        case 3: session.setAttribute("course", "III"); break;
+                        case 4: session.setAttribute("course", "IV"); break;
+                        case 5: session.setAttribute("course", "IV+"); break;
+                        default: session.setAttribute("course", "არაა მითითებული"); break;
+                    }
+                    System.out.println(sex);
+                    session.setAttribute("sex", sex);
                     request.getRequestDispatcher("/JSPs/PersonalHomePages/PersonalPage.jsp").forward(request, response);
                 }else {
                     session.setAttribute("problems", message);

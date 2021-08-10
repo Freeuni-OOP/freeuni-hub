@@ -81,32 +81,40 @@
                 <div id = "personal-info" class = "col-md-4 hidden-xs hidden-sm">
                     <ul class="profile-info-list">
                         <li class="title"> პერსონალური ინფორმაცია </li>
+
+                        <li>
+                            <div class="field"> ელ-ფოსტა: </div>
+                            <div class="value">
+                                ${mail}
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="field"> სახელი: </div>
+                            <div class="value"> ${firstname} </div>
+                        </li>
+
+                        <li>
+                            <div class="field"> გვარი: </div>
+                            <div class="value"> ${lastname} </div>
+                        </li>
+
+                        <li>
+                            <div class="field"> ფაკულტეტი: </div>
+                            <div class="value"> ${faculty} </div>
+                        </li>
+
                         <li>
                             <div class="field"> კურსი: </div>
-                            <div class="value"> Macs </div>
+                            <div class="value"> ${course} </div>
                         </li>
 
-                        <li>
-                            <div class="field">დაბადების თარიღი:</div>
-                            <div class="value">2001/31/01</div>
-                        </li>
 
                         <li>
-                            <div class="field"> მისამართი: </div>
-                            <div class="value">
-                                <address class="m-b-0">
-                                    ვარკეთილი 3, I მკრ, <br>
-                                    კორპუსი - 14, <br>
-                                    ბინა - 44 <br>
-                                </address>
-                            </div>
+                            <div class="field"> სქესი: </div>
+                            <div class="value"> ${sex} </div>
                         </li>
-                        <li>
-                            <div class="field">მობილური:</div>
-                            <div class="value">
-                                (+995) 551 74 40 45
-                            </div>
-                        </li>
+
                         <li class="title">მეგობრების სია: </li>
                         <li class="img-list">
 

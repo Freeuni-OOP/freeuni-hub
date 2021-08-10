@@ -182,7 +182,7 @@ public class ManageUser implements UserConfiguration {
         UserById ubi = new UserById(bc);
         int id = ubi.getIdByUsername(username);
         stmt.execute("insert into " + USERS_INFO_TABLE + "(user_id, user_name, user_last_name)" +
-                " values ('" + id + "' , '" + firstName + "' , '" + lastName + "');");
+                " values ('" + id + "' , '" + username + "' , '" + lastName + "');");
     }
 
     // method adds new user into the table
@@ -195,7 +195,7 @@ public class ManageUser implements UserConfiguration {
 
         // adds into USERS_INFO_TABLE
         stmt.execute("insert into " + USERS_INFO_TABLE + "(user_id, user_name, user_last_name)" +
-                " values ('" + id + "' , '" + firstName + "' , '" + lastName + "');");
+                " values ('" + id + "' , '" + username + "' , '" + lastName + "');");
     }
 
 
@@ -212,17 +212,39 @@ public class ManageUser implements UserConfiguration {
     public ArrayList<String> getUserInfo(int user_id) throws SQLException {
         // returns user info: firstName, lastName, username, password, mail
         Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery("select * from " + USERS_TABLE + ";");
+        ResultSet rs1 = stmt.executeQuery("select * from " + USERS_TABLE + ";");
 
         ArrayList<String> res = new ArrayList<>(); // final result
 
-        while (rs.next()) {
-            if (rs.getInt("id") == user_id) {
-                res.add(rs.getString("first_name"));
-                res.add(rs.getString("last_name"));
-                res.add(rs.getString("user_name"));
-                res.add(rs.getString("password"));
-                res.add(rs.getString("email"));
+        while (rs1.next()) {
+            if (rs1.getInt("id") == user_id) {
+                res.add(rs1.getString("first_name"));
+                res.add(rs1.getString("last_name"));
+                res.add(rs1.getString("user_name"));
+                res.add(rs1.getString("password"));
+                res.add(rs1.getString("email"));
+                break;
+            }
+        }
+
+        //-----------------------------now visit USERS_INFO_TABLE
+
+        ResultSet rs2 = stmt.executeQuery("select * from " + USERS_INFO_TABLE + ";");
+
+        while (rs2.next()) {
+            if (rs2.getInt("user_id") == user_id) {
+                res.add(rs2.getString("course"));
+                int courseNum = rs2.getInt("courseNum");
+                switch (courseNum) { // convert course int -> string
+                    case 1: res.add("I"); break;
+                    case 2: res.add("II"); break;
+                    case 3: res.add("III"); break;
+                    case 4: res.add("IV"); break;
+                    case 5: res.add("IV+"); break;
+                    default: res.add("არაა მითითებული"); break;
+                }
+                res.add(rs2.getString("sqesi"));
+                break;
             }
         }
 

@@ -74,9 +74,9 @@
                         <div class="form-group col-md-6">
                             <label for="sex"> სქესი </label>
                             <select id="sex" class="form-control" name = "sex">
-                                <option selected = ""> თავს შევიკავებ </option>
-                                <option> მამრობითი </option>
-                                <option> მდედრობითი </option>
+                                <option selected = ""> secret </option>
+                                <option> male </option>
+                                <option> female </option>
                             </select>
                         </div>
 
@@ -88,7 +88,7 @@
                     <div class="form-row">
 
                         <div class="form-group col-md-6">
-                            <label for="inputCompany5"> ახალი ფაკულტეტი </label>
+                            <label for="inputCompany5"> ფაკულტეტი </label>
                             <input type="text" class="form-control" id="inputCompany5" name = "faculty" placeholder="მაგ: macs" />
                         </div>
 
