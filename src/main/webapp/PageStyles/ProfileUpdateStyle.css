@@ -4,26 +4,39 @@ body{
 }
 
 
+
+h3 {
+    color: red;
+}
+
+
+
 .avatar-xl img {
     width: 110px;
 }
 
+
 .rounded-circle {
     border-radius: 50% !important;
 }
+
 
 img {
     vertical-align: middle;
     border-style: none;
 }
 
+
 .text-muted {
     color: #aeb0b4 !important;
 }
 
+
 .text-muted {
     font-weight: 300;
 }
+
+
 
 .form-control {
     display: block;
