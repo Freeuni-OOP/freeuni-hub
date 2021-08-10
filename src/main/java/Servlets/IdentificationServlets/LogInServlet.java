@@ -62,7 +62,7 @@ public class LogInServlet extends HttpServlet implements Attributes, UserConfigu
                 else {
                     String sex = info.get(7);
                     switch (sex) {
-                        case "no": session.setAttribute("sex", "თავს შევიკავებ"); break;
+                        case "secret": session.setAttribute("sex", "თავს შევიკავებ"); break;
                         case "male": session.setAttribute("sex", "მამრობითი"); break;
                         case "female": session.setAttribute("sex", "მდედრობითი"); break;
                     }
