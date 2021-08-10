@@ -45,4 +45,10 @@ public class FriendRequesters {
         return rs.next();
     }
 
+    public void removeRequest(int requester_id, int receiver_id) throws SQLException {
+        Statement statement = connection.createStatement();
+        statement.execute("Delete from friendRequests where requester_id = " + requester_id +
+                " and receiver_id = " + receiver_id);
+    }
+
 }
