@@ -31,6 +31,8 @@ public interface UserConfiguration {
     String MAIL_EXISTS = "ასეთი მეილით მომხმარებელი უკვე არსებობს";
     String USERNAME_EXISTS = "ასეთი იუზერნეიმით მომხმარებელი უკვე არსებობს";
 
+    String ILLEGAL_FACULTY = "მხოლოდ ლათინური ასოები და სფეისი შეიძლება კურსის დასახელებაში.";
+
     //----------------------------------------if everything is ok
     String ALL_GOOD = "ყველაფერი რიგზეა";
 }

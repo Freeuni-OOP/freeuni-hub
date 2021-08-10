@@ -73,6 +73,15 @@ public class ProfileUpdateServlet extends HttpServlet implements Attributes, Use
 
 
         //-----------------------------------------------------------------------different cases
+        for (int i = 0; i < faculty.length(); i++) { // check faculty
+            char cur = faculty.charAt(i);
+            if ((!Character.isLetter(cur)) && (cur != ' ')) {
+                session.setAttribute("problems", ILLEGAL_FACULTY);
+                request.getRequestDispatcher("/JSPs/PersonalHomePages/InvalidProfileUpdate.jsp").forward(request, response);
+                return;
+            }
+        }
+
         if (!oldPassword.equals(curPassword)) { // old password field must be correct
             session.setAttribute("problems", "ეს არ არის თქვენი ძველი პაროლი, გთხოვთ ხელახლა შეიყვანოთ.");
             request.getRequestDispatcher("/JSPs/PersonalHomePages/InvalidProfileUpdate.jsp").forward(request, response);
