@@ -29,9 +29,10 @@
          <p class="info">გვარი:<%=userLastName%></p>
          <input type="submit" value ="ნახე პროფილი">
          <p>  </p>
+         </form>
          <%}
          %>
-        </form>
+
 
 
 
