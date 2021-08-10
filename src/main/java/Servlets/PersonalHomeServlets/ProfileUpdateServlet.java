@@ -50,7 +50,15 @@ public class ProfileUpdateServlet extends HttpServlet implements Attributes, Use
         String sex = request.getParameter("sex");
 
         String faculty = request.getParameter("faculty");
-        int course = Integer.parseInt(request.getParameter("course"));
+        int course = -1;
+        String possibleCourse = (request.getParameter("course"));
+        switch (possibleCourse) {
+            case "I" : course = 1; break;
+            case "II" : course = 2; break;
+            case "III" : course = 3; break;
+            case "IV" : course = 4; break;
+            default: course = 5; break;
+        }
 
         String oldPassword = request.getParameter("oldPassword");
         String newPassword = request.getParameter("newPassword");
@@ -61,14 +69,14 @@ public class ProfileUpdateServlet extends HttpServlet implements Attributes, Use
 
         //-----------------------------------------------------------------------different cases
         if (oldPassword.equals(newPassword)) { // old and new mustn't match
-            pw.println("ძველი და ახალი პაროლები არ უნდა ემთხვეოდეს, კიდევ ერთხელ წაიკითხეთ პაროლის მოთხოვნები.");
-            request.getRequestDispatcher("/JSPs/PersonalHomePages/PersonalPage.jsp").forward(request, response);
+            session.setAttribute("problems", "ძველი და ახალი პაროლები არ უნდა ემთხვეოდეს, კიდევ ერთხელ წაიკითხეთ პაროლის მოთხოვნები.");
+            request.getRequestDispatcher("/JSPs/PersonalHomePages/InvalidProfileUpdate.jsp").forward(request, response);
             return;
         }
 
         if (!newPassword.equals(repeatedPassword)) { // new and repeated passwords must match
-            pw.println("განმეორებული პაროლი არ ემთხვევა ახალს, გთხოვთ მეტი ყურადღებით შეავსოთ.");
-            request.getRequestDispatcher("/JSPs/PersonalHomePages/PersonalPage.jsp").forward(request, response);
+            session.setAttribute("problems", "განმეორებული პაროლი არ ემთხვევა ახალს, გთხოვთ მეტი ყურადღებით შეავსოთ.");
+            request.getRequestDispatcher("/JSPs/PersonalHomePages/InvalidProfileUpdate.jsp").forward(request, response);
             return;
         }
 
@@ -85,7 +93,8 @@ public class ProfileUpdateServlet extends HttpServlet implements Attributes, Use
             if (um.isValidInput(info.get(0), info.get(1), newUsername, newPassword, info.get(4)).equals(ALL_GOOD)) {
                 um.updateUser(user_id, newUsername, sex, faculty, course, newPassword);
             }else {
-                pw.println("არალეგალური ინფუთი. სცადეთ ხელახლა");
+                session.setAttribute("problems", "არალეგალური ინფუთი. სცადეთ ხელახლა");
+                request.getRequestDispatcher("/JSPs/PersonalHomePages/InvalidProfileUpdate.jsp").forward(request, response);
             }
             request.getRequestDispatcher("/JSPs/PersonalHomePages/PersonalPage.jsp").forward(request, response);
         } catch (SQLException ex) {
