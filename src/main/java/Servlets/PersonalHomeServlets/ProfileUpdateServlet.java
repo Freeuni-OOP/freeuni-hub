@@ -60,11 +60,18 @@ public class ProfileUpdateServlet extends HttpServlet implements Attributes, Use
 
 
         //-----------------------------------------------------------------------different cases
-        if (oldPassword.equals(newPassword)) {
+        if (oldPassword.equals(newPassword)) { // old and new mustn't match
             pw.println("ძველი და ახალი პაროლები არ უნდა ემთხვეოდეს, კიდევ ერთხელ წაიკითხეთ პაროლის მოთხოვნები.");
             request.getRequestDispatcher("/JSPs/PersonalHomePages/PersonalPage.jsp").forward(request, response);
             return;
         }
+
+        if (!newPassword.equals(repeatedPassword)) { // new and repeated passwords must match
+            pw.println("განმეორებული პაროლი არ ემთხვევა ახალს, გთხოვთ მეტი ყურადღებით შეავსოთ.");
+            request.getRequestDispatcher("/JSPs/PersonalHomePages/PersonalPage.jsp").forward(request, response);
+            return;
+        }
+
 
         //-----------------------------------------------------------------------------------------
 
