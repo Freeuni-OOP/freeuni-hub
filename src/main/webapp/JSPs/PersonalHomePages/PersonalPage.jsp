@@ -36,7 +36,7 @@
                 <div class="profile-header-info">
                     <h4 class="m-t-sm"> ${username} </h4>
                     <p class="m-b-sm"> თავისუფალი უნივერსიტეტის სტუდენტი </p>
-                    <input id="fileupload" type="file" name="fileupload" value="აირჩიე ფაილი"/>
+                    <input id="fileupload" type="file" name="fileupload" value="picture"/>
                     <button id="upload-button" onclick = "uploadFile()"> შეცვალე ფოტო </button>
                       <script>
                       async function uploadFile() {
