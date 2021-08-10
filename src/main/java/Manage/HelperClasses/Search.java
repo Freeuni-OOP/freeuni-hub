@@ -34,7 +34,7 @@ public class Search {
         return answer;
     }
 
-    public ArrayList<User> searchSimilarUsers(String userName) throws SQLException {
+    public ArrayList<User> searchSimilarUsers(String userName,int user_id) throws SQLException, ClassNotFoundException {
         ArrayList<User> answer = new ArrayList<>();
         Statement statement = connection.createStatement();
         ArrayList<Integer> user_ids = new ArrayList<>();
@@ -55,6 +55,14 @@ public class Search {
                 answer.add(curUser);
             }
         }
-        return answer;
+        ArrayList<User> result = new ArrayList<>();
+        for(User user : answer){
+            int blocker_id = user.getId();
+            BlockUser blockUser = new BlockUser(new BaseConnector());
+            if(!blockUser.isBlocked(blocker_id,user_id)){
+                result.add(user);
+            }
+        }
+        return result;
     }
 }

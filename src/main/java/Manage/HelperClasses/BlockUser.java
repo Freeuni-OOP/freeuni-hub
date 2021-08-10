@@ -42,5 +42,14 @@ public class BlockUser {
         }
         return idList;
     }
-
+    public boolean isBlocked(int blocker_id,int blocked_id) throws SQLException {
+        Statement statement = con.createStatement();
+        ResultSet resultSet = statement.executeQuery("Select * from blockedUsers where blocker_id= " +
+                blocker_id+" and blocked_id =" +blocked_id+";");
+        int num =0;
+        while(resultSet.next()){
+            num++;
+        }
+        return num!=0;
+    }
 }
