@@ -53,6 +53,7 @@ public class RegistrationServlet extends HttpServlet implements UserConfiguratio
                 e.printStackTrace();
             }
 
+
             // set into session
             HttpSession session = request.getSession();
             session.setAttribute("firstname", firstName);

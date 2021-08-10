@@ -129,6 +129,7 @@
                             </div>
 
 
+
                         </div>
                         <div class="col-md-6">
                             <p class="mb-2"> პაროლის მოთხოვნები </p>

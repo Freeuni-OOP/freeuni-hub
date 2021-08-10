@@ -36,6 +36,7 @@ public class LogInServlet extends HttpServlet implements Attributes, UserConfigu
 
 
 
+
         try {
             String result = um.isValidUser(username, password);
             if (result.equals(FOUND)) {

@@ -132,6 +132,7 @@ public class ProfileUpdateServlet extends HttpServlet implements Attributes, Use
                         default: session.setAttribute("course", "არაა მითითებული"); break;
                     }
 
+
                     switch (sex) {
                         case "secret": session.setAttribute("sex", "თავს შევიკავებ"); break;
                         case "male": session.setAttribute("sex", "მამრობითი"); break;
