@@ -103,7 +103,8 @@ public class ProfileUpdateServlet extends HttpServlet implements Attributes, Use
                 um.updateUser(user_id, newUsername, sex, faculty, course, newPassword);
                 request.getRequestDispatcher("/JSPs/PersonalHomePages/PersonalPage.jsp").forward(request, response);
             }else {
-                if (message.equals(USERNAME_EXISTS) && (newUsername.equals(username))) {
+                if ((message.equals(USERNAME_EXISTS) && (newUsername.equals(username)))  // if username isn't changed
+                            || (message.equals(MAIL_EXISTS))) { // mail isn't problem here
                     // ok this isn't problem
                     um.updateUser(user_id, newUsername, sex, faculty, course, newPassword);
                     request.getRequestDispatcher("/JSPs/PersonalHomePages/PersonalPage.jsp").forward(request, response);

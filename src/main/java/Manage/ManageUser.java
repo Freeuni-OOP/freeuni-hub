@@ -162,11 +162,11 @@ public class ManageUser implements UserConfiguration {
         if (!lastNameMessage.equals(CORRECT_LAST_NAME)) return lastNameMessage; // check last name
         String passwordMessage = isValidPassword(password);
         if (!passwordMessage.equals(CORRECT_PASSWORD)) return passwordMessage; // check password
-        String mailMessage = isValidMail(mail, firstName, lastName);
-        if (!mailMessage.equals(CORRECT_MAIL)) return mailMessage; // check mail
-        // finally check username
         String usernameMessage = isValidUsername(username);
         if (!usernameMessage.equals(CORRECT_USERNAME)) return usernameMessage; // check username
+        // finally mail
+        String mailMessage = isValidMail(mail, firstName, lastName);
+        if (!mailMessage.equals(CORRECT_MAIL)) return mailMessage; // check mail
         return ALL_GOOD; // wow, everything is ok
     }
 
@@ -238,7 +238,7 @@ public class ManageUser implements UserConfiguration {
                 "', course = '" + course + "', courseNum = " + courseNum + " where user_id = '" + id + "';");
 
         stmt.executeUpdate("update " + USERS_TABLE + " " +
-                "set password = '" + newPassword + "' where id = " + id + ";");
+                "set user_name = '" + newUsername + "' , password = '" + newPassword + "' where id = " + id + ";");
     }
 
 
