@@ -22,9 +22,14 @@
    <form action = "${pageContext.request.contextPath}/FriendRequests" method = "post" id = "Friend_Request">
    <button> მეგობრების თხოვნები </button>
    </form>
+   <form action = "${pageContext.request.contextPath}/DeleteAccount" method = "post" id = "Delete_Request">
+      <input type="hidden" name="username" value=${username}>
+      <button = "abortAccount"> გააუქმე ექაუნთი </button>
+   </form>
    <form action = "${pageContext.request.contextPath}/Search" method = "post" id = "Search_Request">
    <button = "username"> მოძებნე იუზერი: </button>
-       <input type = "text" name = "username" id = "username" size = "25"> <br/> <br/>
+   <input type = "text" name = "username" id = "username" size = "25"> <br/> <br/>
+   <input type = "hidden" name = "curUser" value=${username}>
    </form>
    <a href = "${pageContext.request.contextPath}/JSPs/PersonalHomePages/PersonalPage.jsp" id = "personal_photo_home">
         <img src="../../Images/UserImages/default.png" alt = "Avatar" height = "50" width = "50" />

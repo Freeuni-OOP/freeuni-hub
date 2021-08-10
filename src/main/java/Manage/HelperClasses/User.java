@@ -1,12 +1,12 @@
 package Manage.HelperClasses;
 
 public class User {
-    String userFirstName;
-    String userName;
-    String userLastName;
-    String sex;
-    String course;
-    int id;
+    private String userFirstName;
+    private String userName;
+    private String userLastName;
+    private String sex;
+    private String course;
+    private int id;
     public User(int id, String userFirstName, String userLastName,String userName, String sex, String course){
         this.userFirstName=userFirstName;
         this.userName = userName;

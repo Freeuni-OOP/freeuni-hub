@@ -7,7 +7,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class FriendRequestersTest {
 
@@ -22,6 +22,7 @@ public class FriendRequestersTest {
     @Test
     public void getFriendRequestersTest() throws SQLException {
         Statement statement= connection.createStatement();
+
         statement.execute("Insert into users (id,first_name,last_name,user_name,password,email)" +
                 " values "+ "(1000,'luka','macho','mlfakfflsalme','123','MAE')");
         statement.execute("Insert into users (id,first_name,last_name,user_name,password,email)" +
@@ -35,6 +36,32 @@ public class FriendRequestersTest {
         FriendRequesters friendRequesters = new FriendRequesters(bc);
         assertEquals(1,friendRequesters.getFriendRequesters(1000).size());
         assertEquals(2000,friendRequesters.getFriendRequesters(1000).get(0).getId());
+        statement.execute("delete from friendRequests where requester_id = 2000;");
+        statement.execute("delete from usersInfo where user_id = 1000;");
+        statement.execute("delete from users where first_name = 'luka';");
+        statement.execute("delete from usersInfo where user_id = 2000;");
+        statement.execute("delete from users where first_name = 'blukab'");
+    }
+
+    @Test
+    public void sendFriendRequestTest() throws SQLException {
+        Statement statement = connection.createStatement();
+
+        statement.execute("Insert into users (id,first_name,last_name,user_name,password,email)" +
+                " values "+ "(1000,'luka','macho','mlfakfflsalme','123','MAE')");
+        statement.execute("Insert into users (id,first_name,last_name,user_name,password,email)" +
+                " values "+ "(2000,'blukab','macho','mlfakflme','123','MARTVA')");
+        statement.execute("Insert into usersInfo (user_id,user_name,user_last_name)" +
+                " values "+ "(2000,'blukab','macho')");
+        statement.execute("Insert into usersInfo (user_id,user_name,user_last_name)" +
+                " values "+ "(1000,'luka','macho')");
+
+        FriendRequesters fr = new FriendRequesters(bc);
+        assertFalse(fr.hasSentFriendRequest(2000, 1000));
+        assertTrue(fr.sendFriendRequest(2000, 1000));
+        assertFalse(fr.hasSentFriendRequest(1000, 2000));
+        assertTrue(fr.hasSentFriendRequest(2000, 1000));
+
         statement.execute("delete from friendRequests where requester_id = 2000;");
         statement.execute("delete from usersInfo where user_id = 1000;");
         statement.execute("delete from users where first_name = 'luka';");
