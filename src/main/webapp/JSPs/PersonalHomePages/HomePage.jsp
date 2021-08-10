@@ -10,6 +10,9 @@
 
 <body>
 
+
+
+
 <ul>
     <li> <a href = "${pageContext.request.contextPath}/JSPs/IdentificationPages/LogInPage.jsp"> გასვლა </a> </li>
     <li> <a href = "${pageContext.request.contextPath}/JSPs/AboutUsPages/AboutUsPage.jsp"> ჩვენ შესახებ </a> </li>

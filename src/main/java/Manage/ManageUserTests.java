@@ -123,6 +123,7 @@ public class ManageUserTests implements UserConfiguration {
 
     }
 
+
     @Test
     public void testAddRemoveUser() throws SQLException{
         // you should try this for other user
@@ -138,6 +139,7 @@ public class ManageUserTests implements UserConfiguration {
         assertEquals(FOUND, manageUser.isValidUser("kaci", "Kacuri123"));
         manageUser.removeUser("vviga17@freeuni.edu.ge");
     }
+
 
 
     @Test

@@ -7,6 +7,8 @@ public interface UserConfiguration {
     String USERS_TABLE = "users";
     String USERS_INFO_TABLE = "usersInfo";
 
+
+
     //------------------------------------problems
     String EMPTY = "არცერთი ველი არ უნდა იყოს ცარიელი";  // for both feature
 
@@ -30,6 +32,8 @@ public interface UserConfiguration {
     String INCORRECT_MAIL = "ასეთი მეილი, აღნიშნული ადამიანის სახელით, თავისუფალ უნივერსიტეტს არ ეკუთვნის";
     String MAIL_EXISTS = "ასეთი მეილით მომხმარებელი უკვე არსებობს";
     String USERNAME_EXISTS = "ასეთი იუზერნეიმით მომხმარებელი უკვე არსებობს";
+
+    String ILLEGAL_FACULTY = "მხოლოდ ლათინური ასოები და სფეისი შეიძლება კურსის დასახელებაში.";
 
     //----------------------------------------if everything is ok
     String ALL_GOOD = "ყველაფერი რიგზეა";

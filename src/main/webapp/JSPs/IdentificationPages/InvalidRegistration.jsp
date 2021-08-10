@@ -3,6 +3,8 @@
 
 
 <html>
+
+
 <head>
     <link rel = "stylesheet" href = "../../PageStyles/RegistrationStyle.css">
     <style>
@@ -12,6 +14,7 @@
     </style>
     <title> ხელახალი მცდელობა </title>
 </head>
+
 
 
 <body>

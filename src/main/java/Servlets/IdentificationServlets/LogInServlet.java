@@ -34,6 +34,8 @@ public class LogInServlet extends HttpServlet implements Attributes, UserConfigu
         BaseConnector bc = (BaseConnector) getServletContext().getAttribute(BASE_CONNECTOR_ATTRIBUTE);
         ManageUser um = (ManageUser) getServletContext().getAttribute(USER_MANAGER_ATTRIBUTE);
 
+
+
         try {
             String result = um.isValidUser(username, password);
             if (result.equals(FOUND)) {
@@ -65,6 +67,7 @@ public class LogInServlet extends HttpServlet implements Attributes, UserConfigu
                         case "female": session.setAttribute("sex", "მდედრობითი"); break;
                     }
                 }
+
 
                 request.getRequestDispatcher("/JSPs/PersonalHomePages/HomePage.jsp").forward(request, response);
             }else {

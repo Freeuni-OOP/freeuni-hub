@@ -52,7 +52,8 @@ public class ProfileUpdateServlet extends HttpServlet implements Attributes, Use
 
         String curPassword = info.get(3); // get current password to check later
 
-        // get info
+
+        // get information
         String newUsername = request.getParameter("user_name");
         String sex = request.getParameter("sex");
 
@@ -72,7 +73,18 @@ public class ProfileUpdateServlet extends HttpServlet implements Attributes, Use
         String repeatedPassword = request.getParameter("repeatedPassword");
 
 
+
+
         //-----------------------------------------------------------------------different cases
+        for (int i = 0; i < faculty.length(); i++) { // check faculty
+            char cur = faculty.charAt(i);
+            if ((!Character.isLetter(cur)) && (cur != ' ')) {
+                session.setAttribute("problems", ILLEGAL_FACULTY);
+                request.getRequestDispatcher("/JSPs/PersonalHomePages/InvalidProfileUpdate.jsp").forward(request, response);
+                return;
+            }
+        }
+
         if (!oldPassword.equals(curPassword)) { // old password field must be correct
             session.setAttribute("problems", "ეს არ არის თქვენი ძველი პაროლი, გთხოვთ ხელახლა შეიყვანოთ.");
             request.getRequestDispatcher("/JSPs/PersonalHomePages/InvalidProfileUpdate.jsp").forward(request, response);
@@ -119,8 +131,11 @@ public class ProfileUpdateServlet extends HttpServlet implements Attributes, Use
                         case 5: session.setAttribute("course", "IV+"); break;
                         default: session.setAttribute("course", "არაა მითითებული"); break;
                     }
-                    System.out.println(sex);
-                    session.setAttribute("sex", sex);
+                    switch (sex) {
+                        case "no": session.setAttribute("sex", "თავს შევიკავებ");
+                        case "male": session.setAttribute("sex", "მამრობითი");
+                        case "female": session.setAttribute("sex", "მდედრობითი");
+                    }
                     request.getRequestDispatcher("/JSPs/PersonalHomePages/PersonalPage.jsp").forward(request, response);
                 }else {
                     session.setAttribute("problems", message);

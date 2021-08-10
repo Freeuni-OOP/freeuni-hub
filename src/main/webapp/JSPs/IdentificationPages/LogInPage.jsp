@@ -16,6 +16,9 @@
     </style>
 </head>
 
+  
+<body>
+
     <script type = "text/javascript" >
     function disableBackButton()
     {
@@ -24,6 +27,7 @@
     setTimeout("disableBackButton()", 0);
     </script>
     </head>
+
     <body onunload="disableBackButton()">
     <form action = "/login" method = "post" id = "form_login">
         <h1> მოგესალმებით ფრიუნიჰაბზე! </h1>

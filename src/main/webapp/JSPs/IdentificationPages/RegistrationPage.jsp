@@ -3,12 +3,17 @@
 
 <html>
 
+
+
+
 <head>
     <title> რეგისტრაცია </title>
     <link rel = "stylesheet" href = "../../PageStyles/RegistrationStyle.css">
 </head>
 
 <body>
+
+
 
 
 <form action = "/register" method = "post" id = "form_register">
