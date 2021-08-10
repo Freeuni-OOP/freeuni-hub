@@ -160,12 +160,13 @@ public class ManageUser implements UserConfiguration {
         if (!firstNameMessage.equals(CORRECT_FIRST_NAME)) return firstNameMessage; // first check first name
         String lastNameMessage = isValidLastName(lastName);
         if (!lastNameMessage.equals(CORRECT_LAST_NAME)) return lastNameMessage; // check last name
-        String usernameMessage = isValidUsername(username);
-        if (!usernameMessage.equals(CORRECT_USERNAME)) return usernameMessage; // check username
         String passwordMessage = isValidPassword(password);
         if (!passwordMessage.equals(CORRECT_PASSWORD)) return passwordMessage; // check password
         String mailMessage = isValidMail(mail, firstName, lastName);
         if (!mailMessage.equals(CORRECT_MAIL)) return mailMessage; // check mail
+        // finally check username
+        String usernameMessage = isValidUsername(username);
+        if (!usernameMessage.equals(CORRECT_USERNAME)) return usernameMessage; // check username
         return ALL_GOOD; // wow, everything is ok
     }
 

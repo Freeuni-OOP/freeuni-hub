@@ -101,11 +101,17 @@ public class ProfileUpdateServlet extends HttpServlet implements Attributes, Use
             message = um.isValidInput(info.get(0), info.get(1), newUsername, newPassword, info.get(4));
             if (message.equals(ALL_GOOD)) {
                 um.updateUser(user_id, newUsername, sex, faculty, course, newPassword);
+                request.getRequestDispatcher("/JSPs/PersonalHomePages/PersonalPage.jsp").forward(request, response);
             }else {
-                session.setAttribute("problems", message);
-                request.getRequestDispatcher("/JSPs/PersonalHomePages/InvalidProfileUpdate.jsp").forward(request, response);
+                if (message.equals(USERNAME_EXISTS) && (newUsername.equals(username))) {
+                    // ok this isn't problem
+                    um.updateUser(user_id, newUsername, sex, faculty, course, newPassword);
+                    request.getRequestDispatcher("/JSPs/PersonalHomePages/PersonalPage.jsp").forward(request, response);
+                }else {
+                    session.setAttribute("problems", message);
+                    request.getRequestDispatcher("/JSPs/PersonalHomePages/InvalidProfileUpdate.jsp").forward(request, response);
+                }
             }
-            request.getRequestDispatcher("/JSPs/PersonalHomePages/PersonalPage.jsp").forward(request, response);
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
