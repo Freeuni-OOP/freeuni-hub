@@ -20,6 +20,13 @@ public class FriendAddition {
         Statement statement = connection.createStatement();
         statement.execute("Insert into friends (requester_id,receiver_id) values ("
                 + requester_id +"," + receiver_id+");");
+        FriendRequesters fr = new FriendRequesters(bc);
+        fr.removeRequest(requester_id, receiver_id);
+    }
+
+    public void rejectFriend(int requester_id, int receiver_id) throws SQLException {
+        FriendRequesters fr = new FriendRequesters(bc);
+        fr.removeRequest(requester_id, receiver_id);
     }
 
     public void removeFriend(int requester_id, int receiver_id) throws SQLException {
