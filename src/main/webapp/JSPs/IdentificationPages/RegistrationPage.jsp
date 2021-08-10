@@ -3,12 +3,16 @@
 
 <html>
 
+
+
+
 <head>
     <title> რეგისტრაცია </title>
     <link rel = "stylesheet" href = "../../PageStyles/RegistrationStyle.css">
 </head>
 
 <body>
+
 
 
 

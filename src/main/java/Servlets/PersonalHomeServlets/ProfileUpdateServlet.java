@@ -73,6 +73,8 @@ public class ProfileUpdateServlet extends HttpServlet implements Attributes, Use
         String repeatedPassword = request.getParameter("repeatedPassword");
 
 
+
+
         //-----------------------------------------------------------------------different cases
         for (int i = 0; i < faculty.length(); i++) { // check faculty
             char cur = faculty.charAt(i);

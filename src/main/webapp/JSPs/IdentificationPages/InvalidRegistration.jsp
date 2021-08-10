@@ -3,6 +3,8 @@
 
 
 <html>
+
+
 <head>
     <link rel = "stylesheet" href = "../../PageStyles/RegistrationStyle.css">
     <style>

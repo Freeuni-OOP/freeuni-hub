@@ -231,6 +231,7 @@ public class ManageUser implements UserConfiguration {
 
         ResultSet rs2 = stmt.executeQuery("select * from " + USERS_INFO_TABLE + ";");
 
+
         while (rs2.next()) {
             if (rs2.getInt("user_id") == user_id) {
                 res.add(rs2.getString("course"));

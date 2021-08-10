@@ -8,6 +8,7 @@ public interface UserConfiguration {
     String USERS_INFO_TABLE = "usersInfo";
 
 
+
     //------------------------------------problems
     String EMPTY = "არცერთი ველი არ უნდა იყოს ცარიელი";  // for both feature
 

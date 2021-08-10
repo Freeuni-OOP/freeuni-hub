@@ -35,6 +35,7 @@ public class LogInServlet extends HttpServlet implements Attributes, UserConfigu
         ManageUser um = (ManageUser) getServletContext().getAttribute(USER_MANAGER_ATTRIBUTE);
 
 
+
         try {
             String result = um.isValidUser(username, password);
             if (result.equals(FOUND)) {

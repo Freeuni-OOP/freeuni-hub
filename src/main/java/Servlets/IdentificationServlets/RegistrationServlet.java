@@ -37,6 +37,7 @@ public class RegistrationServlet extends HttpServlet implements UserConfiguratio
 
         String result = null;
 
+
         try {
             result = um.isValidInput(firstName, lastName, username, password, mail);
         } catch (SQLException ignored) { }
