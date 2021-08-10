@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
 
@@ -134,6 +136,21 @@ public class ManageUserTests implements UserConfiguration {
         manageUser.addUserWithId(50, "vigac", "vigacashvili", "kaci", "Kacuri123",
                 "vviga17@freeuni.edu.ge");
         assertEquals(FOUND, manageUser.isValidUser("kaci", "Kacuri123"));
+        manageUser.removeUser("vviga17@freeuni.edu.ge");
+    }
+
+
+    @Test
+    public void testGetInfo() throws SQLException {
+        assertEquals(NOT_FOUND, manageUser.isValidUser("kaci", "Kacuri123"));
+        manageUser.addUserWithId(50, "vigac", "vigacashvili", "kaci", "Kacuri123",
+                "vviga17@freeuni.edu.ge");
+        assertEquals(FOUND, manageUser.isValidUser("kaci", "Kacuri123"));
+
+        ArrayList<String> info = manageUser.getUserInfo(50);
+
+        assertEquals(info, Arrays.asList("vigac", "vigacashvili", "kaci", "Kacuri123", "vviga17@freeuni.edu.ge"));
+
         manageUser.removeUser("vviga17@freeuni.edu.ge");
     }
 

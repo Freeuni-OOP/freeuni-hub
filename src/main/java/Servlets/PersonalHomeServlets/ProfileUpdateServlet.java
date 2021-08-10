@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
 
@@ -32,7 +33,6 @@ public class ProfileUpdateServlet extends HttpServlet implements Attributes, Use
 
         HttpSession session = request.getSession(false); // get session
         String username = (String)session.getAttribute("username"); // get username
-        String curPassword = "";
 
         BaseConnector bc = (BaseConnector) request.getServletContext().getAttribute(BASE_CONNECTOR_ATTRIBUTE);
         UserById ubi = new UserById(bc);
@@ -56,8 +56,11 @@ public class ProfileUpdateServlet extends HttpServlet implements Attributes, Use
 
         ManageUser um = (ManageUser) getServletContext().getAttribute(USER_MANAGER_ATTRIBUTE); // get manager
 
-        // if (um.isValidInput(firstName, lastName, ))
-
-        request.getRequestDispatcher("/JSPs/PersonalHomePages/PersonalPage.jsp").forward(request, response);
+//        if (um.isValidInput()) {
+//            request.getRequestDispatcher("/JSPs/PersonalHomePages/PersonalPage.jsp").forward(request, response);
+//        }else {
+//            PrintWriter pw = response.getWriter();
+//            pw.println("incorrect fields");
+//        }
     }
 }

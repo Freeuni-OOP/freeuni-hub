@@ -208,6 +208,27 @@ public class ManageUser implements UserConfiguration {
     }
 
 
+    ArrayList<String> getUserInfo(int user_id) throws SQLException {
+        // returns user info: firstName, lastName, username, password, mail
+        Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery("select * from " + USERS_TABLE + ";");
+
+        ArrayList<String> res = new ArrayList<>(); // final result
+
+        while (rs.next()) {
+            if (rs.getInt("id") == user_id) {
+                res.add(rs.getString("first_name"));
+                res.add(rs.getString("last_name"));
+                res.add(rs.getString("user_name"));
+                res.add(rs.getString("password"));
+                res.add(rs.getString("email"));
+            }
+        }
+
+        return res;
+    }
+
+
     // to update user by id
     public void updateUser(int id, String newUsername, String sex, String course, int courseNum) throws SQLException {
         Statement stmt = con.createStatement();
