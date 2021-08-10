@@ -95,7 +95,6 @@
                         </li>
 
 
-
                         <li>
                             <div class="field"> გვარი: </div>
                             <div class="value"> ${lastname} </div>

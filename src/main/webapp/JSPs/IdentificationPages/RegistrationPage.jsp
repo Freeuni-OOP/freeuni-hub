@@ -15,7 +15,6 @@
 
 
 
-
 <form action = "/register" method = "post" id = "form_register">
     <p> გთხოვთ გაიაროთ რეგისტრაცია </p>
     <label for = "firstName"> სახელი: </label>
