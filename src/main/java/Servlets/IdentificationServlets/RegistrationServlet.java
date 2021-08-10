@@ -41,29 +41,19 @@ public class RegistrationServlet extends HttpServlet implements UserConfiguratio
         } catch (SQLException ignored) { }
         assert result != null;
         if (result.equals(ALL_GOOD) && repeatPassword.equals(password)) {
+            HttpSession session = request.getSession();
+            session.setAttribute("username", username);
             try {
                 um.addUser(firstName, lastName, username, password, mail);
-                // add user info too
-
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-
-            // set into session
-            HttpSession session = request.getSession();
-            session.setAttribute("firstname", firstName);
-            session.setAttribute("lastname", lastName);
-            session.setAttribute("username", username);
-            session.setAttribute("mail", mail);
-            session.setAttribute("faculty", "არაა მითითებული");
-            session.setAttribute("course", "არაა მითითებული");
-            session.setAttribute("sex", "თავს შევიკავებ");
             request.getRequestDispatcher("/JSPs/PersonalHomePages/HomePage.jsp").forward(request, response);
         }else if (!result.equals(ALL_GOOD)){
             request.setAttribute("problem", result); // what was the problem
             request.getRequestDispatcher("/JSPs/IdentificationPages/InvalidRegistration.jsp").forward(request, response);
         }else{
-            request.setAttribute("problem", NOT_EQUAL_PASSWORD);
+             request.setAttribute("problem", NOT_EQUAL_PASSWORD);
             request.getRequestDispatcher("/JSPs/IdentificationPages/InvalidRegistration.jsp").forward(request, response);
         }
     }

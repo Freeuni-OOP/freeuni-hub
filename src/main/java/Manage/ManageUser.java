@@ -160,11 +160,10 @@ public class ManageUser implements UserConfiguration {
         if (!firstNameMessage.equals(CORRECT_FIRST_NAME)) return firstNameMessage; // first check first name
         String lastNameMessage = isValidLastName(lastName);
         if (!lastNameMessage.equals(CORRECT_LAST_NAME)) return lastNameMessage; // check last name
-        String passwordMessage = isValidPassword(password);
-        if (!passwordMessage.equals(CORRECT_PASSWORD)) return passwordMessage; // check password
         String usernameMessage = isValidUsername(username);
         if (!usernameMessage.equals(CORRECT_USERNAME)) return usernameMessage; // check username
-        // finally mail
+        String passwordMessage = isValidPassword(password);
+        if (!passwordMessage.equals(CORRECT_PASSWORD)) return passwordMessage; // check password
         String mailMessage = isValidMail(mail, firstName, lastName);
         if (!mailMessage.equals(CORRECT_MAIL)) return mailMessage; // check mail
         return ALL_GOOD; // wow, everything is ok
@@ -182,7 +181,7 @@ public class ManageUser implements UserConfiguration {
         UserById ubi = new UserById(bc);
         int id = ubi.getIdByUsername(username);
         stmt.execute("insert into " + USERS_INFO_TABLE + "(user_id, user_name, user_last_name)" +
-                " values ('" + id + "' , '" + username + "' , '" + lastName + "');");
+                " values ('" + id + "' , '" + firstName + "' , '" + lastName + "');");
     }
 
     // method adds new user into the table
@@ -195,7 +194,7 @@ public class ManageUser implements UserConfiguration {
 
         // adds into USERS_INFO_TABLE
         stmt.execute("insert into " + USERS_INFO_TABLE + "(user_id, user_name, user_last_name)" +
-                " values ('" + id + "' , '" + username + "' , '" + lastName + "');");
+                " values ('" + id + "' , '" + firstName + "' , '" + lastName + "');");
     }
 
 
@@ -209,58 +208,13 @@ public class ManageUser implements UserConfiguration {
     }
 
 
-    public ArrayList<String> getUserInfo(int user_id) throws SQLException {
-        // returns user info: firstName, lastName, username, password, mail
-        Statement stmt = con.createStatement();
-        ResultSet rs1 = stmt.executeQuery("select * from " + USERS_TABLE + ";");
-
-        ArrayList<String> res = new ArrayList<>(); // final result
-
-        while (rs1.next()) {
-            if (rs1.getInt("id") == user_id) {
-                res.add(rs1.getString("first_name"));
-                res.add(rs1.getString("last_name"));
-                res.add(rs1.getString("user_name"));
-                res.add(rs1.getString("password"));
-                res.add(rs1.getString("email"));
-                break;
-            }
-        }
-
-        //-----------------------------now visit USERS_INFO_TABLE
-
-        ResultSet rs2 = stmt.executeQuery("select * from " + USERS_INFO_TABLE + ";");
-
-        while (rs2.next()) {
-            if (rs2.getInt("user_id") == user_id) {
-                res.add(rs2.getString("course"));
-                int courseNum = rs2.getInt("courseNum");
-                switch (courseNum) { // convert course int -> string
-                    case 1: res.add("I"); break;
-                    case 2: res.add("II"); break;
-                    case 3: res.add("III"); break;
-                    case 4: res.add("IV"); break;
-                    case 5: res.add("IV+"); break;
-                    default: res.add("არაა მითითებული"); break;
-                }
-                res.add(rs2.getString("sqesi"));
-                break;
-            }
-        }
-
-        return res;
-    }
-
-
     // to update user by id
-    public void updateUser(int id, String newUsername, String sex, String course, int courseNum, String newPassword) throws SQLException {
+    public void updateUser(int id, String newUsername, String sex, String course, int courseNum) throws SQLException {
         Statement stmt = con.createStatement();
         stmt.executeUpdate("update " + USERS_INFO_TABLE + " " +
                 "set user_name = '" + newUsername + "', sqesi = '" + sex +
                 "', course = '" + course + "', courseNum = " + courseNum + " where user_id = '" + id + "';");
 
-        stmt.executeUpdate("update " + USERS_TABLE + " " +
-                "set user_name = '" + newUsername + "' , password = '" + newPassword + "' where id = " + id + ";");
     }
 
 
@@ -276,7 +230,7 @@ public class ManageUser implements UserConfiguration {
         return userList;
     }
 
-    public void printUsernames() throws SQLException { // just printing users
+    public void printUsernames() throws SQLException {
         for (String user : this.allUsers())
             System.out.println(user);
     }

@@ -60,7 +60,7 @@
                     <div class="form-row">
 
                         <div class="form-group col-md-6">
-                            <label for="user_name"> ახალი იუზერნეიმი (შეგიძლიათ იგივე დატოვოთ, უბრალოდ იგივე იუზერნეიმი შეიყვანეთ) </label>
+                            <label for="user_name"> ახალი იუზერნეიმი </label>
                             <input type="text" id="user_name" name = "user_name"
                                     class="form-control" placeholder="მხოლოდ ლათინური ასოები, ციფრები, _" />
                         </div>
@@ -69,9 +69,9 @@
                         <div class="form-group col-md-6">
                             <label for="sex"> სქესი </label>
                             <select id="sex" class="form-control" name = "sex">
-                                <option selected = ""> secret </option>
-                                <option> male </option>
-                                <option> female </option>
+                                <option selected = ""> თავს შევიკავებ </option>
+                                <option> მამრობითი </option>
+                                <option> მდედრობითი </option>
                             </select>
                         </div>
 
@@ -83,7 +83,7 @@
                     <div class="form-row">
 
                         <div class="form-group col-md-6">
-                            <label for="inputCompany5"> ფაკულტეტი </label>
+                            <label for="inputCompany5"> ახალი ფაკულტეტი </label>
                             <input type="text" class="form-control" id="inputCompany5" name = "faculty" placeholder="მაგ: macs" />
                         </div>
 
