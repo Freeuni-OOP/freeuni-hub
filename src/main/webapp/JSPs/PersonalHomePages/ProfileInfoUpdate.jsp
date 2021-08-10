@@ -60,7 +60,7 @@
                     <div class="form-row">
 
                         <div class="form-group col-md-6">
-                            <label for="user_name"> ახალი იუზერნეიმი </label>
+                            <label for="user_name"> ახალი იუზერნეიმი (შეგიძლიათ იგივე დატოვოთ, უბრალოდ იგივე იუზერნეიმი შეიყვანეთ) </label>
                             <input type="text" id="user_name" name = "user_name"
                                     class="form-control" placeholder="მხოლოდ ლათინური ასოები, ციფრები, _" />
                         </div>
