@@ -47,6 +47,7 @@ public class LogInServlet extends HttpServlet implements Attributes, UserConfigu
                 session.setAttribute("username", username);
                 session.setAttribute("mail", info.get(4));
 
+
                 if (info.get(5) == null)
                     session.setAttribute("faculty", "არაა მითითებული");
                 else session.setAttribute("faculty", info.get(5));
