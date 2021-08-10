@@ -43,7 +43,14 @@ public class ProfileUpdateServlet extends HttpServlet implements Attributes, Use
             user_id = ubi.getIdByUsername(username); // get user id
         } catch (SQLException ignored) {}
 
-        
+
+        ManageUser um = (ManageUser) getServletContext().getAttribute(USER_MANAGER_ATTRIBUTE); // get manager
+        ArrayList<String> info = new ArrayList<>(); // this is final user info to check
+        try {
+            info = um.getUserInfo(user_id);
+        } catch (SQLException ignored) {}
+
+        String curPassword = info.get(3); // get current password to check later
 
         // get info
         String newUsername = request.getParameter("user_name");
@@ -68,6 +75,12 @@ public class ProfileUpdateServlet extends HttpServlet implements Attributes, Use
 
 
         //-----------------------------------------------------------------------different cases
+        if (!oldPassword.equals(curPassword)) { // old password field must be correct
+            session.setAttribute("problems", "ეს არ არის თქვენი ძველი პაროლი, გთხოვთ ხელახლა შეიყვანოთ.");
+            request.getRequestDispatcher("/JSPs/PersonalHomePages/InvalidProfileUpdate.jsp").forward(request, response);
+            return;
+        }
+
         if (oldPassword.equals(newPassword)) { // old and new mustn't match
             session.setAttribute("problems", "ძველი და ახალი პაროლები არ უნდა ემთხვეოდეს, კიდევ ერთხელ წაიკითხეთ პაროლის მოთხოვნები.");
             request.getRequestDispatcher("/JSPs/PersonalHomePages/InvalidProfileUpdate.jsp").forward(request, response);
@@ -83,11 +96,7 @@ public class ProfileUpdateServlet extends HttpServlet implements Attributes, Use
 
         //-----------------------------------------------------------------------------------------
 
-        ManageUser um = (ManageUser) getServletContext().getAttribute(USER_MANAGER_ATTRIBUTE); // get manager
-        ArrayList<String> info = new ArrayList<>(); // this is final user info to check
-        try {
-            info = um.getUserInfo(user_id);
-        } catch (SQLException ignored) {}
+
 
         try {
             if (um.isValidInput(info.get(0), info.get(1), newUsername, newPassword, info.get(4)).equals(ALL_GOOD)) {
