@@ -10,8 +10,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
 
@@ -141,30 +139,13 @@ public class ManageUserTests implements UserConfiguration {
 
 
     @Test
-    public void testGetInfo() throws SQLException {
-        assertEquals(NOT_FOUND, manageUser.isValidUser("kaci", "Kacuri123"));
-        manageUser.addUserWithId(50, "vigac", "vigacashvili", "kaci", "Kacuri123",
-                "vviga17@freeuni.edu.ge");
-        assertEquals(FOUND, manageUser.isValidUser("kaci", "Kacuri123"));
-
-        ArrayList<String> info = manageUser.getUserInfo(50);
-
-        assertEquals(Arrays.asList("vigac", "vigacashvili", "kaci", "Kacuri123", "vviga17@freeuni.edu.ge",
-                null, "არაა მითითებული", null), info);
-
-        manageUser.removeUser("vviga17@freeuni.edu.ge");
-    }
-
-
-    @Test
     public void testUpdateUser() throws SQLException {
         assertEquals(NOT_FOUND, manageUser.isValidUser("kaci", "Kacuri123"));
         manageUser.addUserWithId(50, "vigac", "vigacashvili", "kaci", "Kacuri123",
                 "vviga17@freeuni.edu.ge");
         assertEquals(FOUND, manageUser.isValidUser("kaci", "Kacuri123"));
 
-        // now update user information
-        manageUser.updateUser(50, "kaci1", "male", "macs", 1, "Kacuri1234");
+        manageUser.updateUser(50, "kaci1", "male", "macs", 1);
 
         Connection con = bc.accessConnection();
         Statement stmt = con.createStatement();
@@ -176,16 +157,6 @@ public class ManageUserTests implements UserConfiguration {
                 assertEquals("male", rs.getString("sqesi"));
                 assertEquals("macs", rs.getString("course"));
                 assertEquals(1, rs.getInt("courseNum"));
-                break;
-            }
-        }
-
-
-        ResultSet rs2 = stmt.executeQuery("select * from " + USERS_TABLE + ";");
-
-        while (rs2.next()) {
-            if (rs2.getInt("id") == 50) {
-                assertEquals("Kacuri1234", rs2.getString("password"));
                 break;
             }
         }

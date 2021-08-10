@@ -29,8 +29,5 @@ public class PhotoUploadServlet extends HttpServlet {
         System.out.println(url);
         System.out.println("FDS");
         response.sendRedirect("/JSPs/PersonalHomePages/PersonalPage.jsp");
-
-
-        // this must be fixed by Luka Samkharadze
     }
 }
