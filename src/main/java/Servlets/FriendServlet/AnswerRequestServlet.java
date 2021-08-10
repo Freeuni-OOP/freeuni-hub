@@ -61,7 +61,14 @@ public class AnswerRequestServlet extends HttpServlet {
                     e.printStackTrace();
                 }
             }else{
-
+                try {
+                    FriendAddition friendAddition= new FriendAddition(new BaseConnector());
+                    friendAddition.rejectFriend(requester_id,receiver_id);
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
             }
             request.getRequestDispatcher("/JSPs/PersonalHomePages/HomePage.jsp").forward(request, response);
         }
