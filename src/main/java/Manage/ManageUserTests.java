@@ -162,7 +162,8 @@ public class ManageUserTests implements UserConfiguration {
                 "vviga17@freeuni.edu.ge");
         assertEquals(FOUND, manageUser.isValidUser("kaci", "Kacuri123"));
 
-        manageUser.updateUser(50, "kaci1", "male", "macs", 1);
+        // now update user information
+        manageUser.updateUser(50, "kaci1", "male", "macs", 1, "Kacuri1234");
 
         Connection con = bc.accessConnection();
         Statement stmt = con.createStatement();
@@ -174,6 +175,16 @@ public class ManageUserTests implements UserConfiguration {
                 assertEquals("male", rs.getString("sqesi"));
                 assertEquals("macs", rs.getString("course"));
                 assertEquals(1, rs.getInt("courseNum"));
+                break;
+            }
+        }
+
+
+        ResultSet rs2 = stmt.executeQuery("select * from " + USERS_TABLE + ";");
+
+        while (rs2.next()) {
+            if (rs2.getInt("id") == 50) {
+                assertEquals("Kacuri1234", rs2.getString("password"));
                 break;
             }
         }

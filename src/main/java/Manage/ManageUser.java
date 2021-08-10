@@ -208,7 +208,7 @@ public class ManageUser implements UserConfiguration {
     }
 
 
-    ArrayList<String> getUserInfo(int user_id) throws SQLException {
+    public ArrayList<String> getUserInfo(int user_id) throws SQLException {
         // returns user info: firstName, lastName, username, password, mail
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery("select * from " + USERS_TABLE + ";");
@@ -230,12 +230,14 @@ public class ManageUser implements UserConfiguration {
 
 
     // to update user by id
-    public void updateUser(int id, String newUsername, String sex, String course, int courseNum) throws SQLException {
+    public void updateUser(int id, String newUsername, String sex, String course, int courseNum, String newPassword) throws SQLException {
         Statement stmt = con.createStatement();
         stmt.executeUpdate("update " + USERS_INFO_TABLE + " " +
                 "set user_name = '" + newUsername + "', sqesi = '" + sex +
                 "', course = '" + course + "', courseNum = " + courseNum + " where user_id = '" + id + "';");
 
+        stmt.executeUpdate("update " + USERS_TABLE + " " +
+                "set password = '" + newPassword + "' where id = " + id + ";");
     }
 
 
@@ -251,7 +253,7 @@ public class ManageUser implements UserConfiguration {
         return userList;
     }
 
-    public void printUsernames() throws SQLException {
+    public void printUsernames() throws SQLException { // just printing users
         for (String user : this.allUsers())
             System.out.println(user);
     }

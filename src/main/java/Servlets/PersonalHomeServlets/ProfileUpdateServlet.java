@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 
 @WebServlet(name = "Profile_Update", value = "/update")
@@ -37,8 +38,9 @@ public class ProfileUpdateServlet extends HttpServlet implements Attributes, Use
         BaseConnector bc = (BaseConnector) request.getServletContext().getAttribute(BASE_CONNECTOR_ATTRIBUTE);
         UserById ubi = new UserById(bc);
 
+        int user_id = -1;
         try {
-            int user_id = ubi.getIdByUsername(username); // get user id
+            user_id = ubi.getIdByUsername(username); // get user id
         } catch (SQLException ignored) {}
 
         
@@ -48,19 +50,39 @@ public class ProfileUpdateServlet extends HttpServlet implements Attributes, Use
         String sex = request.getParameter("sex");
 
         String faculty = request.getParameter("faculty");
-        String course = request.getParameter("course");
+        int course = Integer.parseInt(request.getParameter("course"));
 
         String oldPassword = request.getParameter("oldPassword");
         String newPassword = request.getParameter("newPassword");
         String repeatedPassword = request.getParameter("repeatedPassword");
 
-        ManageUser um = (ManageUser) getServletContext().getAttribute(USER_MANAGER_ATTRIBUTE); // get manager
+        PrintWriter pw = response.getWriter(); // need printWriter for message
 
-//        if (um.isValidInput()) {
-//            request.getRequestDispatcher("/JSPs/PersonalHomePages/PersonalPage.jsp").forward(request, response);
-//        }else {
-//            PrintWriter pw = response.getWriter();
-//            pw.println("incorrect fields");
-//        }
+
+        //-----------------------------------------------------------------------different cases
+        if (oldPassword.equals(newPassword)) {
+            pw.println("ძველი და ახალი პაროლები არ უნდა ემთხვეოდეს, კიდევ ერთხელ წაიკითხეთ პაროლის მოთხოვნები.");
+            request.getRequestDispatcher("/JSPs/PersonalHomePages/PersonalPage.jsp").forward(request, response);
+            return;
+        }
+
+        //-----------------------------------------------------------------------------------------
+
+        ManageUser um = (ManageUser) getServletContext().getAttribute(USER_MANAGER_ATTRIBUTE); // get manager
+        ArrayList<String> info = new ArrayList<>(); // this is final user info to check
+        try {
+            info = um.getUserInfo(user_id);
+        } catch (SQLException ignored) {}
+
+        try {
+            if (um.isValidInput(info.get(0), info.get(1), newUsername, newPassword, info.get(4)).equals(ALL_GOOD)) {
+                um.updateUser(user_id, newUsername, sex, faculty, course, newPassword);
+            }else {
+                pw.println("არალეგალური ინფუთი. სცადეთ ხელახლა");
+            }
+            request.getRequestDispatcher("/JSPs/PersonalHomePages/PersonalPage.jsp").forward(request, response);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 }
