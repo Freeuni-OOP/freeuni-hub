@@ -53,8 +53,8 @@ public  class SearchTest {
         statement.execute("Insert into usersInfo (user_id,user_name,user_last_name)" +
                 " values "+ "(2000,'blukab','macho')");
         Search search = new Search(bc);
-        assertEquals(2,search.searchSimilarUsers("bigenti",1000).size());
-        assertEquals(1,search.searchSimilarUsers("bigentia",2000).size());
+        assertEquals(1,search.searchSimilarUsers("bigenti",1000).size());
+        assertEquals(0,search.searchSimilarUsers("bigentia",2000).size());
         statement.execute("delete from usersInfo where user_id = 1000;");
         statement.execute("delete from users where user_name = 'bigenti';");
         statement.execute("delete from usersInfo where user_id = 2000;");

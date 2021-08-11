@@ -39,7 +39,8 @@ public class Search {
         Statement statement = connection.createStatement();
         ArrayList<Integer> user_ids = new ArrayList<>();
         ArrayList<String> users = new ArrayList<>();
-        ResultSet rs = statement.executeQuery("Select * from " + USERS_TABLE + " where user_name like  '%" + userName + "%';");
+        ResultSet rs = statement.executeQuery("Select * from " + USERS_TABLE + " where user_name like  '%" + userName + "%' " +
+                "and id != "+user_id+";");
         while(rs.next()) {
             int id = rs.getInt(1);
             user_ids.add(id);
