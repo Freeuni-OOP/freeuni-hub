@@ -33,8 +33,17 @@
 
                      <ul class="profile-header-tab nav nav-tabs">
                          <li class="nav-item"><a href="#profile-post" class="nav-link" > პოსტები </a></li>
-                         <li class="nav-item"><a href="#profile-about" class="nav-link" > დაიმატე მეგობარი </a></li>
-                          <li class="nav-item"><a href="#profile-about" class="nav-link" > დაბლოკე იუზერი </a></li>
+
+                         <form action="/addFriend" method = "post">
+                         <button> დაიმატე მეგობარი </button>
+                         <input type="hidden" name = "username"  value = ${username}>
+                         <input type="hidden" name = "profileName"  value = ${profileName}>
+                         </form>
+                         <form action="/blockUser" method = "post">
+                         <button> დაბლოკე იუზერი </button>
+                         <input type="hidden" name = "username"  value = ${username}>
+                         <input type="hidden" name = "profileName"  value = ${profileName}>
+                          </form>
                          <li class="nav-item"><a href="${pageContext.request.contextPath}/JSPs/PersonalHomePages/HomePage.jsp"
                                                  > მთავარი გვერდი </a></li>
                      </ul>

@@ -36,7 +36,11 @@
 
                      <ul class="profile-header-tab nav nav-tabs">
                          <li class="nav-item"><a href="#profile-post" class="nav-link" > პოსტები </a></li>
-                         <li class="nav-item"><a href="#profile-about" class="nav-link" > შეწყვიტე მეგობრობა </a></li>
+                         <form action="/unFriend" method = "post">
+                         <button> შეწყვიტე მეგობრობა <button>
+                         <input type="hidden" name = "username"  value = ${username}>
+                         <input type="hidden" name = "profileName"  value = ${profileName}>
+                         </form>
                          <li class="nav-item"><a href="${pageContext.request.contextPath}/JSPs/PersonalHomePages/HomePage.jsp"
                                                  > მთავარი გვერდი </a></li>
                      </ul>
