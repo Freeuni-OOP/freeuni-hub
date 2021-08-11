@@ -6,4 +6,4 @@ create table comments(
     constraint foreign key(post_id) references posts(post_id) on delete restrict on update cascade,
     comment_text varchar(3000),
     comment_date datetime
-)
+);
