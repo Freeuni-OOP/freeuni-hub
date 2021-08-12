@@ -34,7 +34,7 @@ public class PostList {
     }
 
     // returns list of Posts by Username
-    public List<Post> getFriendList(String userName) throws SQLException {
+    public List<Post> getPostList(String userName) throws SQLException {
         UserById ubi = new UserById(bc);
         int id = ubi.getIdByUsername(userName);
         return getPostList(id);

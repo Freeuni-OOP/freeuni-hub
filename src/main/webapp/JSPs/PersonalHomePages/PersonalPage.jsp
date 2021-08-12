@@ -53,7 +53,10 @@
             </div>
 
             <ul class="profile-header-tab nav nav-tabs">
-                <li class="nav-item"><a href="#profile-post" class="nav-link" > პოსტები </a></li>
+                <form action="/Posts" method="post">
+                <button > პოსტები </button>
+                <input type = "hidden" name ="username" value =${username}>
+                </form>
                 <li class="nav-item"><a href="#profile-about" class="nav-link" > ჩემ შესახებ </a></li>
                 <li class="nav-item"><a href="#profile-photos" class="nav-link" > ფოტოები </a></li>
                  <form action="/showFriends" , method="post">
