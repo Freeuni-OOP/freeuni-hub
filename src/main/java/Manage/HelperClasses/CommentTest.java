@@ -50,4 +50,10 @@ public class CommentTest {
         assertEquals(122, comment5.getUserId());
     }
 
+    @Test
+    public void testGetPost(){
+        Comment comment1 = new Comment(post, "yochag", 12);
+        assertEquals(post, comment1.getPost());
+    }
+
 }

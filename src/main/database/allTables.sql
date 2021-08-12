@@ -86,6 +86,13 @@ create table blockedUsers(
     constraint foreign key (blocked_id) references users(id) on delete restrict on update cascade
 );
 
+
+create table locations(
+    id int primary key auto_increment,
+    name varchar(300) not null unique,
+    numStudents int
+);
+
 create table changeLocationRequest(
 	requester_id int not null,
     requester_location_id int not null,
@@ -107,10 +114,4 @@ create table locationMembers(
     user_id int not null unique,
     constraint foreign key(location_id) references locations(id) on delete restrict on update cascade,
     constraint foreign key(user_id) references users(id) on delete restrict on update cascade
-);
-
-create table locations(
-    id int primary key auto_increment,
-    name varchar(300) not null unique,
-    numStudents int
 );
