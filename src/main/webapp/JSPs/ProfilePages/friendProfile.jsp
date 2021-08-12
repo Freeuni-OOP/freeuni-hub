@@ -36,7 +36,7 @@
 
                      <ul class="profile-header-tab nav nav-tabs">
                          <form action="/visitPosts" method = "post">
-                         <button> მეგობრის პოსტები <button>
+                         <button> ${profileName}ს პოსტები <button>
                          <input type="hidden" name = "username"  value = ${username}>
                          <input type="hidden" name = "profileName"  value = ${profileName}>
                          </form>
