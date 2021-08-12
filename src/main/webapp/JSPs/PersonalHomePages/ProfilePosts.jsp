@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="java.math.*, java.util.*,Manage.HelperClasses.*" %>
+<%@ page import="java.math.*,DataBaseConnection.BaseConnector, java.util.*,Manage.HelperClasses.*,java.io.IOException,java.sql.SQLException" %>
 <html>
 
 <head>
@@ -23,10 +23,19 @@
                         %>   უკომენტაროდ <%
                     }else{
                         for(Comment comment : commentList){
-                        int user_id = comment.getUserId();
-
+                            int user_id = comment.getUserId();
+                            String commentorName ="";
+                            try{
+                                UserById ubi = new UserById(new BaseConnector());
+                                User user = ubi.getUser(user_id);
+                                commentorName=user.getUserName();
+                            }catch (SQLException throwables) {
+                                throwables.printStackTrace();
+                             } catch (ClassNotFoundException e) {
+                                e.printStackTrace();
+                             }
                             %>
-                           <%=comment.getUserId()%>-ს კომენტარი: <%=comment.getComment()%>
+                           <%=commentorName%>-ს კომენტარი: <%=comment.getComment()%>
                            <p> </p>
                            <%
                         }

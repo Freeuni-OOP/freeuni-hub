@@ -2,8 +2,6 @@ package Servlets.FriendServlet;
 
 import DataBaseConnection.BaseConnector;
 import Manage.HelperClasses.FriendAddition;
-import Manage.HelperClasses.Search;
-import Manage.HelperClasses.User;
 import Manage.HelperClasses.UserById;
 
 import javax.servlet.ServletException;

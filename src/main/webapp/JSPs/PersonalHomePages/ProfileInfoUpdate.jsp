@@ -76,7 +76,19 @@
                                 <option> female </option>
                             </select>
                         </div>
-
+                        <div class="form-group col-md-6">
+                            <label for="saveleLocatino"> საველეს ლოკაცია </label>
+                            <select id="saveleLocation" class="form-control" name = "saveleLocation">
+                                <option selected = ""> აირჩიე </option>
+                                <option> Qvabisxevi2 </option>
+                                <option> Qvabisxevi3 </option>
+                                <option> Fari2 </option>
+                                <option> Fari3 </option>
+                                <option> Baxmaro2 </option>
+                                <option> Baxmaro3 </option>
+                                <option> Already passed </option>
+                            </select>
+                        </div>
                     </div>
 
                     <br> <%-- skip line for more beauty-------------------------------------------------%>
