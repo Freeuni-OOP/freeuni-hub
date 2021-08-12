@@ -45,4 +45,28 @@ public class PostListTest {
 
         statement.execute("delete from users where first_name = 'luka';");
     }
+    @Test
+    public void testPostListByUsername() throws SQLException {
+        Statement statement = connection.createStatement();
+
+        statement.execute("Insert into users (id,first_name,last_name,user_name,password,email)" +
+                " values "+ "(1000,'luka','macho','lukaMacho','123','MAE')");
+        PostAddition pa = new PostAddition(bc);
+        PostList pl = new PostList(bc);
+        assertEquals(0, pl.getPostList("lukaMacho").size());
+        pa.addPost(1000, "hello", 10);
+        assertEquals(1, pl.getPostList("lukaMacho").size());
+        pa.addPost(1000, "goodbye", 11);
+        assertEquals(2, pl.getPostList("lukaMacho").size());
+        Post post1 = pl.getPostList("lukaMacho").get(0);
+        Post post2 = pl.getPostList("lukaMacho").get(1);
+
+        assertTrue((post1.getPostId() == 10 && post1.getText().equals("hello") && post2.getPostId() == 11 && post2.getText().equals("goodbye")) ||
+                (post2.getPostId() == 10 && post1.getText().equals("goodbye") && post1.getPostId() == 11 && post2.getText().equals("hello")));
+        pa.removePost(10);
+        pa.removePost(11);
+        assertFalse(pl.getPostList("lukaMacho").size() > 0);
+
+        statement.execute("delete from users where first_name = 'luka';");
+    }
 }
