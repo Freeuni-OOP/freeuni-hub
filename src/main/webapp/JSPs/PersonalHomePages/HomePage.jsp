@@ -21,6 +21,9 @@
    <form action = "${pageContext.request.contextPath}/FriendRequests" method = "post" id = "Friend_Request">
    <button> მეგობრების თხოვნები </button>
    </form>
+   <form action = "${pageContext.request.contextPath}/SaveleRequests" method = "post" id = "Savele_Request">
+      <button> საველეს გაცვლის თხოვნები </button>
+   </form>
    <form action = "${pageContext.request.contextPath}/DeleteAccount" method = "post" id = "Delete_Request">
       <input type="hidden" name="username" value=${username}>
       <button = "abortAccount"> გააუქმე ექაუნთი </button>

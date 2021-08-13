@@ -39,6 +39,11 @@
                          <input type="hidden" name = "username"  value = ${username}>
                          <input type="hidden" name = "profileName"  value = ${profileName}>
                          </form>
+                         <form action="/changeLocation" method = "post">
+                         <button> გაუცვალე ლოკაცია <button>
+                         <input type="hidden" name = "username"  value = ${username}>
+                         <input type="hidden" name = "profileName"  value = ${profileName}>
+                         </form>
                          <form action="/blockUser" method = "post">
                          <button> დაბლოკე იუზერი </button>
                          <input type="hidden" name = "username"  value = ${username}>
@@ -100,8 +105,10 @@
                                      <div class="value"> ${profileSex} </div>
                                  </li>
 
-                                 <li class="title">მეგობრების სია: </li>
-                                 <li class="img-list">
+                                 <li>
+                                      <div class="field"> საველეს ლოკაცია: </div>
+                                      <div class="value"> ${saveleLocation} </div>
+                                 </li>
 
                                      <!----------------------------------------friends avatars-->
 

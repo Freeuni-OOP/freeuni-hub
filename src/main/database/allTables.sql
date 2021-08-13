@@ -115,3 +115,10 @@ create table locationMembers(
     constraint foreign key(location_id) references locations(id) on delete restrict on update cascade,
     constraint foreign key(user_id) references users(id) on delete restrict on update cascade
 );
+
+insert into locations (name,numStudents) values('Fari2',0);
+insert into locations (name,numStudents) values('Baxmaro2',0);
+insert into locations (name,numStudents) values('Qvabisxevi2',0);
+insert into locations (name,numStudents) values('Fari3',0);
+insert into locations (name,numStudents) values('Baxmaro3',0);
+insert into locations (name,numStudents) values('Qvabisxevi3',0);
