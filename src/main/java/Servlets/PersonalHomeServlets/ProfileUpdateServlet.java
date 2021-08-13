@@ -3,6 +3,8 @@ package Servlets.PersonalHomeServlets;
 
 import DataBaseConnection.BaseConnector;
 import Manage.Configurations.UserConfiguration;
+import Manage.HelperClasses.LocationAddition;
+import Manage.HelperClasses.LocationID;
 import Manage.HelperClasses.UserById;
 import Manage.ManageUser;
 import StarterManager.Attributes;
@@ -56,8 +58,9 @@ public class ProfileUpdateServlet extends HttpServlet implements Attributes, Use
         // get information
         String newUsername = request.getParameter("user_name");
         String sex = request.getParameter("sex");
-
+        String saveleLocation =  request.getParameter("saveleLocation");
         String faculty = request.getParameter("faculty");
+
         int course = -1;
         String possibleCourse = (request.getParameter("course"));
         switch (possibleCourse) {
@@ -113,6 +116,24 @@ public class ProfileUpdateServlet extends HttpServlet implements Attributes, Use
             message = um.isValidInput(info.get(0), info.get(1), newUsername, newPassword, info.get(4));
             if (message.equals(ALL_GOOD)) {
                 um.updateUser(user_id, newUsername, sex, faculty, course, newPassword);
+                if(saveleLocation!=null&&!saveleLocation.equals("")) {
+                    try {
+                        LocationID locationID = new LocationID(new BaseConnector());
+                        int location_id=locationID.getIdByLocation(saveleLocation);
+                        UserById userById = new UserById(new BaseConnector());
+                        int id = userById.getIdByUsername(newUsername);
+                        LocationAddition locationAddition = new LocationAddition(new BaseConnector());
+                        if(locationAddition.alreadyRegistered(id)){
+                            locationAddition.updateLocationId(id,location_id);
+                        }else{
+                            locationAddition.addIdInLocation(id,location_id);
+                        }
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    } catch (ClassNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                }
                 request.getRequestDispatcher("/JSPs/PersonalHomePages/PersonalPage.jsp").forward(request, response);
             }else {
                 if ((message.equals(USERNAME_EXISTS) && (newUsername.equals(username)))
@@ -121,6 +142,24 @@ public class ProfileUpdateServlet extends HttpServlet implements Attributes, Use
                     // ok this isn't problem
                     um.updateUser(user_id, newUsername, sex, faculty, course, newPassword);
                     // set attributes
+                    if(saveleLocation!=null&&!saveleLocation.equals("")) {
+                        try {
+                            LocationID locationID = new LocationID(new BaseConnector());
+                            int location_id=locationID.getIdByLocation(saveleLocation);
+                            UserById userById = new UserById(new BaseConnector());
+                            int id = userById.getIdByUsername(newUsername);
+                            LocationAddition locationAddition = new LocationAddition(new BaseConnector());
+                            if(locationAddition.alreadyRegistered(id)){
+                                locationAddition.updateLocationId(id,location_id);
+                            }else{
+                                locationAddition.addIdInLocation(id,location_id);
+                            }
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        } catch (ClassNotFoundException e) {
+                            e.printStackTrace();
+                        }
+                    }
                     session.setAttribute("username", newUsername);
                     session.setAttribute("faculty", faculty);
                     switch (course) { // int -> string for course number
@@ -137,6 +176,14 @@ public class ProfileUpdateServlet extends HttpServlet implements Attributes, Use
                         case "secret": session.setAttribute("sex", "თავს შევიკავებ"); break;
                         case "male": session.setAttribute("sex", "მამრობითი"); break;
                         case "female": session.setAttribute("sex", "მდედრობითი"); break;
+                    }
+                    switch(saveleLocation){
+                        case "Qvabisxevi2": session.setAttribute("saveleLocation","ქვაბისხევი2");break;
+                        case "Qvabisxevi3": session.setAttribute("saveleLocation","ქვაბისხევი3");break;
+                        case "Baxmaro2": session.setAttribute("saveleLocation","ბახმარო2");break;
+                        case "Baxmaro3": session.setAttribute("saveleLocation","ბახმარო3");break;
+                        case "Fari2": session.setAttribute("saveleLocation","ფარი2");break;
+                        case "Fari3": session.setAttribute("saveleLocation","ფარი3");break;
                     }
                     request.getRequestDispatcher("/JSPs/PersonalHomePages/PersonalPage.jsp").forward(request, response);
                 }else {

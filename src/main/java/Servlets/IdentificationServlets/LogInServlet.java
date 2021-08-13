@@ -3,6 +3,8 @@ package Servlets.IdentificationServlets;
 
 import DataBaseConnection.BaseConnector;
 import Manage.Configurations.UserConfiguration;
+import Manage.HelperClasses.LocationAddition;
+import Manage.HelperClasses.LocationID;
 import Manage.HelperClasses.UserById;
 import Manage.ManageUser;
 import StarterManager.Attributes;
@@ -50,6 +52,14 @@ public class LogInServlet extends HttpServlet implements Attributes, UserConfigu
                 session.setAttribute("username", username);
                 session.setAttribute("mail", info.get(4));
 
+                LocationAddition locationAddition = new LocationAddition(new BaseConnector());
+                if(locationAddition.alreadyRegistered(user_id)){
+                    LocationID locationID = new LocationID(new BaseConnector());
+                    String saveleName = locationID.getLocationById(locationAddition.locationId(user_id)).getLocName();
+                    session.setAttribute("saveleLocation", saveleName);
+                }else{
+                    session.setAttribute("saveleLocation","არაა მითითებული");
+                }
                 if (info.get(5) == null)
                     session.setAttribute("faculty", "არაა მითითებული");
                 else session.setAttribute("faculty", info.get(5));
@@ -74,6 +84,6 @@ public class LogInServlet extends HttpServlet implements Attributes, UserConfigu
             }else {
                 request.getRequestDispatcher("/JSPs/IdentificationPages/InvalidLogIn.jsp").forward(request, response);
             }
-        } catch (SQLException ignored) {}
+        } catch (SQLException | ClassNotFoundException ignored) {}
     }
 }
