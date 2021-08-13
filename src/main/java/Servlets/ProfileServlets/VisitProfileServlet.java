@@ -1,10 +1,7 @@
 package Servlets.ProfileServlets;
 
 import DataBaseConnection.BaseConnector;
-import Manage.HelperClasses.BlockUser;
-import Manage.HelperClasses.FriendAddition;
-import Manage.HelperClasses.User;
-import Manage.HelperClasses.UserById;
+import Manage.HelperClasses.*;
 import Manage.ManageUser;
 
 import javax.servlet.ServletException;
@@ -52,6 +49,14 @@ public class VisitProfileServlet extends HttpServlet {
             ManageUser manageUser = new ManageUser(new BaseConnector());
             ArrayList<String > userInfo = manageUser.getUserInfo(profile_id);
             profileMail = userInfo.get(4);
+            LocationAddition locationAddition = new LocationAddition(new BaseConnector());
+            if(locationAddition.alreadyRegistered(profile_id)){
+                LocationID locationID = new LocationID(new BaseConnector());
+                String saveleLocation=locationID.getLocationById(locationAddition.locationId(profile_id)).getLocName();
+                session.setAttribute("saveleLocation",saveleLocation);
+            }else{
+                session.setAttribute("saveleLocation","არაა მითითებული");
+            }
             if (userInfo.get(5) == null)
                 session.setAttribute("profileFaculty", "არაა მითითებული");
             else session.setAttribute("profileFaculty", userInfo.get(5));

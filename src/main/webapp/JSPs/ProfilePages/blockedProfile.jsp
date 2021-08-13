@@ -94,8 +94,10 @@
                                      <div class="value"> ${profileSex} </div>
                                  </li>
 
-                                 <li class="title">მეგობრების სია: </li>
-                                 <li class="img-list">
+                                 <li>
+                                      <div class="field"> საველეს ლოკაცია: </div>
+                                       <div class="value"> ${saveleLocation} </div>
+                                  </li>
 
                                      <!----------------------------------------friends avatars-->
 

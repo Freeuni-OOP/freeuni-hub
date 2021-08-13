@@ -41,6 +41,7 @@ public class LocationAdditionTest {
     public void testAddition() throws SQLException {
         locationAddition.removeFromLocation(100);
         locationAddition.removeLocation(1);
+        statement.execute("delete from locationMembers");
         statement.execute("delete from users where id = "+100);
         statement.execute("Insert into users (id, first_name, last_name, user_name, password, email)" +
                 " values "+ "(100, 'keith', 'markovic', 'naf_fly', 'val1D', 'kmark15@freeuni.edu.ge')");

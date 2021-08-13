@@ -70,7 +70,13 @@ public class LocationAddition {
         while(rs.next()){
             receiverLocationId = rs.getInt(1);
         }
+        System.out.println(receiverLocationId+"ese minida");
         updateLocationId(receiver_id,requesterLocationID);
         updateLocationId(requester_id,receiverLocationId);
+    }
+    public void removeSimilars(int requester_id) throws SQLException {
+        Statement statement = connection.createStatement();
+        statement.execute("Delete from changeLocationRequest where requester_id = "+requester_id+";");
+        statement.execute("Delete from changeLocationRequest where receiver_id = "+requester_id+";");
     }
 }
