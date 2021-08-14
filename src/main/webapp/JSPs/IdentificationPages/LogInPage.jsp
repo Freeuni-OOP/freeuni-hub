@@ -22,15 +22,41 @@
     <h3>მოგესალმებით ფრიუნიჰაბზე!</h3>
     <p> გთხოვთ შეიყვანოთ თქვენი ინფორმაცია </p>
     <label for="username"> იუზერნეიმი: </label>
-    <input class="form-control" type="text" name="username" id="username" size="25"> <br/>
+    <input
+            required
+            class="form-control"
+            type="text"
+            name="username"
+            id="username"
+            size="25"
+            oninvalid="this.setCustomValidity('იუზერნეიმის შეყვანა აუცილებელია')"
+            onvalid="this.setCustomValidity('')"
+    >
     <label for="password"> პაროლი: </label>
-    <input class="form-control" type="password" name="password" id="password" size="30"> <br/>
-    <div>
-        <input class="form-check-input" type="checkbox" onclick=change() id="show">
+    <input
+            required
+            class="form-control"
+            type="password"
+            name="password"
+            id="password"
+            size="30"
+            oninvalid="this.setCustomValidity('პაროლის შეყვანა აუცილებელია')"
+            onvalid="this.setCustomValidity('')"
+    >
+    <div class="input">
+        <input
+                required
+                class="form-check-input"
+                type="checkbox"
+                onclick=change()
+                id="show"
+        >
         <label for="show"> პაროლის ჩვენება </label>
-    </div><br/>
-    <input class="btn btn-primary" type="submit" value="შესვლა"> <br/>
-    <a class="btn btn-warning" href="${pageContext.request.contextPath}/JSPs/IdentificationPages/RegistrationPage.jsp">ახალი მომხმარებლის რეგისტრაცია </a>
+    </div>
+    <input class="btn btn-primary" type="submit" value="შესვლა">
+    <a style="display: block;" href="${pageContext.request.contextPath}/JSPs/IdentificationPages/RegistrationPage.jsp">
+        <input style="width: 100%" type="button" class="btn btn-warning" value="ახალი მომხმარებლის რეგისტრაცია">
+    </a>
 </form>
 
 <!------------------------------------------------------------ java script -->

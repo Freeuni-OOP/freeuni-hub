@@ -16,29 +16,55 @@
 <form action="/register" method="post" id="form_register">
     <p> გთხოვთ გაიაროთ რეგისტრაცია </p>
     <label for="firstName"> სახელი: </label>
-    <input class="form-control" type="text" name="firstName" id="firstName"
-           size="38" placeholder="ლათინური პატარა ასოები"> <br/>
+    <input
+            required
+            class="form-control" type="text" name="firstName" id="firstName"
+           size="38" placeholder="ლათინური პატარა ასოები"
+           oninvalid="this.setCustomValidity('სახელის შეყვანა აუცილებელია')"
+           onvalid="this.setCustomValidity('')">
     <label for="lastName"> გვარი: </label>
-    <input class="form-control" type="text" name="lastName" id="lastName"
-           size="40" placeholder="ლათინური პატარა ასოები"> <br/>
+    <input
+            required
+            class="form-control" type="text" name="lastName" id="lastName"
+           size="40" placeholder="ლათინური პატარა ასოები"
+           oninvalid="this.setCustomValidity('გვარის შეყვანა აუცილებელია')"
+           onvalid="this.setCustomValidity('')">
     <label for="username"> იუზერნეიმი: </label>
-    <input class="form-control" type="text" name="username" id="username"
-           size="33" placeholder="ლათინური ასოები, ციფრები, _"> <br/>
+    <input
+            required
+            class="form-control" type="text" name="username" id="username"
+           size="33" placeholder="ლათინური ასოები, ციფრები, _"
+           oninvalid="this.setCustomValidity('იუზერნეიმის შეყვანა აუცილებელია')"
+           onvalid="this.setCustomValidity('')">
     <label for="password"> პაროლი: </label>
-    <input class="form-control" type="password" name="password" id="password"
-           size="37" placeholder="ლათინური ასოები, ციფრები, _"> <br/>
-    <div>
+    <input
+            required
+            class="form-control" type="password" name="password" id="password"
+           size="37" placeholder="ლათინური ასოები, ციფრები, _"
+           oninvalid="this.setCustomValidity('პაროლის შეყვანა აუცილებელია')"
+           onvalid="this.setCustomValidity('')">
+    <div class="input">
         <input class="form-check-input" type="checkbox" onclick=change() id="show">
         <label for="show"> პაროლის ჩვენება </label>
-    </div><br>
+    </div>
     <label for="repeatPassword"> პაროლის გამეორება: </label>
-    <input class="form-control" type="password" name="repeatPassword" id="repeatPassword"
-           size="37" placeholder="გაიმეორეთ პაროლი"> <br/>
+    <input
+            required
+            class="form-control" type="password" name="repeatPassword" id="repeatPassword"
+           size="37" placeholder="გაიმეორეთ პაროლი"
+           oninvalid="this.setCustomValidity('პაროლი აუცილებლად უნდა გაიმეოროთ')"
+           onvalid="this.setCustomValidity('')">
     <label for="mail"> ელ-ფოსტა: </label>
-    <input class="form-control" type="text" name="mail" id="mail"
-           size="35" placeholder="მაგ: gadik19@freeuni.edu.ge"> <br/>
-    <input class="btn btn-primary" type="submit" value="რეგისტრაცია"> <br/>
-    <a class="btn btn-warning" href="${pageContext.request.contextPath}/JSPs/IdentificationPages/LogInPage.jsp">არსებული მომხარებლით შესვლა</a>
+    <input
+            required
+            class="form-control" type="text" name="mail" id="mail"
+           size="35" placeholder="მაგ: glekv22@freeuni.edu.ge"
+           oninvalid="this.setCustomValidity('ელ-ფოსტის შეყვანა აუცილებელია')"
+           onvalid="this.setCustomValidity('')">
+    <input class="btn btn-primary" type="submit" value="რეგისტრაცია">
+    <a style="display: block" href="${pageContext.request.contextPath}/JSPs/IdentificationPages/LogInPage.jsp">
+        <input style="width: 100%" class="btn btn-warning" type="button" value="არსებული მომხარებლით შესვლა">
+    </a>
 </form>
 
 
