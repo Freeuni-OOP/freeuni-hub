@@ -5,7 +5,6 @@ import DataBaseConnection.BaseConnector;
 import Manage.Configurations.UserConfiguration;
 import Manage.HelperClasses.UserById;
 
-import javax.servlet.http.HttpSession;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,11 +25,10 @@ public class ManageUser implements UserConfiguration {
     public String changeProfilePic(String username, String img) throws SQLException {
         try {
             Statement stmt = con.createStatement();
-            String query =  "update users set profile_pic = '" + img + "' where user_name = '" + username + "';";
+            String query = "update users set profile_pic = '" + img + "' where user_name = '" + username + "';";
             stmt.executeUpdate(query);
             return ALL_GOOD;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return NOT_GOOD;
         }
@@ -230,14 +228,13 @@ public class ManageUser implements UserConfiguration {
 
 
             if (rs.next()) {
-                String  profilePic = rs.getString(1);
+                String profilePic = rs.getString(1);
 
                 return profilePic != null ? profilePic : defaultProfilePic;
             } else {
                 return defaultProfilePic;
             }
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             return defaultProfilePic;
         }
     }
