@@ -5,5 +5,6 @@ create table users
     last_name  varchar(64)  not null,
     user_name  varchar(64) unique,
     password   varchar(300) not null,
-    email      varchar(64) unique
+    email      varchar(64) unique,
+    profile_pic longtext
 );

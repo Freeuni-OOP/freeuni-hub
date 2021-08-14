@@ -19,7 +19,6 @@
 
 <body>
 
-
 <!-- main content ----------------------------------------------->
 <div class="container">
     <div id="content" class="content p-0">
@@ -28,21 +27,39 @@
 
             <div class="profile-header-content">
                 <div class="profile-header-img">
-                    <img src="../../Images/UserImages/default.png" alt=""/>
+                    <img id="profile-pic" src="${profilePic}" alt=""/>
                 </div>
 
                 <div class="profile-header-info">
                     <h4 class="m-t-sm"> ${username} </h4>
                     <p class="m-b-sm"> თავისუფალი უნივერსიტეტის სტუდენტი </p>
-                    <input id="fileupload" type="file" name="fileupload" value="picture"/>
-                    <button id="upload-button" onclick="uploadFile()"> შეცვალე ფოტო</button>
+                        <input id="fileupload" type="file" name="fileupload" value="picture" onchange="uploadFile(event)"/>
                     <script>
-                        async function uploadFile() {
-                            let formData = new FormData();
-                            formData.append("file", fileupload.files[0]);
+
+                        async function fileToBase64(file) {
+                            return new Promise((resolve, reject) => {
+                                const reader = new FileReader()
+                                reader.readAsDataURL(file)
+                                reader.onload = () => resolve(reader.result)
+                                reader.onerror = (e) => reject(e)
+                            })
+                        }
+
+
+                        async function uploadFile(event) {
+                            // document.getElementById('upload-form').submit();
+                            const file = event.srcElement.files[0];
+                            const imageStr = await fileToBase64(file);
+                            const formData = new FormData();
+                            formData.append("img", imageStr);
                             await fetch('/photo_upload', {
                                 method: "POST",
-                                body: formData
+                                body: new URLSearchParams({
+                                    img: imageStr
+                                }),
+                                headers: {
+                                    'Content-Type': 'application/x-www-form-urlencoded',
+                                }
                             });
                             alert('ფოტო წარმატებით აიტვირთა');
                         }

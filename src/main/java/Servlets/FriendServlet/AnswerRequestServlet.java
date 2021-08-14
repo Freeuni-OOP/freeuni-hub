@@ -3,6 +3,7 @@ package Servlets.FriendServlet;
 import DataBaseConnection.BaseConnector;
 import Manage.HelperClasses.FriendAddition;
 import Manage.HelperClasses.UserById;
+import Manage.ManageUser;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Map;
+
+import static StarterManager.Attributes.USER_MANAGER_ATTRIBUTE;
 
 @WebServlet(name = "Answer_Servlet", value = "/answerRequest")
 public class AnswerRequestServlet extends HttpServlet {
@@ -67,6 +70,8 @@ public class AnswerRequestServlet extends HttpServlet {
                 e.printStackTrace();
             }
         }
+        ManageUser um = (ManageUser) getServletContext().getAttribute(USER_MANAGER_ATTRIBUTE); // get manager
+        request.setAttribute("profilePic", um.getProfilePic(userName));
         request.getRequestDispatcher("/JSPs/PersonalHomePages/HomePage.jsp").forward(request, response);
     }
 }

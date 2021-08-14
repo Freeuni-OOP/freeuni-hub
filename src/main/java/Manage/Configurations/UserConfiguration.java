@@ -35,4 +35,6 @@ public interface UserConfiguration {
 
     //----------------------------------------if everything is ok
     String ALL_GOOD = "ყველაფერი რიგზეა";
+
+    String NOT_GOOD = "რაღაც რიგზე ვერაა";
 }
