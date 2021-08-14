@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 
-
 <html>
 
 <head>
@@ -13,13 +12,13 @@
 
 
 <body>
-    <h1> აირჩიეთ თქვენთვის სასურველი ლოკაცია </h1>
+<h1> აირჩიეთ თქვენთვის სასურველი ლოკაცია </h1>
 
-    <label for = "have"> მაქვს </label>
-    <input type = "text" name = "have" id = "have">
+<label for="have"> მაქვს </label>
+<input type="text" name="have" id="have">
 
-    <label for = "want"> მინდა </label>
-    <input type = "text" name = "want" id = "want">
+<label for="want"> მინდა </label>
+<input type="text" name="want" id="want">
 </body>
 
 </html>

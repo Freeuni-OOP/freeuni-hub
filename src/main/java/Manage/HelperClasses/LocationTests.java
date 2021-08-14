@@ -16,7 +16,6 @@ public class LocationTests {
     }
 
 
-
     @Test
     public void testGetLocId() {
         assertEquals(5, loc1.getLocId());

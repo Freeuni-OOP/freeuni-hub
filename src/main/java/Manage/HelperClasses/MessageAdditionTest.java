@@ -15,6 +15,7 @@ import static org.junit.Assert.assertEquals;
 
 public class MessageAdditionTest {
     BaseConnector bc;
+
     @Before
     public void setup() throws SQLException, ClassNotFoundException {
         bc = new BaseConnector();
@@ -26,22 +27,22 @@ public class MessageAdditionTest {
         Statement statement = connection.createStatement();
         MessageAddition messageAddition = new MessageAddition(bc);
         statement.execute("Insert into users (id,first_name,last_name,user_name,password,email)" +
-                " values "+ "(1000,'luka','macho','bigenti','123','fsjsffdsdfadsse')");
+                " values " + "(1000,'luka','macho','bigenti','123','fsjsffdsdfadsse')");
         statement.execute("Insert into users (id,first_name,last_name,user_name,password,email)" +
-                " values "+ "(2000,'blukab','macho','bigentia','123','fsjdfadsse')");
+                " values " + "(2000,'blukab','macho','bigentia','123','fsjdfadsse')");
         statement.execute("Insert into usersInfo (user_id,user_name,user_last_name)" +
-                " values "+ "(1000,'luka','macho')");
+                " values " + "(1000,'luka','macho')");
         statement.execute("Insert into usersInfo (user_id,user_name,user_last_name)" +
-                " values "+ "(2000,'blukab','macho')");
+                " values " + "(2000,'blukab','macho')");
 
-        messageAddition.addMessage(1000,2000,"first message",10);
+        messageAddition.addMessage(1000, 2000, "first message", 10);
         messageAddition.removeMessage(10);
         ResultSet resultSet = statement.executeQuery("Select * from messages");
-        while(resultSet.next()){
-            assertEquals(10,resultSet.getInt(1));
-            assertEquals(1000,resultSet.getInt(2));
-            assertEquals(2000,resultSet.getInt(3));
-            assertEquals("first message",resultSet.getString(4));
+        while (resultSet.next()) {
+            assertEquals(10, resultSet.getInt(1));
+            assertEquals(1000, resultSet.getInt(2));
+            assertEquals(2000, resultSet.getInt(3));
+            assertEquals("first message", resultSet.getString(4));
         }
         statement.execute("delete from usersInfo where user_id = 1000;");
         statement.execute("delete from users where user_name = 'bigenti';");
@@ -55,23 +56,23 @@ public class MessageAdditionTest {
         Statement statement = connection.createStatement();
         MessageAddition messageAddition = new MessageAddition(bc);
         statement.execute("Insert into users (id,first_name,last_name,user_name,password,email)" +
-                " values "+ "(1000,'luka','macho','bigenti','123','fsjsffdsdfadsse')");
+                " values " + "(1000,'luka','macho','bigenti','123','fsjsffdsdfadsse')");
         statement.execute("Insert into users (id,first_name,last_name,user_name,password,email)" +
-                " values "+ "(2000,'blukab','macho','bigentia','123','fsjdfadsse')");
+                " values " + "(2000,'blukab','macho','bigentia','123','fsjdfadsse')");
         statement.execute("Insert into usersInfo (user_id,user_name,user_last_name)" +
-                " values "+ "(1000,'luka','macho')");
+                " values " + "(1000,'luka','macho')");
         statement.execute("Insert into usersInfo (user_id,user_name,user_last_name)" +
-                " values "+ "(2000,'blukab','macho')");
-        messageAddition.addMessage(1000,2000,"first message",10);
-        ArrayList<Message> messages = messageAddition.getMessages(1000,2000);
-        assertEquals(1,messages.size());
-        assertEquals(10,messages.get(0).getId());
-        assertEquals(1000,messages.get(0).getSender_id());
-        assertEquals(2000,messages.get(0).getReceiver_id());
-        assertEquals("first message",messages.get(0).getMessageText());
-        messageAddition.addMessage(1000,2000,"second message",11);
-        messages = messageAddition.getMessages(2000,1000);
-        assertEquals(2,messages.size());
+                " values " + "(2000,'blukab','macho')");
+        messageAddition.addMessage(1000, 2000, "first message", 10);
+        ArrayList<Message> messages = messageAddition.getMessages(1000, 2000);
+        assertEquals(1, messages.size());
+        assertEquals(10, messages.get(0).getId());
+        assertEquals(1000, messages.get(0).getSender_id());
+        assertEquals(2000, messages.get(0).getReceiver_id());
+        assertEquals("first message", messages.get(0).getMessageText());
+        messageAddition.addMessage(1000, 2000, "second message", 11);
+        messages = messageAddition.getMessages(2000, 1000);
+        assertEquals(2, messages.size());
         messageAddition.removeMessage(10);
         messageAddition.removeMessage(11);
         statement.execute("delete from usersInfo where user_id = 1000;");

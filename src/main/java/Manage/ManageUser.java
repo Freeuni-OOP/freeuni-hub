@@ -1,7 +1,6 @@
 package Manage;
 
 
-
 import DataBaseConnection.BaseConnector;
 import Manage.Configurations.UserConfiguration;
 import Manage.HelperClasses.UserById;
@@ -31,7 +30,7 @@ public class ManageUser implements UserConfiguration {
         ResultSet rs = stmt.executeQuery("select * from " + USERS_TABLE + ";");
         while (rs.next())
             if (rs.getString("user_name").equals(username)
-                && rs.getString("password").equals(password)) return FOUND;
+                    && rs.getString("password").equals(password)) return FOUND;
         return NOT_FOUND;
     }
 
@@ -62,7 +61,7 @@ public class ManageUser implements UserConfiguration {
     }
 
     // only letters, digits and underscore
-    protected String isValidUsername (String username) throws SQLException {
+    protected String isValidUsername(String username) throws SQLException {
         if (username.isEmpty()) return EMPTY;
         int len = username.length();
         for (int i = 0; i < len; i++) {
@@ -237,12 +236,24 @@ public class ManageUser implements UserConfiguration {
                 res.add(rs2.getString("course"));
                 int courseNum = rs2.getInt("courseNum");
                 switch (courseNum) { // convert course int -> string
-                    case 1: res.add("I"); break;
-                    case 2: res.add("II"); break;
-                    case 3: res.add("III"); break;
-                    case 4: res.add("IV"); break;
-                    case 5: res.add("IV+"); break;
-                    default: res.add("არაა მითითებული"); break;
+                    case 1:
+                        res.add("I");
+                        break;
+                    case 2:
+                        res.add("II");
+                        break;
+                    case 3:
+                        res.add("III");
+                        break;
+                    case 4:
+                        res.add("IV");
+                        break;
+                    case 5:
+                        res.add("IV+");
+                        break;
+                    default:
+                        res.add("არაა მითითებული");
+                        break;
                 }
                 res.add(rs2.getString("sqesi"));
                 break;
@@ -263,7 +274,6 @@ public class ManageUser implements UserConfiguration {
         stmt.executeUpdate("update " + USERS_TABLE + " " +
                 "set user_name = '" + newUsername + "' , password = '" + newPassword + "' where id = " + id + ";");
     }
-
 
 
     //-----------------------------------------------------------------------------------------------other features

@@ -13,7 +13,7 @@ public class CommentList {
 
     private BaseConnector bc;
 
-    public CommentList(BaseConnector bc){
+    public CommentList(BaseConnector bc) {
         this.bc = bc;
     }
 
@@ -30,7 +30,7 @@ public class CommentList {
     }
 
     // gets list of comment by post_id
-    public List<Comment> getCommentList(int postId) throws SQLException  {
+    public List<Comment> getCommentList(int postId) throws SQLException {
         List<Comment> list = new ArrayList();
 
         Connection connection = bc.accessConnection();

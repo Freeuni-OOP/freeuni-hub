@@ -14,7 +14,7 @@ public class FriendList {
     private BaseConnector bc;
     private Connection con;
 
-    public FriendList(BaseConnector bc){
+    public FriendList(BaseConnector bc) {
         this.bc = bc;
         con = bc.accessConnection();
     }
@@ -31,7 +31,7 @@ public class FriendList {
                 int friendId = resultSet.getInt("receiver_id");
                 User friend = ubi.getUser(friendId);
                 list.add(friend);
-            } else if (resultSet.getInt("receiver_id") == id){
+            } else if (resultSet.getInt("receiver_id") == id) {
                 int friendId = resultSet.getInt("requester_id");
                 User friend = ubi.getUser(friendId);
                 list.add(friend);

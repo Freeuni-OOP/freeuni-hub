@@ -15,7 +15,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 
-
 public class ManageTrade implements SaveleConfiguration, UserConfiguration {
     private static Connection con;
     private final BaseConnector bc;
@@ -108,7 +107,7 @@ public class ManageTrade implements SaveleConfiguration, UserConfiguration {
         int location_id = locationID.getIdByLocation(location);
 
         stmt.execute("insert into " + MEMBERS_TABLE + " (location_id, user_id) values ('" +
-               location_id + "' , '" + user_id + "');");
+                location_id + "' , '" + user_id + "');");
         increaseNumStudents(location);
     }
 
@@ -119,7 +118,7 @@ public class ManageTrade implements SaveleConfiguration, UserConfiguration {
         int user_id = ubi.getIdByMail(mail);
 
         stmt.execute("delete from " + MEMBERS_TABLE + " where user_id = '" +
-               user_id + "';");
+                user_id + "';");
         decreaseNumStudents(location);
     }
 
@@ -136,7 +135,7 @@ public class ManageTrade implements SaveleConfiguration, UserConfiguration {
 
 
     // returns all users in given location
-    public ArrayList<String> getLocationUserNames(String location) throws SQLException{
+    public ArrayList<String> getLocationUserNames(String location) throws SQLException {
         ArrayList<String> res = new ArrayList<>(); // final result
         Statement stmt = con.createStatement();
         LocationID locationID = new LocationID(bc);
@@ -144,7 +143,7 @@ public class ManageTrade implements SaveleConfiguration, UserConfiguration {
 
         Set<Integer> users = new HashSet<>();
         ResultSet rs = stmt.executeQuery("select * from " + MEMBERS_TABLE +
-                            " where location_id = " + loc_id + ";");
+                " where location_id = " + loc_id + ";");
         while (rs.next()) users.add(rs.getInt("user_id"));
 
         ResultSet resultSet = stmt.executeQuery("select * from " + USERS_TABLE + ";");

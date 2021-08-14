@@ -7,8 +7,9 @@ public class User {
     private String sex;
     private String course;
     private int id;
-    public User(int id, String userFirstName, String userLastName,String userName, String sex, String course){
-        this.userFirstName=userFirstName;
+
+    public User(int id, String userFirstName, String userLastName, String userName, String sex, String course) {
+        this.userFirstName = userFirstName;
         this.userName = userName;
         this.userLastName = userLastName;
         this.sex = sex;
@@ -16,22 +17,27 @@ public class User {
         this.id = id;
     }
 
-    public String getUserFirstName(){
+    public String getUserFirstName() {
         return userFirstName;
     }
-    public String getUserName(){
+
+    public String getUserName() {
         return userName;
     }
-    public int getId(){
-        return  id;
+
+    public int getId() {
+        return id;
     }
-    public String getUserLastName(){
+
+    public String getUserLastName() {
         return userLastName;
     }
-    public String getSex(){
+
+    public String getSex() {
         return sex;
     }
-    public String getCourse(){
+
+    public String getCourse() {
         return course;
     }
 }

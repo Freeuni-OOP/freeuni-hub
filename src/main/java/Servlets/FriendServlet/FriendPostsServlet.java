@@ -24,32 +24,33 @@ public class FriendPostsServlet extends HttpServlet {
             throws ServletException, IOException {
         doPost(request, response);
     }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String username = request.getParameter("username");
         String profileName = request.getParameter("profileName");
         HttpSession session = request.getSession();
-        session.setAttribute("username",username);
-        session.setAttribute("profileName",profileName);
+        session.setAttribute("username", username);
+        session.setAttribute("profileName", profileName);
         System.out.println(profileName);
         System.out.println(username);
         try {
             PostList postList = new PostList(new BaseConnector());
             List<Post> posts = postList.getPostList(profileName);
-            Map<Post,List<Comment>> all = new HashMap<>();
-            for(Post post : posts){
-                int post_id =post.getPostId();
+            Map<Post, List<Comment>> all = new HashMap<>();
+            for (Post post : posts) {
+                int post_id = post.getPostId();
                 CommentList commentList = new CommentList(new BaseConnector());
                 List<Comment> comments = commentList.getCommentList(post_id);
-                all.put(post,comments);
+                all.put(post, comments);
             }
-            session.setAttribute("all",all);
+            session.setAttribute("all", all);
 
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        request.getRequestDispatcher("JSPs/PersonalHomePages/FriendsPosts.jsp").forward(request,response);
+        request.getRequestDispatcher("JSPs/PersonalHomePages/FriendsPosts.jsp").forward(request, response);
     }
 }

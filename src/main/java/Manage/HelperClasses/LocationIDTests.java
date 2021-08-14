@@ -12,7 +12,7 @@ import java.sql.Statement;
 
 import static org.junit.Assert.assertEquals;
 
-public class LocationIDTests implements SaveleConfiguration{
+public class LocationIDTests implements SaveleConfiguration {
     private LocationID locationID;
     private Statement stmt;
 

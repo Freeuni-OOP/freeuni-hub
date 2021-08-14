@@ -51,7 +51,7 @@ public class CommentTest {
     }
 
     @Test
-    public void testGetPost(){
+    public void testGetPost() {
         Comment comment1 = new Comment(post, "yochag", 12);
         assertEquals(post, comment1.getPost());
     }

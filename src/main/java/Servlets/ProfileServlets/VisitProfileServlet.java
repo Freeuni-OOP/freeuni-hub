@@ -28,41 +28,53 @@ public class VisitProfileServlet extends HttpServlet {
         HttpSession session = request.getSession();
         String userName = request.getParameter("username");
         String profileName = request.getParameter("profileName");
-        session.setAttribute("username",userName);
-        session.setAttribute("profileName",profileName);
-        System.out.println(userName +" "+  profileName);
+        session.setAttribute("username", userName);
+        session.setAttribute("profileName", profileName);
+        System.out.println(userName + " " + profileName);
         boolean isBlocked = false, isFriend = false;
-        int user_id=0;
-        int profile_id=0;
+        int user_id = 0;
+        int profile_id = 0;
         User profileUser = null;
         String profileMail = "";
-        int courseNum=0;
+        int courseNum = 0;
         try {
             UserById userById = new UserById(new BaseConnector());
             user_id = userById.getIdByUsername(userName);
             profile_id = userById.getIdByUsername(profileName);
             BlockUser blockUser = new BlockUser(new BaseConnector());
-            isBlocked = blockUser.isBlocked(user_id,profile_id);
+            isBlocked = blockUser.isBlocked(user_id, profile_id);
             FriendAddition friendAddition = new FriendAddition(new BaseConnector());
-            isFriend = friendAddition.isFriend(user_id,profile_id);
+            isFriend = friendAddition.isFriend(user_id, profile_id);
             profileUser = userById.getUser(profile_id);
             ManageUser manageUser = new ManageUser(new BaseConnector());
-            ArrayList<String > userInfo = manageUser.getUserInfo(profile_id);
+            ArrayList<String> userInfo = manageUser.getUserInfo(profile_id);
             profileMail = userInfo.get(4);
             LocationAddition locationAddition = new LocationAddition(new BaseConnector());
-            if(locationAddition.alreadyRegistered(profile_id)){
+            if (locationAddition.alreadyRegistered(profile_id)) {
                 LocationID locationID = new LocationID(new BaseConnector());
-                String saveleLocation=locationID.getLocationById(locationAddition.locationId(user_id)).getLocName();
+                String saveleLocation = locationID.getLocationById(locationAddition.locationId(user_id)).getLocName();
                 switch (saveleLocation) {
-                    case "Fari2": session.setAttribute("saveleLocation", "ფარი2"); break;
-                    case "Fari3": session.setAttribute("saveleLocation", "ფარი3"); break;
-                    case "Baxmaro2": session.setAttribute("saveleLocation", "ბახმარო2"); break;
-                    case "Baxmaro3": session.setAttribute("saveleLocation", "ბახმარო3"); break;
-                    case "Qvabisxevi2": session.setAttribute("saveleLocation", "ქვაბისხევი2"); break;
-                    case "Qvabisxevi3": session.setAttribute("saveleLocation", "ქვაბისხევი3"); break;
+                    case "Fari2":
+                        session.setAttribute("saveleLocation", "ფარი2");
+                        break;
+                    case "Fari3":
+                        session.setAttribute("saveleLocation", "ფარი3");
+                        break;
+                    case "Baxmaro2":
+                        session.setAttribute("saveleLocation", "ბახმარო2");
+                        break;
+                    case "Baxmaro3":
+                        session.setAttribute("saveleLocation", "ბახმარო3");
+                        break;
+                    case "Qvabisxevi2":
+                        session.setAttribute("saveleLocation", "ქვაბისხევი2");
+                        break;
+                    case "Qvabisxevi3":
+                        session.setAttribute("saveleLocation", "ქვაბისხევი3");
+                        break;
                 }
-            }else{
-                session.setAttribute("saveleLocation","არაა მითითებული");
+            } else {
+                session.setAttribute("saveleLocation", "არაა მითითებული");
             }
             if (userInfo.get(5) == null)
                 session.setAttribute("profileFaculty", "არაა მითითებული");
@@ -77,9 +89,15 @@ public class VisitProfileServlet extends HttpServlet {
             else {
                 String sex = userInfo.get(7);
                 switch (sex) {
-                    case "no": session.setAttribute("profileSex", "თავს შევიკავებ"); break;
-                    case "male": session.setAttribute("profileSex", "მამრობითი"); break;
-                    case "female": session.setAttribute("profileSex", "მდედრობითი"); break;
+                    case "no":
+                        session.setAttribute("profileSex", "თავს შევიკავებ");
+                        break;
+                    case "male":
+                        session.setAttribute("profileSex", "მამრობითი");
+                        break;
+                    case "female":
+                        session.setAttribute("profileSex", "მდედრობითი");
+                        break;
                 }
             }
         } catch (SQLException throwables) {
@@ -88,16 +106,16 @@ public class VisitProfileServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        session.setAttribute("profileFirstName",profileUser.getUserFirstName());
-        session.setAttribute("profileLastName",profileUser.getUserLastName());
-        session.setAttribute("profileMail",profileMail);
+        session.setAttribute("profileFirstName", profileUser.getUserFirstName());
+        session.setAttribute("profileLastName", profileUser.getUserLastName());
+        session.setAttribute("profileMail", profileMail);
 
-        if(isBlocked) {
+        if (isBlocked) {
             request.getRequestDispatcher("/JSPs/ProfilePages/blockedProfile.jsp").forward(request, response);
-        }else if(isFriend){
+        } else if (isFriend) {
             request.getRequestDispatcher("/JSPs/ProfilePages/friendProfile.jsp").forward(request, response);
-        }else{
-            request.getRequestDispatcher("/JSPs/ProfilePages/unFriendProfile.jsp").forward(request,response);
+        } else {
+            request.getRequestDispatcher("/JSPs/ProfilePages/unFriendProfile.jsp").forward(request, response);
         }
     }
 }

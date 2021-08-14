@@ -35,7 +35,7 @@ public class LocationID {
 
         while (rs.next()) {
             return new Location(rs.getInt("id"), rs.getString("name"),
-                        rs.getInt("numStudents"));
+                    rs.getInt("numStudents"));
         }
         return null;
     }

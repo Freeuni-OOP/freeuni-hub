@@ -13,6 +13,7 @@ import static org.junit.Assert.assertEquals;
 public class FriendListTest {
 
     BaseConnector bc;
+
     @Before
     public void setup() throws SQLException, ClassNotFoundException {
         bc = new BaseConnector();
@@ -24,13 +25,13 @@ public class FriendListTest {
         Statement statement = connection.createStatement();
 
         statement.execute("Insert into users (id, first_name, last_name, user_name, password, email)" +
-                " values "+ "(100, 'keith', 'markovic', 'naf_fly', 'val1D', 'kmark15@freeuni.edu.ge')");
+                " values " + "(100, 'keith', 'markovic', 'naf_fly', 'val1D', 'kmark15@freeuni.edu.ge')");
         statement.execute("Insert into users (id, first_name, last_name, user_name, password, email)" +
-                " values "+ "(101, 'adam', 'friberg', 'friberg', 'val1D', 'afrib15@freeuni.edu.ge')");
+                " values " + "(101, 'adam', 'friberg', 'friberg', 'val1D', 'afrib15@freeuni.edu.ge')");
         statement.execute("Insert into users (id, first_name, last_name, user_name, password, email)" +
-                " values "+ "(102, 'patrick', 'lindberg', 'forest', 'val1D', 'plind15@freeuni.edu.ge')");
+                " values " + "(102, 'patrick', 'lindberg', 'forest', 'val1D', 'plind15@freeuni.edu.ge')");
         statement.execute("Insert into users (id, first_name, last_name, user_name, password, email)" +
-                " values "+ "(103, 'niko', 'kovac', 'nikokovac', 'val1D', 'nkova15@freeuni.edu.ge')");
+                " values " + "(103, 'niko', 'kovac', 'nikokovac', 'val1D', 'nkova15@freeuni.edu.ge')");
 
         statement.execute("Insert into friends (requester_id, receiver_id)" +
                 " values " + "(102, 101)");

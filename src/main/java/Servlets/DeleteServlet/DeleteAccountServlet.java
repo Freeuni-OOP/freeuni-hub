@@ -14,24 +14,25 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 @WebServlet(name = "Delete_Servlet", value = "/DeleteAccount")
-public class DeleteAccountServlet extends HttpServlet{
-        protected void doGet(HttpServletRequest request, HttpServletResponse response)
-                throws ServletException, IOException {
-            doPost(request, response);
+public class DeleteAccountServlet extends HttpServlet {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        doPost(request, response);
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String userName = request.getParameter("username");
+        try {
+            UserById ubi = new UserById(new BaseConnector());
+            int id = ubi.getIdByUsername(userName);
+            RemoveUser removeUser = new RemoveUser(new BaseConnector());
+            removeUser.removeById(id);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
-        protected void doPost(HttpServletRequest request, HttpServletResponse response)
-                throws ServletException, IOException {
-            String userName = request.getParameter("username");
-            try {
-                UserById ubi = new UserById(new BaseConnector());
-                int id = ubi.getIdByUsername(userName);
-                RemoveUser removeUser = new RemoveUser(new BaseConnector());
-                removeUser.removeById(id);
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-            request.getRequestDispatcher("/JSPs/IdentificationPages/LogInPage.jsp").forward(request, response);
-        }
+        request.getRequestDispatcher("/JSPs/IdentificationPages/LogInPage.jsp").forward(request, response);
+    }
 }

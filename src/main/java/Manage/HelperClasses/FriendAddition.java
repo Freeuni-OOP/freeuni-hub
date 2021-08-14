@@ -1,6 +1,7 @@
 package Manage.HelperClasses;
 
 import DataBaseConnection.BaseConnector;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,7 +12,7 @@ public class FriendAddition {
     BaseConnector bc;
     Connection connection;
 
-    public FriendAddition(BaseConnector bc){
+    public FriendAddition(BaseConnector bc) {
         this.bc = bc;
         connection = bc.accessConnection();
     }
@@ -19,7 +20,7 @@ public class FriendAddition {
     public void addFriend(int requester_id, int receiver_id) throws SQLException {
         Statement statement = connection.createStatement();
         statement.execute("Insert into friends (requester_id,receiver_id) values ("
-                + requester_id +"," + receiver_id+");");
+                + requester_id + "," + receiver_id + ");");
         FriendRequesters fr = new FriendRequesters(bc);
         fr.removeRequest(requester_id, receiver_id);
     }
@@ -32,9 +33,9 @@ public class FriendAddition {
     public void removeFriend(int requester_id, int receiver_id) throws SQLException {
         Statement statement = connection.createStatement();
         statement.execute("Delete from friends where requester_id = " + requester_id
-                +" and " + " receiver_id =" + receiver_id);
+                + " and " + " receiver_id =" + receiver_id);
         statement.execute("Delete from friends where requester_id = " + receiver_id
-                +" and " + " receiver_id =" + requester_id);
+                + " and " + " receiver_id =" + requester_id);
     }
 
     public boolean isFriend(int id1, int id2) throws SQLException {
@@ -46,7 +47,7 @@ public class FriendAddition {
     private boolean isFriendHelper(int requester_id, int receiver_id) throws SQLException {
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery("Select * from friends where requester_id = " + requester_id
-                +" and " + " receiver_id =" + receiver_id);
+                + " and " + " receiver_id =" + receiver_id);
         return rs.next();
     }
 }

@@ -1,9 +1,8 @@
 
-body{
+body {
     color: #6F8BA4;
-    margin-top:20px;
+    margin-top: 20px;
 }
-
 
 
 .section {
@@ -14,8 +13,6 @@ body{
 .gray-bg {
     background-color: #f5f5f5;
 }
-
-
 
 
 .contact-name {
@@ -47,13 +44,11 @@ body{
 }
 
 
-
 #fb_image1, #fb_image2, #fb_image3, #fb_image4 { /* fb image style */
     background-color: #6F8BA4;
     border-radius: 25px;
     border-style: dotted;
 }
-
 
 
 .contact-form .form-control {
@@ -135,7 +130,6 @@ body{
     width: 60px;
     height: 60px;
 }
-
 
 
 .px-btn .arrow {

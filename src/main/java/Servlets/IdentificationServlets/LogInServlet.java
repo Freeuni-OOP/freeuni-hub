@@ -37,8 +37,6 @@ public class LogInServlet extends HttpServlet implements Attributes, UserConfigu
         ManageUser um = (ManageUser) getServletContext().getAttribute(USER_MANAGER_ATTRIBUTE);
 
 
-
-
         try {
             String result = um.isValidUser(username, password);
             if (result.equals(FOUND)) {
@@ -54,19 +52,31 @@ public class LogInServlet extends HttpServlet implements Attributes, UserConfigu
 
                 LocationAddition locationAddition = new LocationAddition(new BaseConnector());
                 System.out.println(user_id);
-                if(locationAddition.alreadyRegistered(user_id)){
+                if (locationAddition.alreadyRegistered(user_id)) {
                     LocationID locationID = new LocationID(new BaseConnector());
-                    String saveleLocation=locationID.getLocationById(locationAddition.locationId(user_id)).getLocName();
+                    String saveleLocation = locationID.getLocationById(locationAddition.locationId(user_id)).getLocName();
                     switch (saveleLocation) {
-                        case "Fari2": session.setAttribute("saveleLocation", "ფარი2"); break;
-                        case "Fari3": session.setAttribute("saveleLocation", "ფარი3"); break;
-                        case "Baxmaro2": session.setAttribute("saveleLocation", "ბახმარო2"); break;
-                        case "Baxmaro3": session.setAttribute("saveleLocation", "ბახმარო3"); break;
-                        case "Qvabisxevi2": session.setAttribute("saveleLocation", "ქვაბისხევი2"); break;
-                        case "Qvabisxevi3": session.setAttribute("saveleLocation", "ქვაბისხევი3"); break;
+                        case "Fari2":
+                            session.setAttribute("saveleLocation", "ფარი2");
+                            break;
+                        case "Fari3":
+                            session.setAttribute("saveleLocation", "ფარი3");
+                            break;
+                        case "Baxmaro2":
+                            session.setAttribute("saveleLocation", "ბახმარო2");
+                            break;
+                        case "Baxmaro3":
+                            session.setAttribute("saveleLocation", "ბახმარო3");
+                            break;
+                        case "Qvabisxevi2":
+                            session.setAttribute("saveleLocation", "ქვაბისხევი2");
+                            break;
+                        case "Qvabisxevi3":
+                            session.setAttribute("saveleLocation", "ქვაბისხევი3");
+                            break;
                     }
-                }else{
-                    session.setAttribute("saveleLocation","არაა მითითებული");
+                } else {
+                    session.setAttribute("saveleLocation", "არაა მითითებული");
                 }
                 if (info.get(5) == null)
                     session.setAttribute("faculty", "არაა მითითებული");
@@ -81,17 +91,24 @@ public class LogInServlet extends HttpServlet implements Attributes, UserConfigu
                 else {
                     String sex = info.get(7);
                     switch (sex) {
-                        case "secret": session.setAttribute("sex", "თავს შევიკავებ"); break;
-                        case "male": session.setAttribute("sex", "მამრობითი"); break;
-                        case "female": session.setAttribute("sex", "მდედრობითი"); break;
+                        case "secret":
+                            session.setAttribute("sex", "თავს შევიკავებ");
+                            break;
+                        case "male":
+                            session.setAttribute("sex", "მამრობითი");
+                            break;
+                        case "female":
+                            session.setAttribute("sex", "მდედრობითი");
+                            break;
                     }
                 }
 
 
                 request.getRequestDispatcher("/JSPs/PersonalHomePages/HomePage.jsp").forward(request, response);
-            }else {
+            } else {
                 request.getRequestDispatcher("/JSPs/IdentificationPages/InvalidLogIn.jsp").forward(request, response);
             }
-        } catch (SQLException | ClassNotFoundException ignored) {}
+        } catch (SQLException | ClassNotFoundException ignored) {
+        }
     }
 }

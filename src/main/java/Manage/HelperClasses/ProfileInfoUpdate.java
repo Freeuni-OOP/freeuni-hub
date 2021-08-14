@@ -11,29 +11,29 @@ public class ProfileInfoUpdate {
     private BaseConnector bc;
     private Connection con;
 
-    public ProfileInfoUpdate(BaseConnector bc){
+    public ProfileInfoUpdate(BaseConnector bc) {
         this.bc = bc;
         con = bc.accessConnection();
     }
 
     private void updateUserName(int user_id, String user_name) throws SQLException {
         Statement statement = con.createStatement();
-        statement.execute("Update usersInfo Set user_name = '" + user_name + "' where user_id = " + user_id +";");
+        statement.execute("Update usersInfo Set user_name = '" + user_name + "' where user_id = " + user_id + ";");
     }
 
     private void updateUserLastName(int user_id, String user_last_name) throws SQLException {
         Statement statement = con.createStatement();
-        statement.execute("Update usersInfo Set user_last_name = '" + user_last_name + "' where user_id = " + user_id +";");
+        statement.execute("Update usersInfo Set user_last_name = '" + user_last_name + "' where user_id = " + user_id + ";");
     }
 
     private void updateSqesi(int user_id, String sqesi) throws SQLException {
         Statement statement = con.createStatement();
-        statement.execute("Update usersInfo Set sqesi = '" + sqesi + "' where user_id = " + user_id +";");
+        statement.execute("Update usersInfo Set sqesi = '" + sqesi + "' where user_id = " + user_id + ";");
     }
 
     private void updateCourse(int user_id, String course) throws SQLException {
         Statement statement = con.createStatement();
-        statement.execute("Update usersInfo Set course = '" + course + "' where user_id = " + user_id +";");
+        statement.execute("Update usersInfo Set course = '" + course + "' where user_id = " + user_id + ";");
     }
 
     public void updateInfo(int user_id, String user_name, String user_last_name, String sqesi, String course) throws SQLException {

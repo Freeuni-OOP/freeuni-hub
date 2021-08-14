@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 
-
 @WebServlet(name = "Trade_Servlet", value = "/trade")
 public class TradeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -22,7 +21,6 @@ public class TradeServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html");
-
 
 
     }
