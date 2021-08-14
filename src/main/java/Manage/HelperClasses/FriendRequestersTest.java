@@ -22,7 +22,11 @@ public class FriendRequestersTest {
     @Test
     public void getFriendRequestersTest() throws SQLException {
         Statement statement= connection.createStatement();
-
+        statement.execute("delete from friendRequests where requester_id = 2000;");
+        statement.execute("delete from usersInfo where user_id = 1000;");
+        statement.execute("delete from users where id = 1000;");
+        statement.execute("delete from usersInfo where user_id = 2000;");
+        statement.execute("delete from users where id = 2000");
         statement.execute("Insert into users (id,first_name,last_name,user_name,password,email)" +
                 " values "+ "(1000,'luka','macho','mlfakfflsalme','123','MAE')");
         statement.execute("Insert into users (id,first_name,last_name,user_name,password,email)" +
@@ -38,15 +42,20 @@ public class FriendRequestersTest {
         assertEquals(2000,friendRequesters.getFriendRequesters(1000).get(0).getId());
         statement.execute("delete from friendRequests where requester_id = 2000;");
         statement.execute("delete from usersInfo where user_id = 1000;");
-        statement.execute("delete from users where first_name = 'luka';");
+        statement.execute("delete from users where id = 1000;");
         statement.execute("delete from usersInfo where user_id = 2000;");
-        statement.execute("delete from users where first_name = 'blukab'");
+        statement.execute("delete from users where id = 2000");
     }
 
     @Test
     public void sendFriendRequestTest() throws SQLException {
         Statement statement = connection.createStatement();
 
+        statement.execute("delete from friendRequests where requester_id = 2000;");
+        statement.execute("delete from usersInfo where user_id = 1000;");
+        statement.execute("delete from users where id = 1000;");
+        statement.execute("delete from usersInfo where user_id = 2000;");
+        statement.execute("delete from users where id = 2000");
         statement.execute("Insert into users (id,first_name,last_name,user_name,password,email)" +
                 " values "+ "(1000,'luka','macho','mlfakfflsalme','123','MAE')");
         statement.execute("Insert into users (id,first_name,last_name,user_name,password,email)" +
@@ -64,8 +73,8 @@ public class FriendRequestersTest {
 
         statement.execute("delete from friendRequests where requester_id = 2000;");
         statement.execute("delete from usersInfo where user_id = 1000;");
-        statement.execute("delete from users where first_name = 'luka';");
+        statement.execute("delete from users where id = 1000;");
         statement.execute("delete from usersInfo where user_id = 2000;");
-        statement.execute("delete from users where first_name = 'blukab'");
+        statement.execute("delete from users where id = 2000");
     }
 }

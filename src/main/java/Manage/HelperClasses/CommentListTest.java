@@ -28,7 +28,7 @@ public class CommentListTest {
         commentAddition.removeComment(1000,2);
         commentAddition.removeComment(1000,1);
         pa.removePost(10);
-        statement.execute("delete from users where first_name = 'luka';");
+        statement.execute("delete from users where id = 1000;");
         statement.execute("Insert into users (id,first_name,last_name,user_name,password,email)" +
                 " values "+ "(1000,'luka','macho','mlfakfflsalme','123','MAE')");
         pa.addPost(1000, "hello", 10);
@@ -42,6 +42,6 @@ public class CommentListTest {
         commentAddition.removeComment(1000,2);
         commentAddition.removeComment(1000,1);
         pa.removePost(10);
-        statement.execute("delete from users where first_name = 'luka';");
+        statement.execute("delete from users where id = 1000;");
     }
 }

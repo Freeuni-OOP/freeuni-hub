@@ -52,8 +52,15 @@ public class VisitProfileServlet extends HttpServlet {
             LocationAddition locationAddition = new LocationAddition(new BaseConnector());
             if(locationAddition.alreadyRegistered(profile_id)){
                 LocationID locationID = new LocationID(new BaseConnector());
-                String saveleLocation=locationID.getLocationById(locationAddition.locationId(profile_id)).getLocName();
-                session.setAttribute("saveleLocation",saveleLocation);
+                String saveleLocation=locationID.getLocationById(locationAddition.locationId(user_id)).getLocName();
+                switch (saveleLocation) {
+                    case "Fari2": session.setAttribute("saveleLocation", "ფარი2"); break;
+                    case "Fari3": session.setAttribute("saveleLocation", "ფარი3"); break;
+                    case "Baxmaro2": session.setAttribute("saveleLocation", "ბახმარო2"); break;
+                    case "Baxmaro3": session.setAttribute("saveleLocation", "ბახმარო3"); break;
+                    case "Qvabisxevi2": session.setAttribute("saveleLocation", "ქვაბისხევი2"); break;
+                    case "Qvabisxevi3": session.setAttribute("saveleLocation", "ქვაბისხევი3"); break;
+                }
             }else{
                 session.setAttribute("saveleLocation","არაა მითითებული");
             }

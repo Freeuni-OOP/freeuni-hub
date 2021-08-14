@@ -99,6 +99,9 @@ public class SaveleListTest {
         assertEquals(0,saveleList.getSaveleRequestersList(100).size());
         assertEquals(1,saveleList.getSaveleRequestersList(101).size());
         assertEquals(100,saveleList.getSaveleRequestersList(101).get(0).getId());
+        assertEquals(0,saveleList.getSaveleRequestersList("naf_fly").size());
+        assertEquals(1,saveleList.getSaveleRequestersList("friberg").size());
+        assertEquals(100,saveleList.getSaveleRequestersList("friberg").get(0).getId());
         saveleList.removeRequest(100,101);
         locationAddition.removeFromLocation(100);
         locationAddition.removeFromLocation(101);

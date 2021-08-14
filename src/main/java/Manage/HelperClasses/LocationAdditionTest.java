@@ -126,4 +126,41 @@ public class LocationAdditionTest {
         statement.execute("delete from users where id = 100;");
         statement.execute("delete from users where id = 101;");
     }
+
+    @Test
+    public void testRemoveSimilars() throws SQLException {
+        locationAddition.removeFromLocation(100);
+        locationAddition.removeFromLocation(101);
+        locationAddition.removeLocation(100);
+        locationAddition.removeLocation(101);
+        statement.execute("delete from users where id = 100;");
+        statement.execute("delete from users where id = 101;");
+        statement.execute("Insert into users (id, first_name, last_name, user_name, password, email)" +
+                " values "+ "(100, 'keith', 'markovic', 'naf_fly', 'val1D', 'kmark15@freeuni.edu.ge')");
+        statement.execute("Insert into users (id, first_name, last_name, user_name, password, email)" +
+                " values "+ "(101, 'adam', 'friberg', 'friberg', 'val1D', 'afrib15@freeuni.edu.ge')");
+        locationAddition.addLocation(100,"sacdeli");
+        locationAddition.addIdInLocation(100,100);
+        locationAddition.addLocation(101,"meore");
+        locationAddition.addIdInLocation(101,101);
+        statement.execute("Insert into changeLocationRequest values(100,100,101,101,false)");
+        ResultSet resultSet = statement.executeQuery("Select * from changeLocationRequest");
+        int num=0;
+        while(resultSet.next()){
+            num++;
+        }
+        assertEquals(1,num);
+        locationAddition.removeSimilars(100);
+        num=0;
+        while(resultSet.next()){
+            num++;
+        }
+        assertEquals(0,num);
+        locationAddition.removeFromLocation(100);
+        locationAddition.removeFromLocation(101);
+        locationAddition.removeLocation(100);
+        locationAddition.removeLocation(101);
+        statement.execute("delete from users where id = 100;");
+        statement.execute("delete from users where id = 101;");
+    }
 }
