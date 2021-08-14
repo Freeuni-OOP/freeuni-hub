@@ -25,10 +25,12 @@
     <input class="form-control" type="text" name="username" id="username" size="25"> <br/> <br/>
     <label for="password"> პაროლი: </label>
     <input class="form-control" type="password" name="password" id="password" size="30"> <br/> <br/>
-    <input class="form-check-input" type="checkbox" onclick=change() id="show">
-    <label for="show"> პაროლის ჩვენება </label> <br> <Br>
-    <label> <input type="submit" value="შესვლა"> </label> <br/> <br/>
-    <a href="${pageContext.request.contextPath}/JSPs/IdentificationPages/RegistrationPage.jsp">ახალი მომხმარებლის რეგისტრაცია </a>
+    <div>
+        <input class="form-check-input" type="checkbox" onclick=change() id="show">
+        <label for="show"> პაროლის ჩვენება </label> <br> <Br>
+    </div>
+    <label> <input class="btn btn-primary" type="submit" value="შესვლა"> </label> <br/> <br/>
+    <a class="btn btn-warning" href="${pageContext.request.contextPath}/JSPs/IdentificationPages/RegistrationPage.jsp">ახალი მომხმარებლის რეგისტრაცია </a>
 </form>
 
 <!------------------------------------------------------------ java script -->
