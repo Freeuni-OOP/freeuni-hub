@@ -26,7 +26,7 @@ public class ManageUser implements UserConfiguration {
     public String changeProfilePic(String username, String img) throws SQLException {
         try {
             Statement stmt = con.createStatement();
-            var query =  "update users set profile_pic = '" + img + "' where user_name = '" + username + "';";
+            String query =  "update users set profile_pic = '" + img + "' where user_name = '" + username + "';";
             stmt.executeUpdate(query);
             return ALL_GOOD;
         }
@@ -223,14 +223,14 @@ public class ManageUser implements UserConfiguration {
     }
 
     public String getProfilePic(String username) {
-        var defaultProfilePic = "../../Images/UserImages/default.png";
+        String defaultProfilePic = "../../Images/UserImages/default.png";
         try {
-            var statement = con.createStatement();
-            var rs = statement.executeQuery("select profile_pic from " + USERS_TABLE + " where user_name = '" + username + "';");
+            Statement statement = con.createStatement();
+            ResultSet rs = statement.executeQuery("select profile_pic from " + USERS_TABLE + " where user_name = '" + username + "';");
 
 
             if (rs.next()) {
-                var profilePic = rs.getString(1);
+                String  profilePic = rs.getString(1);
 
                 return profilePic != null ? profilePic : defaultProfilePic;
             } else {
