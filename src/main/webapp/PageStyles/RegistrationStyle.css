@@ -6,6 +6,7 @@ body {
     background-image: url("../Images/UsefulImages/freeUni.png");
     background-repeat: no-repeat;
     background-position: center;
+    background-position-x: calc(100% - 100px);
 }
 
 form {
