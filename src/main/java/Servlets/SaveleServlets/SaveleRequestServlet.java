@@ -1,7 +1,6 @@
 package Servlets.SaveleServlets;
 
 import DataBaseConnection.BaseConnector;
-import Manage.HelperClasses.FriendRequesters;
 import Manage.HelperClasses.SaveleList;
 import Manage.HelperClasses.User;
 import Manage.HelperClasses.UserById;
@@ -17,23 +16,23 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name="Savele_Request_Servlet", value = "/SaveleRequests")
+@WebServlet(name = "Savele_Request_Servlet", value = "/SaveleRequests")
 public class SaveleRequestServlet extends HttpServlet {
 
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doPost(req,resp);
+        doPost(req, resp);
     }
 
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        String username = (String)session.getAttribute("username");
-        int id=-1;
+        String username = (String) session.getAttribute("username");
+        int id = -1;
         List<User> requesters = new ArrayList<>();
         try {
             UserById userById = new UserById(new BaseConnector());
-            id=userById.getIdByUsername(username);
+            id = userById.getIdByUsername(username);
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -41,15 +40,15 @@ public class SaveleRequestServlet extends HttpServlet {
         }
         try {
             SaveleList saveleList = new SaveleList(new BaseConnector());
-            requesters=saveleList.getSaveleRequestersList(id);
+            requesters = saveleList.getSaveleRequestersList(id);
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        session.setAttribute("requesters",requesters);
-        session.setAttribute("username",username);
+        session.setAttribute("requesters", requesters);
+        session.setAttribute("username", username);
 
-        req.getRequestDispatcher("JSPs/SavelePages/SaveleRequests.jsp").forward(req,resp);
+        req.getRequestDispatcher("JSPs/SavelePages/SaveleRequests.jsp").forward(req, resp);
     }
 }

@@ -18,22 +18,23 @@ public class BlockServlet extends HttpServlet {
             throws ServletException, IOException {
         doPost(request, response);
     }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String userName = request.getParameter("username");
         String profileName = request.getParameter("profileName");
-        System.out.println(userName +" daimegobre "+ profileName);
+        System.out.println(userName + " daimegobre " + profileName);
         try {
             BlockUser blockUser = new BlockUser(new BaseConnector());
             UserById userById = new UserById(new BaseConnector());
             int blocker_id = userById.getIdByUsername(userName);
             int blocked_id = userById.getIdByUsername(profileName);
-            blockUser.blockById(blocker_id,blocked_id);
+            blockUser.blockById(blocker_id, blocked_id);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        request.getRequestDispatcher("/JSPs/PersonalHomePages/HomePage.jsp").forward(request,response);
+        request.getRequestDispatcher("/JSPs/PersonalHomePages/HomePage.jsp").forward(request, response);
     }
 }

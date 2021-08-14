@@ -21,14 +21,15 @@ public class SearchServlet extends HttpServlet {
             throws ServletException, IOException {
         doPost(request, response);
     }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String username= request.getParameter("username");
+        String username = request.getParameter("username");
         String curUser = request.getParameter("curUser");
-        int id=0;
+        int id = 0;
         try {
             UserById ubi = new UserById(new BaseConnector());
-            id=ubi.getIdByUsername(curUser);
+            id = ubi.getIdByUsername(curUser);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -38,14 +39,14 @@ public class SearchServlet extends HttpServlet {
         ArrayList<User> all = new ArrayList<>();
         System.out.println(id);
         try {
-             all = new Search(new BaseConnector()).searchSimilarUsers(username,id);
+            all = new Search(new BaseConnector()).searchSimilarUsers(username, id);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        session.setAttribute("searchList",all);
-        session.setAttribute("username",curUser);
-        request.getRequestDispatcher("/JSPs/SearchPages/Search.jsp").forward(request,response);
+        session.setAttribute("searchList", all);
+        session.setAttribute("username", curUser);
+        request.getRequestDispatcher("/JSPs/SearchPages/Search.jsp").forward(request, response);
     }
 }

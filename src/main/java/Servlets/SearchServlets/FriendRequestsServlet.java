@@ -18,16 +18,17 @@ import java.util.ArrayList;
 @WebServlet(name = "Friend_Request_Servlet", value = "/FriendRequests")
 public class FriendRequestsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request,response);
+        doPost(request, response);
     }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        String username = (String)session.getAttribute("username");
-        int id=-1;
+        String username = (String) session.getAttribute("username");
+        int id = -1;
         ArrayList<User> requesters = new ArrayList<>();
         try {
             UserById userById = new UserById(new BaseConnector());
-            id=userById.getIdByUsername(username);
+            id = userById.getIdByUsername(username);
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -41,9 +42,9 @@ public class FriendRequestsServlet extends HttpServlet {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        session.setAttribute("requesters",requesters);
-        session.setAttribute("username",username);
+        session.setAttribute("requesters", requesters);
+        session.setAttribute("username", username);
 
-        request.getRequestDispatcher("/JSPs/SearchPages/FriendRequests.jsp").forward(request,response);
+        request.getRequestDispatcher("/JSPs/SearchPages/FriendRequests.jsp").forward(request, response);
     }
 }

@@ -15,35 +15,37 @@ public class UserByIdTest {
 
     BaseConnector bc;
     Connection connection;
+
     @Before
     public void setUp() throws SQLException, ClassNotFoundException {
         bc = new BaseConnector();
         connection = bc.accessConnection();
     }
+
     @Test
     public void getByIdTest() throws SQLException {
-        Statement statement= connection.createStatement();
+        Statement statement = connection.createStatement();
         statement.execute("delete from usersInfo where user_id = 1000;");
         statement.execute("delete from users where id = 1000;");
         statement.execute("delete from usersInfo where user_id = 2000;");
         statement.execute("delete from users where id = 2000;");
         statement.execute("Insert into users (id,first_name,last_name,user_name,password,email)" +
-                " values "+ "(1000,'luka','macho','mlfakfflsalme','123','MAE')");
+                " values " + "(1000,'luka','macho','mlfakfflsalme','123','MAE')");
         statement.execute("Insert into users (id,first_name,last_name,user_name,password,email)" +
-                " values "+ "(2000,'blukab','macho','mlfakflme','123','MARTVA')");
+                " values " + "(2000,'blukab','macho','mlfakflme','123','MARTVA')");
         statement.execute("Insert into usersInfo (user_id,user_name,user_last_name)" +
-                " values "+ "(2000,'blukab','macho')");
+                " values " + "(2000,'blukab','macho')");
         statement.execute("Insert into usersInfo (user_id,user_name,user_last_name)" +
-                " values "+ "(1000,'luka','macho')");
+                " values " + "(1000,'luka','macho')");
         UserById user = new UserById(bc);
         User luka = user.getUser(1000);
         User blukab = user.getUser(2000);
-        assertEquals(luka.getId(),1000);
-        assertEquals(luka.getUserName(),"mlfakfflsalme");
-        assertEquals(luka.getUserLastName(),"macho");
-        assertEquals(blukab.getId(),2000);
-        assertEquals(blukab.getUserName(),"mlfakflme");
-        assertEquals(blukab.getUserLastName(),"macho");
+        assertEquals(luka.getId(), 1000);
+        assertEquals(luka.getUserName(), "mlfakfflsalme");
+        assertEquals(luka.getUserLastName(), "macho");
+        assertEquals(blukab.getId(), 2000);
+        assertEquals(blukab.getUserName(), "mlfakflme");
+        assertEquals(blukab.getUserLastName(), "macho");
         statement.execute("delete from usersInfo where user_id = 1000;");
         statement.execute("delete from users where id = 1000;");
         statement.execute("delete from usersInfo where user_id = 2000;");
@@ -63,22 +65,22 @@ public class UserByIdTest {
 
     @Test
     public void testUserByUsername() throws SQLException {
-        Statement statement= connection.createStatement();
+        Statement statement = connection.createStatement();
         statement.execute("delete from usersInfo where user_id = 1000;");
         statement.execute("delete from users where id = 1000;");
         statement.execute("delete from usersInfo where user_id = 2000;");
         statement.execute("delete from users where id = 2000;");
         statement.execute("Insert into users (id,first_name,last_name,user_name,password,email)" +
-                " values "+ "(1000,'luka','macho','lukab','123','MAE')");
+                " values " + "(1000,'luka','macho','lukab','123','MAE')");
         statement.execute("Insert into users (id,first_name,last_name,user_name,password,email)" +
-                " values "+ "(2000,'blukab','macho','luku','123','MARTVA')");
+                " values " + "(2000,'blukab','macho','luku','123','MARTVA')");
         statement.execute("Insert into usersInfo (user_id,user_name,user_last_name)" +
-                " values "+ "(2000,'blukab','macho')");
+                " values " + "(2000,'blukab','macho')");
         statement.execute("Insert into usersInfo (user_id,user_name,user_last_name)" +
-                " values "+ "(1000,'luka','macho')");
+                " values " + "(1000,'luka','macho')");
         UserById user = new UserById(bc);
-        assertEquals(1000,user.getIdByUsername("lukab"));
-        assertEquals(2000,user.getIdByUsername("luku"));
+        assertEquals(1000, user.getIdByUsername("lukab"));
+        assertEquals(2000, user.getIdByUsername("luku"));
         statement.execute("delete from usersInfo where user_id = 1000;");
         statement.execute("delete from users where id = 1000;");
         statement.execute("delete from usersInfo where user_id = 2000;");

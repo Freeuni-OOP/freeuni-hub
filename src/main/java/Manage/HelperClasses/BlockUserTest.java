@@ -13,6 +13,7 @@ import static org.junit.Assert.assertEquals;
 
 public class BlockUserTest {
     BaseConnector bc;
+
     @Before
     public void setup() throws SQLException, ClassNotFoundException {
         bc = new BaseConnector();
@@ -24,28 +25,28 @@ public class BlockUserTest {
         Connection connection = bc.accessConnection();
         Statement statement = connection.createStatement();
         statement.execute("Insert into users (id,first_name,last_name,user_name,password,email)" +
-                " values "+ "(1000,'luka','macho','bigenti','123','fsjsffdsdfadsse')");
+                " values " + "(1000,'luka','macho','bigenti','123','fsjsffdsdfadsse')");
         statement.execute("Insert into users (id,first_name,last_name,user_name,password,email)" +
-                " values "+ "(2000,'blukab','macho','bigentia','123','fsjdfadsse')");
+                " values " + "(2000,'blukab','macho','bigentia','123','fsjdfadsse')");
         statement.execute("Insert into usersInfo (user_id,user_name,user_last_name)" +
-                " values "+ "(1000,'luka','macho')");
+                " values " + "(1000,'luka','macho')");
         statement.execute("Insert into usersInfo (user_id,user_name,user_last_name)" +
-                " values "+ "(2000,'blukab','macho')");
+                " values " + "(2000,'blukab','macho')");
 
-        blockUser.blockById(1000,2000);
+        blockUser.blockById(1000, 2000);
         ResultSet resultSet = statement.executeQuery("Select * from blockedUsers");
-        int num=0;
-        while(resultSet.next()){
+        int num = 0;
+        while (resultSet.next()) {
             num++;
         }
-        assertEquals(1,num);
-        blockUser.unblockById(1000,2000);
-        ResultSet second =statement.executeQuery("Select * from blockedUsers");
-        num=0;
-        while(second.next()){
+        assertEquals(1, num);
+        blockUser.unblockById(1000, 2000);
+        ResultSet second = statement.executeQuery("Select * from blockedUsers");
+        num = 0;
+        while (second.next()) {
             num++;
         }
-        assertEquals(0,num);
+        assertEquals(0, num);
         statement.execute("delete from usersInfo where user_id = 1000;");
         statement.execute("delete from users where user_name = 'bigenti';");
         statement.execute("delete from usersInfo where user_id = 2000;");
@@ -60,13 +61,13 @@ public class BlockUserTest {
         Statement statement = connection.createStatement();
 
         statement.execute("Insert into users (id, first_name, last_name, user_name, password, email)" +
-                " values "+ "(100, 'keith', 'markovic', 'naf_fly', 'val1D', 'kmark15@freeuni.edu.ge')");
+                " values " + "(100, 'keith', 'markovic', 'naf_fly', 'val1D', 'kmark15@freeuni.edu.ge')");
         statement.execute("Insert into users (id, first_name, last_name, user_name, password, email)" +
-                " values "+ "(101, 'adam', 'friberg', 'friberg', 'val1D', 'afrib15@freeuni.edu.ge')");
+                " values " + "(101, 'adam', 'friberg', 'friberg', 'val1D', 'afrib15@freeuni.edu.ge')");
         statement.execute("Insert into users (id, first_name, last_name, user_name, password, email)" +
-                " values "+ "(102, 'patrick', 'lindberg', 'forest', 'val1D', 'plind15@freeuni.edu.ge')");
+                " values " + "(102, 'patrick', 'lindberg', 'forest', 'val1D', 'plind15@freeuni.edu.ge')");
         statement.execute("Insert into users (id, first_name, last_name, user_name, password, email)" +
-                " values "+ "(103, 'niko', 'kovac', 'nikokovac', 'val1D', 'nkova15@freeuni.edu.ge')");
+                " values " + "(103, 'niko', 'kovac', 'nikokovac', 'val1D', 'nkova15@freeuni.edu.ge')");
 
         assertEquals(0, blockUser.getBlockedList(100).size());
         blockUser.blockById(100, 101);
@@ -96,23 +97,24 @@ public class BlockUserTest {
         statement.execute("delete from users where id = 102;");
         statement.execute("delete from users where id = 103;");
     }
+
     @Test
     public void testIsBlocked() throws SQLException {
         BlockUser blockUser = new BlockUser(bc);
         Connection connection = bc.accessConnection();
         Statement statement = connection.createStatement();
         statement.execute("Insert into users (id,first_name,last_name,user_name,password,email)" +
-                " values "+ "(1000,'luka','macho','bigenti','123','fsjsffdsdfadsse')");
+                " values " + "(1000,'luka','macho','bigenti','123','fsjsffdsdfadsse')");
         statement.execute("Insert into users (id,first_name,last_name,user_name,password,email)" +
-                " values "+ "(2000,'blukab','macho','bigentia','123','fsjdfadsse')");
+                " values " + "(2000,'blukab','macho','bigentia','123','fsjdfadsse')");
         statement.execute("Insert into usersInfo (user_id,user_name,user_last_name)" +
-                " values "+ "(1000,'luka','macho')");
+                " values " + "(1000,'luka','macho')");
         statement.execute("Insert into usersInfo (user_id,user_name,user_last_name)" +
-                " values "+ "(2000,'blukab','macho')");
-        blockUser.blockById(1000,2000);
-        assertEquals(true,blockUser.isBlocked(1000,2000));
-        blockUser.unblockById(1000,2000);
-        assertEquals(false,blockUser.isBlocked(1000,2000));
+                " values " + "(2000,'blukab','macho')");
+        blockUser.blockById(1000, 2000);
+        assertEquals(true, blockUser.isBlocked(1000, 2000));
+        blockUser.unblockById(1000, 2000);
+        assertEquals(false, blockUser.isBlocked(1000, 2000));
         statement.execute("delete from usersInfo where user_id = 1000;");
         statement.execute("delete from users where user_name = 'bigenti';");
         statement.execute("delete from usersInfo where user_id = 2000;");

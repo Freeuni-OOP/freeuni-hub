@@ -1,12 +1,10 @@
 package Manage.Configurations;
 
 
-
 public interface UserConfiguration {
     //--------------------------------------------tables
     String USERS_TABLE = "users";
     String USERS_INFO_TABLE = "usersInfo";
-
 
 
     //------------------------------------problems

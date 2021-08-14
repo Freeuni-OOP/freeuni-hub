@@ -19,10 +19,10 @@ public class PhotoUploadServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html");
-        Enumeration<String> enumeration= request.getParameterNames();
+        Enumeration<String> enumeration = request.getParameterNames();
         System.out.println(enumeration.toString());
 
-        while(enumeration.hasMoreElements()){
+        while (enumeration.hasMoreElements()) {
             System.out.println(enumeration.nextElement());
         }
         String url = request.getParameter("file");

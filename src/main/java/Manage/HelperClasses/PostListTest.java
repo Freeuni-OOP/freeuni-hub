@@ -14,6 +14,7 @@ public class PostListTest {
 
     BaseConnector bc;
     Connection connection;
+
     @Before
     public void setUp() throws SQLException, ClassNotFoundException {
         bc = new BaseConnector();
@@ -30,7 +31,7 @@ public class PostListTest {
         pa.removePost(11);
         statement.execute("delete from users where id= 1000;");
         statement.execute("Insert into users (id,first_name,last_name,user_name,password,email)" +
-                " values "+ "(1000,'luka','macho','mlfakfflsalme','123','MAE')");
+                " values " + "(1000,'luka','macho','mlfakfflsalme','123','MAE')");
 
         assertEquals(0, pl.getPostList(1000).size());
         pa.addPost(1000, "hello", 10);
@@ -48,6 +49,7 @@ public class PostListTest {
 
         statement.execute("delete from users where id= 1000;");
     }
+
     @Test
     public void testPostListByUsername() throws SQLException {
         Statement statement = connection.createStatement();
@@ -57,7 +59,7 @@ public class PostListTest {
         pa.removePost(11);
         statement.execute("delete from users where id = 1000;");
         statement.execute("Insert into users (id,first_name,last_name,user_name,password,email)" +
-                " values "+ "(1000,'luka','macho','lukaMacho','123','MAE')");
+                " values " + "(1000,'luka','macho','lukaMacho','123','MAE')");
         assertEquals(0, pl.getPostList("lukaMacho").size());
         pa.addPost(1000, "hello", 10);
         assertEquals(1, pl.getPostList("lukaMacho").size());

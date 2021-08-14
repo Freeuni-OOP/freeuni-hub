@@ -38,11 +38,10 @@ public class RegistrationServlet extends HttpServlet implements UserConfiguratio
         String result = null;
 
 
-
-
         try {
             result = um.isValidInput(firstName, lastName, username, password, mail);
-        } catch (SQLException ignored) { }
+        } catch (SQLException ignored) {
+        }
         assert result != null;
         if (result.equals(ALL_GOOD) && repeatPassword.equals(password)) {
             try {
@@ -64,10 +63,10 @@ public class RegistrationServlet extends HttpServlet implements UserConfiguratio
             session.setAttribute("course", "არაა მითითებული");
             session.setAttribute("sex", "თავს შევიკავებ");
             request.getRequestDispatcher("/JSPs/PersonalHomePages/HomePage.jsp").forward(request, response);
-        }else if (!result.equals(ALL_GOOD)){
+        } else if (!result.equals(ALL_GOOD)) {
             request.setAttribute("problem", result); // what was the problem
             request.getRequestDispatcher("/JSPs/IdentificationPages/InvalidRegistration.jsp").forward(request, response);
-        }else{
+        } else {
             request.setAttribute("problem", NOT_EQUAL_PASSWORD);
             request.getRequestDispatcher("/JSPs/IdentificationPages/InvalidRegistration.jsp").forward(request, response);
         }

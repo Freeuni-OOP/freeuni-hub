@@ -1,5 +1,3 @@
-
-
 /*----------------------body---------- */
 
 body {
@@ -22,33 +20,41 @@ body {
     margin: -1px;
     list-style-type: none;
 }
+
 .profile-info-list > li.title {
     font-size: 0.700rem;
     font-weight: 1000;
     color: darkgray;
     padding: 0 0 0.3125rem;
 }
+
 .profile-info-list > li + li.title {
     padding-top: 1.5625rem;
 }
+
 .profile-info-list > li {
     padding: 0.625rem 0;
 }
+
 .profile-info-list > li .field {
     font-weight: 700;
 }
+
 .profile-info-list > li .value {
     color: darkgray;
 }
+
 .profile-info-list > li.img-list a {
     display: inline-block;
 }
+
 .profile-info-list > li.img-list a img {
     max-width: 2.25rem;
     -webkit-border-radius: 2.5rem;
     -moz-border-radius: 2.5rem;
     border-radius: 2.5rem;
 }
+
 .coming-soon-cover img,
 .email-detail-attachment .email-attachment .document-file img,
 .email-sender-img img,
@@ -56,31 +62,38 @@ body {
 .profile-header-img img {
     max-width: 100%;
 }
+
 .table.table-profile th {
     border: none;
     color: #000;
     padding-bottom: 0.3125rem;
     padding-top: 0;
 }
+
 .table.table-profile td {
     border-color: #c8c7cc;
 }
+
 .table.table-profile tbody + thead > tr > th {
     padding-top: 1.5625rem;
 }
+
 .table.table-profile .field {
     color: #666;
     font-weight: 600;
     width: 25%;
     text-align: right;
 }
+
 .table.table-profile .value {
     font-weight: 500;
 }
+
 .profile-header {
     position: relative;
     overflow: hidden;
 }
+
 .profile-header .profile-header-cover {
     background: url("../Images/UsefulImages/freeUni.jpg") center no-repeat;
     background-size: 100% auto;
@@ -181,49 +194,60 @@ body .fc-widget-header a {
 .profile-container {
     padding: 1.5625rem;
 }
+
 @media (max-width: 967px) {
     .profile-header-img {
         width: 5.625rem;
         height: 5.625rem;
         margin: 0;
     }
+
     .profile-header-info {
         margin-left: 6.5625rem;
         padding-bottom: 0.9375rem;
     }
+
     .profile-header .profile-header-tab {
         padding-left: 0;
     }
 }
+
 @media (max-width: 767px) {
     .profile-header .profile-header-cover {
         background-position: top;
     }
+
     .profile-header-img {
         width: 3.75rem;
         height: 3.75rem;
         margin: 0;
     }
+
     .profile-header-info {
         margin-left: 4.6875rem;
         padding-bottom: 0.9375rem;
     }
+
     .profile-header-info h4 {
         margin: 0 0 0.3125rem;
     }
+
     .profile-header .profile-header-tab {
         white-space: nowrap;
         overflow: scroll;
         padding: 0;
     }
+
     .profile-container {
         padding: 0.9375rem 0.9375rem 3.6875rem;
     }
+
     .friend-list > li {
         float: none;
         width: auto;
     }
 }
+
 .profile-info-list {
     padding: 0;
     margin: 0;
@@ -322,7 +346,7 @@ body .fc-widget-header a {
 }
 
 .m-b-2 {
-    margin-bottom: 2px!important;
+    margin-bottom: 2px !important;
 }
 
 
@@ -335,6 +359,6 @@ body .fc-widget-header a {
 }
 
 
-.row.row-space-2>[class*=col-] {
+.row.row-space-2 > [class*=col-] {
     padding: 0 1px;
 }

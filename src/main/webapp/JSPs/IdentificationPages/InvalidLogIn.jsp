@@ -9,28 +9,28 @@
         h4 {
             color: red;
         }
+
         a {
             color: darkgreen;
         }
     </style>
-    <link rel = "stylesheet" href = "../../PageStyles/LogInStyle.css">
+    <link rel="stylesheet" href="../../PageStyles/LogInStyle.css">
 </head>
-
-
 
 
 <body>
 
-<form action = "/login" method = "post" id = "form_login">
+<form action="/login" method="post" id="form_login">
     <h4> იუზერნეიმი ან პაროლი არასწორია, გთხოვთ სცადოთ ხელახლა </h4>
-    <label for = "username"> იუზერნეიმი: </label>
-    <input type = "text" name = "username" id = "username" size = "25"> <br/> <br/>
-    <label for = "password"> პაროლი: </label>
-    <input type = "password" name = "password" id = "password" size = "30"> <br/> <br/>
-    <input type = "checkbox" onclick = change() id = "show">
-    <label for = "show"> პაროლის ჩვენება </label> <br> <Br>
-    <label> <input type = "submit" value = "შესვლა"> </label> <br/> <br/>
-    <a href = "${pageContext.request.contextPath}/JSPs/IdentificationPages/RegistrationPage.jsp"> ახალი მომხმარებლის რეგისტრაცია </a>
+    <label for="username"> იუზერნეიმი: </label>
+    <input type="text" name="username" id="username" size="25"> <br/> <br/>
+    <label for="password"> პაროლი: </label>
+    <input type="password" name="password" id="password" size="30"> <br/> <br/>
+    <input type="checkbox" onclick=change() id="show">
+    <label for="show"> პაროლის ჩვენება </label> <br> <Br>
+    <label> <input type="submit" value="შესვლა"> </label> <br/> <br/>
+    <a href="${pageContext.request.contextPath}/JSPs/IdentificationPages/RegistrationPage.jsp"> ახალი მომხმარებლის
+        რეგისტრაცია </a>
 </form>
 
 

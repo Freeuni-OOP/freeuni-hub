@@ -14,7 +14,7 @@ public class PostList {
     private BaseConnector bc;
     private Connection con;
 
-    public PostList(BaseConnector bc){
+    public PostList(BaseConnector bc) {
         this.bc = bc;
         con = bc.accessConnection();
     }

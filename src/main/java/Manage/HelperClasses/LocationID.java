@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import static Manage.Configurations.SaveleConfiguration.*;
+import static Manage.Configurations.SaveleConfiguration.LOCATIONS_TABLE;
 
 public class LocationID {
     private static Connection con;
@@ -35,7 +35,7 @@ public class LocationID {
 
         while (rs.next()) {
             return new Location(rs.getInt("id"), rs.getString("name"),
-                        rs.getInt("numStudents"));
+                    rs.getInt("numStudents"));
         }
         return null;
     }

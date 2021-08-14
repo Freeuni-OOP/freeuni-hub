@@ -8,13 +8,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class BlockUser {
     private BaseConnector bc;
     private Connection con;
 
-    public BlockUser(BaseConnector bc){
+    public BlockUser(BaseConnector bc) {
         this.bc = bc;
         con = bc.accessConnection();
     }
@@ -22,12 +21,13 @@ public class BlockUser {
     public void blockById(int blocker_id, int blocked_id) throws SQLException {
         Statement statement = con.createStatement();
         statement.execute("Insert into blockedUsers(blocker_id,blocked_id) values ("
-                +blocker_id+","+blocked_id+");");
+                + blocker_id + "," + blocked_id + ");");
     }
-    public void unblockById(int blocker_id,int blocked_id) throws SQLException {
+
+    public void unblockById(int blocker_id, int blocked_id) throws SQLException {
         Statement statement = con.createStatement();
-        statement.execute("Delete from blockedUsers where blocker_id = "+blocker_id
-                +" and blocked_id=" + blocked_id +";");
+        statement.execute("Delete from blockedUsers where blocker_id = " + blocker_id
+                + " and blocked_id=" + blocked_id + ";");
     }
 
     // returns blocked list of ID-s
@@ -42,14 +42,15 @@ public class BlockUser {
         }
         return idList;
     }
-    public boolean isBlocked(int blocker_id,int blocked_id) throws SQLException {
+
+    public boolean isBlocked(int blocker_id, int blocked_id) throws SQLException {
         Statement statement = con.createStatement();
         ResultSet resultSet = statement.executeQuery("Select * from blockedUsers where blocker_id= " +
-                blocker_id+" and blocked_id =" +blocked_id+";");
-        int num =0;
-        while(resultSet.next()){
+                blocker_id + " and blocked_id =" + blocked_id + ";");
+        int num = 0;
+        while (resultSet.next()) {
             num++;
         }
-        return num!=0;
+        return num != 0;
     }
 }

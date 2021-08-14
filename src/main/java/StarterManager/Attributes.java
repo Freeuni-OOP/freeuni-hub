@@ -1,7 +1,6 @@
 package StarterManager;
 
 
-
 public interface Attributes {
     String BASE_CONNECTOR_ATTRIBUTE = "BASE";
     String USER_MANAGER_ATTRIBUTE = "USER_MANAGER";

@@ -12,7 +12,15 @@ public class Location {
         this.numStudents = numStudents;
     }
 
-    public int getLocId() {return id;}
-    public String getLocName() {return name;}
-    public int getLocNumStudents() {return numStudents;}
+    public int getLocId() {
+        return id;
+    }
+
+    public String getLocName() {
+        return name;
+    }
+
+    public int getLocNumStudents() {
+        return numStudents;
+    }
 }

@@ -97,7 +97,6 @@ public class ManageUserTests implements UserConfiguration {
     }
 
 
-
     @Test
     public void testInputValidity() throws SQLException {
         assertEquals(ALL_GOOD, manageUser.isValidInput("giorgi", "adikashvili",
@@ -125,7 +124,7 @@ public class ManageUserTests implements UserConfiguration {
 
 
     @Test
-    public void testAddRemoveUser() throws SQLException{
+    public void testAddRemoveUser() throws SQLException {
         // you should try this for other user
         assertEquals(NOT_FOUND, manageUser.isValidUser("kaci", "Kacuri123"));
         manageUser.addUser("vigac", "vigacashvili", "kaci", "Kacuri123",
@@ -139,7 +138,6 @@ public class ManageUserTests implements UserConfiguration {
         assertEquals(FOUND, manageUser.isValidUser("kaci", "Kacuri123"));
         manageUser.removeUser("vviga17@freeuni.edu.ge");
     }
-
 
 
     @Test
@@ -197,7 +195,6 @@ public class ManageUserTests implements UserConfiguration {
     }
 
 
-
     @Test
     public void testUniqueUsername() throws SQLException {
         assertEquals(ALL_GOOD, manageUser.isValidInput("keith", "markovic", "naf_fly",
@@ -209,9 +206,6 @@ public class ManageUserTests implements UserConfiguration {
         assertEquals(ALL_GOOD, manageUser.isValidInput("keith", "markovic", "naf_fly",
                 "vaL1d", "kmark15@freeuni.edu.ge"));
     }
-
-
-
 
 
 }
