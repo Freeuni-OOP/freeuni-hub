@@ -53,10 +53,18 @@ public class LogInServlet extends HttpServlet implements Attributes, UserConfigu
                 session.setAttribute("mail", info.get(4));
 
                 LocationAddition locationAddition = new LocationAddition(new BaseConnector());
+                System.out.println(user_id);
                 if(locationAddition.alreadyRegistered(user_id)){
                     LocationID locationID = new LocationID(new BaseConnector());
-                    String saveleName = locationID.getLocationById(locationAddition.locationId(user_id)).getLocName();
-                    session.setAttribute("saveleLocation", saveleName);
+                    String saveleLocation=locationID.getLocationById(locationAddition.locationId(user_id)).getLocName();
+                    switch (saveleLocation) {
+                        case "Fari2": session.setAttribute("saveleLocation", "ფარი2"); break;
+                        case "Fari3": session.setAttribute("saveleLocation", "ფარი3"); break;
+                        case "Baxmaro2": session.setAttribute("saveleLocation", "ბახმარო2"); break;
+                        case "Baxmaro3": session.setAttribute("saveleLocation", "ბახმარო3"); break;
+                        case "Qvabisxevi2": session.setAttribute("saveleLocation", "ქვაბისხევი2"); break;
+                        case "Qvabisxevi3": session.setAttribute("saveleLocation", "ქვაბისხევი3"); break;
+                    }
                 }else{
                     session.setAttribute("saveleLocation","არაა მითითებული");
                 }

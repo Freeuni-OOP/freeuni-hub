@@ -14,7 +14,7 @@ public class RemoveUser {
         this.bc = bc;
     }
 
-    public void removeById(int user_id) throws SQLException {
+    public void removeById(int user_id) throws SQLException, ClassNotFoundException {
         removeFromLocation(user_id);
         removeFromChangeLocationRequests(user_id);
         removeFromBlockedUsers(user_id);
@@ -28,9 +28,14 @@ public class RemoveUser {
         removeFromFriends(user_id);
         removeFromUsers(user_id);
     }
-    private void removeFromLocation(int user_id) throws SQLException {
+    private void removeFromLocation(int user_id) throws SQLException, ClassNotFoundException {
         Connection connection = bc.accessConnection();
         Statement statement = connection.createStatement();
+        LocationAddition locationAddition  = new LocationAddition(bc);
+        if(locationAddition.alreadyRegistered(user_id)){
+            int location_id = locationAddition.locationId(user_id);
+           statement.execute("Update locations set numStudents = numStudents-1 where id = "+location_id+";");
+        }
         statement.execute("Delete from locationMembers where user_id = "+ user_id + ";");
 
     }
@@ -63,7 +68,7 @@ public class RemoveUser {
    private void removeFromPosts(int user_id) throws SQLException {
        Connection connection = bc.accessConnection();
        Statement statement = connection.createStatement();
-       statement.execute("Delete from comments where user_id = " + user_id + ";");
+       statement.execute("Delete from posts where user_id = " + user_id + ";");
    }
 
    private void removeFromMessages(int user_id) throws SQLException {
@@ -112,6 +117,7 @@ public class RemoveUser {
    private void removeFromUsers(int user_id) throws SQLException {
        Connection connection = bc.accessConnection();
        Statement statement = connection.createStatement();
+       System.out.println("Delete from users where id = " +user_id+" ;");
        statement.execute("Delete from users where id = " +user_id+" ;");
 
    }

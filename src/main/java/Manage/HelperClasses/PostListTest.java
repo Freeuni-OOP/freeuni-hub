@@ -24,11 +24,14 @@ public class PostListTest {
     public void testPostList() throws SQLException {
 
         Statement statement = connection.createStatement();
-
-        statement.execute("Insert into users (id,first_name,last_name,user_name,password,email)" +
-                " values "+ "(1000,'luka','macho','mlfakfflsalme','123','MAE')");
         PostAddition pa = new PostAddition(bc);
         PostList pl = new PostList(bc);
+        pa.removePost(10);
+        pa.removePost(11);
+        statement.execute("delete from users where id= 1000;");
+        statement.execute("Insert into users (id,first_name,last_name,user_name,password,email)" +
+                " values "+ "(1000,'luka','macho','mlfakfflsalme','123','MAE')");
+
         assertEquals(0, pl.getPostList(1000).size());
         pa.addPost(1000, "hello", 10);
         assertEquals(1, pl.getPostList(1000).size());
@@ -43,16 +46,18 @@ public class PostListTest {
         pa.removePost(11);
         assertFalse(pl.getPostList(1000).size() > 0);
 
-        statement.execute("delete from users where first_name = 'luka';");
+        statement.execute("delete from users where id= 1000;");
     }
     @Test
     public void testPostListByUsername() throws SQLException {
         Statement statement = connection.createStatement();
-
-        statement.execute("Insert into users (id,first_name,last_name,user_name,password,email)" +
-                " values "+ "(1000,'luka','macho','lukaMacho','123','MAE')");
         PostAddition pa = new PostAddition(bc);
         PostList pl = new PostList(bc);
+        pa.removePost(10);
+        pa.removePost(11);
+        statement.execute("delete from users where id = 1000;");
+        statement.execute("Insert into users (id,first_name,last_name,user_name,password,email)" +
+                " values "+ "(1000,'luka','macho','lukaMacho','123','MAE')");
         assertEquals(0, pl.getPostList("lukaMacho").size());
         pa.addPost(1000, "hello", 10);
         assertEquals(1, pl.getPostList("lukaMacho").size());
@@ -67,6 +72,6 @@ public class PostListTest {
         pa.removePost(11);
         assertFalse(pl.getPostList("lukaMacho").size() > 0);
 
-        statement.execute("delete from users where first_name = 'luka';");
+        statement.execute("delete from users where id = 1000;");
     }
 }

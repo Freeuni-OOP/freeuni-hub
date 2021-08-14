@@ -52,7 +52,6 @@ public class SaveleList {
         LocationID locationID = new LocationID(new BaseConnector());
         int requester_location_id=0;
         int receiver_location_id=0;
-        System.out.println("shemowmeba");
         ResultSet resultSet = statement.executeQuery("Select location_id from locationMembers where" +
                 " user_id = "+requester_id+";");
         while(resultSet.next()){

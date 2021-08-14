@@ -106,7 +106,7 @@ public class FriendAdditionTest {
 
         statement.execute("delete from friendRequests where requester_id = 2000;");
         statement.execute("delete from usersInfo where user_id = 1000;");
-        statement.execute("delete from users where first_name = 'luka';");
+        statement.execute("delete from users where id = 1000;");
         statement.execute("delete from usersInfo where user_id = 2000;");
         statement.execute("delete from users where first_name = 'blukab'");
         statement.execute("Insert into users (id,first_name,last_name,user_name,password,email)" +
@@ -130,7 +130,7 @@ public class FriendAdditionTest {
 
         statement.execute("delete from friendRequests where requester_id = 2000;");
         statement.execute("delete from usersInfo where user_id = 1000;");
-        statement.execute("delete from users where first_name = 'luka';");
+        statement.execute("delete from users where id = 1000;");
         statement.execute("delete from usersInfo where user_id = 2000;");
         statement.execute("delete from users where first_name = 'blukab'");
     }
