@@ -2,7 +2,6 @@ package Servlets.ProfileServlets;
 
 
 import DataBaseConnection.BaseConnector;
-import Manage.HelperClasses.CommentAddition;
 import Manage.HelperClasses.PostAddition;
 import Manage.HelperClasses.UserById;
 

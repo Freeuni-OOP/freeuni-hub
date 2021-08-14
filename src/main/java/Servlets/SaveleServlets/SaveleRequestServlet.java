@@ -1,7 +1,6 @@
 package Servlets.SaveleServlets;
 
 import DataBaseConnection.BaseConnector;
-import Manage.HelperClasses.FriendRequesters;
 import Manage.HelperClasses.SaveleList;
 import Manage.HelperClasses.User;
 import Manage.HelperClasses.UserById;

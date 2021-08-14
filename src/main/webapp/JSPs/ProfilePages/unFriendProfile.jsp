@@ -41,8 +41,8 @@
                 </form>
                 <form action="/changeLocation" method="post">
                     <button> გაუცვალე ლოკაცია</button>
-                            <input type="hidden" name="username" value= ${username}>
-                            <input type="hidden" name="profileName" value= ${profileName}>
+                    <input type="hidden" name="username" value= ${username}>
+                    <input type="hidden" name="profileName" value= ${profileName}>
                 </form>
                 <form action="/blockUser" method="post">
                     <button> დაბლოკე იუზერი</button>

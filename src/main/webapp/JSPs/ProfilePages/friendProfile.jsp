@@ -37,21 +37,21 @@
             <ul class="profile-header-tab nav nav-tabs">
                 <form action="/visitPosts" method="post">
                     <button> ${profileName}ს პოსტები
-                        </button>
-                            <input type="hidden" name="username" value= ${username}>
-                            <input type="hidden" name="profileName" value= ${profileName}>
+                    </button>
+                    <input type="hidden" name="username" value= ${username}>
+                    <input type="hidden" name="profileName" value= ${profileName}>
                 </form>
                 <form action="/unFriend" method="post">
                     <button> შეწყვიტე მეგობრობა
-                        </button>
-                            <input type="hidden" name="username" value= ${username}>
-                            <input type="hidden" name="profileName" value= ${profileName}>
+                    </button>
+                    <input type="hidden" name="username" value= ${username}>
+                    <input type="hidden" name="profileName" value= ${profileName}>
                 </form>
                 <form action="/changeLocation" method="post">
                     <button> გაუცვალე ლოკაცია
-                        </button>
-                            <input type="hidden" name="username" value= ${username}>
-                            <input type="hidden" name="profileName" value= ${profileName}>
+                    </button>
+                    <input type="hidden" name="username" value= ${username}>
+                    <input type="hidden" name="profileName" value= ${profileName}>
                 </form>
                 <li class="nav-item"><a href="${pageContext.request.contextPath}/JSPs/PersonalHomePages/HomePage.jsp"
                 > მთავარი გვერდი </a></li>

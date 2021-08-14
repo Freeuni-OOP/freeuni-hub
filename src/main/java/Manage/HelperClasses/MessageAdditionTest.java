@@ -4,7 +4,6 @@ import DataBaseConnection.BaseConnector;
 import org.junit.Before;
 import org.junit.Test;
 
-import javax.swing.plaf.nimbus.State;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;

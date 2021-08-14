@@ -3,7 +3,6 @@ package Servlets.SaveleServlets;
 import DataBaseConnection.BaseConnector;
 import Manage.HelperClasses.LocationAddition;
 import Manage.HelperClasses.SaveleList;
-import Manage.HelperClasses.User;
 import Manage.HelperClasses.UserById;
 
 import javax.servlet.ServletException;

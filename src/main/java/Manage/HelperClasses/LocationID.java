@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import static Manage.Configurations.SaveleConfiguration.*;
+import static Manage.Configurations.SaveleConfiguration.LOCATIONS_TABLE;
 
 public class LocationID {
     private static Connection con;

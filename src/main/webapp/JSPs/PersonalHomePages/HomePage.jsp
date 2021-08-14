@@ -25,10 +25,10 @@
     </form>
     <form action="${pageContext.request.contextPath}/DeleteAccount" method="post" id="Delete_Request">
         <input type="hidden" name="username" value=${username}>
-        <button> გააუქმე ექაუნთი </button>
+        <button> გააუქმე ექაუნთი</button>
     </form>
     <form action="${pageContext.request.contextPath}/Search" method="post" id="Search_Request">
-        <button> მოძებნე იუზერი: </button>
+        <button> მოძებნე იუზერი:</button>
         <input type="text" name="username" id="username" size="25"> <br/> <br/>
         <input type="hidden" name="curUser" value=${username}>
     </form>

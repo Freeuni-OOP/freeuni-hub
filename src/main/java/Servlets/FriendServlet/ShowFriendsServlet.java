@@ -3,7 +3,6 @@ package Servlets.FriendServlet;
 import DataBaseConnection.BaseConnector;
 import Manage.HelperClasses.FriendList;
 import Manage.HelperClasses.User;
-import com.mysql.cj.Session;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

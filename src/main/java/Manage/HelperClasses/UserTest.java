@@ -1,7 +1,6 @@
 package Manage.HelperClasses;
 
 
-import Manage.HelperClasses.User;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

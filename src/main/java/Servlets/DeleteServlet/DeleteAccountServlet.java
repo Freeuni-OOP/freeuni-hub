@@ -5,7 +5,6 @@ import Manage.HelperClasses.RemoveUser;
 import Manage.HelperClasses.UserById;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebListener;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

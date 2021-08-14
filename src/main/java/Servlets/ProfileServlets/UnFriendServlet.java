@@ -1,7 +1,6 @@
 package Servlets.ProfileServlets;
 
 import DataBaseConnection.BaseConnector;
-import Manage.HelperClasses.BlockUser;
 import Manage.HelperClasses.FriendAddition;
 import Manage.HelperClasses.UserById;
 

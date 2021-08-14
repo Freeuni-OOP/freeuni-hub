@@ -2,9 +2,9 @@ package Manage.HelperClasses;
 
 public class Post {
 
+    String text;
     private int postId;
     private int userId;
-    String text;
 
     public Post(int postId, int userId, String text) {
         this.postId = postId;

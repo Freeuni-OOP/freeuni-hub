@@ -13,6 +13,10 @@ public class BaseConnector implements DataBaseInfo {
         connect();
     }
 
+    public static void closeConnection() throws SQLException {
+        connection.close();
+    }
+
     public Connection accessConnection() {
         return connection;
     }
@@ -20,9 +24,5 @@ public class BaseConnector implements DataBaseInfo {
     public void connect() throws SQLException, ClassNotFoundException {
         Class.forName(JDBC_DRIVER);
         connection = DriverManager.getConnection(URL + BASE, USER, PASSWORD);
-    }
-
-    public static void closeConnection() throws SQLException {
-        connection.close();
     }
 }

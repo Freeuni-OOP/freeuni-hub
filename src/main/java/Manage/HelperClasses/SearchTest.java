@@ -2,7 +2,6 @@ package Manage.HelperClasses;
 
 
 import DataBaseConnection.BaseConnector;
-import Manage.HelperClasses.Search;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,7 +10,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThrows;
 
 public class SearchTest {
     BaseConnector bc;
