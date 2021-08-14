@@ -33,7 +33,7 @@
         <input type="hidden" name="curUser" value=${username}>
     </form>
     <a href="${pageContext.request.contextPath}/JSPs/PersonalHomePages/PersonalPage.jsp" id="personal_photo_home">
-        <img src="../../Images/UserImages/default.png" alt="Avatar" height="50" width="50"/>
+        <img src="${profilePic}" alt="Avatar" height="50" width="50"/>
     </a>
 </ul>
 

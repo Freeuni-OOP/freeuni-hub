@@ -1,16 +1,58 @@
 package Servlets.PersonalHomeServlets;
 
 
+import Manage.ManageUser;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.sql.SQLException;
 import java.util.Enumeration;
+
+import static StarterManager.Attributes.USER_MANAGER_ATTRIBUTE;
 
 @WebServlet(name = "Photo_Upload_Servlet", value = "/photo_upload")
 public class PhotoUploadServlet extends HttpServlet {
+    public static String getBody(HttpServletRequest request) throws IOException {
+
+        String body = null;
+        StringBuilder stringBuilder = new StringBuilder();
+        BufferedReader bufferedReader = null;
+
+        try {
+            InputStream inputStream = request.getInputStream();
+            if (inputStream != null) {
+                bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                char[] charBuffer = new char[128];
+                int bytesRead = -1;
+                while ((bytesRead = bufferedReader.read(charBuffer)) > 0) {
+                    stringBuilder.append(charBuffer, 0, bytesRead);
+                }
+            } else {
+                stringBuilder.append("");
+            }
+        } catch (IOException ex) {
+            throw ex;
+        } finally {
+            if (bufferedReader != null) {
+                try {
+                    bufferedReader.close();
+                } catch (IOException ex) {
+                    throw ex;
+                }
+            }
+        }
+
+        body = stringBuilder.toString();
+        return body;
+    }
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         doPost(request, response);
@@ -18,19 +60,23 @@ public class PhotoUploadServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html");
-        Enumeration<String> enumeration = request.getParameterNames();
-        System.out.println(enumeration.toString());
 
-        while (enumeration.hasMoreElements()) {
-            System.out.println(enumeration.nextElement());
+        var context = getServletContext();
+        var mu = (ManageUser)context.getAttribute(USER_MANAGER_ATTRIBUTE); // get manager
+
+        var session = request.getSession();
+        var username = (String) session.getAttribute("username");
+
+        var base64img = request.getParameter("img");
+
+        try {
+            mu.changeProfilePic(username, base64img);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        String url = request.getParameter("file");
-        System.out.println(url);
-        System.out.println("FDS");
-        response.sendRedirect("/JSPs/PersonalHomePages/PersonalPage.jsp");
 
+        session.setAttribute("profilePic", base64img);
 
-        // this must be fixed by Luka Samkharadze
+        request.getRequestDispatcher("/JSPs/PersonalHomePages/PersonalPage.jsp").forward(request, response);
     }
 }

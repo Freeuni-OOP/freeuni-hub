@@ -37,6 +37,7 @@ public class FriendServlet extends HttpServlet {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+
         request.getRequestDispatcher("/JSPs/PersonalHomePages/HomePage.jsp").forward(request, response);
     }
 }

@@ -21,7 +21,7 @@
 
             <div class="profile-header-content">
                 <div class="profile-header-img">
-                    <img src="../../Images/UserImages/default.png" alt=""/>
+                    <img src="${visitedProfilePic}" alt=""/>
                 </div>
 
                 <div class="profile-header-info">

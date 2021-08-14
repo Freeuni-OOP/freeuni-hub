@@ -49,6 +49,8 @@ public class LogInServlet extends HttpServlet implements Attributes, UserConfigu
                 session.setAttribute("lastname", info.get(1));
                 session.setAttribute("username", username);
                 session.setAttribute("mail", info.get(4));
+                session.setAttribute("profilePic", um.getProfilePic(username));
+
 
                 LocationAddition locationAddition = new LocationAddition(new BaseConnector());
                 System.out.println(user_id);

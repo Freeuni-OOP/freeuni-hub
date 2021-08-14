@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import static StarterManager.Attributes.USER_MANAGER_ATTRIBUTE;
+
 
 @WebServlet(name = "Visit_Profile_Servlet", value = "/visitProfile")
 public class VisitProfileServlet extends HttpServlet {
@@ -24,6 +26,7 @@ public class VisitProfileServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        ManageUser um = (ManageUser) getServletContext().getAttribute(USER_MANAGER_ATTRIBUTE); // get manager
         response.setContentType("text/html");
         HttpSession session = request.getSession();
         String userName = request.getParameter("username");
@@ -109,6 +112,8 @@ public class VisitProfileServlet extends HttpServlet {
         session.setAttribute("profileFirstName", profileUser.getUserFirstName());
         session.setAttribute("profileLastName", profileUser.getUserLastName());
         session.setAttribute("profileMail", profileMail);
+
+        request.setAttribute("visitedProfilePic", um.getProfilePic(profileName));
 
         if (isBlocked) {
             request.getRequestDispatcher("/JSPs/ProfilePages/blockedProfile.jsp").forward(request, response);
