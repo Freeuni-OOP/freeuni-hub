@@ -61,6 +61,7 @@
                                     'Content-Type': 'application/x-www-form-urlencoded',
                                 }
                             });
+                            document.getElementById("profile-pic").src = imageStr;
                             alert('ფოტო წარმატებით აიტვირთა');
                         }
                     </script>
