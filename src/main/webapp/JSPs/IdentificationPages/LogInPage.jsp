@@ -19,17 +19,17 @@
 </script>
 
 <form action="/login" method="post" id="form_login">
-    <h1> მოგესალმებით ფრიუნიჰაბზე! </h1>
+    <h3>მოგესალმებით ფრიუნიჰაბზე!</h3>
     <p> გთხოვთ შეიყვანოთ თქვენი ინფორმაცია </p>
     <label for="username"> იუზერნეიმი: </label>
-    <input class="form-control" type="text" name="username" id="username" size="25"> <br/> <br/>
+    <input class="form-control" type="text" name="username" id="username" size="25"> <br/>
     <label for="password"> პაროლი: </label>
-    <input class="form-control" type="password" name="password" id="password" size="30"> <br/> <br/>
+    <input class="form-control" type="password" name="password" id="password" size="30"> <br/>
     <div>
         <input class="form-check-input" type="checkbox" onclick=change() id="show">
-        <label for="show"> პაროლის ჩვენება </label> <br> <Br>
-    </div>
-    <label> <input class="btn btn-primary" type="submit" value="შესვლა"> </label> <br/> <br/>
+        <label for="show"> პაროლის ჩვენება </label>
+    </div><br/>
+    <input class="btn btn-primary" type="submit" value="შესვლა"> <br/>
     <a class="btn btn-warning" href="${pageContext.request.contextPath}/JSPs/IdentificationPages/RegistrationPage.jsp">ახალი მომხმარებლის რეგისტრაცია </a>
 </form>
 
