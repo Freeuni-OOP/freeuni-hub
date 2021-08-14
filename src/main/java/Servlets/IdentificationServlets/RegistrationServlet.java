@@ -62,6 +62,8 @@ public class RegistrationServlet extends HttpServlet implements UserConfiguratio
             session.setAttribute("faculty", "არაა მითითებული");
             session.setAttribute("course", "არაა მითითებული");
             session.setAttribute("sex", "თავს შევიკავებ");
+            session.setAttribute("profilePic", "../../Images/UserImages/default.png");
+
             request.getRequestDispatcher("/JSPs/PersonalHomePages/HomePage.jsp").forward(request, response);
         } else if (!result.equals(ALL_GOOD)) {
             request.setAttribute("problem", result); // what was the problem
