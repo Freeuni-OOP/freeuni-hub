@@ -3,6 +3,8 @@
 <%
     if (session.getAttribute("username") == null) {
         response.sendRedirect("/");
+    } else {
+response.sendRedirect("/Posts");
     }
 %>
 
@@ -140,12 +142,6 @@
     <ul class="nav bg-dark mt-2 mb-2 justify-content-center" style="border-radius: 10px;">
         <li class="nav-item">
             <a class="nav-link text-warning" href="/Posts">პოსტები</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#">ჩემს შესახებ</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#">ფოტოები</a>
         </li>
         <li class="nav-item">
             <a class="nav-link text-warning" href="/showFriends">მეგობრები</a>
