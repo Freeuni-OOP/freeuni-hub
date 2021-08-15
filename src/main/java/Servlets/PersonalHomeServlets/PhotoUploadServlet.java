@@ -2,7 +2,6 @@ package Servlets.PersonalHomeServlets;
 
 
 import Manage.ManageUser;
-import com.mysql.cj.Session;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -16,7 +15,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.sql.SQLException;
-import java.util.Enumeration;
 
 import static StarterManager.Attributes.USER_MANAGER_ATTRIBUTE;
 
@@ -65,7 +63,7 @@ public class PhotoUploadServlet extends HttpServlet {
             throws ServletException, IOException {
 
         ServletContext context = getServletContext();
-        ManageUser mu = (ManageUser)context.getAttribute(USER_MANAGER_ATTRIBUTE); // get manager
+        ManageUser mu = (ManageUser) context.getAttribute(USER_MANAGER_ATTRIBUTE); // get manager
 
         HttpSession session = request.getSession();
         String username = (String) session.getAttribute("username");

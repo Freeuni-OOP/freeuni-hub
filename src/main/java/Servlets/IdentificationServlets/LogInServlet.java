@@ -105,9 +105,9 @@ public class LogInServlet extends HttpServlet implements Attributes, UserConfigu
                 }
 
 
-                request.getRequestDispatcher("/JSPs/PersonalHomePages/HomePage.jsp").forward(request, response);
+                response.sendRedirect("/JSPs/PersonalHomePages/HomePage.jsp");
             } else {
-                request.getRequestDispatcher("/JSPs/IdentificationPages/InvalidLogIn.jsp").forward(request, response);
+                response.sendRedirect("/JSPs/IdentificationPages/InvalidLogIn.jsp");
             }
         } catch (SQLException | ClassNotFoundException ignored) {
         }

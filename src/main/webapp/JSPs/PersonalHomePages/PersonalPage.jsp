@@ -33,7 +33,7 @@
                 <div class="profile-header-info">
                     <h4 class="m-t-sm"> ${username} </h4>
                     <p class="m-b-sm"> თავისუფალი უნივერსიტეტის სტუდენტი </p>
-                        <input id="fileupload" type="file" name="fileupload" value="picture" onchange="uploadFile(event)"/>
+                    <input id="fileupload" type="file" name="fileupload" value="picture" onchange="uploadFile(event)"/>
                     <script>
 
                         async function fileToBase64(file) {
