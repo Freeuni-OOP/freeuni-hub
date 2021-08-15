@@ -12,11 +12,11 @@
 
 <body onunload="disableBackButton()">
 <script type="text/javascript">
-    function disableBackButton() {
-        window.history.forward();
-    }
-
-    setTimeout("disableBackButton()", 0);
+    // function disableBackButton() {
+    //     window.history.forward();
+    // }
+    //
+    // setTimeout("disableBackButton()", 0);
 </script>
 
 <form action="/login" method="post" id="form_login">
@@ -24,7 +24,7 @@
     <p> გთხოვთ შეიყვანოთ თქვენი ინფორმაცია </p>
     <label for="username"> იუზერნეიმი: </label>
     <input
-            required
+<%--            required--%>
             class="form-control"
             type="text"
             name="username"
@@ -34,7 +34,7 @@
     >
     <label for="password"> პაროლი: </label>
     <input
-            required
+<%--            required--%>
             class="form-control"
             type="password"
             name="password"
@@ -59,6 +59,24 @@
 
 <!------------------------------------------------------------ java script -->
 <script>
+    document.getElementById('form_login').addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        const formProps = Object.fromEntries(formData);
+
+        await fetch('/login', {
+            method: "POST",
+            body: new URLSearchParams(formProps),
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            }
+        }).then(res => {
+            const a = document.createElement('a');
+            a.href = res.url;
+            a.click();
+        });
+    });
+
     function change() {
         let field = document.getElementById("password");
         if (field.type === "password") field.type = "text";
