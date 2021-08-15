@@ -63,10 +63,10 @@
                     >
                         გააუქმე ექაუნთი
                     </a>
-<%--                    <form action="${pageContext.request.contextPath}/DeleteAccount" method="post" id="Delete_Request">--%>
-<%--                        <input type="hidden" name="username" value=${username}>--%>
-<%--                        <button> გააუქმე ექაუნთი</button>--%>
-<%--                    </form>--%>
+                    <%--                    <form action="${pageContext.request.contextPath}/DeleteAccount" method="post" id="Delete_Request">--%>
+                    <%--                        <input type="hidden" name="username" value=${username}>--%>
+                    <%--                        <button> გააუქმე ექაუნთი</button>--%>
+                    <%--                    </form>--%>
                 </li>
             </ul>
 

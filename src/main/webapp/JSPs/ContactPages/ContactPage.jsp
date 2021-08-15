@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
-    if(session.getAttribute("username") == null) {
+    if (session.getAttribute("username") == null) {
         response.sendRedirect("/");
     }
 %>
@@ -106,82 +106,82 @@
     })
 </script>
 
-    <div class="container" style="margin-top: 50px">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="section-title">
-                    <h2> კონტაქტი </h2>
-                    <p>შეკითხვების შემთხვევაში აუცილებლად მოგვწერეთ</p>
-                </div>
-            </div>
-        </div>
-        <div class="row flex-row-reverse">
-            <div class="col-md-7 col-lg-8 m-15px-tb">
-
-                <div class="contact-form">
-                    <form action="mailto:dkhve19@freeuni.edu.ge" method="post"
-                          class="contactform contact_form" id="contact_form" enctype="text/plain">
-                        <div class="returnmessage valid-feedback p-15px-b"
-                             data-success="Your message has been received, We will contact you soon."></div>
-                        <div class="empty_notice invalid-feedback p-15px-b">
-                            <span>გთხოვთ შეავსოთ მოთხოვნილი ველები</span></div>
-                        <div class="row">
-
-                            <!-------------------------------------message------------->
-
-                            <%--                            <input type="submit" name = "გაგზავნა">--%>
-                            <div class="col-md-12">
-                                <div class="send">
-                                    <a id="send_message" class="px-btn theme"
-                                       href="mailto:gadik19@freeuni.edu.ge"> <span> მოგვწერე ფრიუნის ფოსტაზე </span> <i
-                                            class="arrow"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-            <div class="col-md-5 col-lg-4 m-15px-tb">
-                <div class="contact-name">
-                    <h5>ჩვენი ელ-ფოსტები</h5>
-                    <p>dkhve19@freeuni.edu.ge</p>
-                    <p>gadik19@freeuni.edu.ge</p>
-                    <p>lsamk19@freeuni.edu.ge</p>
-                    <p>lmach19@freeuni.edu.ge</p>
-                </div>
-
-
-                <div class="contact-name">
-                    <h5>მობილური</h5> <!------------------------ეს დასამთავრებელია,
-                                              ყველას ნომერია შესაყვანი ან შეგვიძლია დავიკიდოთ-->
-                    <p>ლუკა მაჭარაშვილი: 577-35-19-17</p>
-                    <p>გიორგი ადიკაშვილი: 551-74-40-45</p>
-                    <p>დავით ხვედელიძე: 599-12-73-19</p>
-                </div>
-
-
-                <div class="social-share nav">
-                    <a class="dribbble" href="https://www.facebook.com/d.xvedelidze">
-                        <img src="../../Images/Us/xvedo2.jpg" alt="fb" width="50" height="50" id="fb_image1">
-                    </a>
-
-                    <a class="dribbble" href="https://www.facebook.com/giorgi.adikashvili.7">
-                        <img src="../../Images/Us/ado.jpg" alt="fb" width="50" height="50" id="fb_image2">
-                    </a>
-
-                    <a class="dribbble" href="https://www.facebook.com/luka.macharashvili.779">
-                        <img src="../../Images/Us/macho.jpg" alt="fb" width="50" height="50" id="fb_image3">
-                    </a>
-
-                    <a class="dribbble" href="https://www.facebook.com/LukeSamkharadze">
-                        <img src="../../Images/UserImages/default.png" alt="fb" width="50" height="50" id="fb_image4">
-                    </a>
-
-                </div>
+<div class="container" style="margin-top: 50px">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="section-title">
+                <h2> კონტაქტი </h2>
+                <p>შეკითხვების შემთხვევაში აუცილებლად მოგვწერეთ</p>
             </div>
         </div>
     </div>
+    <div class="row flex-row-reverse">
+        <div class="col-md-7 col-lg-8 m-15px-tb">
+
+            <div class="contact-form">
+                <form action="mailto:dkhve19@freeuni.edu.ge" method="post"
+                      class="contactform contact_form" id="contact_form" enctype="text/plain">
+                    <div class="returnmessage valid-feedback p-15px-b"
+                         data-success="Your message has been received, We will contact you soon."></div>
+                    <div class="empty_notice invalid-feedback p-15px-b">
+                        <span>გთხოვთ შეავსოთ მოთხოვნილი ველები</span></div>
+                    <div class="row">
+
+                        <!-------------------------------------message------------->
+
+                        <%--                            <input type="submit" name = "გაგზავნა">--%>
+                        <div class="col-md-12">
+                            <div class="send">
+                                <a id="send_message" class="px-btn theme"
+                                   href="mailto:gadik19@freeuni.edu.ge"> <span> მოგვწერე ფრიუნის ფოსტაზე </span> <i
+                                        class="arrow"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-md-5 col-lg-4 m-15px-tb">
+            <div class="contact-name">
+                <h5>ჩვენი ელ-ფოსტები</h5>
+                <p>dkhve19@freeuni.edu.ge</p>
+                <p>gadik19@freeuni.edu.ge</p>
+                <p>lsamk19@freeuni.edu.ge</p>
+                <p>lmach19@freeuni.edu.ge</p>
+            </div>
+
+
+            <div class="contact-name">
+                <h5>მობილური</h5> <!------------------------ეს დასამთავრებელია,
+                                              ყველას ნომერია შესაყვანი ან შეგვიძლია დავიკიდოთ-->
+                <p>ლუკა მაჭარაშვილი: 577-35-19-17</p>
+                <p>გიორგი ადიკაშვილი: 551-74-40-45</p>
+                <p>დავით ხვედელიძე: 599-12-73-19</p>
+            </div>
+
+
+            <div class="social-share nav">
+                <a class="dribbble" href="https://www.facebook.com/d.xvedelidze">
+                    <img src="../../Images/Us/xvedo2.jpg" alt="fb" width="50" height="50" id="fb_image1">
+                </a>
+
+                <a class="dribbble" href="https://www.facebook.com/giorgi.adikashvili.7">
+                    <img src="../../Images/Us/ado.jpg" alt="fb" width="50" height="50" id="fb_image2">
+                </a>
+
+                <a class="dribbble" href="https://www.facebook.com/luka.macharashvili.779">
+                    <img src="../../Images/Us/macho.jpg" alt="fb" width="50" height="50" id="fb_image3">
+                </a>
+
+                <a class="dribbble" href="https://www.facebook.com/LukeSamkharadze">
+                    <img src="../../Images/UserImages/default.png" alt="fb" width="50" height="50" id="fb_image4">
+                </a>
+
+            </div>
+        </div>
+    </div>
+</div>
 <footer style="position: fixed; bottom: 0; right: 0; left: 0">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">

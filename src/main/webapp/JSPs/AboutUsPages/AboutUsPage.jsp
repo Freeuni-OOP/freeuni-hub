@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
-    if(session.getAttribute("username") == null) {
+    if (session.getAttribute("username") == null) {
         response.sendRedirect("/");
     }
 %>
@@ -163,10 +163,10 @@
 
                 <!-- 4 filed ---------------------------------------------------------------------------->
 
-                </div>
             </div>
         </div>
     </div>
+</div>
 
 <footer style="position: fixed; bottom: 0; right: 0; left: 0">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">

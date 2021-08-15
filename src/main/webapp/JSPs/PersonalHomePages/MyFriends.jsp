@@ -2,7 +2,7 @@
 <%@ page import="java.math.*, java.util.*,Manage.HelperClasses.User" %>
 
 <%
-    if(session.getAttribute("username") == null) {
+    if (session.getAttribute("username") == null) {
         response.sendRedirect("/");
     }
 %>

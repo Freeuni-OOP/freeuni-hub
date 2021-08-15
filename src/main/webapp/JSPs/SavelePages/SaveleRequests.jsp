@@ -2,7 +2,7 @@
 <%@ page import="java.math.*, java.util.*,Manage.HelperClasses.User" %>
 
 <%
-    if(session.getAttribute("username") == null) {
+    if (session.getAttribute("username") == null) {
         response.sendRedirect("/");
     }
 %>
@@ -104,31 +104,31 @@
 </script>
 <div class="container">
 
-<p> ქვემოთ ჩამოთვლილია თქვენთან საველე ლოკაციის გაცვლის მსურველები:</p>
+    <p> ქვემოთ ჩამოთვლილია თქვენთან საველე ლოკაციის გაცვლის მსურველები:</p>
 
-<%
-    List<User> all = (List<User>) request.getSession().getAttribute("requesters");
-    for (int i = 0; i < all.size(); i++) {
-        int id = all.get(i).getId();
-        String userName = all.get(i).getUserName();
-        String userFirstName = all.get(i).getUserFirstName();
-        String userLastName = all.get(i).getUserLastName();
-%>
-<form action="/answerSaveleRequest" , method="post">
-    <%=userName%>
-    <input type="hidden" name="username" value=${username}>
-    <input type="hidden" name="requesterName" value=<%=userName%>>
-    <p class="info">სახელი: <%=userFirstName%>
-    </p>
-    <p class="info">გვარი:<%=userLastName%>
-    </p>
-    <input type="submit" name="action" value="accept">
-    <input type="submit" name="action" value="delete">
-    <p></p>
-</form>
-<%
-    }
-%>
+    <%
+        List<User> all = (List<User>) request.getSession().getAttribute("requesters");
+        for (int i = 0; i < all.size(); i++) {
+            int id = all.get(i).getId();
+            String userName = all.get(i).getUserName();
+            String userFirstName = all.get(i).getUserFirstName();
+            String userLastName = all.get(i).getUserLastName();
+    %>
+    <form action="/answerSaveleRequest" , method="post">
+        <%=userName%>
+        <input type="hidden" name="username" value=${username}>
+        <input type="hidden" name="requesterName" value=<%=userName%>>
+        <p class="info">სახელი: <%=userFirstName%>
+        </p>
+        <p class="info">გვარი:<%=userLastName%>
+        </p>
+        <input type="submit" name="action" value="accept">
+        <input type="submit" name="action" value="delete">
+        <p></p>
+    </form>
+    <%
+        }
+    %>
 </div>
 
 <footer style="position: fixed; bottom: 0; right: 0; left: 0">

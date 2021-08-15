@@ -2,7 +2,7 @@
 <%@ page import="java.math.*, java.util.*,Manage.HelperClasses.User" %>
 
 <%
-    if(session.getAttribute("username") == null) {
+    if (session.getAttribute("username") == null) {
         response.sendRedirect("/");
     }
 %>
@@ -106,53 +106,53 @@
 
 <div class="container">
 
-<p> ქვემოთ ჩამოთვლილია თქვენთან მეგობრების მსურველები:</p>
+    <p> ქვემოთ ჩამოთვლილია თქვენთან მეგობრების მსურველები:</p>
 
-<script>
-    document.getElementById("logout-button").addEventListener('click', async () => {
-        await fetch('/logout', {
-            method: "POST",
-        }).then(res => {
-            const a = document.createElement('a');
-            a.href = res.url;
-            a.click();
-        });
-    })
+    <script>
+        document.getElementById("logout-button").addEventListener('click', async () => {
+            await fetch('/logout', {
+                method: "POST",
+            }).then(res => {
+                const a = document.createElement('a');
+                a.href = res.url;
+                a.click();
+            });
+        })
 
-    document.getElementById("delete-account-button").addEventListener('click', async () => {
-        await fetch('${pageContext.request.contextPath}/DeleteAccount', {
-            method: "POST",
-        }).then(res => {
-            const a = document.createElement('a');
-            a.href = res.url;
-            a.click();
-        });
-    })
-</script>
+        document.getElementById("delete-account-button").addEventListener('click', async () => {
+            await fetch('${pageContext.request.contextPath}/DeleteAccount', {
+                method: "POST",
+            }).then(res => {
+                const a = document.createElement('a');
+                a.href = res.url;
+                a.click();
+            });
+        })
+    </script>
 
-<%
-    ArrayList<User> all = (ArrayList<User>) request.getSession().getAttribute("requesters");
-    for (int i = 0; i < all.size(); i++) {
-        int id = all.get(i).getId();
-        String userName = all.get(i).getUserName();
-        String userFirstName = all.get(i).getUserFirstName();
-        String userLastName = all.get(i).getUserLastName();
-%>
-<form action="/answerRequest" , method="post">
-    <%=userName%>
-    <input type="hidden" name="username" value=${username}>
-    <input type="hidden" name=<%=id%>  value=<%=userName%>>
-    <p class="info">სახელი: <%=userFirstName%>
-    </p>
-    <p class="info">გვარი:<%=userLastName%>
-    </p>
-    <input type="submit" name="action" value="accept">
-    <input type="submit" name="action" value="delete">
-    <p></p>
-</form>
-<%
-    }
-%>
+    <%
+        ArrayList<User> all = (ArrayList<User>) request.getSession().getAttribute("requesters");
+        for (int i = 0; i < all.size(); i++) {
+            int id = all.get(i).getId();
+            String userName = all.get(i).getUserName();
+            String userFirstName = all.get(i).getUserFirstName();
+            String userLastName = all.get(i).getUserLastName();
+    %>
+    <form action="/answerRequest" , method="post">
+        <%=userName%>
+        <input type="hidden" name="username" value=${username}>
+        <input type="hidden" name=<%=id%>  value=<%=userName%>>
+        <p class="info">სახელი: <%=userFirstName%>
+        </p>
+        <p class="info">გვარი:<%=userLastName%>
+        </p>
+        <input type="submit" name="action" value="accept">
+        <input type="submit" name="action" value="delete">
+        <p></p>
+    </form>
+    <%
+        }
+    %>
 </div>
 <footer style="position: fixed; bottom: 0; right: 0; left: 0">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">

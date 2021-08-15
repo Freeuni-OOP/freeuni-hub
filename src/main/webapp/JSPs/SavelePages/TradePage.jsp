@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
-    if(session.getAttribute("username") == null) {
+    if (session.getAttribute("username") == null) {
         response.sendRedirect("/");
     }
 %>
@@ -102,13 +102,13 @@
     })
 </script>
 <div class="container">
-<p> აირჩიეთ თქვენთვის სასურველი ლოკაცია </p>
+    <p> აირჩიეთ თქვენთვის სასურველი ლოკაცია </p>
 
-<label for="have"> მაქვს </label>
-<input type="text" name="have" id="have">
+    <label for="have"> მაქვს </label>
+    <input type="text" name="have" id="have">
 
-<label for="want"> მინდა </label>
-<input type="text" name="want" id="want">
+    <label for="want"> მინდა </label>
+    <input type="text" name="want" id="want">
 </div>
 <footer style="position: fixed; bottom: 0; right: 0; left: 0">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">

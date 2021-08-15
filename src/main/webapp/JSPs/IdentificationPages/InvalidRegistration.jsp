@@ -4,7 +4,7 @@
 <html>
 
 <%
-    if(session.getAttribute("username") != null) {
+    if (session.getAttribute("username") != null) {
         response.sendRedirect("../PersonalHomePages/HomePage.jsp");
     }
 %>
