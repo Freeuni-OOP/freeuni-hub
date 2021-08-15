@@ -78,6 +78,6 @@ public class PhotoUploadServlet extends HttpServlet {
 
         session.setAttribute("profilePic", base64img);
 
-        request.getRequestDispatcher("/JSPs/PersonalHomePages/PersonalPage.jsp").forward(request, response);
+        request.getRequestDispatcher("/JSPs/PersonalHomePages/HomePage.jsp").forward(request, response);
     }
 }

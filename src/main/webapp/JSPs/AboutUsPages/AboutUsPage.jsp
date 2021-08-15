@@ -73,7 +73,7 @@
                 გასვლა
             </a>
         </span>
-        <a href="${pageContext.request.contextPath}/JSPs/PersonalHomePages/PersonalPage.jsp" id="personal_photo_home">
+        <a href="${pageContext.request.contextPath}/JSPs/PersonalHomePages/HomePage.jsp" id="personal_photo_home">
             <img src="${profilePic}" alt="Avatar" height="50" width="50"/>
         </a>
     </div>
