@@ -40,6 +40,6 @@ public class AddPostServlet extends HttpServlet {
             e.printStackTrace();
         }
         session.setAttribute("username", userName);
-        request.getRequestDispatcher("JSPs/PersonalHomePages/PersonalPage.jsp").forward(request, response);
+        request.getRequestDispatcher("JSPs/PersonalHomePages/HomePage.jsp").forward(request, response);
     }
 }

@@ -141,7 +141,7 @@ public class ProfileUpdateServlet extends HttpServlet implements Attributes, Use
                         e.printStackTrace();
                     }
                 }
-                request.getRequestDispatcher("/JSPs/PersonalHomePages/PersonalPage.jsp").forward(request, response);
+                request.getRequestDispatcher("/JSPs/PersonalHomePages/HomePage.jsp").forward(request, response);
             } else {
                 if ((message.equals(USERNAME_EXISTS) && (newUsername.equals(username)))
                         // if username isn't changed, that's ok
@@ -186,7 +186,7 @@ public class ProfileUpdateServlet extends HttpServlet implements Attributes, Use
                             session.setAttribute("course", "IV+");
                             break;
                         default:
-                            session.setAttribute("course", "არაა მითითებული");
+                            session.setAttribute("course", "უცნობია");
                             break;
                     }
 
@@ -222,7 +222,7 @@ public class ProfileUpdateServlet extends HttpServlet implements Attributes, Use
                             session.setAttribute("saveleLocation", "ფარი3");
                             break;
                     }
-                    request.getRequestDispatcher("/JSPs/PersonalHomePages/PersonalPage.jsp").forward(request, response);
+                    request.getRequestDispatcher("/JSPs/PersonalHomePages/HomePage.jsp").forward(request, response);
                 } else {
                     session.setAttribute("problems", message);
                     request.getRequestDispatcher("/JSPs/PersonalHomePages/InvalidProfileUpdate.jsp").forward(request, response);

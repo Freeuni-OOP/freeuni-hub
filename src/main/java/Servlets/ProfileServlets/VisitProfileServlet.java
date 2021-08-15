@@ -77,14 +77,14 @@ public class VisitProfileServlet extends HttpServlet {
                         break;
                 }
             } else {
-                session.setAttribute("saveleLocation", "არაა მითითებული");
+                session.setAttribute("saveleLocation", "უცნობია");
             }
             if (userInfo.get(5) == null)
-                session.setAttribute("profileFaculty", "არაა მითითებული");
+                session.setAttribute("profileFaculty", "უცნობია");
             else session.setAttribute("profileFaculty", userInfo.get(5));
 
             if (userInfo.get(6) == null)
-                session.setAttribute("profileCourse", "არაა მითითებული");
+                session.setAttribute("profileCourse", "უცნობია");
             else session.setAttribute("profileCourse", userInfo.get(6));
 
             if (userInfo.get(7) == null)

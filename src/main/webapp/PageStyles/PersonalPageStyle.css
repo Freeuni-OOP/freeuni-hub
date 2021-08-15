@@ -1,10 +1,8 @@
 /*----------------------body---------- */
 
 body {
-    margin-top: 10px;
-    font-family: 'Open Sans', sans-serif;
-    background-image: url("../Images/UsefulImages/biblioteka.jpg");
-    background-size: cover;
+    margin: 0;
+    padding: 0;
 }
 
 /* ---------------------------------------------profile section below */
@@ -90,8 +88,8 @@ body {
 }
 
 .profile-header {
-    position: relative;
-    overflow: hidden;
+    height: 300px;
+    padding: 30px;
 }
 
 .profile-header .profile-header-cover {
@@ -128,7 +126,6 @@ body .fc-icon {
     list-style-type: none;
     margin: -1.25rem 0 0;
     padding: 0 0 0 8.75rem;
-    border-bottom: 1px solid #c8c7cc;
     white-space: nowrap;
 }
 

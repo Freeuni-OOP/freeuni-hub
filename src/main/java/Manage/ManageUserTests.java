@@ -150,7 +150,7 @@ public class ManageUserTests implements UserConfiguration {
         ArrayList<String> info = manageUser.getUserInfo(50);
 
         assertEquals(Arrays.asList("vigac", "vigacashvili", "kaci", "Kacuri123", "vviga17@freeuni.edu.ge",
-                null, "არაა მითითებული", null), info);
+                null, "უცნობია", null), info);
 
         manageUser.removeUser("vviga17@freeuni.edu.ge");
     }
