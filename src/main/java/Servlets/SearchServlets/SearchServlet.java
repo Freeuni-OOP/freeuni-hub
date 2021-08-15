@@ -25,7 +25,7 @@ public class SearchServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String username = request.getParameter("username");
-        String curUser = request.getParameter("curUser");
+        String curUser = (String) request.getSession().getAttribute("username");
         int id = 0;
         try {
             UserById ubi = new UserById(new BaseConnector());

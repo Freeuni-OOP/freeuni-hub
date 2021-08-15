@@ -77,14 +77,14 @@ public class LogInServlet extends HttpServlet implements Attributes, UserConfigu
                             break;
                     }
                 } else {
-                    session.setAttribute("saveleLocation", "არაა მითითებული");
+                    session.setAttribute("saveleLocation", "უცნობია");
                 }
                 if (info.get(5) == null)
-                    session.setAttribute("faculty", "არაა მითითებული");
+                    session.setAttribute("faculty", "უცნობია");
                 else session.setAttribute("faculty", info.get(5));
 
                 if (info.get(6) == null)
-                    session.setAttribute("course", "არაა მითითებული");
+                    session.setAttribute("course", "უცნობია");
                 else session.setAttribute("course", info.get(6));
 
                 if (info.get(7) == null)

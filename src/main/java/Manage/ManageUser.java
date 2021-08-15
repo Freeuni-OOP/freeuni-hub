@@ -283,7 +283,7 @@ public class ManageUser implements UserConfiguration {
                         res.add("IV+");
                         break;
                     default:
-                        res.add("არაა მითითებული");
+                        res.add("უცნობია");
                         break;
                 }
                 res.add(rs2.getString("sqesi"));

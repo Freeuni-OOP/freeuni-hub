@@ -25,7 +25,7 @@ public class ShowFriendsServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String username = request.getParameter("username");
+        String username = (String) request.getSession().getAttribute("username");
         HttpSession session = request.getSession();
         try {
             FriendList friendList = new FriendList(new BaseConnector());
