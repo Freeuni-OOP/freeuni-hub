@@ -24,23 +24,22 @@
     <p> გთხოვთ შეიყვანოთ თქვენი ინფორმაცია </p>
     <label for="username"> იუზერნეიმი: </label>
     <input
-<%--            required--%>
+            required
             class="form-control"
             type="text"
             name="username"
             id="username"
-            oninvalid="this.setCustomValidity('იუზერნეიმის შეყვანა აუცილებელია')"
-            onvalid="this.setCustomValidity('')"
+            minlength="4"
     >
     <label for="password"> პაროლი: </label>
     <input
-<%--            required--%>
+            required
+            minlength="4"
+            maxlength="16"
             class="form-control"
             type="password"
             name="password"
             id="password"
-            oninvalid="this.setCustomValidity('პაროლის შეყვანა აუცილებელია')"
-            onvalid="this.setCustomValidity('')"
     >
     <div class="input">
         <input

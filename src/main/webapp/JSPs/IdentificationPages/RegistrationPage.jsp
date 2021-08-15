@@ -19,10 +19,9 @@
     <label for="firstName"> სახელი: </label>
     <input
             required
+            onkeyup="this.value=this.value.toLowerCase();"
             class="form-control" type="text" name="firstName" id="firstName"
-            placeholder="ლათინური პატარა ასოები"
-            oninvalid="this.setCustomValidity('სახელის შეყვანა აუცილებელია')"
-            onvalid="this.setCustomValidity('')">
+            placeholder="ლათინური პატარა ასოები">
     <label for="lastName"> გვარი: </label>
     <input
             required
@@ -30,29 +29,26 @@
             type="text"
             name="lastName"
             id="lastName"
-            placeholder="ლათინური პატარა ასოები"
-            oninvalid="this.setCustomValidity('გვარის შეყვანა აუცილებელია')"
-            onvalid="this.setCustomValidity('')">
+            placeholder="ლათინური პატარა ასოები">
     <label for="username"> იუზერნეიმი: </label>
     <input
             required
             class="form-control"
             type="text"
+            minlength="4"
             name="username"
             id="username"
-            placeholder="ლათინური ასოები, ციფრები, _"
-            oninvalid="this.setCustomValidity('იუზერნეიმის შეყვანა აუცილებელია')"
-            onvalid="this.setCustomValidity('')">
+            placeholder="ლათინური ასოები, ციფრები, _">
     <label for="password"> პაროლი: </label>
     <input
             required
             class="form-control"
             type="password"
+            minlength="4"
+            maxlength="16"
             name="password"
             id="password"
-            placeholder="ლათინური ასოები, ციფრები, _"
-            oninvalid="this.setCustomValidity('პაროლის შეყვანა აუცილებელია')"
-            onvalid="this.setCustomValidity('')">
+            placeholder="ლათინური ასოები, ციფრები, _">
     <div class="input">
         <input class="form-check-input" type="checkbox" onclick=change() id="show">
         <label for="show"> პაროლის ჩვენება </label>
@@ -62,21 +58,19 @@
             required
             class="form-control"
             type="password"
+            minlength="4"
+            maxlength="16"
             name="repeatPassword"
             id="repeatPassword"
-            placeholder="გაიმეორეთ პაროლი"
-            oninvalid="this.setCustomValidity('პაროლი აუცილებლად უნდა გაიმეოროთ')"
-            onvalid="this.setCustomValidity('')">
+            placeholder="გაიმეორეთ პაროლი">
     <label for="mail"> ელ-ფოსტა: </label>
     <input
             required
             class="form-control"
-            type="text"
+            type="email"
             name="mail"
             id="mail"
-            placeholder="მაგ: glekv22@freeuni.edu.ge"
-            oninvalid="this.setCustomValidity('ელ-ფოსტის შეყვანა აუცილებელია')"
-            onvalid="this.setCustomValidity('')">
+            placeholder="მაგ: glekv22@freeuni.edu.ge">
     <input class="btn btn-primary" type="submit" value="რეგისტრაცია">
     <a style="display: block" href="${pageContext.request.contextPath}/JSPs/IdentificationPages/LogInPage.jsp">
         <input style="width: 100%" class="btn btn-warning" type="button" value="არსებული მომხარებლით შესვლა">

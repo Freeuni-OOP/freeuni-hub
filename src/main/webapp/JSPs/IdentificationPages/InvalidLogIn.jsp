@@ -18,22 +18,22 @@
     <label for="username"> იუზერნეიმი: </label>
     <input
             required
+            minlength="4"
+            maxlength="16"
             class="form-control"
             type="text"
             name="username"
             id="username"
-            oninvalid="this.setCustomValidity('იუზერნეიმის შეყვანა აუცილებელია')"
-            onvalid="this.setCustomValidity('')"
     >
     <label for="password"> პაროლი: </label>
     <input
             required
+            minlength="4"
+            maxlength="16"
             class="form-control"
             type="password"
             name="password"
             id="password"
-            oninvalid="this.setCustomValidity('პაროლის შეყვანა აუცილებელია')"
-            onvalid="this.setCustomValidity('')"
     >
     <div class="input">
         <input
@@ -53,6 +53,24 @@
 
 <!-- ------------------------------------------------------------------------java script -->
 <script>
+    document.getElementById('form_login').addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        const formProps = Object.fromEntries(formData);
+
+        await fetch('/login', {
+            method: "POST",
+            body: new URLSearchParams(formProps),
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            }
+        }).then(res => {
+            const a = document.createElement('a');
+            a.href = res.url;
+            a.click();
+        });
+    });
+
     function change() {
         let field = document.getElementById("password");
         if (field.type === "password") field.type = "text";
