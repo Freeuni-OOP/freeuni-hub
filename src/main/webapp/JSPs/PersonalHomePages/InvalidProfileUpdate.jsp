@@ -144,7 +144,7 @@
                             </ul>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary"> შენახვა</button>
+                    <button type="submit" class="btn btn-dark"> შენახვა</button>
                 </form>
 
             </div>
