@@ -29,7 +29,6 @@
             type="text"
             name="username"
             id="username"
-            size="25"
             oninvalid="this.setCustomValidity('იუზერნეიმის შეყვანა აუცილებელია')"
             onvalid="this.setCustomValidity('')"
     >
@@ -40,13 +39,11 @@
             type="password"
             name="password"
             id="password"
-            size="30"
             oninvalid="this.setCustomValidity('პაროლის შეყვანა აუცილებელია')"
             onvalid="this.setCustomValidity('')"
     >
     <div class="input">
         <input
-                required
                 class="form-check-input"
                 type="checkbox"
                 onclick=change()
