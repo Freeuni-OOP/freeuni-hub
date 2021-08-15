@@ -1,5 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.math.*, java.util.*,Manage.HelperClasses.User" %>
+
+<%
+    if(session.getAttribute("username") == null) {
+        response.sendRedirect("/");
+    }
+%>
+
 <html>
 
 <head>

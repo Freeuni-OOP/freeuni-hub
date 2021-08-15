@@ -1,5 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<%
+    if(session.getAttribute("username") == null) {
+        response.sendRedirect("/");
+    }
+%>
 
 <html>
 
@@ -84,10 +89,25 @@
                 > ინფორმაციის განახლება </a></li>
                 <li class="nav-item"><a href="${pageContext.request.contextPath}/JSPs/PersonalHomePages/HomePage.jsp"
                 > მთავარი გვერდი </a></li>
-                <li class="nav-item"><a href="${pageContext.request.contextPath}/JSPs/IdentificationPages/LogInPage.jsp"
-                > გასვლა </a></li>
+                <li class="nav-item">
+                    <a id="logout-button">
+                        გასვლა
+                    </a>
+                </li>
             </ul>
         </div>
+
+        <script>
+            document.getElementById("logout-button").addEventListener('click', async () => {
+                await fetch('/logout', {
+                    method: "POST",
+                }).then(res => {
+                    const a = document.createElement('a');
+                    a.href = res.url;
+                    a.click();
+                });;
+            })
+        </script>
 
 
         <div class="profile-container">
