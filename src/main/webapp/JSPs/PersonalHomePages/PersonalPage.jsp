@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
-    if(session.getAttribute("username") == null) {
+    if (session.getAttribute("username") == null) {
         response.sendRedirect("/");
     }
 %>
@@ -105,7 +105,7 @@
                     const a = document.createElement('a');
                     a.href = res.url;
                     a.click();
-                });;
+                });
             })
         </script>
 

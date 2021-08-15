@@ -64,7 +64,7 @@ public class RegistrationServlet extends HttpServlet implements UserConfiguratio
             session.setAttribute("sex", "თავს შევიკავებ");
             session.setAttribute("profilePic", "../../Images/UserImages/default.png");
 
-            request.getRequestDispatcher("/JSPs/PersonalHomePages/HomePage.jsp").forward(request, response);
+            response.sendRedirect("/JSPs/PersonalHomePages/HomePage.jsp");
         } else if (!result.equals(ALL_GOOD)) {
             request.setAttribute("problem", result); // what was the problem
             request.getRequestDispatcher("/JSPs/IdentificationPages/InvalidRegistration.jsp").forward(request, response);

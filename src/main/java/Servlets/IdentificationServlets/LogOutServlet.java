@@ -19,6 +19,7 @@ public class LogOutServlet extends HttpServlet implements UserConfiguration {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.getSession().setAttribute("username", null);
         request.getSession().invalidate();
         response.sendRedirect("/");
     }

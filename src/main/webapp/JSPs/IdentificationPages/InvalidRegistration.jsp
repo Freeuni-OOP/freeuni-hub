@@ -4,7 +4,7 @@
 <html>
 
 <%
-    if(session.getAttribute("username") != null) {
+    if (session.getAttribute("username") != null) {
         response.sendRedirect("../PersonalHomePages/HomePage.jsp");
     }
 %>
@@ -25,7 +25,10 @@
     <input
             required
             onkeyup="this.value=this.value.toLowerCase();"
-            class="form-control" type="text" name="firstName" id="firstName"
+            class="form-control"
+            type="text"
+            name="firstName"
+            id="firstName"
             placeholder="ლათინური პატარა ასოები">
     <label for="lastName"> გვარი: </label>
     <input
@@ -77,7 +80,7 @@
             name="mail"
             id="mail"
             placeholder="მაგ: glekv22@freeuni.edu.ge">
-    <input class="btn btn-primary" type="submit" value="რეგისტრაცია">
+    <input class="btn btn-dark" type="submit" value="რეგისტრაცია">
     <a style="display: block" href="${pageContext.request.contextPath}/JSPs/IdentificationPages/LogInPage.jsp">
         <input style="width: 100%" class="btn btn-warning" type="button" value="არსებული მომხარებლით შესვლა">
     </a>

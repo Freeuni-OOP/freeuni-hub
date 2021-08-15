@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    if(session.getAttribute("username") == null) {
+    if (session.getAttribute("username") == null) {
         response.sendRedirect("/");
     }
 %>
@@ -150,7 +150,7 @@
                             </ul>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary"> შენახვა</button>
+                    <button type="submit" class="btn btn-dark"> შენახვა</button>
                 </form>
 
             </div>

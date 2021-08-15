@@ -1,37 +1,5 @@
-
-h1 {
-    color: GREEN;
-}
-
-ul {
-    list-style-type: none;
+body {
     padding: 0;
-    margin-right: auto;
-    width: 100%;
-    overflow: hidden;
-    background-color: gold;
-}
-
-
-li {
-    float: right;
-}
-
-#personal_photo_home {
-    border-color: aqua;
-    border-style: groove;
-    border-radius: 50%;
-    float: right;
-}
-
-#welcome_text {
-    text-align: center;
-}
-
-li a {
-    display: block;
-    color: black;
-    text-align: center;
-    text-decoration: none;
-    padding: 15px 17px;
+    margin: 0;
+    box-sizing: border-box;
 }

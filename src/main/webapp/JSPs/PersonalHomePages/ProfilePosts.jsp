@@ -3,7 +3,7 @@
         import="java.math.*,DataBaseConnection.BaseConnector, java.util.*,Manage.HelperClasses.*,java.io.IOException,java.sql.SQLException" %>
 
 <%
-    if(session.getAttribute("username") == null) {
+    if (session.getAttribute("username") == null) {
         response.sendRedirect("/");
     }
 %>
