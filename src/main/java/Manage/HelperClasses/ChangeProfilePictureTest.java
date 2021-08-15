@@ -25,6 +25,10 @@ public class ChangeProfilePictureTest {
         ChangeProfilePicture changeProfilePicture = new ChangeProfilePicture(bc);
         Connection connection = bc.accessConnection();
         Statement statement = connection.createStatement();
+        statement.execute("delete from usersInfo where user_id = 1000;");
+        statement.execute("delete from users where user_name = 'bigenti';");
+        statement.execute("delete from usersInfo where user_id = 2000;");
+        statement.execute("delete from users where user_name = 'bigentia'");
         statement.execute("Insert into users (id,first_name,last_name,user_name,password,email)" +
                 " values " + "(1000,'luka','macho','bigenti','123','fsjsffdsdfadsse')");
         statement.execute("Insert into users (id,first_name,last_name,user_name,password,email)" +
