@@ -1,6 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page
         import="java.math.*,DataBaseConnection.BaseConnector, java.util.*,Manage.HelperClasses.*,java.io.IOException,java.sql.SQLException" %>
+
+<%
+    if(session.getAttribute("username") == null) {
+        response.sendRedirect("/");
+    }
+%>
 <html>
 
 <head>

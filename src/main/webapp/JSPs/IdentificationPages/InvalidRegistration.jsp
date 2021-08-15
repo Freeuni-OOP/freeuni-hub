@@ -3,6 +3,11 @@
 
 <html>
 
+<%
+    if(session.getAttribute("username") != null) {
+        response.sendRedirect("../PersonalHomePages/HomePage.jsp");
+    }
+%>
 
 <head>
     <link rel="stylesheet" href="../../PageStyles/RegistrationStyle.css">
