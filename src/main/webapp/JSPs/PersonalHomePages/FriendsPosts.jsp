@@ -51,7 +51,7 @@
     }
 %>
 <form action="/addComment" method="post">
-    <input type="text" name="commentText" id="commentText" size="30">
+    <input required type="text" name="commentText" id="commentText" size="30">
     <button> დაამატე კომენტარი</button>
     <input type="hidden" name="username" value= ${username}>
     <input type="hidden" name="postId" value=<%=id%>>

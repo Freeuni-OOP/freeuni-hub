@@ -166,10 +166,13 @@
     </div>
 
     <div>
+        <p>
+            შენი პოსტები:
+        </p>
         <form action="/addPost" method="post">
             <div style="display: flex; margin-top: 5px">
-                 <input class="form-control" type="text" name="postText" id="postText">
-                <button class="btn btn-dark"> დაამატე პოსტი</button>
+                 <input required class="form-control" type="text" name="postText" id="postText">
+                <button class="btn btn-dark text-warning"> დაამატე პოსტი</button>
             </div>
             <input type="hidden" name="username" value= ${username}>
         </form>
@@ -189,7 +192,7 @@
 
         <%
             if (commentList == null || commentList.size() == 0)
-            { %>   უკომენტაროდ <% }
+            { %>   <div style="padding: 5px">უკომენტაროდ</div> <% }
     else {
         %>
         <ul class="list-group list-group-flush">
@@ -213,18 +216,18 @@
         </div>
         <%
                 }
-        %></ul><%
             }
         %>
-        </div>
-        <form action="/addComment" method="post">
-            <div style="display: flex; margin-top: 5px">
-                <input class="form-control" type="text" name="commentText" id="commentText">
-                <button class="btn btn-dark"> დაამატე კომენტარი</button>
+        <form action="/addComment" method="post" style="margin-bottom: 0">
+            <div style="display: flex;">
+                <input required class="form-control" type="text" name="commentText" id="commentText">
+                <button class="btn btn-dark text-warning"> დაამატე კომენტარი</button>
             </div>
             <input type="hidden" name="username" value= ${username}>
             <input type="hidden" name="postId" value=<%=id%>>
         </form>
+        </ul>
+        </div>
         <% }
         }
         %>
