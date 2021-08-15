@@ -105,7 +105,7 @@
                     const a = document.createElement('a');
                     a.href = res.url;
                     a.click();
-                });;
+                });
             })
         </script>
 

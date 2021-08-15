@@ -10,17 +10,100 @@
 <head>
     <title> ჩვენ </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
-          integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous"/>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
 
+<nav class="navbar navbar-expand-lg navbar-light bg-warning">
+    <div class="container">
+        <a class="navbar-brand" href="${pageContext.request.contextPath}/JSPs/PersonalHomePages/HomePage.jsp">
+            <img style="border-radius: 5px" src="../../favicon.ico" width="50" height="50"
+                 class="d-inline-block align-top" alt="">
+            <%--            Freeuni Hub--%>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a
+                            class="nav-link"
+                            href="${pageContext.request.contextPath}/FriendRequests"
+                    >
+                        მეგობრების თხოვნები
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a
+                            class="nav-link"
+                            href="${pageContext.request.contextPath}/SaveleRequests"
+                    >
+                        საველეს გაცვლები
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a
+                            class="nav-link"
+                            href="${pageContext.request.contextPath}/JSPs/SavelePages/TradePage.jsp"
+                    >
+                        გაცვალე საველე
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a
+                            class="nav-link"
+                            id="delete-account-button"
+                            href="#"
+                    >
+                        გააუქმე ექაუნთი
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+        <span class="nav-item">
+            <a
+                    class="nav-link"
+                    id="logout-button"
+                    href="#"
+            >
+                გასვლა
+            </a>
+        </span>
+        <a href="${pageContext.request.contextPath}/JSPs/PersonalHomePages/PersonalPage.jsp" id="personal_photo_home">
+            <img src="${profilePic}" alt="Avatar" height="50" width="50"/>
+        </a>
+    </div>
+</nav>
+
+<script>
+    document.getElementById("logout-button").addEventListener('click', async () => {
+        await fetch('/logout', {
+            method: "POST",
+        }).then(res => {
+            const a = document.createElement('a');
+            a.href = res.url;
+            a.click();
+        });
+    })
+
+    document.getElementById("delete-account-button").addEventListener('click', async () => {
+        await fetch('${pageContext.request.contextPath}/DeleteAccount', {
+            method: "POST",
+        }).then(res => {
+            const a = document.createElement('a');
+            a.href = res.url;
+            a.click();
+        });
+    })
+</script>
+
 <!-- -------------javascript included----------------------------------------------------------->
 
-<div class="container">
+<div class="container" style="margin-top: 25px">
     <div class="row align-items-center">
         <div class="col-lg-6 col-md-6 order-2 order-md-1 mt-4 pt-2 mt-sm-0 opt-sm-0">
             <div class="row align-items-center">
@@ -68,7 +151,7 @@
 
         <div class="col-lg-6 col-md-6 col-12 order-1 order-md-2">
             <div class="section-title ml-lg-5">
-                <h5 class="text-custom font-weight-normal mb-3"> ჩვენ შესახებ </h5>
+                <h5 class="text-custom font-weight-normal mb-3"> ჩვენს შესახებ </h5>
                 <h4 class="title mb-4">
                     ოოპი რომ არა, <br>
                     არც კი გეცოდინებოდათ ვინ ვართ
@@ -79,28 +162,39 @@
                     დიდი ჯაფის საფუძველზე შეიქმნა და გთხოვთ ისიამოვნოთ </p>
 
                 <!-- 4 filed ---------------------------------------------------------------------------->
-                <div class="row">
-                    <div class="col-lg-6 mt-4 pt-2">
-                        <div class="media align-items-center rounded shadow p-3">
-                            <i class="fa fa-play h4 mb-0 text-custom"></i>
-                            <h6 class="ml-3 mb-0"><a href="https://www.facebook.com/giorgi.adikashvili.7/"
-                                                     class="text-dark"> გვერდის ავტორი </a></h6>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6 mt-4 pt-2">
-                        <div class="media align-items-center rounded shadow p-3">
-                            <i class="fa fa-user h4 mb-0 text-custom"> </i>
-                            <h6 class="ml-3 mb-0"><a href="../../JSPs/ContactPages/ContactPage.jsp" class="text-dark">
-                                კონტაქტი </a></h6>
-                        </div>
-                    </div>
 
                 </div>
             </div>
         </div>
     </div>
-</div>
+
+<footer style="position: fixed; bottom: 0; right: 0; left: 0">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a
+                            class="nav-link"
+                            href="${pageContext.request.contextPath}/JSPs/ContactPages/ContactPage.jsp"
+                    >
+                        კონტაქტი
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a
+                            class="nav-link"
+                            href="${pageContext.request.contextPath}/JSPs/AboutUsPages/AboutUsPage.jsp"
+                    >
+                        ჩვენს შესახებ
+                    </a>
+                </li>
+            </ul>
+            <span class="text-light">
+                All rights reserved &copy;
+            </span>
+        </div>
+    </nav>
+</footer>
 
 
 </body>

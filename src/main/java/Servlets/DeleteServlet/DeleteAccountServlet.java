@@ -21,7 +21,7 @@ public class DeleteAccountServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String userName = request.getParameter("username");
+        String userName = (String) request.getSession().getAttribute("username");
         try {
             UserById ubi = new UserById(new BaseConnector());
             int id = ubi.getIdByUsername(userName);
@@ -32,6 +32,8 @@ public class DeleteAccountServlet extends HttpServlet {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        request.getRequestDispatcher("/JSPs/IdentificationPages/LogInPage.jsp").forward(request, response);
+        request.getSession().setAttribute("username", null);
+        request.getSession().invalidate();
+        response.sendRedirect("/");
     }
 }
