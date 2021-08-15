@@ -25,7 +25,10 @@
     <input
             required
             onkeyup="this.value=this.value.toLowerCase();"
-            class="form-control" type="text" name="firstName" id="firstName"
+            class="form-control"
+            type="text"
+            name="firstName"
+            id="firstName"
             placeholder="ლათინური პატარა ასოები">
     <label for="lastName"> გვარი: </label>
     <input
@@ -33,6 +36,7 @@
             class="form-control"
             type="text"
             name="lastName"
+            onkeyup="this.value=this.value.toLowerCase();"
             id="lastName"
             placeholder="ლათინური პატარა ასოები">
     <label for="username"> იუზერნეიმი: </label>
