@@ -23,7 +23,6 @@
             type="text"
             name="firstName"
             id="firstName"
-            size="38"
             placeholder="ლათინური პატარა ასოები"
             oninvalid="this.setCustomValidity('სახელის შეყვანა აუცილებელია')"
             onvalid="this.setCustomValidity('')">
@@ -34,7 +33,6 @@
             type="text"
             name="lastName"
             id="lastName"
-            size="40"
             placeholder="ლათინური პატარა ასოები"
             oninvalid="this.setCustomValidity('გვარის შეყვანა აუცილებელია')"
             onvalid="this.setCustomValidity('')">
@@ -45,7 +43,7 @@
             type="text"
             name="username"
             id="username"
-            size="33" placeholder="ლათინური ასოები, ციფრები, _"
+            placeholder="ლათინური ასოები, ციფრები, _"
             oninvalid="this.setCustomValidity('იუზერნეიმის შეყვანა აუცილებელია')"
             onvalid="this.setCustomValidity('')">
     <label for="password"> პაროლი: </label>
@@ -55,7 +53,6 @@
             type="password"
             name="password"
             id="password"
-            size="37"
             placeholder="ლათინური ასოები, ციფრები, _"
             oninvalid="this.setCustomValidity('პაროლის შეყვანა აუცილებელია')"
             onvalid="this.setCustomValidity('')">
@@ -70,7 +67,6 @@
             type="password"
             name="repeatPassword"
             id="repeatPassword"
-            size="37"
             placeholder="გაიმეორეთ პაროლი"
             oninvalid="this.setCustomValidity('პაროლი აუცილებლად უნდა გაიმეოროთ')"
             onvalid="this.setCustomValidity('')">
@@ -81,7 +77,6 @@
             type="text"
             name="mail"
             id="mail"
-            size="35"
             placeholder="მაგ: glekv22@freeuni.edu.ge"
             oninvalid="this.setCustomValidity('ელ-ფოსტის შეყვანა აუცილებელია')"
             onvalid="this.setCustomValidity('')">

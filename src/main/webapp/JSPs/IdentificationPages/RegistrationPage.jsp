@@ -20,28 +20,37 @@
     <input
             required
             class="form-control" type="text" name="firstName" id="firstName"
-            size="38" placeholder="ლათინური პატარა ასოები"
+            placeholder="ლათინური პატარა ასოები"
             oninvalid="this.setCustomValidity('სახელის შეყვანა აუცილებელია')"
             onvalid="this.setCustomValidity('')">
     <label for="lastName"> გვარი: </label>
     <input
             required
-            class="form-control" type="text" name="lastName" id="lastName"
-            size="40" placeholder="ლათინური პატარა ასოები"
+            class="form-control"
+            type="text"
+            name="lastName"
+            id="lastName"
+            placeholder="ლათინური პატარა ასოები"
             oninvalid="this.setCustomValidity('გვარის შეყვანა აუცილებელია')"
             onvalid="this.setCustomValidity('')">
     <label for="username"> იუზერნეიმი: </label>
     <input
             required
-            class="form-control" type="text" name="username" id="username"
-            size="33" placeholder="ლათინური ასოები, ციფრები, _"
+            class="form-control"
+            type="text"
+            name="username"
+            id="username"
+            placeholder="ლათინური ასოები, ციფრები, _"
             oninvalid="this.setCustomValidity('იუზერნეიმის შეყვანა აუცილებელია')"
             onvalid="this.setCustomValidity('')">
     <label for="password"> პაროლი: </label>
     <input
             required
-            class="form-control" type="password" name="password" id="password"
-            size="37" placeholder="ლათინური ასოები, ციფრები, _"
+            class="form-control"
+            type="password"
+            name="password"
+            id="password"
+            placeholder="ლათინური ასოები, ციფრები, _"
             oninvalid="this.setCustomValidity('პაროლის შეყვანა აუცილებელია')"
             onvalid="this.setCustomValidity('')">
     <div class="input">
@@ -51,15 +60,21 @@
     <label for="repeatPassword"> პაროლის გამეორება: </label>
     <input
             required
-            class="form-control" type="password" name="repeatPassword" id="repeatPassword"
-            size="37" placeholder="გაიმეორეთ პაროლი"
+            class="form-control"
+            type="password"
+            name="repeatPassword"
+            id="repeatPassword"
+            placeholder="გაიმეორეთ პაროლი"
             oninvalid="this.setCustomValidity('პაროლი აუცილებლად უნდა გაიმეოროთ')"
             onvalid="this.setCustomValidity('')">
     <label for="mail"> ელ-ფოსტა: </label>
     <input
             required
-            class="form-control" type="text" name="mail" id="mail"
-            size="35" placeholder="მაგ: glekv22@freeuni.edu.ge"
+            class="form-control"
+            type="text"
+            name="mail"
+            id="mail"
+            placeholder="მაგ: glekv22@freeuni.edu.ge"
             oninvalid="this.setCustomValidity('ელ-ფოსტის შეყვანა აუცილებელია')"
             onvalid="this.setCustomValidity('')">
     <input class="btn btn-primary" type="submit" value="რეგისტრაცია">
