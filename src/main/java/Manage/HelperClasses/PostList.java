@@ -4,6 +4,8 @@ import DataBaseConnection.BaseConnector;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class PostList {
@@ -29,6 +31,8 @@ public class PostList {
             list.add(new Post(resultSet.getInt("post_id"),
                     resultSet.getInt("user_id"), resultSet.getString("post_text")));
         }
+        list.sort(Comparator.comparing(Post::getPostId));
+        Collections.reverse(list);
         return list;
     }
 
