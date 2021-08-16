@@ -28,7 +28,7 @@ public class PostServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String username = (String)request.getSession().getAttribute("username");
+        String username = (String) request.getSession().getAttribute("username");
         HttpSession session = request.getSession();
         session.setAttribute("username", username);
         //System.out.println(username);

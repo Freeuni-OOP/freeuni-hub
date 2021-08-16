@@ -155,8 +155,10 @@
         <input type="hidden" name="username" value=${username}>
         <input type="hidden" name=<%=id%>  value=<%=userName%>>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item text-capitalize">სახელი: <%=userFirstName%></li>
-            <li class="list-group-item text-capitalize">გვარი: <%=userLastName%></li>
+            <li class="list-group-item text-capitalize">სახელი: <%=userFirstName%>
+            </li>
+            <li class="list-group-item text-capitalize">გვარი: <%=userLastName%>
+            </li>
             <li class="list-group-item">
                 <input class="btn btn-dark text-warning" type="submit" name="action" value="Accept">
                 <input class="btn btn-dark text-warning" type="submit" name="action" value="Deny">

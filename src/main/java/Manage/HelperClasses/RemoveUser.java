@@ -35,12 +35,12 @@ public class RemoveUser {
         if (locationAddition.alreadyRegistered(user_id)) {
             int location_id = locationAddition.locationId(user_id);
             PreparedStatement preparedStatement = connection.prepareStatement("Update locations set numStudents = numStudents-1 where id = ?;");
-            preparedStatement.setInt(1,location_id);
+            preparedStatement.setInt(1, location_id);
             preparedStatement.execute();
             preparedStatement.close();
         }
         PreparedStatement preparedStatement = connection.prepareStatement("Delete from locationMembers where user_id = ?;");
-        preparedStatement.setInt(1,user_id);
+        preparedStatement.setInt(1, user_id);
         preparedStatement.execute();
         preparedStatement.close();
 
@@ -50,8 +50,8 @@ public class RemoveUser {
         Connection connection = bc.accessConnection();
         PreparedStatement preparedStatement = connection.prepareStatement("Delete from changeLocationRequest where receiver_id = ?"
                 + " or  requester_id = ? ;");
-        preparedStatement.setInt(1,user_id);
-        preparedStatement.setInt(2,user_id);
+        preparedStatement.setInt(1, user_id);
+        preparedStatement.setInt(2, user_id);
         preparedStatement.execute();
         preparedStatement.close();
     }
@@ -60,8 +60,8 @@ public class RemoveUser {
         Connection connection = bc.accessConnection();
         PreparedStatement preparedStatement = connection.prepareStatement("Delete from blockedUsers where blocker_id = ?"
                 + " or blocked_id = ?;");
-        preparedStatement.setInt(1,user_id);
-        preparedStatement.setInt(2,user_id);
+        preparedStatement.setInt(1, user_id);
+        preparedStatement.setInt(2, user_id);
         preparedStatement.execute();
         preparedStatement.close();
 
@@ -70,7 +70,7 @@ public class RemoveUser {
     private void removeFromUsersInfo(int user_id) throws SQLException {
         Connection connection = bc.accessConnection();
         PreparedStatement preparedStatement = connection.prepareStatement("Delete from usersInfo where user_id = ?;");
-        preparedStatement.setInt(1,user_id);
+        preparedStatement.setInt(1, user_id);
         preparedStatement.execute();
         preparedStatement.close();
     }
@@ -78,7 +78,7 @@ public class RemoveUser {
     private void removeFromComments(int user_id) throws SQLException {
         Connection connection = bc.accessConnection();
         PreparedStatement preparedStatement = connection.prepareStatement("Delete from comments where user_id = ?;");
-        preparedStatement.setInt(1,user_id);
+        preparedStatement.setInt(1, user_id);
         preparedStatement.execute();
         preparedStatement.close();
     }
@@ -86,7 +86,7 @@ public class RemoveUser {
     private void removeFromPosts(int user_id) throws SQLException {
         Connection connection = bc.accessConnection();
         PreparedStatement preparedStatement = connection.prepareStatement("Delete from posts where user_id = ?;");
-        preparedStatement.setInt(1,user_id);
+        preparedStatement.setInt(1, user_id);
         preparedStatement.execute();
         preparedStatement.close();
     }
@@ -95,8 +95,8 @@ public class RemoveUser {
         Connection connection = bc.accessConnection();
         PreparedStatement preparedStatement = connection.prepareStatement("Delete from messages where sender_id = ? "
                 + " or receiver_id = ?;");
-        preparedStatement.setInt(1,user_id);
-        preparedStatement.setInt(2,user_id);
+        preparedStatement.setInt(1, user_id);
+        preparedStatement.setInt(2, user_id);
         preparedStatement.execute();
         preparedStatement.close();
 
@@ -105,7 +105,7 @@ public class RemoveUser {
     private void removeFromGroupMembers(int user_id) throws SQLException {
         Connection connection = bc.accessConnection();
         PreparedStatement preparedStatement = connection.prepareStatement("Delete from groupMembers where member_id = ?;");
-        preparedStatement.setInt(1,user_id);
+        preparedStatement.setInt(1, user_id);
         preparedStatement.execute();
         preparedStatement.close();
 
@@ -115,7 +115,7 @@ public class RemoveUser {
         Connection connection = bc.accessConnection();
         PreparedStatement preparedStatement = connection.prepareStatement("Select id from groupsInfo" +
                 " where admin_id = ? ;");
-        preparedStatement.setInt(1,user_id);
+        preparedStatement.setInt(1, user_id);
         ResultSet resultSet = preparedStatement.executeQuery();
         ArrayList<Integer> groupIds = new ArrayList<>();
         while (resultSet.next()) {
@@ -123,7 +123,7 @@ public class RemoveUser {
         }
         preparedStatement = connection.prepareStatement("Delete from groupMembers where group_id = ?;");
         for (Integer id : groupIds) {
-            preparedStatement.setInt(1,id);
+            preparedStatement.setInt(1, id);
             preparedStatement.execute();
         }
         preparedStatement.close();
@@ -133,8 +133,8 @@ public class RemoveUser {
     private void removeFromFriendRequests(int user_id) throws SQLException {
         Connection connection = bc.accessConnection();
         PreparedStatement preparedStatement = connection.prepareStatement("Delete from friendRequests where requester_id = ? or receiver_id = ?;");
-        preparedStatement.setInt(1,user_id);
-        preparedStatement.setInt(2,user_id);
+        preparedStatement.setInt(1, user_id);
+        preparedStatement.setInt(2, user_id);
         preparedStatement.execute();
         preparedStatement.close();
 
@@ -143,8 +143,8 @@ public class RemoveUser {
     private void removeFromFriends(int user_id) throws SQLException {
         Connection connection = bc.accessConnection();
         PreparedStatement preparedStatement = connection.prepareStatement("Delete from friends where requester_id = ? or receiver_id = ?;");
-        preparedStatement.setInt(1,user_id);
-        preparedStatement.setInt(2,user_id);
+        preparedStatement.setInt(1, user_id);
+        preparedStatement.setInt(2, user_id);
         preparedStatement.execute();
         preparedStatement.close();
 
@@ -153,7 +153,7 @@ public class RemoveUser {
     private void removeFromUsers(int user_id) throws SQLException {
         Connection connection = bc.accessConnection();
         PreparedStatement preparedStatement = connection.prepareStatement("Delete from users where id = ?;");
-        preparedStatement.setInt(1,user_id);
+        preparedStatement.setInt(1, user_id);
         preparedStatement.execute();
         preparedStatement.close();
     }

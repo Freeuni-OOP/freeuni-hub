@@ -17,16 +17,16 @@ public class BlockUser {
 
     public void blockById(int blocker_id, int blocked_id) throws SQLException {
         PreparedStatement preparedStatement = con.prepareStatement("Insert into blockedUsers(blocker_id,blocked_id) values (?,?)");
-        preparedStatement.setInt(1,blocker_id);
-        preparedStatement.setInt(2,blocked_id);
+        preparedStatement.setInt(1, blocker_id);
+        preparedStatement.setInt(2, blocked_id);
         preparedStatement.execute();
         preparedStatement.close();
     }
 
     public void unblockById(int blocker_id, int blocked_id) throws SQLException {
         PreparedStatement preparedStatement = con.prepareStatement("Delete from blockedUsers where blocker_id = ? and blocked_id= ? ;");
-        preparedStatement.setInt(1,blocker_id);
-        preparedStatement.setInt(2,blocked_id);
+        preparedStatement.setInt(1, blocker_id);
+        preparedStatement.setInt(2, blocked_id);
         preparedStatement.execute();
         preparedStatement.close();
     }
@@ -36,8 +36,8 @@ public class BlockUser {
         List<Integer> idList = new ArrayList<>();
         Statement statement = con.createStatement();
         PreparedStatement preparedStatement = con.prepareStatement("Select blocked_id from blockedUsers " +
-                        "where blocker_id = ?;");
-        preparedStatement.setInt(1,blocker_id);
+                "where blocker_id = ?;");
+        preparedStatement.setInt(1, blocker_id);
         ResultSet resultSet = preparedStatement.executeQuery();
 
         while (resultSet.next()) {
@@ -51,8 +51,8 @@ public class BlockUser {
     public boolean isBlocked(int blocker_id, int blocked_id) throws SQLException {
         PreparedStatement preparedStatement = con.prepareStatement("Select * from blockedUsers where " +
                 "blocker_id = ? and blocked_id = ?; ");
-        preparedStatement.setInt(1,blocker_id);
-        preparedStatement.setInt(2,blocked_id);
+        preparedStatement.setInt(1, blocker_id);
+        preparedStatement.setInt(2, blocked_id);
         ResultSet resultSet = preparedStatement.executeQuery();
         int num = 0;
         while (resultSet.next()) {

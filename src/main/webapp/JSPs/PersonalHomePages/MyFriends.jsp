@@ -16,7 +16,7 @@
     <title> სალამი ${username} </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<%--    <link rel="stylesheet" href="../../PageStyles/PersonalPageStyle.css"/>--%>
+    <%--    <link rel="stylesheet" href="../../PageStyles/PersonalPageStyle.css"/>--%>
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 </head>
 <body>
@@ -138,7 +138,8 @@
             <a class="nav-link text-warning" href="/showFriends">მეგობრები</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-warning" href="${pageContext.request.contextPath}/JSPs/PersonalHomePages/ProfileInfoUpdate.jsp">
+            <a class="nav-link text-warning"
+               href="${pageContext.request.contextPath}/JSPs/PersonalHomePages/ProfileInfoUpdate.jsp">
                 ინფორმაციის განახლება
             </a>
         </li>
@@ -178,10 +179,14 @@
                 <input type="hidden" name="username" value= ${username}>
                 <input type="hidden" name="profileName" value= <%=user%>>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">უზერნეიმი: <%=user%></li>
-                    <li class="list-group-item text-capitalize">სახელი: <%=userFirstName%></li>
-                    <li class="list-group-item text-capitalize">გვარი: <%=userLastName%></li>
-                    <li class="list-group-item text-capitalize"><input class="btn btn-dark text-warning" type="submit" value="ნახე პროფილი"></li>
+                    <li class="list-group-item">უზერნეიმი: <%=user%>
+                    </li>
+                    <li class="list-group-item text-capitalize">სახელი: <%=userFirstName%>
+                    </li>
+                    <li class="list-group-item text-capitalize">გვარი: <%=userLastName%>
+                    </li>
+                    <li class="list-group-item text-capitalize"><input class="btn btn-dark text-warning" type="submit"
+                                                                       value="ნახე პროფილი"></li>
 
                 </ul>
             </form>

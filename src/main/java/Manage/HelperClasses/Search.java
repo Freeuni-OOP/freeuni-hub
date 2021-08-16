@@ -2,7 +2,6 @@ package Manage.HelperClasses;
 
 import DataBaseConnection.BaseConnector;
 
-import java.lang.ref.PhantomReference;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -20,14 +19,14 @@ public class Search {
         ArrayList<User> answer = new ArrayList<>();
         Statement statement = connection.createStatement();
         PreparedStatement preparedStatement = connection.prepareStatement("Select * from " + USERS_TABLE + " where user_name = ?;");
-        preparedStatement.setString(1,userName);
+        preparedStatement.setString(1, userName);
         ResultSet rs = preparedStatement.executeQuery();
         int id = 0;
         while (rs.next()) {
             id = rs.getInt(1);
         }
         preparedStatement = connection.prepareStatement("Select * from " + USERS_INFO_TABLE + " where user_id = ? ;");
-        preparedStatement.setInt(1,id);
+        preparedStatement.setInt(1, id);
         ResultSet resultSet = preparedStatement.executeQuery();
         while (resultSet.next()) {
             User curUser = new User(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), userName,
@@ -45,8 +44,8 @@ public class Search {
         ArrayList<String> users = new ArrayList<>();
         PreparedStatement preparedStatement = connection.prepareStatement("Select * from " + USERS_TABLE + " where user_name like  ? " +
                 "and id != ?;");
-        preparedStatement.setString(1,"%"+userName+"%");
-        preparedStatement.setInt(2,user_id);
+        preparedStatement.setString(1, "%" + userName + "%");
+        preparedStatement.setInt(2, user_id);
         ResultSet rs = preparedStatement.executeQuery();
         while (rs.next()) {
             int id = rs.getInt(1);
@@ -57,7 +56,7 @@ public class Search {
             int id = user_ids.get(i);
             String curUserName = users.get(i);
             preparedStatement = connection.prepareStatement("Select * from " + USERS_INFO_TABLE + " where user_id = ?;");
-            preparedStatement.setInt(1,id);
+            preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 User curUser = new User(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), curUserName,

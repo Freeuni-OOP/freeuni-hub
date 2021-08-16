@@ -22,8 +22,8 @@ public class ManageUser implements UserConfiguration {
     public String changeProfilePic(String username, String img) throws SQLException {
         try {
             PreparedStatement preparedStatement = con.prepareStatement("update users set profile_pic = ? where user_name = ?;");
-            preparedStatement.setString(1,img);
-            preparedStatement.setString(2,username);
+            preparedStatement.setString(1, img);
+            preparedStatement.setString(2, username);
             preparedStatement.execute();
             preparedStatement.close();
             return ALL_GOOD;
@@ -319,7 +319,7 @@ public class ManageUser implements UserConfiguration {
 
     public void printUsernames() throws SQLException { // just printing users
 //        for (String user : this.allUsers())
-            //System.out.println(user);
+        //System.out.println(user);
     }
 
 
