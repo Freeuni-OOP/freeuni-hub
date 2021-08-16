@@ -21,8 +21,8 @@ public class UnFriendServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String userName = request.getParameter("username");
-        String profileName = request.getParameter("profileName");
+        String userName = (String) request.getSession().getAttribute("username");
+        String profileName = (String) request.getSession().getAttribute("profileName");
         System.out.println(userName + " ganimegobre " + profileName);
         try {
             FriendAddition friendAddition = new FriendAddition(new BaseConnector());

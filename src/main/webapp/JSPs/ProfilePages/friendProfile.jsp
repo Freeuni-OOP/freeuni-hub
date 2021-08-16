@@ -142,9 +142,6 @@
             <a class="nav-link text-warning" href="/changeLocation">გაუცვალე ლოკაცია</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-warning" href="/addFriend">დაიმატე მეგობარი</a>
-        </li>
-        <li class="nav-item">
             <a class="nav-link text-warning" href="/unFriend">შეწყვიტე მეგობრობა</a>
         </li>
     </ul>
