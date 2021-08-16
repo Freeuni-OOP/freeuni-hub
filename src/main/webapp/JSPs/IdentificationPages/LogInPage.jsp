@@ -22,6 +22,11 @@
     // }
     //
     // setTimeout("disableBackButton()", 0);
+
+    window.history.pushState(null, "", window.location.href);
+    window.onpopstate = function () {
+        window.history.pushState(null, "", window.location.href);
+    };
 </script>
 
 <form action="/login" method="post" id="form_login">
