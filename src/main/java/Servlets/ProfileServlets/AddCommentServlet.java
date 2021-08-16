@@ -3,6 +3,8 @@ package Servlets.ProfileServlets;
 import DataBaseConnection.BaseConnector;
 import Manage.HelperClasses.CommentAddition;
 import Manage.HelperClasses.UserById;
+import org.jsoup.Jsoup;
+import org.jsoup.safety.Whitelist;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,7 +36,7 @@ public class AddCommentServlet extends HttpServlet {
             int user_id = userById.getIdByUsername(userName);
             CommentAddition commentAddition = new CommentAddition(new BaseConnector());
             int next = commentAddition.nextId();
-            commentAddition.addComment(user_id, post_id, next, commentText);
+            commentAddition.addComment(user_id, post_id, next, Jsoup.clean(commentText, Whitelist.basic()));
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
