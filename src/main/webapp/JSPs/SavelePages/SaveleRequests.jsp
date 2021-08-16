@@ -124,17 +124,20 @@
             String userFirstName = all.get(i).getUserFirstName();
             String userLastName = all.get(i).getUserLastName();
     %>
-    <form action="/answerSaveleRequest" , method="post">
-        <%=userName%>
+    <form class="card" action="/answerSaveleRequest" , method="post">
         <input type="hidden" name="username" value=${username}>
         <input type="hidden" name="requesterName" value=<%=userName%>>
-        <p class="info">სახელი: <%=userFirstName%>
-        </p>
-        <p class="info">გვარი:<%=userLastName%>
-        </p>
-        <input type="submit" name="action" value="accept">
-        <input type="submit" name="action" value="delete">
-        <p></p>
+        <div class="card-header">
+            <%=userName%>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">სახელი: <%=userFirstName%></li>
+            <li class="list-group-item">გვარი:<%=userLastName%></li>
+            <li class="list-group-item">
+                <input class="btn btn-dark text-warning text-capitalize" type="submit" name="action" value="accept">
+                <input class="btn btn-dark text-warning text-capitalize" type="submit" name="action" value="delete">
+            </li>
+        </ul>
     </form>
     <%
         }
