@@ -111,7 +111,7 @@
                             </select>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="saveleLocatino"> საველეს ლოკაცია </label>
+                            <label for="saveleLocation"> საველეს ლოკაცია </label>
                             <select id="saveleLocation" class="form-control" name="saveleLocation">
                                 <option selected=""> აირჩიე</option>
                                 <option> Qvabisxevi2</option>
