@@ -2,10 +2,8 @@ package Manage.HelperClasses;
 
 import DataBaseConnection.BaseConnector;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.lang.ref.PhantomReference;
+import java.sql.*;
 
 import static java.lang.Math.max;
 
@@ -18,15 +16,22 @@ public class CommentAddition {
 
     public void addComment(int user_id, int post_id, int comment_id, String comment_text) throws SQLException {
         Connection connection = bc.accessConnection();
-        Statement statement = connection.createStatement();
-        statement.execute("Insert into comments (comment_id,user_id,post_id,comment_text) values " +
-                "(" + comment_id + "," + user_id + "," + post_id + ",'" + comment_text + "');");
+        PreparedStatement preparedStatement = connection.prepareStatement("Insert into comments (comment_id,user_id,post_id,comment_text) values " +
+                "(?,?,?,?);");
+        preparedStatement.setInt(1,comment_id);
+        preparedStatement.setInt(2,user_id);
+        preparedStatement.setInt(3,post_id);
+        preparedStatement.setString(4,comment_text);
+        preparedStatement.execute();
+        preparedStatement.close();
     }
 
     public void removeComment(int user_id, int comment_id) throws SQLException {
         Connection connection = bc.accessConnection();
-        Statement statement = connection.createStatement();
-        statement.execute("Delete from comments where comment_id =" + comment_id + ";");
+        PreparedStatement preparedStatement = connection.prepareStatement("Delete from comments where comment_id = ? ");
+        preparedStatement.setInt(1,comment_id);
+        preparedStatement.execute();
+        preparedStatement.close();
     }
 
     public int nextId() throws SQLException {

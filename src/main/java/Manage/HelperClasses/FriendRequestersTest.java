@@ -68,6 +68,7 @@ public class FriendRequestersTest {
                 " values " + "(1000,'luka','macho')");
 
         FriendRequesters fr = new FriendRequesters(bc);
+
         assertFalse(fr.hasSentFriendRequest(2000, 1000));
         assertTrue(fr.sendFriendRequest(2000, 1000));
         assertFalse(fr.hasSentFriendRequest(1000, 2000));

@@ -2,10 +2,7 @@ package Manage.HelperClasses;
 
 import DataBaseConnection.BaseConnector;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +22,9 @@ public class PostList {
         Statement statement = con.createStatement();
 
         UserById ubi = new UserById(bc);
-        ResultSet resultSet = statement.executeQuery("select * from posts where user_id = " + userId + ";");
+        PreparedStatement preparedStatement = con.prepareStatement("select * from posts where user_id = ?;");
+        preparedStatement.setInt(1,userId);
+        ResultSet resultSet = preparedStatement.executeQuery();
         while (resultSet.next()) {
             list.add(new Post(resultSet.getInt("post_id"),
                     resultSet.getInt("user_id"), resultSet.getString("post_text")));

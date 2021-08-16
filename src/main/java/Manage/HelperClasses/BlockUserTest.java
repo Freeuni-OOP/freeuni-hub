@@ -24,6 +24,11 @@ public class BlockUserTest {
         BlockUser blockUser = new BlockUser(bc);
         Connection connection = bc.accessConnection();
         Statement statement = connection.createStatement();
+        statement.execute("delete from usersInfo where user_id = 1000;");
+        statement.execute("delete from users where user_name = 'bigenti';");
+        statement.execute("delete from usersInfo where user_id = 2000;");
+        statement.execute("delete from users where user_name = 'bigentia'");
+        blockUser.unblockById(1000, 2000);
         statement.execute("Insert into users (id,first_name,last_name,user_name,password,email)" +
                 " values " + "(1000,'luka','macho','bigenti','123','fsjsffdsdfadsse')");
         statement.execute("Insert into users (id,first_name,last_name,user_name,password,email)" +
@@ -59,7 +64,16 @@ public class BlockUserTest {
         BlockUser blockUser = new BlockUser(bc);
         Connection connection = bc.accessConnection();
         Statement statement = connection.createStatement();
+        blockUser.unblockById(100, 101);
+        blockUser.unblockById(100, 102);
+        blockUser.unblockById(100, 103);
+        blockUser.unblockById(101, 102);
+        blockUser.unblockById(102, 103);
 
+        statement.execute("delete from users where id = 100;");
+        statement.execute("delete from users where id = 101;");
+        statement.execute("delete from users where id = 102;");
+        statement.execute("delete from users where id = 103;");
         statement.execute("Insert into users (id, first_name, last_name, user_name, password, email)" +
                 " values " + "(100, 'keith', 'markovic', 'naf_fly', 'val1D', 'kmark15@freeuni.edu.ge')");
         statement.execute("Insert into users (id, first_name, last_name, user_name, password, email)" +
@@ -103,6 +117,11 @@ public class BlockUserTest {
         BlockUser blockUser = new BlockUser(bc);
         Connection connection = bc.accessConnection();
         Statement statement = connection.createStatement();
+        blockUser.unblockById(1000, 2000);
+        statement.execute("delete from usersInfo where user_id = 1000;");
+        statement.execute("delete from users where user_name = 'bigenti';");
+        statement.execute("delete from usersInfo where user_id = 2000;");
+        statement.execute("delete from users where user_name = 'bigentia'");
         statement.execute("Insert into users (id,first_name,last_name,user_name,password,email)" +
                 " values " + "(1000,'luka','macho','bigenti','123','fsjsffdsdfadsse')");
         statement.execute("Insert into users (id,first_name,last_name,user_name,password,email)" +
