@@ -48,14 +48,7 @@
                         საველეს გაცვლები
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a
-                            class="nav-link"
-                            href="${pageContext.request.contextPath}/JSPs/SavelePages/TradePage.jsp"
-                    >
-                        გაცვალე საველე
-                    </a>
-                </li>
+
                 <li class="nav-item">
                     <a
                             class="nav-link"
@@ -122,7 +115,6 @@
 
 <div class="container">
 
-    <p> ქვემოთ ჩამოთვლილია თქვენთან მეგობრების მსურველები:</p>
 
     <script>
         document.getElementById("logout-button").addEventListener('click', async () => {
@@ -146,6 +138,8 @@
         })
     </script>
 
+    <p> ქვემოთ ჩამოთვლილია თქვენთან მეგობრების მსურველები:</p>
+
     <%
         ArrayList<User> all = (ArrayList<User>) request.getSession().getAttribute("requesters");
         for (int i = 0; i < all.size(); i++) {
@@ -154,17 +148,20 @@
             String userFirstName = all.get(i).getUserFirstName();
             String userLastName = all.get(i).getUserLastName();
     %>
-    <form action="/answerRequest" , method="post">
-        <%=userName%>
+    <form class="card" action="/answerRequest" , method="post">
+        <div class="card-header">
+            <%=userName%>
+        </div>
         <input type="hidden" name="username" value=${username}>
         <input type="hidden" name=<%=id%>  value=<%=userName%>>
-        <p class="info">სახელი: <%=userFirstName%>
-        </p>
-        <p class="info">გვარი:<%=userLastName%>
-        </p>
-        <input type="submit" name="action" value="accept">
-        <input type="submit" name="action" value="delete">
-        <p></p>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item text-capitalize">სახელი: <%=userFirstName%></li>
+            <li class="list-group-item text-capitalize">გვარი: <%=userLastName%></li>
+            <li class="list-group-item">
+                <input class="btn btn-dark text-warning" type="submit" name="action" value="Accept">
+                <input class="btn btn-dark text-warning" type="submit" name="action" value="Deny">
+            </li>
+        </ul>
     </form>
     <%
         }

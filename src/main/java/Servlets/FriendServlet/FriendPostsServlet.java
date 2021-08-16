@@ -27,8 +27,8 @@ public class FriendPostsServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String username = request.getParameter("username");
-        String profileName = request.getParameter("profileName");
+        String username = (String) request.getSession().getAttribute("username");
+        String profileName = (String) request.getSession().getAttribute("profileName");
         HttpSession session = request.getSession();
         session.setAttribute("username", username);
         session.setAttribute("profileName", profileName);
