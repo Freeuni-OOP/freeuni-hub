@@ -2,12 +2,10 @@ package Manage.HelperClasses;
 
 import DataBaseConnection.BaseConnector;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class SaveleList {
     private BaseConnector bc;
@@ -24,7 +22,9 @@ public class SaveleList {
         Statement statement = con.createStatement();
 
         UserById ubi = new UserById(bc);
-        ResultSet resultSet = statement.executeQuery("select * from changeLocationRequest;");
+        PreparedStatement preparedStatement = con.prepareStatement("select * from changeLocationRequest;");
+
+        ResultSet resultSet = preparedStatement.executeQuery();
         while (resultSet.next()) {
             if (resultSet.getInt("receiver_id") == id) {
                 int friendId = resultSet.getInt("requester_id");
@@ -32,7 +32,7 @@ public class SaveleList {
                 list.add(friend);
             }
         }
-
+        preparedStatement.close();
         return list;
     }
 
@@ -44,9 +44,12 @@ public class SaveleList {
     }
 
     public void removeRequest(int requester_id, int receiver_id) throws SQLException {
-        Statement statement = con.createStatement();
-        statement.execute("Delete from changeLocationRequest where requester_id = " + requester_id
-                + " and receiver_id =" + receiver_id + ";");
+        PreparedStatement preparedStatement = con.prepareStatement("Delete from changeLocationRequest where requester_id = ? "
+                + " and receiver_id = ?;");
+        preparedStatement.setInt(1,requester_id);
+        preparedStatement.setInt(2,receiver_id);
+        preparedStatement.execute();
+        preparedStatement.close();
     }
 
     public void addRequest(int requester_id, int receiver_id) throws SQLException, ClassNotFoundException {
@@ -54,17 +57,24 @@ public class SaveleList {
         LocationID locationID = new LocationID(new BaseConnector());
         int requester_location_id = 0;
         int receiver_location_id = 0;
-        ResultSet resultSet = statement.executeQuery("Select location_id from locationMembers where" +
-                " user_id = " + requester_id + ";");
+        PreparedStatement preparedStatement= con.prepareStatement("Select location_id from locationMembers where" +
+                " user_id = ?;");
+        preparedStatement.setInt(1,requester_id);
+        ResultSet resultSet = preparedStatement.executeQuery();
         while (resultSet.next()) {
             requester_location_id = resultSet.getInt(1);
         }
-        resultSet = statement.executeQuery("Select location_id from locationMembers where" +
-                " user_id = " + receiver_id + ";");
+        preparedStatement.setInt(1,receiver_id);
+        resultSet = preparedStatement.executeQuery();
         while (resultSet.next()) {
             receiver_location_id = resultSet.getInt(1);
         }
-        statement.execute("Insert into changeLocationRequest values(" + requester_id + "," +
-                requester_location_id + "," + receiver_id + "," + receiver_location_id + ",false);");
+        preparedStatement = con.prepareStatement("Insert into changeLocationRequest values(?,?,?,?,false)");
+        preparedStatement.setInt(1,requester_id);
+        preparedStatement.setInt(2,requester_location_id);
+        preparedStatement.setInt(3,receiver_id);
+        preparedStatement.setInt(4,receiver_location_id);
+        preparedStatement.execute();
+        preparedStatement.close();
     }
 }

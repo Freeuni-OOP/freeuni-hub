@@ -5,11 +5,9 @@ import Manage.Configurations.SaveleConfiguration;
 import Manage.Configurations.UserConfiguration;
 import Manage.HelperClasses.LocationID;
 import Manage.HelperClasses.UserById;
+import com.mysql.cj.x.protobuf.MysqlxPrepare;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
@@ -27,7 +25,8 @@ public class ManageTrade implements SaveleConfiguration, UserConfiguration {
     // methods checks whether exists or not
     public boolean isLocation(String location) throws SQLException { // to fix
         Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery("select * from " + LOCATIONS_TABLE + ";");
+        PreparedStatement preparedStatement =con.prepareStatement("select * from " + LOCATIONS_TABLE + ";");
+        ResultSet rs = preparedStatement.executeQuery();
 
         while (rs.next()) {
             if (rs.getString("name").equals(location)) return true;
@@ -105,9 +104,11 @@ public class ManageTrade implements SaveleConfiguration, UserConfiguration {
 
         int user_id = ubi.getIdByMail(mail);
         int location_id = locationID.getIdByLocation(location);
-
-        stmt.execute("insert into " + MEMBERS_TABLE + " (location_id, user_id) values ('" +
-                location_id + "' , '" + user_id + "');");
+        PreparedStatement preparedStatement = con.prepareStatement("insert into " + MEMBERS_TABLE + " (location_id, user_id) values (?,?);");
+        preparedStatement.setInt(1,location_id);
+        preparedStatement.setInt(2,user_id);
+        preparedStatement.execute();
+        preparedStatement.close();
         increaseNumStudents(location);
     }
 
@@ -116,20 +117,22 @@ public class ManageTrade implements SaveleConfiguration, UserConfiguration {
         Statement stmt = con.createStatement();
         UserById ubi = new UserById(bc);
         int user_id = ubi.getIdByMail(mail);
-
-        stmt.execute("delete from " + MEMBERS_TABLE + " where user_id = '" +
-                user_id + "';");
+        PreparedStatement preparedStatement = con.prepareStatement("delete from " + MEMBERS_TABLE + " where user_id = ?;");
+        preparedStatement.setInt(1,user_id);
+        preparedStatement.execute();
+        preparedStatement.close();
         decreaseNumStudents(location);
     }
 
     public int getNumStudents(String location) throws SQLException { // gets number of students for current location
         Statement stmt = con.createStatement();
-
-        ResultSet rs = stmt.executeQuery("select * from " + LOCATIONS_TABLE + " where name = '" +
-                location + "';");
+        PreparedStatement preparedStatement = con.prepareStatement("select * from " + LOCATIONS_TABLE + " where name = ?;");
+        preparedStatement.setString(1,location);
+        ResultSet rs = preparedStatement.executeQuery();
 
         while (rs.next())
             return rs.getInt("numStudents");
+        preparedStatement.close();
         return -1;
     }
 
@@ -142,8 +145,11 @@ public class ManageTrade implements SaveleConfiguration, UserConfiguration {
         int loc_id = locationID.getIdByLocation(location);
 
         Set<Integer> users = new HashSet<>();
-        ResultSet rs = stmt.executeQuery("select * from " + MEMBERS_TABLE +
-                " where location_id = " + loc_id + ";");
+        PreparedStatement preparedStatement = con.prepareStatement("select * from " + MEMBERS_TABLE +
+                " where location_id = ?;");
+        preparedStatement.setInt(1,loc_id);
+        ResultSet rs = preparedStatement.executeQuery();
+
         while (rs.next()) users.add(rs.getInt("user_id"));
 
         ResultSet resultSet = stmt.executeQuery("select * from " + USERS_TABLE + ";");
