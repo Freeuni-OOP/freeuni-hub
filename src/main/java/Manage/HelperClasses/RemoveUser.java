@@ -85,8 +85,18 @@ public class RemoveUser {
 
     private void removeFromPosts(int user_id) throws SQLException {
         Connection connection = bc.accessConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement("Delete from posts where user_id = ?;");
+        PreparedStatement preparedStatement = connection.prepareStatement("Select post_id from posts where user_id = ?;");
         preparedStatement.setInt(1, user_id);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while(resultSet.next()){
+            int post_id= resultSet.getInt(1);
+            preparedStatement = connection.prepareStatement("Delete from comments where post_id = ?");
+            preparedStatement.setInt(1,(post_id));
+            preparedStatement.execute();
+            preparedStatement = connection.prepareStatement("Delete from posts where post_id = ?");
+            preparedStatement.setInt(1,(post_id));
+            preparedStatement.execute();
+        }
         preparedStatement.execute();
         preparedStatement.close();
     }
