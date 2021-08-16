@@ -114,14 +114,14 @@
 </script>
 
 <div class="container" style="margin-top: 25px">
-    <div class="profile-header"
-         style="padding: 20px; margin: 0; background-color: black; border-radius: 10px; display: flex; flex-direction: column; justify-content: flex-end;">
+    <div class="profile-header bg-warning"
+         style="padding: 20px; margin: 0; border-radius: 10px; display: flex; flex-direction: column; justify-content: flex-end;">
 
         <div class="profile-header-content" style="display: flex; align-items: center; gap: 10px">
             <div class="profile-header-img" style="background-color: white; border-radius: 10px; width: fit-content; ">
                 <img style="width: 175px; object-fit: cover; border-radius: 10px;" id="profile-pic" src="${profilePic}" alt=""/>
             </div>
-            <div class="text-white fs-5">
+            <div class="text-dark fs-5">
                 <p style="text-transform: capitalize"> ${firstname} ${lastname} </p>
                 <p> ${username} </p>
                 <p> თავისუფალი უნივერსიტეტის სტუდენტი </p>

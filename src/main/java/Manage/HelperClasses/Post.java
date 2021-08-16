@@ -1,6 +1,8 @@
 package Manage.HelperClasses;
 
-public class Post {
+import java.io.Serializable;
+
+public class Post implements Serializable {
 
     String text;
     private int postId;

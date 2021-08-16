@@ -37,6 +37,7 @@ public class ManageUser implements UserConfiguration {
 
     // checks whether user login is correct or not
     public String isValidUser(String username, String password) throws SQLException {
+        if(username == null || password == null) return EMPTY;
         if (username.isEmpty() || password.isEmpty()) return EMPTY;
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery("select * from " + USERS_TABLE + ";");
