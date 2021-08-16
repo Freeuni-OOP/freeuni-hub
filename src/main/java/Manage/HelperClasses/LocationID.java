@@ -2,7 +2,10 @@ package Manage.HelperClasses;
 
 import DataBaseConnection.BaseConnector;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import static Manage.Configurations.SaveleConfiguration.LOCATIONS_TABLE;
 
@@ -17,7 +20,7 @@ public class LocationID {
     public int getIdByLocation(String location) throws SQLException {
         PreparedStatement preparedStatement = con.prepareStatement("select * from " + LOCATIONS_TABLE +
                 " where name = ?;");
-        preparedStatement.setString(1,location);
+        preparedStatement.setString(1, location);
         ResultSet rs = preparedStatement.executeQuery();
 
         while (rs.next()) {
@@ -30,7 +33,7 @@ public class LocationID {
     public Location getLocationById(int id) throws SQLException {
         PreparedStatement preparedStatement = con.prepareStatement("select * from " + LOCATIONS_TABLE +
                 " where id = ?;");
-        preparedStatement.setInt(1,id);
+        preparedStatement.setInt(1, id);
 
         ResultSet rs = preparedStatement.executeQuery();
 

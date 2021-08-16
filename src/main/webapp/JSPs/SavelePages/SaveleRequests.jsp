@@ -131,8 +131,10 @@
             <%=userName%>
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">სახელი: <%=userFirstName%></li>
-            <li class="list-group-item">გვარი:<%=userLastName%></li>
+            <li class="list-group-item">სახელი: <%=userFirstName%>
+            </li>
+            <li class="list-group-item">გვარი:<%=userLastName%>
+            </li>
             <li class="list-group-item">
                 <input class="btn btn-dark text-warning text-capitalize" type="submit" name="action" value="accept">
                 <input class="btn btn-dark text-warning text-capitalize" type="submit" name="action" value="delete">

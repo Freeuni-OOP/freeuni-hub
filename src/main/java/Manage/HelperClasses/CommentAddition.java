@@ -2,7 +2,6 @@ package Manage.HelperClasses;
 
 import DataBaseConnection.BaseConnector;
 
-import java.lang.ref.PhantomReference;
 import java.sql.*;
 
 import static java.lang.Math.max;
@@ -18,10 +17,10 @@ public class CommentAddition {
         Connection connection = bc.accessConnection();
         PreparedStatement preparedStatement = connection.prepareStatement("Insert into comments (comment_id,user_id,post_id,comment_text) values " +
                 "(?,?,?,?);");
-        preparedStatement.setInt(1,comment_id);
-        preparedStatement.setInt(2,user_id);
-        preparedStatement.setInt(3,post_id);
-        preparedStatement.setString(4,comment_text);
+        preparedStatement.setInt(1, comment_id);
+        preparedStatement.setInt(2, user_id);
+        preparedStatement.setInt(3, post_id);
+        preparedStatement.setString(4, comment_text);
         preparedStatement.execute();
         preparedStatement.close();
     }
@@ -29,7 +28,7 @@ public class CommentAddition {
     public void removeComment(int user_id, int comment_id) throws SQLException {
         Connection connection = bc.accessConnection();
         PreparedStatement preparedStatement = connection.prepareStatement("Delete from comments where comment_id = ? ");
-        preparedStatement.setInt(1,comment_id);
+        preparedStatement.setInt(1, comment_id);
         preparedStatement.execute();
         preparedStatement.close();
     }

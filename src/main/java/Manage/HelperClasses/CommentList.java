@@ -2,10 +2,12 @@ package Manage.HelperClasses;
 
 import DataBaseConnection.BaseConnector;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
 
 public class CommentList {
 
@@ -19,8 +21,8 @@ public class CommentList {
     public Post postById(int postId) throws SQLException {
         Connection connection = bc.accessConnection();
         PreparedStatement preparedStatement = connection.prepareStatement("Select * from posts where post_id = ?;");
-        preparedStatement.setInt(1,postId);
-        ResultSet resultSet =preparedStatement.executeQuery();
+        preparedStatement.setInt(1, postId);
+        ResultSet resultSet = preparedStatement.executeQuery();
         Post post = null;
         while (resultSet.next()) {
             post = new Post(postId, resultSet.getInt("user_id"), resultSet.getString("post_text"));
@@ -35,7 +37,7 @@ public class CommentList {
 
         Connection connection = bc.accessConnection();
         PreparedStatement preparedStatement = connection.prepareStatement("Select * from comments where post_id = ?;");
-        preparedStatement.setInt(1,postId);
+        preparedStatement.setInt(1, postId);
         ResultSet resultSet = preparedStatement.executeQuery();
         while (resultSet.next()) {
             list.add(new Comment(postById(postId), resultSet.getString("comment_text"),

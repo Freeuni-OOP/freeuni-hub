@@ -25,7 +25,7 @@ public class PostList {
 
         UserById ubi = new UserById(bc);
         PreparedStatement preparedStatement = con.prepareStatement("select * from posts where user_id = ?;");
-        preparedStatement.setInt(1,userId);
+        preparedStatement.setInt(1, userId);
         ResultSet resultSet = preparedStatement.executeQuery();
         while (resultSet.next()) {
             list.add(new Post(resultSet.getInt("post_id"),

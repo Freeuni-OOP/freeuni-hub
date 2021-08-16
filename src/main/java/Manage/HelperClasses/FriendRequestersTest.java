@@ -73,7 +73,7 @@ public class FriendRequestersTest {
         assertTrue(fr.sendFriendRequest(2000, 1000));
         assertFalse(fr.hasSentFriendRequest(1000, 2000));
         assertTrue(fr.hasSentFriendRequest(2000, 1000));
-        fr.removeRequest(2000,1000);
+        fr.removeRequest(2000, 1000);
         statement.execute("delete from usersInfo where user_id = 1000;");
         statement.execute("delete from users where id = 1000;");
         statement.execute("delete from usersInfo where user_id = 2000;");

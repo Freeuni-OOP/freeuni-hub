@@ -5,7 +5,6 @@ import DataBaseConnection.BaseConnector;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
 
 public class SaveleList {
     private BaseConnector bc;
@@ -46,8 +45,8 @@ public class SaveleList {
     public void removeRequest(int requester_id, int receiver_id) throws SQLException {
         PreparedStatement preparedStatement = con.prepareStatement("Delete from changeLocationRequest where requester_id = ? "
                 + " and receiver_id = ?;");
-        preparedStatement.setInt(1,requester_id);
-        preparedStatement.setInt(2,receiver_id);
+        preparedStatement.setInt(1, requester_id);
+        preparedStatement.setInt(2, receiver_id);
         preparedStatement.execute();
         preparedStatement.close();
     }
@@ -57,23 +56,23 @@ public class SaveleList {
         LocationID locationID = new LocationID(new BaseConnector());
         int requester_location_id = 0;
         int receiver_location_id = 0;
-        PreparedStatement preparedStatement= con.prepareStatement("Select location_id from locationMembers where" +
+        PreparedStatement preparedStatement = con.prepareStatement("Select location_id from locationMembers where" +
                 " user_id = ?;");
-        preparedStatement.setInt(1,requester_id);
+        preparedStatement.setInt(1, requester_id);
         ResultSet resultSet = preparedStatement.executeQuery();
         while (resultSet.next()) {
             requester_location_id = resultSet.getInt(1);
         }
-        preparedStatement.setInt(1,receiver_id);
+        preparedStatement.setInt(1, receiver_id);
         resultSet = preparedStatement.executeQuery();
         while (resultSet.next()) {
             receiver_location_id = resultSet.getInt(1);
         }
         preparedStatement = con.prepareStatement("Insert into changeLocationRequest values(?,?,?,?,false)");
-        preparedStatement.setInt(1,requester_id);
-        preparedStatement.setInt(2,requester_location_id);
-        preparedStatement.setInt(3,receiver_id);
-        preparedStatement.setInt(4,receiver_location_id);
+        preparedStatement.setInt(1, requester_id);
+        preparedStatement.setInt(2, requester_location_id);
+        preparedStatement.setInt(3, receiver_id);
+        preparedStatement.setInt(4, receiver_location_id);
         preparedStatement.execute();
         preparedStatement.close();
     }

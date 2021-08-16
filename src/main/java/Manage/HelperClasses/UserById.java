@@ -3,7 +3,6 @@ package Manage.HelperClasses;
 import DataBaseConnection.BaseConnector;
 
 import java.sql.*;
-import java.util.function.Predicate;
 
 import static Manage.Configurations.UserConfiguration.USERS_TABLE;
 
@@ -19,7 +18,7 @@ public class UserById {
         Statement statement = connection.createStatement();
         String userFirstName = "", userLastName = "", userName = "", sex = "", course = "";
         PreparedStatement preparedStatement = connection.prepareStatement("Select * from usersInfo where user_id = ?;");
-        preparedStatement.setInt(1,id);
+        preparedStatement.setInt(1, id);
         ResultSet resultSet = preparedStatement.executeQuery();
         while (resultSet.next()) {
             userName = resultSet.getString(2);
@@ -28,7 +27,7 @@ public class UserById {
             course = resultSet.getString(5);
         }
         preparedStatement = connection.prepareStatement("Select * from users where id = ?;");
-        preparedStatement.setInt(1,id);
+        preparedStatement.setInt(1, id);
         ResultSet rs = preparedStatement.executeQuery();
         while (rs.next()) {
             userFirstName = rs.getString(2);
@@ -46,7 +45,7 @@ public class UserById {
         Statement stmt = connection.createStatement();
         PreparedStatement preparedStatement = connection.prepareStatement("select * from " + USERS_TABLE +
                 " where email = ?;");
-        preparedStatement.setString(1,mail);
+        preparedStatement.setString(1, mail);
         ResultSet rs = preparedStatement.executeQuery();
         while (rs.next()) {
             return rs.getInt("id");
@@ -56,10 +55,10 @@ public class UserById {
     }
 
     public int getIdByUsername(String userName) throws SQLException {
-        PreparedStatement preparedStatement= connection.prepareStatement("select * from " + USERS_TABLE +
+        PreparedStatement preparedStatement = connection.prepareStatement("select * from " + USERS_TABLE +
                 " where user_name = ? ;");
-        preparedStatement.setString(1,userName);
-        ResultSet resultSet =preparedStatement.executeQuery();
+        preparedStatement.setString(1, userName);
+        ResultSet resultSet = preparedStatement.executeQuery();
         while (resultSet.next()) {
             return resultSet.getInt("id");
         }

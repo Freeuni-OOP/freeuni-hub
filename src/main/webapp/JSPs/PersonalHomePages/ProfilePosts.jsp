@@ -14,7 +14,7 @@
     <title> სალამი ${username} </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<%--    <link rel="stylesheet" href="../../PageStyles/PersonalPageStyle.css"/>--%>
+    <%--    <link rel="stylesheet" href="../../PageStyles/PersonalPageStyle.css"/>--%>
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 </head>
 <body>
@@ -136,95 +136,99 @@
             <a class="nav-link text-warning" href="/showFriends">მეგობრები</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-warning" href="${pageContext.request.contextPath}/JSPs/PersonalHomePages/ProfileInfoUpdate.jsp">
+            <a class="nav-link text-warning"
+               href="${pageContext.request.contextPath}/JSPs/PersonalHomePages/ProfileInfoUpdate.jsp">
                 ინფორმაციის განახლება
             </a>
         </li>
     </ul>
 
     <div style="display: flex; gap: 20px">
-    <div class="card" style="width: 20rem; height: fit-content">
-        <div class="card-header">
-            პერსონალური ინფორმაცია
-        </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">ელ-ფოსტა: ${mail}</li>
-            <li class="list-group-item text-capitalize">სახელი: ${firstname}</li>
-            <li class="list-group-item text-capitalize">გვარი: ${lastname}</li>
-            <li class="list-group-item">ფაკულტეტი: ${faculty}</li>
-            <li class="list-group-item">კურსი: ${course}</li>
-            <li class="list-group-item">სქესი: ${sex}</li>
-            <li class="list-group-item">საველეს ლოკაცია: ${saveleLocation}</li>
-        </ul>
-    </div>
-
-    <div style="flex: 1">
-        <form action="/addPost" method="post">
-            <div style="display: flex; margin-top: 5px">
-                <textarea required class="form-control" name="postText" id="postText"></textarea>
-                <button class="btn btn-dark text-warning">დაპოსტე</button>
-            </div>
-            <input type="hidden" name="username" value= ${username}>
-        </form>
-        <p>
-            შენი პოსტები:
-        </p>
-        <%
-            Map<Post, List<Comment>> all = (Map<Post, List<Comment>>) request.getSession().getAttribute("all");
-            if (all != null) {
-                for (Post post : all.keySet()) {
-                    String text = post.getText();
-                    int id = post.getPostId();
-                    List<Comment> commentList = all.get(post);
-        %>
-
-        <div class="card mb-3">
+        <div class="card" style="width: 20rem; height: fit-content">
             <div class="card-header">
-                <textarea readonly style="width: 100%; border: 0; outline: 0; background: none; cursor: default; resize: none"><%=text%></textarea>
+                პერსონალური ინფორმაცია
             </div>
-
-        <%
-            if (commentList == null || commentList.size() == 0)
-            { %>   <ul class="list-group list-group-flush"><div class="list-group-item">უკომენტაროდ</div></ul> <% }
-    else {
-        %>
-        <ul class="list-group list-group-flush">
-        <%
-        for (Comment comment : commentList) {
-            int user_id = comment.getUserId();
-            String commentorName = "";
-            try {
-                UserById ubi = new UserById(new BaseConnector());
-                User user = ubi.getUser(user_id);
-                commentorName = user.getUserName();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-    %>
-
-        <div class="list-group-item">
-        <%=commentorName%>-ს კომენტარი: <%=comment.getComment()%>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">ელ-ფოსტა: ${mail}</li>
+                <li class="list-group-item text-capitalize">სახელი: ${firstname}</li>
+                <li class="list-group-item text-capitalize">გვარი: ${lastname}</li>
+                <li class="list-group-item">ფაკულტეტი: ${faculty}</li>
+                <li class="list-group-item">კურსი: ${course}</li>
+                <li class="list-group-item">სქესი: ${sex}</li>
+                <li class="list-group-item">საველეს ლოკაცია: ${saveleLocation}</li>
+            </ul>
         </div>
-        <%
-                }
-            }
-        %>
-        <form action="/addComment" method="post" style="margin-bottom: 0">
-            <div style="display: flex;">
-                <input required class="form-control" type="text" name="commentText" id="commentText">
-                <button class="btn btn-dark text-warning"> დააკომენტარე</button>
+
+        <div style="flex: 1">
+            <form action="/addPost" method="post">
+                <div style="display: flex; margin-top: 5px">
+                    <textarea required class="form-control" name="postText" id="postText"></textarea>
+                    <button class="btn btn-dark text-warning">დაპოსტე</button>
+                </div>
+                <input type="hidden" name="username" value= ${username}>
+            </form>
+            <p>
+                შენი პოსტები:
+            </p>
+            <%
+                Map<Post, List<Comment>> all = (Map<Post, List<Comment>>) request.getSession().getAttribute("all");
+                if (all != null) {
+                    for (Post post : all.keySet()) {
+                        String text = post.getText();
+                        int id = post.getPostId();
+                        List<Comment> commentList = all.get(post);
+            %>
+
+            <div class="card mb-3">
+                <div class="card-header">
+                    <textarea readonly
+                              style="width: 100%; border: 0; outline: 0; background: none; cursor: default; resize: none"><%=text%></textarea>
+                </div>
+
+                <%
+                    if (commentList == null || commentList.size() == 0) { %>
+                <ul class="list-group list-group-flush">
+                    <div class="list-group-item">უკომენტაროდ</div>
+                </ul>
+                <% } else {
+                %>
+                <ul class="list-group list-group-flush">
+                    <%
+                        for (Comment comment : commentList) {
+                            int user_id = comment.getUserId();
+                            String commentorName = "";
+                            try {
+                                UserById ubi = new UserById(new BaseConnector());
+                                User user = ubi.getUser(user_id);
+                                commentorName = user.getUserName();
+                            } catch (SQLException throwables) {
+                                throwables.printStackTrace();
+                            } catch (ClassNotFoundException e) {
+                                e.printStackTrace();
+                            }
+                    %>
+
+                    <div class="list-group-item">
+                        <%=commentorName%>-ს კომენტარი: <%=comment.getComment()%>
+                    </div>
+                    <%
+                            }
+                        }
+                    %>
+                    <form action="/addComment" method="post" style="margin-bottom: 0">
+                        <div style="display: flex;">
+                            <input required class="form-control" type="text" name="commentText" id="commentText">
+                            <button class="btn btn-dark text-warning"> დააკომენტარე</button>
+                        </div>
+                        <input type="hidden" name="username" value= ${username}>
+                        <input type="hidden" name="postId" value=<%=id%>>
+                    </form>
+                </ul>
             </div>
-            <input type="hidden" name="username" value= ${username}>
-            <input type="hidden" name="postId" value=<%=id%>>
-        </form>
-        </ul>
+            <% }
+            }
+            %>
         </div>
-        <% }
-        }
-        %>
-    </div>
 
     </div>
 </div>
