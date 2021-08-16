@@ -4,6 +4,8 @@ package Servlets.ProfileServlets;
 import DataBaseConnection.BaseConnector;
 import Manage.HelperClasses.PostAddition;
 import Manage.HelperClasses.UserById;
+import org.jsoup.Jsoup;
+import org.jsoup.safety.Whitelist;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -33,7 +35,7 @@ public class AddPostServlet extends HttpServlet {
             int user_id = userById.getIdByUsername(userName);
             PostAddition postAddition = new PostAddition(new BaseConnector());
             int next = postAddition.next();
-            postAddition.addPost(user_id, postText, next);
+            postAddition.addPost(user_id, Jsoup.clean(postText, Whitelist.basic()), next);
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
