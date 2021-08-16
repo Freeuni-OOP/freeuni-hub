@@ -5,10 +5,7 @@ import DataBaseConnection.BaseConnector;
 import Manage.Configurations.UserConfiguration;
 import Manage.HelperClasses.UserById;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 
 
@@ -24,9 +21,11 @@ public class ManageUser implements UserConfiguration {
 
     public String changeProfilePic(String username, String img) throws SQLException {
         try {
-            Statement stmt = con.createStatement();
-            String query = "update users set profile_pic = '" + img + "' where user_name = '" + username + "';";
-            stmt.executeUpdate(query);
+            PreparedStatement preparedStatement = con.prepareStatement("update users set profile_pic = ? where user_name = ?;");
+            preparedStatement.setString(1,img);
+            preparedStatement.setString(2,username);
+            preparedStatement.execute();
+            preparedStatement.close();
             return ALL_GOOD;
         } catch (Exception e) {
             e.printStackTrace();

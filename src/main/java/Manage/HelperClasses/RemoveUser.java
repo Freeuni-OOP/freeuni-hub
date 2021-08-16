@@ -2,10 +2,7 @@ package Manage.HelperClasses;
 
 import DataBaseConnection.BaseConnector;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class RemoveUser {
@@ -34,99 +31,131 @@ public class RemoveUser {
         Connection connection = bc.accessConnection();
         Statement statement = connection.createStatement();
         LocationAddition locationAddition = new LocationAddition(bc);
+        //PreparedStatement preparedStatement = connection.prepareStatement();
         if (locationAddition.alreadyRegistered(user_id)) {
             int location_id = locationAddition.locationId(user_id);
-            statement.execute("Update locations set numStudents = numStudents-1 where id = " + location_id + ";");
+            PreparedStatement preparedStatement = connection.prepareStatement("Update locations set numStudents = numStudents-1 where id = ?;");
+            preparedStatement.setInt(1,location_id);
+            preparedStatement.execute();
+            preparedStatement.close();
         }
-        statement.execute("Delete from locationMembers where user_id = " + user_id + ";");
+        PreparedStatement preparedStatement = connection.prepareStatement("Delete from locationMembers where user_id = ?;");
+        preparedStatement.setInt(1,user_id);
+        preparedStatement.execute();
+        preparedStatement.close();
 
     }
 
     private void removeFromChangeLocationRequests(int user_id) throws SQLException {
         Connection connection = bc.accessConnection();
-        Statement statement = connection.createStatement();
-        statement.execute("Delete from changeLocationRequest where receiver_id = " + user_id
-                + " or  requester_id = " + user_id + ";");
+        PreparedStatement preparedStatement = connection.prepareStatement("Delete from changeLocationRequest where receiver_id = ?"
+                + " or  requester_id = ? ;");
+        preparedStatement.setInt(1,user_id);
+        preparedStatement.setInt(2,user_id);
+        preparedStatement.execute();
+        preparedStatement.close();
     }
 
     private void removeFromBlockedUsers(int user_id) throws SQLException {
         Connection connection = bc.accessConnection();
-        Statement statement = connection.createStatement();
-        statement.execute("Delete from blockedUsers where blocker_id = " + user_id
-                + " or blocked_id = " + user_id + ";");
+        PreparedStatement preparedStatement = connection.prepareStatement("Delete from blockedUsers where blocker_id = ?"
+                + " or blocked_id = ?;");
+        preparedStatement.setInt(1,user_id);
+        preparedStatement.setInt(2,user_id);
+        preparedStatement.execute();
+        preparedStatement.close();
 
     }
 
     private void removeFromUsersInfo(int user_id) throws SQLException {
         Connection connection = bc.accessConnection();
-        Statement statement = connection.createStatement();
-        statement.execute("Delete from usersInfo where user_id = " + user_id + ";");
+        PreparedStatement preparedStatement = connection.prepareStatement("Delete from usersInfo where user_id = ?;");
+        preparedStatement.setInt(1,user_id);
+        preparedStatement.execute();
+        preparedStatement.close();
     }
 
     private void removeFromComments(int user_id) throws SQLException {
         Connection connection = bc.accessConnection();
-        Statement statement = connection.createStatement();
-        statement.execute("Delete from comments where user_id = " + user_id + ";");
+        PreparedStatement preparedStatement = connection.prepareStatement("Delete from comments where user_id = ?;");
+        preparedStatement.setInt(1,user_id);
+        preparedStatement.execute();
+        preparedStatement.close();
     }
 
     private void removeFromPosts(int user_id) throws SQLException {
         Connection connection = bc.accessConnection();
-        Statement statement = connection.createStatement();
-        statement.execute("Delete from posts where user_id = " + user_id + ";");
+        PreparedStatement preparedStatement = connection.prepareStatement("Delete from posts where user_id = ?;");
+        preparedStatement.setInt(1,user_id);
+        preparedStatement.execute();
+        preparedStatement.close();
     }
 
     private void removeFromMessages(int user_id) throws SQLException {
         Connection connection = bc.accessConnection();
-        Statement statement = connection.createStatement();
-        statement.execute("Delete from messages where sender_id = " + user_id
-                + " or receiver_id = " + user_id + ";");
+        PreparedStatement preparedStatement = connection.prepareStatement("Delete from messages where sender_id = ? "
+                + " or receiver_id = ?;");
+        preparedStatement.setInt(1,user_id);
+        preparedStatement.setInt(2,user_id);
+        preparedStatement.execute();
+        preparedStatement.close();
 
     }
 
     private void removeFromGroupMembers(int user_id) throws SQLException {
         Connection connection = bc.accessConnection();
-        Statement statement = connection.createStatement();
-        statement.execute("Delete from groupMembers where member_id = " + user_id + ";");
+        PreparedStatement preparedStatement = connection.prepareStatement("Delete from groupMembers where member_id = ?;");
+        preparedStatement.setInt(1,user_id);
+        preparedStatement.execute();
+        preparedStatement.close();
 
     }
 
     private void removeFromGroupsInfo(int user_id) throws SQLException {
         Connection connection = bc.accessConnection();
-        Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery("Select id from groupsInfo " +
-                "where admin_id = " + user_id + ";");
+        PreparedStatement preparedStatement = connection.prepareStatement("Select id from groupsInfo" +
+                " where admin_id = ? ;");
+        preparedStatement.setInt(1,user_id);
+        ResultSet resultSet = preparedStatement.executeQuery();
         ArrayList<Integer> groupIds = new ArrayList<>();
         while (resultSet.next()) {
             groupIds.add(resultSet.getInt(1));
         }
+        preparedStatement = connection.prepareStatement("Delete from groupMembers where group_id = ?;");
         for (Integer id : groupIds) {
-            statement.execute("Delete from groupMembers where group_id = " + id + ";");
+            preparedStatement.setInt(1,id);
+            preparedStatement.execute();
         }
+        preparedStatement.close();
 
     }
 
     private void removeFromFriendRequests(int user_id) throws SQLException {
         Connection connection = bc.accessConnection();
-        Statement statement = connection.createStatement();
-        statement.execute("Delete from friendRequests where requester_id = " + user_id
-                + " or receiver_id = " + user_id + ";");
+        PreparedStatement preparedStatement = connection.prepareStatement("Delete from friendRequests where requester_id = ? or receiver_id = ?;");
+        preparedStatement.setInt(1,user_id);
+        preparedStatement.setInt(2,user_id);
+        preparedStatement.execute();
+        preparedStatement.close();
 
     }
 
     private void removeFromFriends(int user_id) throws SQLException {
         Connection connection = bc.accessConnection();
-        Statement statement = connection.createStatement();
-        statement.execute("Delete from friends where requester_id = " + user_id
-                + " or receiver_id = " + user_id + ";");
+        PreparedStatement preparedStatement = connection.prepareStatement("Delete from friends where requester_id = ? or receiver_id = ?;");
+        preparedStatement.setInt(1,user_id);
+        preparedStatement.setInt(2,user_id);
+        preparedStatement.execute();
+        preparedStatement.close();
 
     }
 
     private void removeFromUsers(int user_id) throws SQLException {
         Connection connection = bc.accessConnection();
-        Statement statement = connection.createStatement();
-        System.out.println("Delete from users where id = " + user_id + " ;");
-        statement.execute("Delete from users where id = " + user_id + " ;");
-
+        PreparedStatement preparedStatement = connection.prepareStatement("Delete from users where id = ?;");
+        preparedStatement.setInt(1,user_id);
+        preparedStatement.execute();
+        preparedStatement.close();
     }
 
 }
