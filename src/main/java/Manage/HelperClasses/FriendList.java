@@ -2,10 +2,7 @@ package Manage.HelperClasses;
 
 import DataBaseConnection.BaseConnector;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +22,8 @@ public class FriendList {
         Statement statement = con.createStatement();
 
         UserById ubi = new UserById(bc);
-        ResultSet resultSet = statement.executeQuery("select * from friends;");
+        PreparedStatement preparedStatement = con.prepareStatement("Select * from friends");
+        ResultSet resultSet = preparedStatement.executeQuery();
         while (resultSet.next()) {
             if (resultSet.getInt("requester_id") == id) {
                 int friendId = resultSet.getInt("receiver_id");
@@ -37,7 +35,7 @@ public class FriendList {
                 list.add(friend);
             }
         }
-
+        preparedStatement.close();
         return list;
     }
 

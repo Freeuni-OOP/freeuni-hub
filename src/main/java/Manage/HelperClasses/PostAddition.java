@@ -2,10 +2,7 @@ package Manage.HelperClasses;
 
 import DataBaseConnection.BaseConnector;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 import static java.lang.Math.max;
 
@@ -18,15 +15,20 @@ public class PostAddition {
 
     public void addPost(int user_id, String postText, int post_id) throws SQLException {
         Connection connection = bc.accessConnection();
-        Statement statement = connection.createStatement();
-        statement.execute("Insert into posts (post_id,user_id,post_text) values (" + post_id
-                + "," + user_id + ",'" + postText + "');");
+        PreparedStatement preparedStatement = connection.prepareStatement("Insert into posts (post_id,user_id,post_text) values (?,?,?);");
+        preparedStatement.setInt(1,post_id);
+        preparedStatement.setInt(2,user_id);
+        preparedStatement.setString(3,postText);
+        preparedStatement.execute();
+        preparedStatement.close();
     }
 
     public void removePost(int post_id) throws SQLException {
         Connection connection = bc.accessConnection();
-        Statement statement = connection.createStatement();
-        statement.execute("Delete from posts where post_id = " + post_id);
+        PreparedStatement preparedStatement = connection.prepareStatement("Delete from posts where post_id = ?;");
+        preparedStatement.setInt(1,post_id);
+        preparedStatement.execute();
+        preparedStatement.close();
     }
 
     public int next() throws SQLException {
