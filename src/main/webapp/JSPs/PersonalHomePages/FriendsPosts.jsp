@@ -2,10 +2,14 @@
 <%@ page import="java.math.*, java.util.*,Manage.HelperClasses.User" %>
 <%@ page
         import="java.math.*,DataBaseConnection.BaseConnector, java.util.*,Manage.HelperClasses.*,java.io.IOException,java.sql.SQLException" %>
-
+<%@ page import="Manage.ManagePosts" %>
+a
 <%
     if (session.getAttribute("username") == null) {
         response.sendRedirect("/");
+    }
+    else {
+        ManagePosts.getPosts(request, response);
     }
 %>
 

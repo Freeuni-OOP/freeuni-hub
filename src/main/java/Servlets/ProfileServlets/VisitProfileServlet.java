@@ -31,6 +31,12 @@ public class VisitProfileServlet extends HttpServlet {
         HttpSession session = request.getSession();
         String userName = request.getParameter("username");
         String profileName = request.getParameter("profileName");
+        if(userName == null) {
+            userName = (String) request.getSession().getAttribute("username");
+        }
+        if(profileName == null) {
+            profileName =(String) request.getSession().getAttribute("profileName");
+        }
         session.setAttribute("username", userName);
         session.setAttribute("profileName", profileName);
         //System.out.println(userName + " " + profileName);
