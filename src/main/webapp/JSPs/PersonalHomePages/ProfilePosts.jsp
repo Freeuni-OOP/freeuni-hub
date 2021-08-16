@@ -85,7 +85,8 @@
             </a>
         </span>
         <a href="${pageContext.request.contextPath}/JSPs/PersonalHomePages/HomePage.jsp" id="personal_photo_home">
-            <img src="${profilePic}" alt="Avatar" height="50" width="50"/>
+            <img style="background: white; border-radius: 5px;" src="${profilePic}" alt="Avatar" height="50"
+                 width="50"/>
         </a>
     </div>
 </nav>
@@ -118,7 +119,7 @@
 
         <div class="profile-header-content" style="display: flex; align-items: center; gap: 10px">
             <div class="profile-header-img" style="background-color: white; border-radius: 10px; width: fit-content; ">
-                <img style="width: 175px; object-fit: cover" id="profile-pic" src="${profilePic}" alt=""/>
+                <img style="width: 175px; object-fit: cover; border-radius: 10px;" id="profile-pic" src="${profilePic}" alt=""/>
             </div>
             <div class="text-white fs-5">
                 <p style="text-transform: capitalize"> ${firstname} ${lastname} </p>

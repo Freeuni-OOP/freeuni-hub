@@ -2,10 +2,14 @@
 <%@ page import="java.math.*, java.util.*,Manage.HelperClasses.User" %>
 <%@ page
         import="java.math.*,DataBaseConnection.BaseConnector, java.util.*,Manage.HelperClasses.*,java.io.IOException,java.sql.SQLException" %>
+<%@ page import="Manage.ManagePosts" %>
 
 <%
     if (session.getAttribute("username") == null) {
         response.sendRedirect("/");
+    }
+    else {
+        ManagePosts.getPosts(request,response);
     }
 %>
 
@@ -91,7 +95,8 @@
             </a>
         </span>
         <a href="${pageContext.request.contextPath}/JSPs/PersonalHomePages/HomePage.jsp" id="personal_photo_home">
-            <img src="${profilePic}" alt="Avatar" height="50" width="50"/>
+            <img style="background: white; border-radius: 5px;" src="${profilePic}" alt="Avatar" height="50"
+                 width="50"/>
         </a>
     </div>
 </nav>
@@ -164,9 +169,68 @@
                 <li class="list-group-item">საველეს ლოკაცია: ${saveleLocation}</li>
             </ul>
         </div>
+        <div style="flex: 1">
+            <p class="text-capitalize">
+                ${profileFirstName}-ს პოსტები:
+            </p>
+            <%
+                Map<Post, List<Comment>> all = (Map<Post, List<Comment>>) request.getSession().getAttribute("all");
+                if (all != null) {
+                    for (Post post : all.keySet()) {
+                        String text = post.getText();
+                        int id = post.getPostId();
+                        List<Comment> commentList = all.get(post);
+            %>
 
-        <div>
-            <%--            TODO  --%>
+            <div class="card mb-3">
+                <div class="card-header">
+                    <textarea readonly
+                              style="width: 100%; border: 0; outline: 0; background: none; cursor: default; resize: none"><%=text%></textarea>
+                </div>
+
+                <%
+                    if (commentList == null || commentList.size() == 0) { %>
+                <ul class="list-group list-group-flush">
+                    <div class="list-group-item">უკომენტაროდ</div>
+                </ul>
+                <% } else {
+                %>
+                <ul class="list-group list-group-flush">
+                    <%
+                        for (Comment comment : commentList) {
+                            int user_id = comment.getUserId();
+                            String commentorName = "";
+                            try {
+                                UserById ubi = new UserById(new BaseConnector());
+                                User user = ubi.getUser(user_id);
+                                commentorName = user.getUserName();
+                            } catch (SQLException throwables) {
+                                throwables.printStackTrace();
+                            } catch (ClassNotFoundException e) {
+                                e.printStackTrace();
+                            }
+                    %>
+
+                    <div class="list-group-item">
+                        <%=commentorName%>-ს კომენტარი: <%=comment.getComment()%>
+                    </div>
+                    <%
+                            }
+                        }
+                    %>
+                    <form action="/addComment" method="post" style="margin-bottom: 0">
+                        <div style="display: flex;">
+                            <input required class="form-control" type="text" name="commentText" id="commentText">
+                            <button class="btn btn-dark text-warning"> დააკომენტარე</button>
+                        </div>
+                        <input type="hidden" name="username" value= ${username}>
+                        <input type="hidden" name="postId" value=<%=id%>>
+                    </form>
+                </ul>
+            </div>
+            <% }
+            }
+            %>
         </div>
 
     </div>
