@@ -50,7 +50,7 @@ public class AnswerRequestServlet extends HttpServlet {
             e.printStackTrace();
         }
         //dasamatebeli friend requestebidan amoshla
-        if (action.equals("accept")) {
+        if (action.equals("Accept")) {
             try {
                 System.out.println("shemovida");
                 FriendAddition friendAddition = new FriendAddition(new BaseConnector());
