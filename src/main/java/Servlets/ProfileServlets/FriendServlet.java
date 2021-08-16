@@ -23,8 +23,8 @@ public class FriendServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String userName = request.getParameter("username");
-        String profileName = request.getParameter("profileName");
+        String userName = (String) request.getSession().getAttribute("username");
+        String profileName = (String) request.getSession().getAttribute("profileName");
         System.out.println(userName + " DF " + profileName);
         try {
             FriendRequesters friendAddition = new FriendRequesters(new BaseConnector());

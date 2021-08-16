@@ -22,16 +22,16 @@ public class UserById {
         preparedStatement.setInt(1,id);
         ResultSet resultSet = preparedStatement.executeQuery();
         while (resultSet.next()) {
-            userFirstName = resultSet.getString(2);
+            userName = resultSet.getString(2);
             userLastName = resultSet.getString(3);
             sex = resultSet.getString(4);
             course = resultSet.getString(5);
         }
-        preparedStatement = connection.prepareStatement("Select user_name from users where id = ?;");
+        preparedStatement = connection.prepareStatement("Select * from users where id = ?;");
         preparedStatement.setInt(1,id);
         ResultSet rs = preparedStatement.executeQuery();
         while (rs.next()) {
-            userName = rs.getString(1);
+            userFirstName = rs.getString(2);
         }
         User user = new User(id, userFirstName, userLastName, userName,
                 sex, course);

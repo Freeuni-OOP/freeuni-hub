@@ -20,8 +20,8 @@ import static StarterManager.Attributes.USER_MANAGER_ATTRIBUTE;
 public class ChangeLocationServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String username = req.getParameter("username");
-        String profileName = req.getParameter("profileName");
+        String username = (String) req.getSession().getAttribute("username");
+        String profileName = (String) req.getSession().getAttribute("profileName");
         try {
             LocationAddition locationAddition = new LocationAddition(new BaseConnector());
             UserById userById = new UserById(new BaseConnector());
