@@ -32,8 +32,8 @@ public class FriendPostsServlet extends HttpServlet {
         HttpSession session = request.getSession();
         session.setAttribute("username", username);
         session.setAttribute("profileName", profileName);
-        System.out.println(profileName);
-        System.out.println(username);
+        //System.out.println(profileName);
+        //System.out.println(username);
         try {
             PostList postList = new PostList(new BaseConnector());
             List<Post> posts = postList.getPostList(profileName);

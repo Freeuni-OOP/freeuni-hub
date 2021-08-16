@@ -26,7 +26,7 @@ public class AnswerSaveleRequest extends HttpServlet {
         HttpSession session = request.getSession();
         String receiverName = request.getParameter("username");
         String requesterName = request.getParameter("requesterName");
-        System.out.println(receiverName + " " + requesterName);
+        //System.out.println(receiverName + " " + requesterName);
         String action = request.getParameter("action");
         if (action.equals("accept")) {
             try {
@@ -34,9 +34,9 @@ public class AnswerSaveleRequest extends HttpServlet {
                 int requester_id = userById.getIdByUsername(requesterName);
                 int receiver_id = userById.getIdByUsername(receiverName);
                 LocationAddition locationAddition = new LocationAddition(new BaseConnector());
-                System.out.println(receiver_id + " vamowmeb " + requester_id);
+                //System.out.println(receiver_id + " vamowmeb " + requester_id);
                 locationAddition.changeLocations(requester_id, receiver_id);
-                System.out.println(receiver_id + " vamowmeb " + requester_id);
+                //System.out.println(receiver_id + " vamowmeb " + requester_id);
                 locationAddition.removeSimilars(requester_id);
                 locationAddition.removeSimilars(receiver_id);
             } catch (SQLException e) {

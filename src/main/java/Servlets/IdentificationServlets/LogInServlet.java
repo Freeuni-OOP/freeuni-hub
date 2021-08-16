@@ -52,7 +52,7 @@ public class LogInServlet extends HttpServlet implements Attributes, UserConfigu
                 session.setAttribute("profilePic", um.getProfilePic(username));
 
                 LocationAddition locationAddition = new LocationAddition(new BaseConnector());
-                System.out.println(user_id);
+                //System.out.println(user_id);
                 if (locationAddition.alreadyRegistered(user_id)) {
                     LocationID locationID = new LocationID(new BaseConnector());
                     String saveleLocation = locationID.getLocationById(locationAddition.locationId(user_id)).getLocName();

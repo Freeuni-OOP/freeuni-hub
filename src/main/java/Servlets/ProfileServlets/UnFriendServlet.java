@@ -23,7 +23,7 @@ public class UnFriendServlet extends HttpServlet {
             throws ServletException, IOException {
         String userName = (String) request.getSession().getAttribute("username");
         String profileName = (String) request.getSession().getAttribute("profileName");
-        System.out.println(userName + " ganimegobre " + profileName);
+        //System.out.println(userName + " ganimegobre " + profileName);
         try {
             FriendAddition friendAddition = new FriendAddition(new BaseConnector());
             UserById userById = new UserById(new BaseConnector());

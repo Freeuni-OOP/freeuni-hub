@@ -31,7 +31,7 @@ public class PostServlet extends HttpServlet {
         String username = (String)request.getSession().getAttribute("username");
         HttpSession session = request.getSession();
         session.setAttribute("username", username);
-        System.out.println(username);
+        //System.out.println(username);
         try {
             PostList postList = new PostList(new BaseConnector());
             List<Post> posts = postList.getPostList(username);
