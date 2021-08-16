@@ -49,7 +49,7 @@
         >
         <label for="show"> პაროლის ჩვენება </label>
     </div>
-    <input class="btn btn-dark" type="submit" value="შესვლა">
+    <input class="btn btn-dark text-warning" type="submit" value="შესვლა">
     <a style="display: block;" href="${pageContext.request.contextPath}/JSPs/IdentificationPages/RegistrationPage.jsp">
         <input style="width: 100%" type="button" class="btn btn-warning" value="ახალი მომხმარებლის რეგისტრაცია">
     </a>

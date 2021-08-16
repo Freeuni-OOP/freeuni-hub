@@ -80,7 +80,7 @@
             name="mail"
             id="mail"
             placeholder="მაგ: glekv22@freeuni.edu.ge">
-    <input class="btn btn-dark" type="submit" value="რეგისტრაცია">
+    <input class="btn btn-dark text-warning" type="submit" value="რეგისტრაცია">
     <a style="display: block" href="${pageContext.request.contextPath}/JSPs/IdentificationPages/LogInPage.jsp">
         <input style="width: 100%" class="btn btn-warning" type="button" value="არსებული მომხარებლით შესვლა">
     </a>
