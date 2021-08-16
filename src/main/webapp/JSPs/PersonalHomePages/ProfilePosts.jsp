@@ -158,17 +158,17 @@
         </ul>
     </div>
 
-    <div>
-        <p>
-            შენი პოსტები:
-        </p>
+    <div style="flex: 1">
         <form action="/addPost" method="post">
             <div style="display: flex; margin-top: 5px">
-                 <input required class="form-control" type="text" name="postText" id="postText">
-                <button class="btn btn-dark text-warning"> დაამატე პოსტი</button>
+                <textarea required class="form-control" name="postText" id="postText"></textarea>
+                <button class="btn btn-dark text-warning">დაპოსტე</button>
             </div>
             <input type="hidden" name="username" value= ${username}>
         </form>
+        <p>
+            შენი პოსტები:
+        </p>
         <%
             Map<Post, List<Comment>> all = (Map<Post, List<Comment>>) request.getSession().getAttribute("all");
             if (all != null) {
@@ -180,12 +180,12 @@
 
         <div class="card mb-3">
             <div class="card-header">
-            <%=text%>
+                <textarea readonly style="width: 100%; border: 0; outline: 0; background: none; cursor: default; resize: none"><%=text%></textarea>
             </div>
 
         <%
             if (commentList == null || commentList.size() == 0)
-            { %>   <div style="padding: 5px">უკომენტაროდ</div> <% }
+            { %>   <ul class="list-group list-group-flush"><div class="list-group-item">უკომენტაროდ</div></ul> <% }
     else {
         %>
         <ul class="list-group list-group-flush">
@@ -214,7 +214,7 @@
         <form action="/addComment" method="post" style="margin-bottom: 0">
             <div style="display: flex;">
                 <input required class="form-control" type="text" name="commentText" id="commentText">
-                <button class="btn btn-dark text-warning"> დაამატე კომენტარი</button>
+                <button class="btn btn-dark text-warning"> დააკომენტარე</button>
             </div>
             <input type="hidden" name="username" value= ${username}>
             <input type="hidden" name="postId" value=<%=id%>>
