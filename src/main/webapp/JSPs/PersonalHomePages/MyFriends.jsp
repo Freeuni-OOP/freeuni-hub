@@ -87,7 +87,8 @@
             </a>
         </span>
         <a href="${pageContext.request.contextPath}/JSPs/PersonalHomePages/HomePage.jsp" id="personal_photo_home">
-            <img src="${profilePic}" alt="Avatar" height="50" width="50"/>
+            <img style="background: white; border-radius: 5px;" src="${profilePic}" alt="Avatar" height="50"
+                 width="50"/>
         </a>
     </div>
 </nav>
