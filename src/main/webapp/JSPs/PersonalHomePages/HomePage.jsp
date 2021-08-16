@@ -51,14 +51,7 @@ response.sendRedirect("/Posts");
                         საველეს გაცვლები
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a
-                            class="nav-link"
-                            href="${pageContext.request.contextPath}/JSPs/SavelePages/TradePage.jsp"
-                    >
-                        გაცვალე საველე
-                    </a>
-                </li>
+
                 <li class="nav-item">
                     <a
                             class="nav-link"
