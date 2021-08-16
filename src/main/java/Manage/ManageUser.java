@@ -318,7 +318,7 @@ public class ManageUser implements UserConfiguration {
     }
 
     public void printUsernames() throws SQLException { // just printing users
-        for (String user : this.allUsers())
+//        for (String user : this.allUsers())
             //System.out.println(user);
     }
 
