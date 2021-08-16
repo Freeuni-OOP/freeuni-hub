@@ -23,7 +23,7 @@ public class BlockServlet extends HttpServlet {
             throws ServletException, IOException {
         String userName = (String) request.getSession().getAttribute("username");
         String profileName = (String) request.getSession().getAttribute("profileName");
-        System.out.println(userName + " daimegobre " + profileName);
+        //System.out.println(userName + " daimegobre " + profileName);
         try {
             BlockUser blockUser = new BlockUser(new BaseConnector());
             UserById userById = new UserById(new BaseConnector());

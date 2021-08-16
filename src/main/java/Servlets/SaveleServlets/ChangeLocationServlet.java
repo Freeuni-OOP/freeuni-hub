@@ -27,10 +27,10 @@ public class ChangeLocationServlet extends HttpServlet {
             UserById userById = new UserById(new BaseConnector());
             int requester_id = userById.getIdByUsername(username);
             int receiver_id = userById.getIdByUsername(profileName);
-            System.out.println("aqamde");
+            //System.out.println("aqamde");
             if (locationAddition.alreadyRegistered(requester_id) &&
                     locationAddition.alreadyRegistered(receiver_id)) {
-                System.out.println("mtavaria aqamde");
+                //System.out.println("mtavaria aqamde");
                 SaveleList saveleList = new SaveleList(new BaseConnector());
                 saveleList.addRequest(requester_id, receiver_id);
             }

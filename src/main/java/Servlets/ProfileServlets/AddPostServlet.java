@@ -26,8 +26,8 @@ public class AddPostServlet extends HttpServlet {
         HttpSession session = request.getSession();
         String userName = request.getParameter("username");
         String postText = request.getParameter("postText");
-        System.out.println(postText);
-        System.out.println(userName);
+        //System.out.println(postText);
+        //System.out.println(userName);
         try {
             UserById userById = new UserById(new BaseConnector());
             int user_id = userById.getIdByUsername(userName);

@@ -33,7 +33,7 @@ public class VisitProfileServlet extends HttpServlet {
         String profileName = request.getParameter("profileName");
         session.setAttribute("username", userName);
         session.setAttribute("profileName", profileName);
-        System.out.println(userName + " " + profileName);
+        //System.out.println(userName + " " + profileName);
         boolean isBlocked = false, isFriend = false;
         int user_id = 0;
         int profile_id = 0;

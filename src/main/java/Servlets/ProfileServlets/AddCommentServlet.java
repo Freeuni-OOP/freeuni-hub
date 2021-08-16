@@ -26,9 +26,9 @@ public class AddCommentServlet extends HttpServlet {
         String userName = request.getParameter("username");
         int post_id = Integer.parseInt(request.getParameter("postId"));
         String commentText = request.getParameter("commentText");
-        System.out.println(commentText);
-        System.out.println(post_id);
-        System.out.println(userName);
+        //System.out.println(commentText);
+        //System.out.println(post_id);
+        //System.out.println(userName);
         try {
             UserById userById = new UserById(new BaseConnector());
             int user_id = userById.getIdByUsername(userName);

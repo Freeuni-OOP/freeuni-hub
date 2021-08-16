@@ -25,7 +25,7 @@ public class FriendServlet extends HttpServlet {
             throws ServletException, IOException {
         String userName = (String) request.getSession().getAttribute("username");
         String profileName = (String) request.getSession().getAttribute("profileName");
-        System.out.println(userName + " DF " + profileName);
+        //System.out.println(userName + " DF " + profileName);
         try {
             FriendRequesters friendAddition = new FriendRequesters(new BaseConnector());
             UserById userById = new UserById(new BaseConnector());

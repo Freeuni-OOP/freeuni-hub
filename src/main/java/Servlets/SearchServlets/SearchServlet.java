@@ -37,7 +37,7 @@ public class SearchServlet extends HttpServlet {
         }
         HttpSession session = request.getSession();
         ArrayList<User> all = new ArrayList<>();
-        System.out.println(id);
+        //System.out.println(id);
         try {
             all = new Search(new BaseConnector()).searchSimilarUsers(username, id);
         } catch (SQLException throwables) {

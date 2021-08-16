@@ -19,13 +19,13 @@
 
 <%
     ArrayList<User> all = (ArrayList<User>) request.getSession().getAttribute("searchList");
-    System.out.println(all.size());
+    //System.out.println(all.size());
     for (int i = 0; i < all.size(); i++) {
         int id = all.get(i).getId();
         String user = all.get(i).getUserName();
         String userFirstName = all.get(i).getUserFirstName();
         String userLastName = all.get(i).getUserLastName();
-        System.out.println(user);
+        //System.out.println(user);
 %>
 <form action="/visitProfile" , method="post">
     <input type="hidden" name="username" value= ${username}>

@@ -26,7 +26,7 @@ public class AnswerRequestServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Map<String, String[]> es = request.getParameterMap();
-        System.out.println(es.size());
+        //System.out.println(es.size());
         String userName = "";
         String secondUserName = "";
         for (String s : es.keySet()) {
@@ -36,9 +36,9 @@ public class AnswerRequestServlet extends HttpServlet {
                 userName = es.get(s)[0];
             }
         }
-        System.out.println(userName + " " + secondUserName);
+        //System.out.println(userName + " " + secondUserName);
         String action = request.getParameter("action");
-        System.out.println(action);
+        //System.out.println(action);
         int requester_id = 0, receiver_id = 0;
         try {
             UserById ubi = new UserById(new BaseConnector());
@@ -52,7 +52,7 @@ public class AnswerRequestServlet extends HttpServlet {
         //dasamatebeli friend requestebidan amoshla
         if (action.equals("Accept")) {
             try {
-                System.out.println("shemovida");
+                //System.out.println("shemovida");
                 FriendAddition friendAddition = new FriendAddition(new BaseConnector());
                 friendAddition.addFriend(requester_id, receiver_id);
             } catch (SQLException throwables) {
