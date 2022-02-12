@@ -19,6 +19,11 @@ public class ManageUser implements UserConfiguration {
     }
 
 
+    public ArrayList<String> allBadUsers() {
+        return null;
+    }
+
+
     public String changeProfilePic(String username, String img) throws SQLException {
         try {
             PreparedStatement preparedStatement = con.prepareStatement("update users set profile_pic = ? where user_name = ?;");
