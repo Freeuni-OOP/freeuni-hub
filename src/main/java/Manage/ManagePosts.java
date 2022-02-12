@@ -10,11 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class ManagePosts {
+    private ArrayList<String> posts = new ArrayList<>();
+
+    public void setPosts(ArrayList<String> posts) {
+        this.posts = posts;
+    }
+
+
     public static void getPosts(HttpServletRequest request, HttpServletResponse response) {
         String username = (String) request.getSession().getAttribute("username");
         String profileName = (String) request.getSession().getAttribute("profileName");
